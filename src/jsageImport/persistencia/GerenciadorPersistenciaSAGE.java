@@ -1,0 +1,22 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package jsageImport.persistencia;
+
+import jsageImport.modelo.ipersistencia.IPersistenciaSAGE;
+import jsageImport.modelo.persistencia.PersistenciaSAGE;
+
+/**
+ *
+ * @author Gustavo
+ */
+ public class GerenciadorPersistenciaSAGE implements IGerenciadorPersistenciaSAGE {
+    
+    @Override
+    public IPersistenciaSAGE getPersistenciaFuncionario() {
+        return new PersistenciaSAGE();
+    }
+    
+}

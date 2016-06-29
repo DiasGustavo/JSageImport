@@ -389,7 +389,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
         PreparedStatement stmt = null;
         String carteiraDefault = "";
         byte [] fotoDefault = null;
-        short eleitoralDefault = 0;
+        
         try{
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_INCLUIR_DOCUMENTOS);
