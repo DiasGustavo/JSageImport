@@ -1,0 +1,10 @@
+Registro: Existentes no SAGE: 3472 --- 3470 ----- MISAEL GONCALVES EVANGELISTA --- Data:Sun Jul 10 23:53:45 GFT 2016
+Registro: Gravado o funcionario de código: 3472 nome: MISAEL GONCALVES EVANGELISTA ---  Data:Sun Jul 10 23:53:47 GFT 2016
+Registro: Existentes no SAGE: 3475 --- 3470 ----- Aurilene de oliveira Duarte ---  Data:Sun Jul 10 23:53:47 GFT 2016
+Registro: Gravado o funcionario de código: 3475 nome: Aurilene de oliveira Duarte ---  Data:Sun Jul 10 23:53:48 GFT 2016
+Registro: Existentes no SAGE: 3479 --- 3470 ----- Francisco Leonardo de Oliveira ---  Data:Sun Jul 10 23:53:48 GFT 2016
+Registro: Gravado o funcionario de código: 3479 nome: Francisco Leonardo de Oliveira ---  Data:Sun Jul 10 23:53:49 GFT 2016
+Registro: Existentes no SAGE: 3482 --- 3470 ----- Vildenilde Teixeira Rocha ---  Data:Sun Jul 10 23:53:49 GFT 2016
+Registro: Gravado o funcionario de código: 3482 nome: Vildenilde Teixeira Rocha ---  Data:Sun Jul 10 23:53:49 GFT 2016
+Registro: Existentes no SAGE: 3485 --- 3470 ----- Sayonara Goncalves Pinheiro ---  Data:Sun Jul 10 23:53:50 GFT 2016
+Registro: Gravado o funcionario de código: 3485 nome: Sayonara Goncalves Pinheiro ---  Data:Sun Jul 10 23:53:50 GFT 2016

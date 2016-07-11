@@ -1,0 +1,6 @@
+Registro: Existentes no SAGE: 4412 --- 4410 ----- Thinaly Suellen Sousa Machado --- Data:Sun Jul 10 22:58:44 GFT 2016
+Registro: Gravado o funcionario de código: 4412 nome: Thinaly Suellen Sousa Machado ---  Data:Sun Jul 10 22:58:46 GFT 2016
+Registro: Existentes no SAGE: 4419 --- 4410 ----- Alailson  Antonino de Santana ---  Data:Sun Jul 10 22:58:46 GFT 2016
+Registro: Gravado o funcionario de código: 4419 nome: Alailson  Antonino de Santana ---  Data:Sun Jul 10 22:58:47 GFT 2016
+Registro: Existentes no SAGE: 4422 --- 4410 ----- Isaac Jose De Mendonca ---  Data:Sun Jul 10 22:58:47 GFT 2016
+Registro: Gravado o funcionario de código: 4422 nome: Isaac Jose De Mendonca ---  Data:Sun Jul 10 22:58:48 GFT 2016

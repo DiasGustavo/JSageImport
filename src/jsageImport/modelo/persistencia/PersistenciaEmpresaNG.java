@@ -569,22 +569,20 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 //Pesquisa informações sobre o cnae da empresa no banco NG
                 List listaCnaeEmpresa = recuperarCnaeEmpresa(idEmpresa);
                 //Pesquisa configuracoes da folha da empresa no banco NG
-                List listaFolhaEmpresa = capturarInfoEmpresasFolha(idEmpresa);
-                
-                List listaBanco = recuperarAgenciaNG();
-                
-                List listaCargo = recuperarCargoFuncioario(idEmpresa);
-                
-                List listaCentroCusto = recuperarCentroCusto(idEmpresa);
-                
+                List listaFolhaEmpresa = capturarInfoEmpresasFolha(idEmpresa);                
+                List listaBanco = recuperarAgenciaNG();                
+                List listaCargo = recuperarCargoFuncioario(idEmpresa);                
+                List listaCentroCusto = recuperarCentroCusto(idEmpresa);                
                 List listaSindicato = recuperarSindicato();
                 
-                 //instancias dos objetos
+                 //Sequencia de gravação das informações no SAGE
                 PessoaJuridica pjGravar = null;
                 if (listaEmpresa.size() > 0){
                     pjGravar =(PessoaJuridica) listaEmpresa.get(0);
                     controlEmpSAGE.gravarEmpresa(pjGravar);
                 }
+                controlEmpSAGE.gravarEmpresaParametro(pjGravar);
+                
                 EmpresaTributacao empTrib = null;
                 if (listaTributacaoEmpresa.size()> 0){
                     empTrib = (EmpresaTributacao)listaTributacaoEmpresa.get(listaTributacaoEmpresa.size()-1);
@@ -623,6 +621,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                         centroCusto = (CentroCusto) listaCentroCusto.get(i);
                         controlEmpSAGE.gravarCentroCusto(centroCusto, idEmpresa);
                     }
+                }else{
+                    controlEmpSAGE.gravarCentroCusto(centroCusto, idEmpresa);
                 }
                 
                 Sindicato sind = null;
@@ -634,9 +634,10 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 }
                 
                 
-                controlEmpSAGE.gravarEmpresaParametro(pjGravar);
+                
                 controlEmpSAGE.gravarEstabelecimento(pjGravar, empTrib, empTribCNAE, empFolha);
                 controlEmpSAGE.gravarEstabelecimentoParametro(pjGravar);
+                controlEmpSAGE.gravarEstrutura(idEmpresa);                
                 controlEmpSAGE.gravarCRDPermissaoGrupoEstabelecimento(idEmpresa);
                 controlEmpSAGE.gravarCSCDRAPlano(idEmpresa);
                 controlEmpSAGE.gravarCSCDFCEPlano(idEmpresa);

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import jsageImport.controler.ControlerFuncionarioNG;
@@ -35,6 +36,7 @@ public class TratamentoDados {
     private static final String SQL_CONTA = "SELECT * FROM bpm_dadosfuncionario WHERE idpessoa = ? ";
     private static final String SQL_RECUPERA_CPFTITULAR = "SELECT * FROM bpm_dadospessoafisica where idpessoa = ?";
     private static final String SQL_CBO = "SELECT idcbo,codigocbo FROM dom_cbo where idcbo = ?";
+    private static final String SQL_ID_SINDICATO = "SELECT cd_sindicato FROM SindicatoGen order by cd_sindicato desc";
     
     PropertiesJdbc jdbc = new PropertiesJdbc();
     
@@ -42,6 +44,7 @@ public class TratamentoDados {
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
     private final String urlNGFOLHA = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng_folha;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
     private final String urlNGDOMINIO = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng_dominio;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
+    private final String urlSAGE = "jdbc:sqlserver://"+jdbc.lerServidor("SAGE")+":"+jdbc.lerPorta("SAGE")+";"+jdbc.lerDatabase("SAGE")+";user="+jdbc.lerUsuario("SAGE")+";password="+jdbc.lerSenha("SAGE")+";"; 
     
     public String recupararCPFTitular (int idPessoa)throws JsageImportException{
         String cpf = "";
@@ -1025,15 +1028,62 @@ public class TratamentoDados {
         return dataReturn;
     }
 
-    String converterSigla(String nomePessoa) throws JsageImportException {
+    public String converterSigla(String nomePessoa) throws JsageImportException {
+        String strSigla = null;
         if (nomePessoa != null && nomePessoa.length() >= 20){
-            nomePessoa.substring(0, 19);
+            strSigla = nomePessoa.substring(0, 19);
         }else if (nomePessoa.length() < 20){
-            nomePessoa.substring(0, 10);
+            strSigla = nomePessoa.substring(0, 10);
         }else if (nomePessoa == null){
-            nomePessoa = "SIND";
+            strSigla = "SIND";
         }
-        return nomePessoa;
+        return strSigla;
+    }
+    /**
+     * Trata Strings maiores do que os campos que eram receber
+     * @param strInicial
+     * @param tamanho
+     * @return String
+     */
+    public String trataGrandesString(String strInicial, int tamanho) {
+        String strFormatada = null;
+        if (strInicial == null){
+            strFormatada = "";
+        }else {
+            if ((strInicial.length()>= tamanho)){            
+                strFormatada = strInicial.substring(0, tamanho-1);
+            }else{
+                strFormatada = strInicial;
+            }            
+        }
+        
+        return strFormatada;
+    }
+
+    int gerarIDSindicato() throws JsageImportException {
+        int id;
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_ID_SINDICATO);
+            List ids = new ArrayList();
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                id = rs.getInt("cd_sindicato");
+                ids.add(id);
+            }
+            id = (int) ids.get(0);
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta do codido cbo do cargo da conta.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        return id;
     }
     
 }

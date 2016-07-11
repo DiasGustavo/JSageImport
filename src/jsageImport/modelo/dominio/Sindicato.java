@@ -12,7 +12,7 @@ package jsageImport.modelo.dominio;
 public class Sindicato extends PessoaNG{
     
     int iddadossindicato;
-    int idpessoa;
+    //int idpessoa;
     int idtiposindicato;
     String codigoentidade;
     int mescontribuicao;
@@ -35,13 +35,13 @@ public class Sindicato extends PessoaNG{
         this.iddadossindicato = iddadossindicato;
     }
 
-    public int getIdpessoa() {
+    /*public int getIdpessoa() {
         return idpessoa;
     }
 
     public void setIdpessoa(int idpessoa) {
         this.idpessoa = idpessoa;
-    }
+    }*/
 
     public int getIdtiposindicato() {
         return idtiposindicato;

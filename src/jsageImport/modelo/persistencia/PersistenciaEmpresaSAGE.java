@@ -136,9 +136,11 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
     private static final String SQL_CENTRO_CUSTO = "INSERT INTO ccusto (cd_ccusto,enterprise_id,descricao,status,cd_scp)"+
                                                    "VALUES (?,?,?,?,?)";
     
-     private static final String SQL_SINDICATO = "INSERT INTO TO SindicatoGen (cd_sindicato,descricao,nome_trct,sigla,endereco,nr_endereco,bairro,cidade,estado,cep,cgc" +
+     private static final String SQL_SINDICATO = "INSERT INTO SindicatoGen (cd_sindicato,descricao,nome_trct,sigla,endereco,nr_endereco,bairro,cidade,estado,cep,cgc" +
                                                                              ",status,mes_data_base,nr_semanas_mes,tipo_entidade,tipo_sindicato)"+
                                                                               "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+     private static final String SQL_ESTRUTURA = "INSERT INTO Estrutura (cd_empresa,cd_filial,cd_nivel1,cd_nivel2,cd_nivel3,descricao,data_hora_alteracao)" +
+                                                         " VALUES(?,?,?,?,?,?,?)";
     
     
     @Override
@@ -155,7 +157,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_CADASTRO_EMPRESA);
             stmt.setInt(1, (short) pj.getIdPessoa());
-            stmt.setString(2, pj.getNomePessoa());
+            stmt.setString(2, trataDados.trataGrandesString(pj.getNomePessoa(),40));
             stmt.setString(3, pj.getCnpjFormatado());
             stmt.setTimestamp(4,trataDados.horaAtual()) ;//dt_sistema
             stmt.setTimestamp(5, pj.getDataInicioAtividade());//dt_inicial
@@ -189,7 +191,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.setString(33, "N");//produtor_rural
             stmt.setString(34, "N");//naooptante_liminar
             stmt.setString(35, "N");//optante_liminar
-            stmt.setString(36, pj.getNomePessoa()); //nome_responsavel_rescisao
+            stmt.setString(36, trataDados.trataGrandesString(pj.getNomePessoa(),40)); //nome_responsavel_rescisao
             stmt.setString (37, "Diretor");//funcao_responsavel_rescisao
             stmt.setString(38, "N");//utiliza_conta_clifor
             stmt.setString(39, "A");//status
@@ -246,8 +248,8 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt = con.prepareStatement(SQL_CADASTRO_ESTABELECIMENTO);
             stmt.setInt(1, pj.getIdPessoa());//cd_empresa
             stmt.setInt(2, 1);//cd_estabelecimento
-            stmt.setString(3, pj.getNomePessoa());//razao
-            stmt.setString(4, pj.getNomeFantasia());//fantasia
+            stmt.setString(3, trataDados.trataGrandesString(pj.getNomePessoa(),40));//razao
+            stmt.setString(4, trataDados.trataGrandesString(pj.getNomeFantasia(),40));//fantasia
             stmt.setString(5, pj.getLogradouro());//endereco
             //trataDados.converterSrintInt(pj.getNumeroEndereco())
             stmt.setInt(6, trataDados.tratarNrEndereco(pj.getNumeroEndereco()));//numero
@@ -355,6 +357,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
          
     }
     
+    @Override
     public void gravarEstabelecimentoParametro(PessoaJuridica pj ) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
@@ -426,6 +429,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         }
     }
     
+    @Override
     public void gravarTomador (int cd_empresa) throws JsageImportException {
         
         Connection con = null;
@@ -457,6 +461,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarCSCDFCEquivalenteCaixa (int cd_empresa)throws JsageImportException{
         
          Connection con = null;
@@ -484,6 +489,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarCRDPermissaoGrupoEstabelecimento (int cd_empresa) throws JsageImportException{
          Connection con = null;
         PreparedStatement stmt = null;
@@ -510,6 +516,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarCSCDRAPlano(int cd_empresa)throws JsageImportException{
         
         Connection con = null;
@@ -537,6 +544,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarCSCDFCEPlano (int cd_empresa)throws JsageImportException{
         
         Connection con = null;
@@ -563,6 +571,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarCRDSCPRODEC (int cd_empresa) throws JsageImportException {
         
         Connection con = null;
@@ -589,6 +598,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarTituloDRE (int cd_empresa)throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
@@ -617,6 +627,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarTipoDRE (int cd_empresa) throws JsageImportException {
         
         Connection con = null;
@@ -648,6 +659,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarCapaLote (int cd_empresa) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
@@ -686,6 +698,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
          
      }
   
+    @Override
     public void gravarCSCDMPLPLANO (int cd_empresa) throws JsageImportException{
         
         Connection con = null;
@@ -712,6 +725,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarBancoGeral (int cd_empresa) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
@@ -736,6 +750,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarBanco (ContaBancaria conta, int cd_empresa)throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
@@ -774,6 +789,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         }    
     }
     
+    @Override
     public void gravarEmpresaParametro (PessoaJuridica pj) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
@@ -849,6 +865,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarCargo (CargoFun cargo, int cd_empresa ) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
@@ -881,6 +898,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
+    @Override
     public void gravarCentroCusto (CentroCusto centroCusto, int cd_empresa) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
@@ -906,6 +924,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         }    
     }
     
+    @Override
      public void gravarSindicato (Sindicato sindicato) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;               
@@ -913,15 +932,15 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         try{
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_SINDICATO);
-            stmt.setInt(1, sindicato.getIddadossindicato());
-            stmt.setString(2, sindicato.getNomePessoa());
-            stmt.setString(3, sindicato.getNomePessoa());
+            stmt.setInt(1, trataDados.gerarIDSindicato()+1);
+            stmt.setString(2, trataDados.trataGrandesString(sindicato.getNomePessoa(),150));
+            stmt.setString(3, trataDados.trataGrandesString(sindicato.getNomePessoa(),70));
             stmt.setString(4, trataDados.converterSigla(sindicato.getNomePessoa()));
-            stmt.setString(5, sindicato.getLogradouro());
+            stmt.setString(5, trataDados.trataGrandesString(sindicato.getLogradouro(),40));
             stmt.setInt (6, trataDados.tratarNrEndereco(sindicato.getNumeroEndereco()));
-            stmt.setString(7, sindicato.getBairro() );
-            stmt.setString(8, trataDados.recuperarCidade(sindicato.getIdmunicipio()));
-            stmt.setString(9, trataDados.recuperarEstado(sindicato.getIdmunicipio()));
+            stmt.setString(7, trataDados.trataGrandesString(sindicato.getBairro(),20) );
+            stmt.setString(8, trataDados.trataGrandesString(trataDados.recuperarCidade(sindicato.getIdmunicipio()),20));
+            stmt.setString(9, trataDados.trataGrandesString(trataDados.recuperarEstado(sindicato.getIdmunicipio()),2));
             stmt.setInt(10, trataDados.recuperarCEP(sindicato.getCep()));
             stmt.setString(11, "");
             stmt.setString(12, "A");
@@ -930,9 +949,37 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.setString(15, "1");
             stmt.setString(16, "L");
             
-                     
+            stmt.executeUpdate();
+            
            }catch (SQLException exc) {
             StringBuffer msg = new StringBuffer("Não foi possível incluir o sindicato do Funcionário.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+    }
+     
+    @Override
+    public void gravarEstrutura (int cdEmpresa) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;               
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_ESTRUTURA);
+            stmt.setInt(1, cdEmpresa);
+            stmt.setInt(2, 1);
+            stmt.setInt(3, 1);
+            stmt.setInt(4, 0);
+            stmt.setInt(5, 0);
+            stmt.setString (6,"DEPARTAMENTO" );
+            stmt.setTimestamp(7, trataDados.horaAtual() );
+            
+            stmt.executeUpdate();
+                     
+           }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir a Estrutura da Empresa.");
             msg.append("\nMotivo: " + exc.getMessage());
             throw new JsageImportException(msg.toString());            
         } finally {

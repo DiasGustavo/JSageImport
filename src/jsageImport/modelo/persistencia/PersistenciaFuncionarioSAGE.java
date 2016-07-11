@@ -218,7 +218,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setInt(6, 0);//cd_nivel2
             stmt.setInt(7, 0);//cd_nivel3
             stmt.setInt(8, 1);//cd_ccusto
-            stmt.setTimestamp(9, df.getDataFim());//dt_final
+            stmt.setTimestamp(9, trataDados.DataFimSistema());//dt_final
             stmt.setTimestamp(10, trataDados.horaAtual());//data_hora_alteracao
                         
             stmt.executeUpdate();
@@ -967,6 +967,4 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             throw new JsageImportException(mensagem.toString());
         }
     }  
-    
-   
 }

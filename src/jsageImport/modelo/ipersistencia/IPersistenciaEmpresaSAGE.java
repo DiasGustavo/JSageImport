@@ -38,6 +38,7 @@ public interface IPersistenciaEmpresaSAGE {
     public void gravarCargo (CargoFun cargo, int cd_empresa ) throws JsageImportException;
     public void gravarCentroCusto (CentroCusto centroCusto, int cd_empresa) throws JsageImportException;
     public void gravarSindicato (Sindicato sindicato) throws JsageImportException;
+    public void gravarEstrutura (int cdEmpresa) throws JsageImportException;
     
     
     public abstract void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException;
