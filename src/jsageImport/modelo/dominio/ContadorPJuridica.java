@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  *
  * @author Gustavo
  */
-public class Contador extends PessoaFisica{
+public class ContadorPJuridica extends PessoaJuridica{
     
     String crc;
     int ufcrc;
@@ -22,6 +22,7 @@ public class Contador extends PessoaFisica{
     int idowner;
     Timestamp datavalidadecrc;
     String numerosequencialcrc;
+   
 
     public String getCrc() {
         return crc;

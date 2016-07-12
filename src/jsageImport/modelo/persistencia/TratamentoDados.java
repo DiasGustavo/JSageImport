@@ -42,8 +42,9 @@ public class TratamentoDados {
     private static final String SQL_NOME_SINDICATO_ID = "SELECT nomepessoa FROM bpm_pessoa AS pessoa INNER JOIN  bpm_dadossindicato AS sindicato ON pessoa.idpessoa = sindicato.idpessoa" +
                                                                            " WHERE sindicato.iddadossindicato = ?";
     private static final String SQL_ID_SINDICATO_SAGE = "SELECT cd_sindicato FROM SindicatoGen WHERE nome_trct = ?";
+    private static final String SQL_PESSOA_FISICA = " SELECT * from bpm_dadospessoafisica where idpessoa = ?";
     
-  
+    
     
     PropertiesJdbc jdbc = new PropertiesJdbc();
     
@@ -1351,6 +1352,34 @@ public class TratamentoDados {
                 GerenciadorConexao.closeConexao(con, stmt, rs);
             }
         return idSindicato;
+    }
+
+    public boolean verificarPessoa(int id) throws JsageImportException {
+        boolean idPessoa = false;
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_PESSOA_FISICA);
+            stmt.setInt(1, id);
+            
+            rs = stmt.executeQuery();
+           
+            if (rs.next()){
+                idPessoa = true;
+            }
+            
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível pesquisar o sindicato.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        
+        return idPessoa;
     }
     
 }

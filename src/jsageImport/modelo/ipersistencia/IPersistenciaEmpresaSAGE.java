@@ -9,7 +9,8 @@ import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.CargoFun;
 import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
-import jsageImport.modelo.dominio.Contador;
+import jsageImport.modelo.dominio.ContadorPFisica;
+import jsageImport.modelo.dominio.ContadorPJuridica;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -40,7 +41,8 @@ public interface IPersistenciaEmpresaSAGE {
     public void gravarCentroCusto (int id, CentroCusto centroCusto, int cd_empresa) throws JsageImportException;
     public void gravarSindicato (Sindicato sindicato) throws JsageImportException;
     public void gravarEstrutura (int cdEmpresa) throws JsageImportException;
-    public void gravarContador (Contador contador) throws JsageImportException;
+    public void gravarContador (ContadorPFisica contador) throws JsageImportException;
+     public void gravarContadorPJuridica (ContadorPJuridica contador) throws JsageImportException;
     
     
     public abstract void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException;

@@ -9,7 +9,8 @@ import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.CargoFun;
 import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
-import jsageImport.modelo.dominio.Contador;
+import jsageImport.modelo.dominio.ContadorPFisica;
+import jsageImport.modelo.dominio.ContadorPJuridica;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -148,10 +149,16 @@ public class ControlerEmpresaSAGE {
         PEmpresa.gravarEstrutura(cdEmpresa);
     }
     
-    public void gravarContador (Contador contador) throws JsageImportException{
+    public void gravarContador (ContadorPFisica contador) throws JsageImportException{
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
         PEmpresa.gravarContador(contador);
     }
+    
+     public void gravarContadorPJuridica (ContadorPJuridica contador) throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
+        PEmpresa.gravarContadorPJuridica(contador);
+     }
    
 }

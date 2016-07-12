@@ -16,7 +16,8 @@ import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.CargoFun;
 import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
-import jsageImport.modelo.dominio.Contador;
+import jsageImport.modelo.dominio.ContadorPFisica;
+import jsageImport.modelo.dominio.ContadorPJuridica;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -83,6 +84,13 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                                                 "INNER JOIN bpm_pessoaendereco as pessoaEnd on sindicato.idpessoa = pessoaEnd.idpessoa)";
     
     private static final String SQL_RECUPERA_CONTADOR = " SELECT * FROM (bpm_pessoa as pessoa INNER JOIN bpm_dadospessoafisica as pessoaf on pessoa.idpessoa =pessoaf.idpessoa" +
+                                                                        " INNER JOIN bpm_pessoaendereco as pessoaE on pessoa.idpessoa = pessoaE.idpessoa " +
+                                                                        " INNER JOIN bpm_dadoscontador as contador on contador.idpessoa = pessoa.idpessoa) " +
+                                                                        " WHERE contador.idowner = ?";
+    
+     private static final String SQL_CONTADOR = "SELECT * FROM bpm_dadoscontador where idowner = ?";
+     
+      private static final String SQL_RECUPERA_CONTADORJuridica = " SELECT * FROM (bpm_pessoa as pessoa INNER JOIN bpm_dadospessoajuridica as pessoaf on pessoa.idpessoa =pessoaf.idpessoa" +
                                                                         " INNER JOIN bpm_pessoaendereco as pessoaE on pessoa.idpessoa = pessoaE.idpessoa " +
                                                                         " INNER JOIN bpm_dadoscontador as contador on contador.idpessoa = pessoa.idpessoa) " +
                                                                         " WHERE contador.idowner = ?";
@@ -549,24 +557,76 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         
     }
     
+    private int recuperarIdContador (int idEmpresa)throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int idContador = 0;
+        
+        try {             
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_CONTADOR);
+            stmt.setInt(1, idEmpresa);
+            rs = stmt.executeQuery();
+           
+            while(rs.next()){
+                idContador = rs.getInt("idpessoa");
+                
+            }
+            
+            return idContador;                    
+        } catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível recuparar a ID do contador.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+        
+    }
+    
     public List recuperarContador (int idEmpresa)throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        
+        List listaContador = new ArrayList(); 
+        List listaContadorJuridico = new ArrayList();
         try {             
-            con = GerenciadorConexao.getConnection(urlNG);
-            stmt = con.prepareStatement(SQL_RECUPERA_CONTADOR);
-            stmt.setInt(1, idEmpresa);
-            rs = stmt.executeQuery();
-            List listaContador = new ArrayList();
             
-            while(rs.next()){
-                Contador contador = criarContador(rs);
+            int id = recuperarIdContador(idEmpresa);
+            boolean validaContador = trataDados.verificarPessoa(id);
+            
+            if (validaContador == true){//o contador é pessoa fisíca
+               con = GerenciadorConexao.getConnection(urlNG);
+               stmt = con.prepareStatement(SQL_RECUPERA_CONTADOR);
+               stmt.setInt(1, idEmpresa);
+               rs = stmt.executeQuery();
+              
+               
+               while(rs.next()){
+                ContadorPFisica contador = criarContador(rs);
                 listaContador.add(contador);
+                }
+               
+               return listaContador;
+               
+            }else {
+                con = GerenciadorConexao.getConnection(urlNG);
+               stmt = con.prepareStatement(SQL_RECUPERA_CONTADORJuridica);
+               stmt.setInt(1, idEmpresa);
+               rs = stmt.executeQuery();
+               
+               while(rs.next()){
+                ContadorPJuridica contador = criarContadorPJuridica(rs);
+                listaContadorJuridico.add(contador);
+                }
+               
+               return listaContadorJuridico;
+               
             }
             
-            return listaContador;                    
+            
+                                
         } catch (SQLException exc) {
             StringBuffer mensagem = new StringBuffer("Não foi possível realizar a Agência do Banco.");
             mensagem.append("\nMotivo: " + exc.getMessage());
@@ -607,6 +667,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 List listaCentroCusto = recuperarCentroCusto(idEmpresa);                
                 List listaSindicato = recuperarSindicato();
                 List listaContador = recuperarContador(idEmpresa);
+                List listaContadorJuridico = recuperarContador(idEmpresa);
                 
                  //Sequencia de gravação das informações no SAGE
                 PessoaJuridica pjGravar = null;
@@ -658,11 +719,19 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                     controlEmpSAGE.gravarCentroCusto(1, centroCusto, idEmpresa);
                 }
                 
-                Contador contador = null;
+                ContadorPFisica contador = null;
                 if(listaContador.size()>0){
                     for(int i=0; i < listaContador.size(); i++){
-                        contador = (Contador) listaContador.get(i);
+                        contador = (ContadorPFisica) listaContador.get(i);
                         controlEmpSAGE.gravarContador(contador);
+                    }
+                }
+                
+                ContadorPJuridica contadorJuridica = null;
+                if(listaContadorJuridico.size()>0){
+                    for(int i=0; i < listaContadorJuridico.size(); i++){
+                        contadorJuridica = (ContadorPJuridica) listaContadorJuridico.get(i);
+                        controlEmpSAGE.gravarContadorPJuridica(contadorJuridica);
                     }
                 }
                 
@@ -1174,8 +1243,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         
     }
      
-    private Contador criarContador (ResultSet rs) throws JsageImportException{
-        Contador contador = new Contador();
+    private ContadorPFisica criarContador (ResultSet rs) throws JsageImportException{
+        ContadorPFisica contador = new ContadorPFisica();
         try{
             contador.setIdPessoa(rs.getInt("idpessoa"));
             contador.setNomePessoa(rs.getString("nomepessoa"));
@@ -1201,4 +1270,33 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         }
         return contador;
     }
+    
+    private ContadorPJuridica criarContadorPJuridica (ResultSet rs) throws JsageImportException{
+        ContadorPJuridica contador = new ContadorPJuridica();
+        try{
+            contador.setIdPessoa(rs.getInt("idpessoa"));
+            contador.setNomePessoa(rs.getString("nomepessoa"));
+            contador.setCep(rs.getString("cep"));
+            contador.setLogradouro(rs.getString("logradouro"));
+            contador.setNumeroEndereco(rs.getString("numeroendereco"));
+            contador.setBairro(rs.getString("bairro"));
+            contador.setIdmunicipio(rs.getInt("idmunicipio"));
+            contador.setNumeroCei(rs.getString("numerocei"));
+            contador.setCnpj("cnpj");
+            contador.setCnpjFormatado(rs.getString("cnpjformatado"));
+            contador.setCrc(rs.getString("crc"));
+            contador.setUfcrc(rs.getInt("ufcrc"));
+            contador.setIndativo(rs.getBoolean("indativo"));
+            contador.setDataFundacao(rs.getTimestamp("datafundacao"));
+            contador.setNomeAbreviado(rs.getString("nomeabreviado"));
+            
+        }catch (SQLException ex) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados do contador pessoa Juridica.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return contador;
+    }
+
+   
 }

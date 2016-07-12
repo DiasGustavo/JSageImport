@@ -12,7 +12,8 @@ import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.CargoFun;
 import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
-import jsageImport.modelo.dominio.Contador;
+import jsageImport.modelo.dominio.ContadorPFisica;
+import jsageImport.modelo.dominio.ContadorPJuridica;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -993,7 +994,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
     }
     
     @Override
-    public void gravarContador (Contador contador) throws JsageImportException{
+    public void gravarContador (ContadorPFisica contador) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;               
         
@@ -1022,6 +1023,48 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.setString(20, trataDados.recuperarUF(contador.getUfcrc()));
             stmt.setInt(21, trataDados.recuperarCodigoIBGE(contador.getIdmunicipio()));
             stmt.setTimestamp(22, contador.getDataNascimento());
+            stmt.setInt(23, 900);
+            
+            stmt.executeUpdate();
+                     
+           }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir contador na Empresa: " + contador.getIdPessoa());
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+    }
+    
+     public void gravarContadorPJuridica (ContadorPJuridica contador) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;               
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CONTADOR);
+            stmt.setInt(1, contador.getIdPessoa());
+            stmt.setString(2, contador.getNomePessoa());
+            stmt.setString(3, contador.getCnpjFormatado());
+            stmt.setString(4, contador.getNomeAbreviado());
+            stmt.setInt(5, 0);
+            stmt.setInt(6,0);
+            stmt.setString(7, contador.getLogradouro() );
+            stmt.setInt(8, trataDados.tratarNrEndereco(contador.getNumeroEndereco()));
+            stmt.setString(9, contador.getBairro());
+            stmt.setString(10, trataDados.recuperarCidade(contador.getIdmunicipio()));
+            stmt.setString(11, trataDados.recuperarUFMunicipio(contador.getIdmunicipio()));
+            stmt.setInt(12, trataDados.recuperarCEP(contador.getCep()));
+            stmt.setInt (13, 1); //indica que um cnpj
+            stmt.setString(14, contador.getCnpjFormatado());
+            stmt.setString(15,"");
+            stmt.setString(16, "CONTADOR");
+            stmt.setString(17, contador.getCnpj());
+            stmt.setString(18, contador.getCrc());
+            stmt.setString(19, "A");
+            stmt.setString(20, trataDados.recuperarUF(contador.getUfcrc()));
+            stmt.setInt(21, trataDados.recuperarCodigoIBGE(contador.getIdmunicipio()));
+            stmt.setTimestamp(22, contador.getDataFundacao());
             stmt.setInt(23, 900);
             
             stmt.executeUpdate();
