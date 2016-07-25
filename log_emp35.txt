@@ -1,0 +1,43 @@
+Registro: Existentes no SAGE: 5040 --- 35 ----- SEVERINA GONCALVES DA SILVA --- Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5043 --- 35 ----- MARIA DO SOCORRO SILVA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5047 --- 35 ----- SINEIDE DA SILVA SOUSA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5050 --- 35 ----- ANA LUCIA DA SILVA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5053 --- 35 ----- ELIETE DA COSTA PADILHA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5056 --- 35 ----- MARIA ROSELI DE LIRA GOMES ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5060 --- 35 ----- SUELY MARIA DA SILVA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5063 --- 35 ----- JERFERSON FERREIRA DA SILVA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5066 --- 35 ----- HELIA TOMAS DA SILVA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5073 --- 35 ----- MARIA DE FATIMA ROSENDO ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5076 --- 35 ----- TELMA GOMES DA SILVA STOBICH ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5079 --- 35 ----- LEIA BERNARDO GOMES ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5084 --- 35 ----- ELIANE CANDIDO DE MORAIS ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5087 --- 35 ----- IRENICE PEREIRA DE LIMA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5092 --- 35 ----- MARIA DE LOURDES MARINHO PEREIRA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5096 --- 35 ----- JOSE ROBERTO CALISTO DA SILVA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5099 --- 35 ----- CLEONICE SILVA DE LIMA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5104 --- 35 ----- JOSICLEIDE NUNES DE AZEVEDO ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5109 --- 35 ----- MARIA DA GUIA MONTEIRO DOS S FIGUEIREDO ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5114 --- 35 ----- BETANIA MESSIAS DA SILVA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5096 --- 35 ----- JOSE ROBERTO CALISTO DA SILVA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5117 --- 35 ----- LUCICLEIDE EVARISTO GONCALVES ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5122 --- 35 ----- IVANILDA DA SILVA NUNES ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5126 --- 35 ----- MARINALVA DA CONCEICAO SANTOS DE LIMA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5099 --- 35 ----- CLEONICE SILVA DE LIMA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 6331 --- 35 ----- MARIA JORDANIA SILVA DE LIMA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 6336 --- 35 ----- KALINE GENI DA SLVA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 6340 --- 35 ----- MARIA DA CONCEICAO SILVA E MOURA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 6345 --- 35 ----- JULIANA FRANCA DA SILVA ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 5109 --- 35 ----- MARIA DA GUIA MONTEIRO DOS S FIGUEIREDO ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Existentes no SAGE: 7805 --- 35 ----- KALINA DO NASCIMENTO FRUTUOSO ---  Data:Wed Jul 20 16:20:19 BRT 2016
+Registro: Gravado o funcionario de código: 7805 nome: KALINA DO NASCIMENTO FRUTUOSO ---  Data:Wed Jul 20 16:20:20 BRT 2016
+Registro: Existentes no SAGE: 7814 --- 35 ----- MAGNA FIDELIS SILVA PEREIRA ---  Data:Wed Jul 20 16:20:20 BRT 2016
+Registro: Gravado o funcionario de código: 7814 nome: MAGNA FIDELIS SILVA PEREIRA ---  Data:Wed Jul 20 16:20:21 BRT 2016
+Registro: Existentes no SAGE: 7817 --- 35 ----- MARIA JOSE SOBRINHO ---  Data:Wed Jul 20 16:20:21 BRT 2016
+Registro: Gravado o funcionario de código: 7817 nome: MARIA JOSE SOBRINHO ---  Data:Wed Jul 20 16:20:21 BRT 2016
+Registro: Existentes no SAGE: 7819 --- 35 ----- SULAMITA TEIXEIRA ARAUJO ---  Data:Wed Jul 20 16:20:21 BRT 2016
+Registro: Gravado o funcionario de código: 7819 nome: SULAMITA TEIXEIRA ARAUJO ---  Data:Wed Jul 20 16:20:22 BRT 2016
+Registro: Existentes no SAGE: 7825 --- 35 ----- VALQUIRIA FERREIRA DA SILVA ---  Data:Wed Jul 20 16:20:22 BRT 2016
+Registro: Gravado o funcionario de código: 7825 nome: VALQUIRIA FERREIRA DA SILVA ---  Data:Wed Jul 20 16:20:22 BRT 2016
+Registro: Existentes no SAGE: 7814 --- 35 ----- MAGNA FIDELIS SILVA PEREIRA ---  Data:Wed Jul 20 16:20:22 BRT 2016
+Registro: Existentes no SAGE: 7830 --- 35 ----- WILANIA BATISTA DOS SANTOS ---  Data:Wed Jul 20 16:20:22 BRT 2016
+Registro: Gravado o funcionario de código: 7830 nome: WILANIA BATISTA DOS SANTOS ---  Data:Wed Jul 20 16:20:23 BRT 2016

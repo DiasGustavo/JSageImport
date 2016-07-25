@@ -155,7 +155,7 @@ public class TestaConexao extends javax.swing.JInternalFrame {
            if (jtfServidor.getText().equals("")||jtfBanco.getText().equals("")||jtfPorta.getText().equals("")||jtfUsuario.getText().equals("")||jpSenha.getText().equals("")){
                throw new JsageImportException("Todos os campos precisam ser preenchidos!");               
            }else {
-               jlStatus.setText(control.testarConexao(jtfServidor.getText(), jtfBanco.getText(), jtfPorta.getText(), jtfUsuario.getText(), jpSenha.getText()));           
+               //jlStatus.setText(control.testarConexao(jtfServidor.getText(), jtfBanco.getText(), jtfPorta.getText(), jtfUsuario.getText(), jpSenha.getText()));           
                jlStatus.setVisible(true);
            }
         } catch (JsageImportException ex) {

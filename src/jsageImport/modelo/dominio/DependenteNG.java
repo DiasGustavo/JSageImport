@@ -9,7 +9,7 @@ package jsageImport.modelo.dominio;
  *
  * @author Gustavo
  */
-public class DependenteNG extends PessoaNG {
+public class DependenteNG extends PessoaFisica {
     
     boolean indDependenteIrrf;
     boolean indDependenteSalarioFamilia;

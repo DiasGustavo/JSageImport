@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 6810 --- 67 ----- EDUARDO SILVA DE MENDONCA --- Data:Wed Jul 20 16:59:59 BRT 2016
+Registro: Gravado o funcionario de código: 6810 nome: EDUARDO SILVA DE MENDONCA ---  Data:Wed Jul 20 16:59:59 BRT 2016
+Registro: Existentes no SAGE: 6813 --- 67 ----- ERIVANIA DA SILVA GALVAO ---  Data:Wed Jul 20 17:00:00 BRT 2016
+Registro: Gravado o funcionario de código: 6813 nome: ERIVANIA DA SILVA GALVAO ---  Data:Wed Jul 20 17:00:00 BRT 2016

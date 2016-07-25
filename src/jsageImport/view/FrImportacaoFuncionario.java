@@ -12,12 +12,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
 import jsageImport.controler.ControlerFuncionarioNG;
 import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.EmpresaSAGE;
 import jsageImport.modelo.dominio.PessoaFisica;
+import jsageImport.log.LogSage;
 
 /**
  *
@@ -29,6 +31,7 @@ public class FrImportacaoFuncionario extends javax.swing.JInternalFrame {
     private int idpj;
     private String nomeEmpresa;
     private String cnpj;
+    
 
     
     /**
@@ -42,6 +45,7 @@ public class FrImportacaoFuncionario extends javax.swing.JInternalFrame {
     
     public FrImportacaoFuncionario() {
         initComponents();
+        pb.setVisible(false);
         
     }
     
@@ -76,6 +80,7 @@ public class FrImportacaoFuncionario extends javax.swing.JInternalFrame {
         }
         int total = funcionarios.size();
         jlQRegistros.setText("Quantidade de Registros: "+ total);
+        
     }
     
     public void removerLinhasDaTabela (DefaultTableModel model){
@@ -102,6 +107,7 @@ public class FrImportacaoFuncionario extends javax.swing.JInternalFrame {
     }
     
     public void importarDados () throws JsageImportException{
+            
             ControlerFuncionarioNG control = new ControlerFuncionarioNG();
             ControlerFuncionarioSAGE ctr = new ControlerFuncionarioSAGE();
             List empresas = ctr.pesquisarId(this.cnpj);
@@ -113,27 +119,48 @@ public class FrImportacaoFuncionario extends javax.swing.JInternalFrame {
             
             if(reply == JOptionPane.YES_OPTION){               
                 
-                int flag = 0;       
-                
+                int flag = 0;                
                 for(int i= 0; i < this.funcionarios.size(); i++){
                     
                     PessoaFisica pfGravar =(PessoaFisica) this.funcionarios.get(i);                                    
-                    control.ImportarFuncionarios(emp.getCd_empresa(), pfGravar.getIdPessoa());  
-                    //System.out.println(this.idpj+ "-- " + pfGravar.getIdPessoa());
-                                  
+                    
+                    control.ImportarFuncionarios(pfGravar.getIdPessoa(), emp.getCd_empresa(),  pfGravar.getNomePessoa());
+                    //System.out.println(pfGravar.getIdPessoa()+ "-- " + pfGravar.getCpfFormatado());              
                     if (flag == this.funcionarios.size()-1){
-                        jlStatus.setText("Status: Concluído!");
-                        
+                        jlStatus.setText("Status: Concluído!");                       
                         JOptionPane.showMessageDialog(null, "Funcionarios Gravados com Sucesso!"); 
                         return;
                     }
-                    flag++;
+                    flag++;                    
                 }                              
             
             }else if (reply == JOptionPane.NO_OPTION) {
                 JOptionPane.showMessageDialog(null, "A importação não foi realizada!"); 
             }   
         
+    }
+    
+    public void progresso(int max) throws JsageImportException{
+        
+        final int numImages = max;
+        SwingWorker worker = new SwingWorker() {
+                            @Override
+                            protected Object doInBackground() throws Exception {
+                                pb.setMaximum(numImages);
+                                for (int x = 0; x <= pb.getMaximum(); x++) {
+                                    pb.setValue(x);
+                                    Thread.sleep(900);
+                                }
+                                return null;
+                            }
+                            @Override
+                            protected void done() {
+                                //barra.setValue(0);  
+                                System.out.println("Feito...");
+                                JOptionPane.showMessageDialog(null, "Progresso concluído");
+                            }
+                        };
+                        worker.execute();
     }
     
     public void setPosicao() {
@@ -157,6 +184,7 @@ public class FrImportacaoFuncionario extends javax.swing.JInternalFrame {
         jbImportar = new javax.swing.JButton();
         jlEmpresa = new javax.swing.JLabel();
         jlStatus = new javax.swing.JLabel();
+        pb = new javax.swing.JProgressBar();
 
         setClosable(true);
         setTitle("Funcionários");
@@ -204,7 +232,10 @@ public class FrImportacaoFuncionario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlStatus)
                     .addComponent(jlEmpresa)
-                    .addComponent(jbImportar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbImportar)
+                        .addGap(105, 105, 105)
+                        .addComponent(pb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jlQRegistros)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -218,9 +249,15 @@ public class FrImportacaoFuncionario extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jlQRegistros)
-                .addGap(40, 40, 40)
-                .addComponent(jbImportar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jbImportar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)))
                 .addComponent(jlStatus)
                 .addContainerGap())
         );
@@ -244,6 +281,7 @@ public class FrImportacaoFuncionario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlEmpresa;
     private javax.swing.JLabel jlQRegistros;
     private javax.swing.JLabel jlStatus;
+    private javax.swing.JProgressBar pb;
     private javax.swing.JTable tFuncionarios;
     // End of variables declaration//GEN-END:variables
 }

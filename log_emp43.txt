@@ -1,0 +1,8 @@
+Registro: Existentes no SAGE: 6518 --- 43 ----- CICERO FAGUNDES VERISSIMO --- Data:Wed Jul 20 16:58:09 BRT 2016
+Registro: Gravado o funcionario de código: 6518 nome: CICERO FAGUNDES VERISSIMO ---  Data:Wed Jul 20 16:58:09 BRT 2016
+Registro: Existentes no SAGE: 7685 --- 43 ----- DIANA MARIA DA SILVA ---  Data:Wed Jul 20 16:58:09 BRT 2016
+Registro: Gravado o funcionario de código: 7685 nome: DIANA MARIA DA SILVA ---  Data:Wed Jul 20 16:58:10 BRT 2016
+Registro: Existentes no SAGE: 7687 --- 43 ----- ADRIELE FERNANDES BATISTA ---  Data:Wed Jul 20 16:58:10 BRT 2016
+Registro: Gravado o funcionario de código: 7687 nome: ADRIELE FERNANDES BATISTA ---  Data:Wed Jul 20 16:58:11 BRT 2016
+Registro: Existentes no SAGE: 7692 --- 43 ----- GEANE SILVA PEREIRA ---  Data:Wed Jul 20 16:58:11 BRT 2016
+Registro: Gravado o funcionario de código: 7692 nome: GEANE SILVA PEREIRA ---  Data:Wed Jul 20 16:58:11 BRT 2016

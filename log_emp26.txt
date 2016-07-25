@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 6216 --- 26 ----- GILVAN FRANCISCO DA SILVA --- Data:Wed Jul 20 16:26:30 BRT 2016
+Registro: Gravado o funcionario de código: 6216 nome: GILVAN FRANCISCO DA SILVA ---  Data:Wed Jul 20 16:26:30 BRT 2016
+Registro: Existentes no SAGE: 6217 --- 26 ----- ERILIO SANTOS DA SILVA ---  Data:Wed Jul 20 16:26:30 BRT 2016
+Registro: Gravado o funcionario de código: 6217 nome: ERILIO SANTOS DA SILVA ---  Data:Wed Jul 20 16:26:31 BRT 2016

@@ -9,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+import jsageImport.controler.ControlerFuncionarioNG;
+import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.persistencia.JdbcConnection;
 import jsageImport.modelo.persistencia.PropertiesJdbc;
@@ -44,7 +46,7 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
         jlUsuarioNG = new javax.swing.JLabel();
         jlSenhaNG = new javax.swing.JLabel();
         jtxIPServidorNG = new javax.swing.JTextField();
-        jtxBancoNG = new javax.swing.JTextField();
+        jtxPortaNG = new javax.swing.JTextField();
         jtxUsuarioNG = new javax.swing.JTextField();
         jtxSenhaNG = new javax.swing.JPasswordField();
         jpSAGE = new javax.swing.JPanel();
@@ -58,7 +60,7 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
         jtxPortaSAGE = new javax.swing.JTextField();
         jtxUsuarioSAGE = new javax.swing.JTextField();
         jtxSenhaSAGE = new javax.swing.JPasswordField();
-        jbImportar = new javax.swing.JButton();
+        jbConfigServer = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jlProgresso = new javax.swing.JLabel();
 
@@ -93,7 +95,7 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
                                 .addGap(11, 11, 11)
                                 .addGroup(jpNGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtxUsuarioNG, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtxBancoNG, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtxPortaNG, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtxSenhaNG, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jpNGLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -110,7 +112,7 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpNGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlPorta)
-                    .addComponent(jtxBancoNG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxPortaNG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(jpNGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlUsuarioNG)
@@ -189,10 +191,10 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        jbImportar.setText("Configurar Servidores");
-        jbImportar.addActionListener(new java.awt.event.ActionListener() {
+        jbConfigServer.setText("Configurar Servidores");
+        jbConfigServer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbImportarActionPerformed(evt);
+                jbConfigServerActionPerformed(evt);
             }
         });
 
@@ -215,7 +217,7 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbImportar)
+                                .addComponent(jbConfigServer)
                                 .addGap(45, 45, 45)
                                 .addComponent(jbCancelar))
                             .addGroup(layout.createSequentialGroup()
@@ -239,7 +241,7 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
                 .addComponent(jlProgresso)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbImportar)
+                    .addComponent(jbConfigServer)
                     .addComponent(jbCancelar))
                 .addContainerGap())
         );
@@ -248,20 +250,21 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void jbImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbImportarActionPerformed
+    private void jbConfigServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfigServerActionPerformed
         
         try{
-            if (jtxUsuarioNG.getText().isEmpty()|| jtxSenhaNG.getText().isEmpty() || jtxIPServidorNG.getText().isEmpty()||jtxBancoNG.getText().isEmpty()|| jtxUsuarioSAGE.getText().isEmpty()|| jtxBancoSAGE.getText().isEmpty()|| jtxSenhaSAGE.getText().isEmpty()|| jtxIPServidorSAGE.getText().isEmpty()|| jtxBancoSAGE.getText().isEmpty()){
+            if (jtxUsuarioNG.getText().isEmpty()|| jtxSenhaNG.getText().isEmpty() || jtxIPServidorNG.getText().isEmpty()||jtxPortaNG.getText().isEmpty()|| jtxUsuarioSAGE.getText().isEmpty()|| jtxBancoSAGE.getText().isEmpty()|| jtxSenhaSAGE.getText().isEmpty()|| jtxIPServidorSAGE.getText().isEmpty()|| jtxBancoSAGE.getText().isEmpty()){
                 throw new JsageImportException ("Todos os campos devem ser preenchidos!");
             } else {
-                criarConfigNG();
-                criarConfigSAGE();
-                JOptionPane.showMessageDialog(null, "Servidores Configurados com Sucesso");  
+                if (this.TestaConfig()){
+                    JOptionPane.showMessageDialog(null, "Servidores Configurados com Sucesso");   
+                }
+                
             }
         }catch (Exception ex){
             System.out.println(ex);
         }
-    }//GEN-LAST:event_jbImportarActionPerformed
+    }//GEN-LAST:event_jbConfigServerActionPerformed
     
     
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
@@ -275,7 +278,7 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
         jdbc.setPass(jtxSenhaNG.getText());
         jdbc.setDatabase("");
         jdbc.setServer(jtxIPServidorNG.getText());
-        jdbc.setPort(jtxBancoNG.getText());
+        jdbc.setPort(jtxPortaNG.getText());
         
         config.criarProperties(jdbc, "NG");
     }
@@ -315,7 +318,7 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
             jtxIPServidorNG.setText(p3);
             jtxUsuarioNG.setText(p1);
             jtxSenhaNG.setText(p2);
-            jtxBancoNG.setText(p6);
+            jtxPortaNG.setText(p6);
         
             String p12 = propsSAGE.getProperty("jdbc.user");
             String p22 = propsSAGE.getProperty("jdbc.pass");
@@ -329,11 +332,39 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
             jtxPortaSAGE.setText(p62);
  
 }
+    private boolean TestaConfig () throws JsageImportException{
+        ControlerFuncionarioNG control = new ControlerFuncionarioNG();
+        ControlerFuncionarioSAGE controlSAGE = new ControlerFuncionarioSAGE();
+        
+        boolean flag = false;
+        
+        
+        boolean testeConexaoNG = control.testarConexao(jtxIPServidorNG.getText(), "NG",jtxPortaNG.getText(), jtxUsuarioNG.getText(), jtxSenhaNG.getText());
+        boolean testeConexaoSAGE = controlSAGE.testarConexao(jtxIPServidorSAGE.getText(), jtxBancoSAGE.getText(), jtxPortaSAGE.getText(), jtxUsuarioSAGE.getText(), jtxSenhaSAGE.getText());
+        
+                if (testeConexaoNG && testeConexaoSAGE){
+                     this.criarConfigNG();
+                     this.criarConfigSAGE();
+                     flag = true;
+                } else {
+                    if ((testeConexaoNG == false) && (testeConexaoSAGE == false)){                        
+                        throw new JsageImportException("Erro nos dados dos Bancos NG e SAGE!");
+                    }
+                    if (testeConexaoSAGE == false){
+                        throw new JsageImportException("Erro nos dados do Banco SAGE!");
+                    }
+                    if (testeConexaoNG == false){
+                        throw new JsageImportException("Erro nos dados do Banco NG!");
+                    }
+                    
+                }
+        return flag;
+    }
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbImportar;
+    private javax.swing.JButton jbConfigServer;
     private javax.swing.JLabel jlBancoSAGE;
     private javax.swing.JLabel jlIPServidorNG;
     private javax.swing.JLabel jlPorta;
@@ -346,10 +377,10 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlUsuarioSAGE;
     private javax.swing.JPanel jpNG;
     private javax.swing.JPanel jpSAGE;
-    private javax.swing.JTextField jtxBancoNG;
     private javax.swing.JTextField jtxBancoSAGE;
     private javax.swing.JTextField jtxIPServidorNG;
     private javax.swing.JTextField jtxIPServidorSAGE;
+    private javax.swing.JTextField jtxPortaNG;
     private javax.swing.JTextField jtxPortaSAGE;
     private javax.swing.JPasswordField jtxSenhaNG;
     private javax.swing.JPasswordField jtxSenhaSAGE;

@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 5974 --- 19 ----- EDILANE CRUZ CANDIDA --- Data:Wed Jul 20 16:25:50 BRT 2016
+Registro: Existentes no SAGE: 5963 --- 19 ----- JOAO DE BRITO DA SILVA ---  Data:Wed Jul 20 16:25:50 BRT 2016
+Registro: Existentes no SAGE: 7739 --- 19 ----- ALISSON LOURENCO DA SILVA FERREIRA ---  Data:Wed Jul 20 16:25:50 BRT 2016
+Registro: Gravado o funcionario de código: 7739 nome: ALISSON LOURENCO DA SILVA FERREIRA ---  Data:Wed Jul 20 16:25:50 BRT 2016

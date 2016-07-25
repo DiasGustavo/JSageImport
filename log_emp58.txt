@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 6770 --- 58 ----- WILMA SILVA DO NASCIMENTO --- Data:Wed Jul 20 16:59:26 BRT 2016
+Registro: Gravado o funcionario de código: 6770 nome: WILMA SILVA DO NASCIMENTO ---  Data:Wed Jul 20 16:59:26 BRT 2016
+Registro: Existentes no SAGE: 6773 --- 58 ----- ROSEMERY RENATA DA SILVA ---  Data:Wed Jul 20 16:59:26 BRT 2016
+Registro: Gravado o funcionario de código: 6773 nome: ROSEMERY RENATA DA SILVA ---  Data:Wed Jul 20 16:59:27 BRT 2016

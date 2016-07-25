@@ -21,14 +21,12 @@ public class ControlerFuncionarioNG {
         
     }
     
-    public String testarConexao (String server, String bd, String port, String user, String password) throws JsageImportException{
+    public boolean testarConexao (String server, String bd, String port, String user, String password) throws JsageImportException{
         IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
         IPersistenciaFuncionarioNG PFuncionario = gerenteP.getPersistenciaFuncionario();
-        String resultado = "";
+        boolean resultado = false;
         if (PFuncionario.TestaConexao(server, bd, port, user, password)){
-            resultado = "Conexão Efetuada com Sucesso!";
-        }else{
-            resultado = "Não conseguiu conectar!";
+            resultado = true;
         }
         return resultado;
     }
@@ -105,11 +103,12 @@ public class ControlerFuncionarioNG {
         return listaFun;
     }
     
-    public void ImportarFuncionarios(int idEmpresa, int idPessoa)throws JsageImportException{
+    public String ImportarFuncionarios(int idEmpresa, int idPessoa, String cpf)throws JsageImportException{
+        String funcionario = "";
         IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
         IPersistenciaFuncionarioNG PFuncionario = gerenteP.getPersistenciaFuncionario();
-        PFuncionario.importaFuncionarios(idEmpresa, idPessoa);
-        
+        funcionario = PFuncionario.importaFuncionarios(idPessoa, idEmpresa, cpf);
+        return funcionario;
     }
     
     public void ImportarEmpresa(String cnpj)throws JsageImportException{

@@ -1,0 +1,10 @@
+Registro: Existentes no SAGE: 6474 --- 38 ----- SEVERINO RODRIGUES DE OLIVEIRA --- Data:Wed Jul 20 16:42:58 BRT 2016
+Registro: Existentes no SAGE: 6480 --- 38 ----- ROQUE CONRADO DE MELO ---  Data:Wed Jul 20 16:42:58 BRT 2016
+Registro: Existentes no SAGE: 6486 --- 38 ----- ROMARIO ELIAS FERNANDES ---  Data:Wed Jul 20 16:42:58 BRT 2016
+Registro: Existentes no SAGE: 6490 --- 38 ----- JOSE EDUARDO DO NASCIMENTO SILVA ---  Data:Wed Jul 20 16:42:58 BRT 2016
+Registro: Existentes no SAGE: 6493 --- 38 ----- EMANUEL DA SILVA COSTA ---  Data:Wed Jul 20 16:42:58 BRT 2016
+Registro: Existentes no SAGE: 6496 --- 38 ----- DAVID VALENTIM DA SILVA ---  Data:Wed Jul 20 16:42:58 BRT 2016
+Registro: Existentes no SAGE: 7656 --- 38 ----- JOSE EDSON DO NASCIMENTO SILVA ---  Data:Wed Jul 20 16:42:58 BRT 2016
+Registro: Gravado o funcionario de código: 7656 nome: JOSE EDSON DO NASCIMENTO SILVA ---  Data:Wed Jul 20 16:42:58 BRT 2016
+Registro: Existentes no SAGE: 7659 --- 38 ----- GENILDO DOMINGOS FERREIRA ---  Data:Wed Jul 20 16:42:58 BRT 2016
+Registro: Gravado o funcionario de código: 7659 nome: GENILDO DOMINGOS FERREIRA ---  Data:Wed Jul 20 16:42:59 BRT 2016

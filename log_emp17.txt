@@ -1,0 +1,8 @@
+Registro: Existentes no SAGE: 5934 --- 17 ----- FABIO DE CALDAS MAXIMINO --- Data:Wed Jul 20 16:25:41 BRT 2016
+Registro: Existentes no SAGE: 5916 --- 17 ----- FRANCISCA SOARES GOMES ---  Data:Wed Jul 20 16:25:41 BRT 2016
+Registro: Existentes no SAGE: 5954 --- 17 ----- ELENI DA SILVA GOMES ---  Data:Wed Jul 20 16:25:41 BRT 2016
+Registro: Existentes no SAGE: 5954 --- 17 ----- ELENI DA SILVA GOMES ---  Data:Wed Jul 20 16:25:41 BRT 2016
+Registro: Existentes no SAGE: 5955 --- 17 ----- VALBER ALVES DA LUZ ---  Data:Wed Jul 20 16:25:41 BRT 2016
+Registro: Existentes no SAGE: 5959 --- 17 ----- JOHNATTA SOARES GOMES ---  Data:Wed Jul 20 16:25:41 BRT 2016
+Registro: Existentes no SAGE: 7648 --- 17 ----- MARCOS MARCELINO DA SILVA ---  Data:Wed Jul 20 16:25:41 BRT 2016
+Registro: Gravado o funcionario de código: 7648 nome: MARCOS MARCELINO DA SILVA ---  Data:Wed Jul 20 16:25:41 BRT 2016

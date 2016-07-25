@@ -11,7 +11,8 @@ import java.sql.Timestamp;
  *
  * @author Gustavo
  */
-public class DadosFuncionaisNG extends PessoaFisica {
+public class DadosFuncionaisNG extends DadosFuncionario {
+    int idRegistro;
     String codigoRegistro;
     boolean inddemissao;
     Timestamp dataDemissao;
@@ -84,6 +85,116 @@ public class DadosFuncionaisNG extends PessoaFisica {
     boolean indContribuicaoSindical;
     boolean inddescontarsestsenat;
     boolean indConsiderarFolhaRescisao;
+    int idTipoPagamentoSalario;
+    int idTipoSalario;
+    Timestamp dataIncio;
+    Timestamp dataFim;
+    Double salario;
+    String descricaoComplemento;
+    Double percentualVariacao;
+    String motivoMovimento;
+    Timestamp datadissidio;
+    boolean inddissidio;
+    
+    int idcargo;
+
+    public int getIdcargo() {
+        return idcargo;
+    }
+
+    public void setIdcargo(int idcargo) {
+        this.idcargo = idcargo;
+    }
+    
+    
+
+    public int getIdRegistro() {
+        return idRegistro;
+    }
+
+    public void setIdRegistro(int idRegistro) {
+        this.idRegistro = idRegistro;
+    }    
+    
+    public int getIdTipoPagamentoSalario() {
+        return idTipoPagamentoSalario;
+    }
+
+    public void setIdTipoPagamentoSalario(int idTipoPagamentoSalario) {
+        this.idTipoPagamentoSalario = idTipoPagamentoSalario;
+    }
+
+    public int getIdTipoSalario() {
+        return idTipoSalario;
+    }
+
+    public void setIdTipoSalario(int idTipoSalario) {
+        this.idTipoSalario = idTipoSalario;
+    }
+
+    public Timestamp getDataIncio() {
+        return dataIncio;
+    }
+
+    public void setDataIncio(Timestamp dataIncio) {
+        this.dataIncio = dataIncio;
+    }
+
+    public Timestamp getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(Timestamp dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public Double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Double salario) {
+        this.salario = salario;
+    }
+
+    public String getDescricaoComplemento() {
+        return descricaoComplemento;
+    }
+
+    public void setDescricaoComplemento(String descricaoComplemento) {
+        this.descricaoComplemento = descricaoComplemento;
+    }
+
+    public Double getPercentualVariacao() {
+        return percentualVariacao;
+    }
+
+    public void setPercentualVariacao(Double percentualVariacao) {
+        this.percentualVariacao = percentualVariacao;
+    }
+
+    public String getMotivoMovimento() {
+        return motivoMovimento;
+    }
+
+    public void setMotivoMovimento(String motivoMovimento) {
+        this.motivoMovimento = motivoMovimento;
+    }
+
+    public Timestamp getDatadissidio() {
+        return datadissidio;
+    }
+
+    public void setDatadissidio(Timestamp datadissidio) {
+        this.datadissidio = datadissidio;
+    }
+
+    public boolean isInddissidio() {
+        return inddissidio;
+    }
+
+    public void setInddissidio(boolean inddissidio) {
+        this.inddissidio = inddissidio;
+    }   
 
     public boolean isInddescontarsestsenat() {
         return inddescontarsestsenat;

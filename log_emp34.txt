@@ -1,0 +1,10 @@
+Registro: Existentes no SAGE: 6320 --- 34 ----- TACIA DE OLIVEIRA NASCIMENTO --- Data:Wed Jul 20 16:42:50 BRT 2016
+Registro: Gravado o funcionario de código: 6320 nome: TACIA DE OLIVEIRA NASCIMENTO ---  Data:Wed Jul 20 16:42:51 BRT 2016
+Registro: Existentes no SAGE: 6323 --- 34 ----- JOYCCE HELENA DE OLIVEIRA V CORREIA ---  Data:Wed Jul 20 16:42:51 BRT 2016
+Registro: Gravado o funcionario de código: 6323 nome: JOYCCE HELENA DE OLIVEIRA V CORREIA ---  Data:Wed Jul 20 16:42:51 BRT 2016
+Registro: Existentes no SAGE: 6326 --- 34 ----- JOYCE DO NASCIMENTO LUNA ---  Data:Wed Jul 20 16:42:51 BRT 2016
+Registro: Gravado o funcionario de código: 6326 nome: JOYCE DO NASCIMENTO LUNA ---  Data:Wed Jul 20 16:42:52 BRT 2016
+Registro: Existentes no SAGE: 6323 --- 34 ----- JOYCCE HELENA DE OLIVEIRA V CORREIA ---  Data:Wed Jul 20 16:42:52 BRT 2016
+Registro: Existentes no SAGE: 6320 --- 34 ----- TACIA DE OLIVEIRA NASCIMENTO ---  Data:Wed Jul 20 16:42:52 BRT 2016
+Registro: Existentes no SAGE: 7652 --- 34 ----- THAISE DE OLIVEIRA NASCIMENTO ---  Data:Wed Jul 20 16:42:52 BRT 2016
+Registro: Gravado o funcionario de código: 7652 nome: THAISE DE OLIVEIRA NASCIMENTO ---  Data:Wed Jul 20 16:42:52 BRT 2016

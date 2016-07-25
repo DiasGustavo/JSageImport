@@ -1,0 +1,10 @@
+Registro: Existentes no SAGE: 6749 --- 53 ----- JOSE GILSON COSTA DOS SANTOS --- Data:Wed Jul 20 16:58:52 BRT 2016
+Registro: Gravado o funcionario de código: 6749 nome: JOSE GILSON COSTA DOS SANTOS ---  Data:Wed Jul 20 16:58:53 BRT 2016
+Registro: Existentes no SAGE: 6752 --- 53 ----- SIDNEY PEREIRA DE LIMA ---  Data:Wed Jul 20 16:58:53 BRT 2016
+Registro: Gravado o funcionario de código: 6752 nome: SIDNEY PEREIRA DE LIMA ---  Data:Wed Jul 20 16:58:53 BRT 2016
+Registro: Existentes no SAGE: 6755 --- 53 ----- JOSE FERNANDES DA SILVA ---  Data:Wed Jul 20 16:58:53 BRT 2016
+Registro: Gravado o funcionario de código: 6755 nome: JOSE FERNANDES DA SILVA ---  Data:Wed Jul 20 16:58:54 BRT 2016
+Registro: Existentes no SAGE: 6757 --- 53 ----- GILVANDRO MACIEL DE LIMA ---  Data:Wed Jul 20 16:58:54 BRT 2016
+Registro: Gravado o funcionario de código: 6757 nome: GILVANDRO MACIEL DE LIMA ---  Data:Wed Jul 20 16:58:54 BRT 2016
+Registro: Existentes no SAGE: 7730 --- 53 ----- LEVI FERNANDES PESSOA ---  Data:Wed Jul 20 16:58:54 BRT 2016
+Registro: Gravado o funcionario de código: 7730 nome: LEVI FERNANDES PESSOA ---  Data:Wed Jul 20 16:58:55 BRT 2016

@@ -3,13 +3,13 @@
  */
 package jsageImport.modelo.persistencia;
 
+import jsageImport.log.LogSage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.DadosFuncionaisNG;
@@ -29,6 +29,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     
     private PropertiesJdbc jdbc = new PropertiesJdbc();
     private TratamentoDados TrataDados = new TratamentoDados();
+    private LogSage logarq = new LogSage();
     
     /*String SQL para consultas no banco NG*/
     
@@ -77,7 +78,15 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     private static final String SQL_PESQUISAR_MAE_INFO = "SELECT * FROM " + "bpm_pessoa as pes" +" INNER JOIN bpm_dadospessoafisica as pesf ON pes.idpessoa = pesf.idpessoa" 
                                                                              + " WHERE pes.idpessoa = ?";
                                                                              
-    private static final String SQL_DADOS_FUNCIONAIS = "SELECT *  FROM flh_registro WHERE idtipoadmissao <> 0 AND idpessoaregistro = ?";
+    private static final String SQL_DADOS_FUNCIONAIS = "SELECT *  FROM (flh_registro AS fl LEFT JOIN flh_movimentosalario AS flSal ON fl.idregistro = flSal.idregistro " 
+                                                                        + " LEFT JOIN  flh_movimentocargo AS flcargo ON fl.idregistro = flcargo.idregistro ) "
+                                                                        + " WHERE fl.idtipoadmissao <> 0 AND fl.idpessoaregistro = ?";
+    
+    private static final String SQL_CONSULTA_SALARIO = "SELECT *  FROM (flh_registro AS fl LEFT JOIN flh_movimentosalario AS flSal ON fl.idregistro = flSal.idregistro " 
+                                                                        + " INNER JOIN  flh_movimentocargo AS flcargo ON fl.idregistro = flcargo.idregistro ) "
+                                                                        + " WHERE fl.idtipoadmissao <> 0 AND fl.idpessoaregistro = ?"
+                                                                        + " ORDER BY flSal.idmovimentosalario desc";
+    
     
     private static final String SQL_DOCUMENTOS = "SELECT * FROM " + "bpm_pessoa as pes" +" INNER JOIN bpm_dadospessoafisica as pesf ON pes.idpessoa = pesf.idpessoa" 
                                                                              + " WHERE pes.idpessoa = ?";
@@ -430,6 +439,33 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             }
     }    
     
+    private List pesquisarSalario(int idRegistro) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNGFOLHA);
+            stmt = con.prepareStatement(SQL_CONSULTA_SALARIO);
+            stmt.setInt(1, idRegistro );
+            
+            rs = stmt.executeQuery();
+            List listaFuncionarios = new ArrayList();
+            
+            while (rs.next()) {
+                DadosFuncionaisNG pj = criarDadosFuncionaisNG(rs);
+                listaFuncionarios.add(pj);
+            }
+            return listaFuncionarios;
+            
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta do salário.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+    }
+    
     private List recuperarDependentes (int idPessoa) throws JsageImportException{
         
         Connection con = null;
@@ -637,6 +673,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             con = GerenciadorConexao.getConnection(urlNGFOLHA);
             stmt = con.prepareStatement(SQL_DADOS_FUNCIONAIS);
             stmt.setInt(1, id );
+            
             rs = stmt.executeQuery();
             List listaFuncionarios = new ArrayList();
             while (rs.next()) {
@@ -656,18 +693,10 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     public boolean TestaConexao(String server, String bd, String port, String user, String password) throws JsageImportException {
         Connection con = null;
         boolean flag = false;
-        try {
-            con = GerenciadorConexao.getConnection(server, bd, port, user, password);
-            if (con != null){
-                flag = true;
-            }
-                        
-        } catch (JsageImportException ex) {
-            StringBuffer mensagem = new StringBuffer("Não foi possível obter conexão.");
-            mensagem.append("\nMotivo: " + ex.getMessage());
-            throw new JsageImportException(mensagem.toString());
-        }
-        
+        con = GerenciadorConexao.getConnection(server, bd, port, user, password);
+        if (con != null){
+            flag = true;
+        }        
         return flag;
     }
       
@@ -677,7 +706,9 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
         ControlerFuncionarioSAGE controlSAGE = new ControlerFuncionarioSAGE();
         List listaEmpresaSAGE = controlSAGE.pesquisarId(cnpj);
         if (listaEmpresaSAGE.isEmpty()){
-            int reply = JOptionPane.showConfirmDialog(null, "Empresa não esta cadastrada no SAGE, Deseja Importar agora?", "Aviso de importação", JOptionPane.YES_NO_OPTION);
+            //JOptionPane.showMessageDialog(null, "Empresa Precisa ser primeiro cadastrada no SAGE\n para importar os seus Funcionários!");
+            throw new JsageImportException("Primeiro Cadastre a Empresa no SAGE\n para Depois importar os Funcionários.");
+            /*int reply = JOptionPane.showConfirmDialog(null, "Empresa não esta cadastrada no SAGE, Deseja Importar agora?", "Aviso de importação", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION)
             {
                 List listaEmpresa = pesquisarCnpj(cnpj);
@@ -686,32 +717,57 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 JOptionPane.showMessageDialog(null, "Empresa Gravada com Sucesso!");
             }else if (reply == JOptionPane.NO_OPTION){
                 throw new JsageImportException("Primeiro Importe a Empresa para Depois importar os Funcionários.");
-            }
+            }*/
                        
         }
     }
     
     @Override
-    public void importaFuncionarios (int idEmpresa, int idPessoa) throws JsageImportException{
-                
+    public String importaFuncionarios (int idEmpresa, int idPessoa, String nome) throws JsageImportException{
+        String funcionario = "";
+        String log = "";
         ControlerFuncionarioSAGE controlSAGE = new ControlerFuncionarioSAGE();
-        //verifica se o funcionario informado se encontra no banco sage
-        List listaEmpresaSAGE = controlSAGE.pesquisarFuncionario(idPessoa);
         
+        if (nome.length()>0){          
         
-        // se existir o a lista vai ter um tamanho maior do que zero, portanto não entra no if
-        if (listaEmpresaSAGE.isEmpty()){
+            //verifica se o funcionario informado se encontra no banco sage
+            List listaEmpresaSAGE = controlSAGE.pesquisarFuncionarioNome(idEmpresa, nome);       
+            // se existir o a lista vai ter um tamanho maior do que zero, portanto não entra no if
+            //System.out.println("Existentes no SAGE: " +idPessoa + " --- " + idEmpresa + " ----- " + nome);
+            log = "Existentes no SAGE: " +idPessoa + " --- " + idEmpresa + " ----- " + nome;
+            logarq.LogTxt(log, "PersisntenciaNG", "emp"+idEmpresa);               
+            if (listaEmpresaSAGE.isEmpty()){
+                
                 //captura as informações do funcionário que a id foi informado
-                List listaEmpresa = pesquisaIdFuncionario(idPessoa);
+                List listaDadosFun = pesquisaIdFuncionario(idPessoa);
+                List listaDadosFuncionais = recuperarDadosFuncionais (idPessoa);                
                 //captura as informações dos dependente do funcionario indicado pela id
-                List listaDependentes = capturarInfoDependente(idPessoa);
-                
+                List listaDependentes = capturarInfoDependente(idPessoa);                
+                //verifica os salarios dos funcionarios
+                List listaSalarios = pesquisarSalario(idPessoa);
+
                 //captura as informações de pessoa física do funcionário
-                DadosFuncionario pjGravar =(DadosFuncionario) listaEmpresa.get(0);              
-                
+                //captura dos dados funcionais do funcinário
+                DadosFuncionario pjGravar =(DadosFuncionario) listaDadosFun.get(0);              
+                DadosFuncionaisNG funDadosFuncionais = (DadosFuncionaisNG) listaDadosFuncionais.get(0);
+                    
                 //o funcionário finalmente é gravado no banco sage
-                controlSAGE.gravarFuncionario(idEmpresa, pjGravar);
+                controlSAGE.gravarFuncionario(idEmpresa, pjGravar, funDadosFuncionais);
+                //gravar os documentos do funcionário no banco
+                controlSAGE.gravarDocumentos(idPessoa, idEmpresa, pjGravar);
+                //grava a lotação do funcionario indicado
+                controlSAGE.gravarDadosLotacao( idPessoa, idEmpresa, funDadosFuncionais);
+                //grava o funcionario como colaborador da empresa
+                controlSAGE.gravarColaborador(idEmpresa, idPessoa, pjGravar);
+                //grava a função do funcionario
+                controlSAGE.gravarFuncao(idPessoa, idEmpresa, funDadosFuncionais);
                 
+                // havendo salario do funcionario é gravado 
+                if (listaSalarios.size()> 0){
+                    DadosFuncionaisNG funFuncionais = (DadosFuncionaisNG) listaSalarios.get(0);
+                    controlSAGE.gravarSalario(idPessoa, idEmpresa, funFuncionais);
+                    
+                }               
                 //gravar os dependentes do funcionário.                
                 if(listaDependentes.size() > 0){
                     for (int i =0; i < listaDependentes.size(); i++){
@@ -722,13 +778,21 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                             //gravarDependentes (int cdFuncionario, int cdEmpresa, DependenteNG dep)
                             controlSAGE.gravarDependentes(idPessoa, idEmpresa, dep);
                         }
-                    }
-                    //gravar os documentos do funcionário no banco
-                    controlSAGE.gravarDocumentos(idPessoa, idEmpresa, pjGravar);                    
-                    
-                }                      
+                    }                       
+                }
+                //gravar os dados funcionais do funcionário
+                controlSAGE.gravarDadosFuncionais(idEmpresa, idPessoa, funDadosFuncionais, pjGravar);               
+                log =  "Gravado o funcionario de código: "+idPessoa + " nome: " + nome;
+                System.out.print(log);                
+                logarq.LogTxt(log, "PersisntenciaNG", "emp"+idEmpresa);               
+            }
         }
-    }  
+        funcionario = "código: " + idPessoa + " Nome:" + nome;
+        
+        return funcionario;
+    }
+    
+    
     
     @Override
     public int SizeImport() throws JsageImportException {
@@ -837,6 +901,10 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             pf.setCaepf(rs.getString("caepf"));
             pf.setIdtipocaepf(rs.getInt("idtipocaepf"));
             pf.setLogradouro(rs.getString("logradouro"));
+            pf.setNumeroEndereco(rs.getString("numeroendereco"));
+            pf.setComplemento(rs.getString("complemento"));
+            pf.setBairro(rs.getString("bairro"));
+            pf.setIdmunicipio(rs.getInt("idmunicipio"));
             
             /*Dados referentes a pessoa física*/
             pf.setIdCategoriaDocumentoMilitar(rs.getInt("idcategoriadocumentomilitar"));
@@ -958,6 +1026,10 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             dep.setCno(rs.getString("cno"));
             dep.setCaepf(rs.getString("caepf"));
             dep.setIdtipocaepf(rs.getInt("idtipocaepf"));
+            
+            /*dados pessoa fisica*/
+            dep.setDataNascimento(rs.getTimestamp("datanascimento"));
+            dep.setCpfFormatado(rs.getString("cpfformatado"));
             
             /*Dados referentes excluisivamente ao dependente*/
             dep.setIndDependenteIrrf(rs.getBoolean("inddependenteirrf"));
@@ -1088,7 +1160,9 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     private DadosFuncionaisNG criarDadosFuncionaisNG (ResultSet rs) throws JsageImportException{
         DadosFuncionaisNG dados = new DadosFuncionaisNG();
         try{
+                        
             /*Dados funcionais do funcionario informado*/
+            dados.setIdRegistro(rs.getInt("idregistro"));
             dados.setCodigoRegistro(rs.getString("codigoregistro"));
             dados.setInddemissao(rs.getBoolean("inddemissao"));
             dados.setDataDemissao(rs.getTimestamp("datademissao"));
@@ -1160,7 +1234,17 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             dados.setIndContribuicaoSindical(rs.getBoolean("indcontribuicaosindical"));
             dados.setInddescontarsestsenat(rs.getBoolean("inddescontarsestsenat"));
             dados.setIndConsiderarFolhaRescisao(rs.getBoolean("indconsiderarfolharescisao"));
-            
+            dados.setIdTipoPagamentoSalario(rs.getInt("idtipopagamentosalario"));
+            dados.setIdTipoSalario(rs.getInt("idtiposalario"));
+            dados.setDataIncio(rs.getTimestamp("datainicio"));
+            dados.setDataFim(rs.getTimestamp("datafim"));
+            dados.setSalario(rs.getDouble("salario"));
+            dados.setDescricaoComplemento(rs.getString("descricaocomplemento"));
+            dados.setPercentualVariacao(rs.getDouble("percentualvariacao"));
+            dados.setMotivoMovimento(rs.getString("motivomovimento"));
+            dados.setDatadissidio(rs.getTimestamp("datadissidio"));
+            dados.setInddissidio(rs.getBoolean("inddissidio"));
+            dados.setIdcargo(rs.getInt("idcargo"));
             
         }catch (SQLException ex) {
             StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados funcionais do Funcionário.");

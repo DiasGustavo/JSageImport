@@ -1,0 +1,8 @@
+Registro: Existentes no SAGE: 6636 --- 49 ----- SHIRLEI OLIVEIRA DE MEDEIROS --- Data:Wed Jul 20 16:20:10 BRT 2016
+Registro: Gravado o funcionario de código: 6636 nome: SHIRLEI OLIVEIRA DE MEDEIROS ---  Data:Wed Jul 20 16:20:11 BRT 2016
+Registro: Existentes no SAGE: 6296 --- 49 ----- ELIZANGELA FERREIRA DO NASCIMENTO ---  Data:Wed Jul 20 16:20:11 BRT 2016
+Registro: Gravado o funcionario de código: 6296 nome: ELIZANGELA FERREIRA DO NASCIMENTO ---  Data:Wed Jul 20 16:20:11 BRT 2016
+Registro: Existentes no SAGE: 6299 --- 49 ----- MARIA DA GUIA NOGUEIRA FERREIRA ---  Data:Wed Jul 20 16:20:11 BRT 2016
+Registro: Gravado o funcionario de código: 6299 nome: MARIA DA GUIA NOGUEIRA FERREIRA ---  Data:Wed Jul 20 16:20:12 BRT 2016
+Registro: Existentes no SAGE: 6299 --- 49 ----- MARIA DA GUIA NOGUEIRA FERREIRA ---  Data:Wed Jul 20 16:20:12 BRT 2016
+Registro: Existentes no SAGE: 6296 --- 49 ----- ELIZANGELA FERREIRA DO NASCIMENTO ---  Data:Wed Jul 20 16:20:12 BRT 2016

@@ -29,7 +29,7 @@ public interface IPersistenciaFuncionarioNG {
     public abstract List recuperarDadosFuncionais(int id) throws JsageImportException;
     public abstract boolean TestaConexao (String server, String bd, String port, String user, String password) throws JsageImportException;
     public abstract void ImportaEmpresas (String cnpj) throws JsageImportException;
-    public abstract void importaFuncionarios (int idEmpresa, int idPessoa) throws JsageImportException;
+    public abstract String importaFuncionarios (int idFuncionario, int cdEmpresa, String cpf) throws JsageImportException;
     public abstract int SizeImport() throws JsageImportException;
        
     

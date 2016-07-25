@@ -209,7 +209,7 @@ public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
             pjFun.setVisible(true);
             
         }catch (JsageImportException ex){
-            this.exibirMensagem(ex.getMessage(), "Mensagem de Erro", true);
+            //this.exibirMensagem(ex.getMessage(), "Mensagem de Erro", true);
         } 
     }//GEN-LAST:event_jbImportarActionPerformed
 

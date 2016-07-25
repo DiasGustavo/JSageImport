@@ -1,0 +1,24 @@
+Registro: Existentes no SAGE: 5759 --- 9 ----- FABRIAN DE SOUZA NASCIMENTO --- Data:Wed Jul 20 16:25:00 BRT 2016
+Registro: Existentes no SAGE: 5762 --- 9 ----- REINALDO BARROS FERNANDES ---  Data:Wed Jul 20 16:25:00 BRT 2016
+Registro: Existentes no SAGE: 5766 --- 9 ----- ISMENYA SILVA DE FIGUEIREDO ---  Data:Wed Jul 20 16:25:00 BRT 2016
+Registro: Existentes no SAGE: 5769 --- 9 ----- LEANDRO DA SILVA RAMOS ---  Data:Wed Jul 20 16:25:00 BRT 2016
+Registro: Existentes no SAGE: 5772 --- 9 ----- EUNICE CARLA DOS SANTOS GUEDES ---  Data:Wed Jul 20 16:25:00 BRT 2016
+Registro: Existentes no SAGE: 5775 --- 9 ----- MARIA DE FATIMA MACEDO DOS SANTOS ---  Data:Wed Jul 20 16:25:00 BRT 2016
+Registro: Existentes no SAGE: 5779 --- 9 ----- JANAINA DE ALMEIDA ARAUJO ---  Data:Wed Jul 20 16:25:00 BRT 2016
+Registro: Existentes no SAGE: 5782 --- 9 ----- MARCIA ALEXANDRINO DE LIMA ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5785 --- 9 ----- SULIANA GONCALVES DOS SANTOS ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5788 --- 9 ----- EDINEIDE PINHEIRO FERNANDES ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5792 --- 9 ----- LUCIANE DA SILVA GOMES NASCIMENTO ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5796 --- 9 ----- KATIA CILENE DE MELO SILVA ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5801 --- 9 ----- RENATO DE ALMEIDA ANDRADE E SOUZA ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5804 --- 9 ----- ADRIANA MARIA DA SILVA ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5805 --- 9 ----- IONE LIMA DE SOUZA ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5809 --- 9 ----- BEATRIZ DOS SANTOS MENEZES NETA ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5811 --- 9 ----- BRUNO OLIVEIRA DE LIMA ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5814 --- 9 ----- MERIAN APARECIDA POLUCENO DA SILVA ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5816 --- 9 ----- LUANA GONCALVES DA SILVA ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5818 --- 9 ----- ALEXSANDRA FERNANDES DO NASCIMENTO ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5954 --- 9 ----- ELENI DA SILVA GOMES ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 5954 --- 9 ----- ELENI DA SILVA GOMES ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Existentes no SAGE: 7736 --- 9 ----- MARIA DE LOURDES SOUZA DA SILVA ---  Data:Wed Jul 20 16:25:01 BRT 2016
+Registro: Gravado o funcionario de código: 7736 nome: MARIA DE LOURDES SOUZA DA SILVA ---  Data:Wed Jul 20 16:25:01 BRT 2016

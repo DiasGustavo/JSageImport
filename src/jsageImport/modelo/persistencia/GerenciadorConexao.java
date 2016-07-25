@@ -61,23 +61,24 @@ class GerenciadorConexao {
      * @return Connection
      * @throws ClassNotFoundException 
      */
-    static Connection getConnection(String server, String bd, String port, String user, String password) throws JsageImportException{
+    static Connection getConnection(String server, String bd, String port, String user, String password){
         
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         String url ="jdbc:sqlserver://"+server+":"+port+";databaseName="+bd+";user="+user+";password="+password+";";
-        Connection con;        
+        Connection con = null;        
 	try{
 		Class.forName(driver);
                 con = DriverManager.getConnection(url);
                
-		return con;
+	// return con;	
 	} catch (SQLException ex){
             String mensagem = "Não foi possível realizar a conexão com o banco de dados";
-            throw new JsageImportException(mensagem);
+            //throw new JsageImportException(mensagem);
 	} catch (ClassNotFoundException ex) {
             String mensagem = "Não foi possível localizar o driver de conexão!";
-            throw new JsageImportException (mensagem);
+            //throw new JsageImportException (mensagem);
         }  
+        return con;
     }
    /**
     * Fecha a conexao com o banco apenas passando a conexao utilizada

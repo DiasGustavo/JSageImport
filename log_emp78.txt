@@ -1,0 +1,10 @@
+Registro: Existentes no SAGE: 7011 --- 78 ----- DANIEL SILVA DE OLIVEIRA --- Data:Wed Jul 20 16:23:43 BRT 2016
+Registro: Existentes no SAGE: 7014 --- 78 ----- ALAN SILVA DAS NEVES ---  Data:Wed Jul 20 16:23:43 BRT 2016
+Registro: Existentes no SAGE: 7017 --- 78 ----- ALMIR DE MELO DAS NEVES JUNIOR ---  Data:Wed Jul 20 16:23:43 BRT 2016
+Registro: Existentes no SAGE: 7018 --- 78 ----- REJANE DO CARMO DA CONCEICAO ---  Data:Wed Jul 20 16:23:43 BRT 2016
+Registro: Existentes no SAGE: 7018 --- 78 ----- REJANE DO CARMO DA CONCEICAO ---  Data:Wed Jul 20 16:23:43 BRT 2016
+Registro: Existentes no SAGE: 7018 --- 78 ----- REJANE DO CARMO DA CONCEICAO ---  Data:Wed Jul 20 16:23:43 BRT 2016
+Registro: Existentes no SAGE: 7019 --- 78 ----- TATIANA MARINHO DA SILVA ---  Data:Wed Jul 20 16:23:43 BRT 2016
+Registro: Existentes no SAGE: 7023 --- 78 ----- LEOPOLDINO ROSADO DE OLIVEIRA ---  Data:Wed Jul 20 16:23:43 BRT 2016
+Registro: Existentes no SAGE: 7653 --- 78 ----- EDUARDO MARQUES DE LIMA ---  Data:Wed Jul 20 16:23:43 BRT 2016
+Registro: Gravado o funcionario de código: 7653 nome: EDUARDO MARQUES DE LIMA ---  Data:Wed Jul 20 16:23:44 BRT 2016

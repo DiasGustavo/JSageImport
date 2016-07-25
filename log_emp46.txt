@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 6578 --- 46 ----- JAILSON SOUZA DA SILVA --- Data:Wed Jul 20 16:58:32 BRT 2016
+Registro: Existentes no SAGE: 6581 --- 46 ----- JOSE AUGUSTO SOUZA DA SILVA ---  Data:Wed Jul 20 16:58:32 BRT 2016
+Registro: Existentes no SAGE: 7697 --- 46 ----- JOSE ADAILTON FERNANDES JUNIOR ---  Data:Wed Jul 20 16:58:32 BRT 2016
+Registro: Gravado o funcionario de código: 7697 nome: JOSE ADAILTON FERNANDES JUNIOR ---  Data:Wed Jul 20 16:58:33 BRT 2016

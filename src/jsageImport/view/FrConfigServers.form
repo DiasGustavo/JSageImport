@@ -29,7 +29,7 @@
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jbImportar" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbConfigServer" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                               <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -63,7 +63,7 @@
               <Component id="jlProgresso" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="15" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbImportar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbConfigServer" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -99,7 +99,7 @@
                                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jtxUsuarioNG" min="-2" pref="116" max="-2" attributes="0"/>
-                                      <Component id="jtxBancoNG" min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="jtxPortaNG" min="-2" pref="60" max="-2" attributes="0"/>
                                       <Component id="jtxSenhaNG" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -125,7 +125,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jlPorta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxBancoNG" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtxPortaNG" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -165,7 +165,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtxIPServidorNG">
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxBancoNG">
+        <Component class="javax.swing.JTextField" name="jtxPortaNG">
         </Component>
         <Component class="javax.swing.JTextField" name="jtxUsuarioNG">
         </Component>
@@ -291,12 +291,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jbImportar">
+    <Component class="javax.swing.JButton" name="jbConfigServer">
       <Properties>
         <Property name="text" type="java.lang.String" value="Configurar Servidores"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbImportarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbConfigServerActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbCancelar">

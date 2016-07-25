@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 6801 --- 63 ----- MARIA DE FATIMA FREITAS DO NASCIMENTO --- Data:Wed Jul 20 16:59:46 BRT 2016
+Registro: Gravado o funcionario de código: 6801 nome: MARIA DE FATIMA FREITAS DO NASCIMENTO ---  Data:Wed Jul 20 16:59:47 BRT 2016
+Registro: Existentes no SAGE: 6802 --- 63 ----- DAVID EMERSON DE LIMA PESSOA ---  Data:Wed Jul 20 16:59:47 BRT 2016
+Registro: Gravado o funcionario de código: 6802 nome: DAVID EMERSON DE LIMA PESSOA ---  Data:Wed Jul 20 16:59:47 BRT 2016
