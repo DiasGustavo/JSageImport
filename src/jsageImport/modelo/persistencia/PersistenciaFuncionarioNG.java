@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.DadosFuncionaisNG;
@@ -704,20 +705,20 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     public void ImportaEmpresas(String cnpj) throws JsageImportException {
                
         ControlerFuncionarioSAGE controlSAGE = new ControlerFuncionarioSAGE();
-        List listaEmpresaSAGE = controlSAGE.pesquisarId(cnpj);
+        List listaEmpresaSAGE = controlSAGE.pesquisarCNPJ(cnpj);
         if (listaEmpresaSAGE.isEmpty()){
-            //JOptionPane.showMessageDialog(null, "Empresa Precisa ser primeiro cadastrada no SAGE\n para importar os seus Funcionários!");
-            throw new JsageImportException("Primeiro Cadastre a Empresa no SAGE\n para Depois importar os Funcionários.");
-            /*int reply = JOptionPane.showConfirmDialog(null, "Empresa não esta cadastrada no SAGE, Deseja Importar agora?", "Aviso de importação", JOptionPane.YES_NO_OPTION);
+            JOptionPane.showMessageDialog(null, "Empresa Precisa ser primeiro cadastrada no SAGE\n para importar os seus Funcionários!");
+            //throw new JsageImportException("Primeiro Cadastre a Empresa no SAGE\n para Depois importar os Funcionários.");
+            int reply = JOptionPane.showConfirmDialog(null, "Empresa não esta cadastrada no SAGE, Deseja Importar agora?", "Aviso de importação", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION)
             {
-                List listaEmpresa = pesquisarCnpj(cnpj);
+                List listaEmpresa = pesquisarCnpj(cnpj);//Pesquisar no banco de dados do NG
                 PessoaJuridica pjGravar =(PessoaJuridica) listaEmpresa.get(0);
                 controlSAGE.gravarEmpresa(pjGravar);
                 JOptionPane.showMessageDialog(null, "Empresa Gravada com Sucesso!");
             }else if (reply == JOptionPane.NO_OPTION){
                 throw new JsageImportException("Primeiro Importe a Empresa para Depois importar os Funcionários.");
-            }*/
+            }
                        
         }
     }
@@ -733,7 +734,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             //verifica se o funcionario informado se encontra no banco sage
             List listaEmpresaSAGE = controlSAGE.pesquisarFuncionarioNome(idEmpresa, nome);       
             // se existir o a lista vai ter um tamanho maior do que zero, portanto não entra no if
-            //System.out.println("Existentes no SAGE: " +idPessoa + " --- " + idEmpresa + " ----- " + nome);
+            // System.out.println("Existentes no SAGE: " +idPessoa + " --- " + idEmpresa + " ----- " + nome);
             log = "Existentes no SAGE: " +idPessoa + " --- " + idEmpresa + " ----- " + nome;
             logarq.LogTxt(log, "PersisntenciaNG", "emp"+idEmpresa);               
             if (listaEmpresaSAGE.isEmpty()){
