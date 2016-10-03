@@ -1,6 +1,6 @@
-Registro: Existentes no SAGE: 6198 --- 23 ----- ALINE ALMEIDA SILVA DO NASCIMENTO --- Data:Wed Jul 20 16:26:16 BRT 2016
-Registro: Existentes no SAGE: 6196 --- 23 ----- SAMUEL NASCIMENTO DA SILVA ---  Data:Wed Jul 20 16:26:16 BRT 2016
-Registro: Existentes no SAGE: 6201 --- 23 ----- AILTON ANSELMO DA SILVA ---  Data:Wed Jul 20 16:26:16 BRT 2016
-Registro: Existentes no SAGE: 6201 --- 23 ----- AILTON ANSELMO DA SILVA ---  Data:Wed Jul 20 16:26:16 BRT 2016
-Registro: Existentes no SAGE: 6206 --- 23 ----- GEBISON FERNANDES DE ALMEIDA ARAUJO ---  Data:Wed Jul 20 16:26:17 BRT 2016
-Registro: Existentes no SAGE: 6196 --- 23 ----- SAMUEL NASCIMENTO DA SILVA ---  Data:Wed Jul 20 16:26:17 BRT 2016
+Registro: Existentes no SAGE: 6198 --- 23 ----- ALINE ALMEIDA SILVA DO NASCIMENTO --- Data:Mon Aug 29 23:42:21 BRT 2016
+Registro: Existentes no SAGE: 6196 --- 23 ----- SAMUEL NASCIMENTO DA SILVA ---  Data:Mon Aug 29 23:42:21 BRT 2016
+Registro: Existentes no SAGE: 6201 --- 23 ----- AILTON ANSELMO DA SILVA ---  Data:Mon Aug 29 23:42:21 BRT 2016
+Registro: Existentes no SAGE: 6201 --- 23 ----- AILTON ANSELMO DA SILVA ---  Data:Mon Aug 29 23:42:22 BRT 2016
+Registro: Existentes no SAGE: 6206 --- 23 ----- GEBISON FERNANDES DE ALMEIDA ARAUJO ---  Data:Mon Aug 29 23:42:22 BRT 2016
+Registro: Existentes no SAGE: 6196 --- 23 ----- SAMUEL NASCIMENTO DA SILVA ---  Data:Mon Aug 29 23:42:22 BRT 2016

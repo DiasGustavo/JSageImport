@@ -1,7 +1,7 @@
-Registro: Existentes no SAGE: 5967 --- 91 ----- VERA LUCIA DA SILVA --- Data:Wed Jul 20 17:01:49 BRT 2016
-Registro: Gravado o funcionario de código: 5967 nome: VERA LUCIA DA SILVA ---  Data:Wed Jul 20 17:01:49 BRT 2016
-Registro: Existentes no SAGE: 5967 --- 91 ----- VERA LUCIA DA SILVA ---  Data:Wed Jul 20 17:01:49 BRT 2016
-Registro: Existentes no SAGE: 7170 --- 91 ----- LAIS LEONCIO DA SILVA ---  Data:Wed Jul 20 17:01:49 BRT 2016
-Registro: Gravado o funcionario de código: 7170 nome: LAIS LEONCIO DA SILVA ---  Data:Wed Jul 20 17:01:50 BRT 2016
-Registro: Existentes no SAGE: 7663 --- 91 ----- JEFERSON G SILVA DOS SANTOS ---  Data:Wed Jul 20 17:01:50 BRT 2016
-Registro: Gravado o funcionario de código: 7663 nome: JEFERSON G SILVA DOS SANTOS ---  Data:Wed Jul 20 17:01:50 BRT 2016
+Registro: Existentes no SAGE: 5967 --- 91 ----- VERA LUCIA DA SILVA --- Data:Mon Aug 29 23:41:32 BRT 2016
+Registro: Gravado o funcionario de código: 5967 nome: VERA LUCIA DA SILVA ---  Data:Mon Aug 29 23:41:33 BRT 2016
+Registro: Existentes no SAGE: 5967 --- 91 ----- VERA LUCIA DA SILVA ---  Data:Mon Aug 29 23:41:33 BRT 2016
+Registro: Existentes no SAGE: 7170 --- 91 ----- LAIS LEONCIO DA SILVA ---  Data:Mon Aug 29 23:41:33 BRT 2016
+Registro: Gravado o funcionario de código: 7170 nome: LAIS LEONCIO DA SILVA ---  Data:Mon Aug 29 23:41:34 BRT 2016
+Registro: Existentes no SAGE: 7663 --- 91 ----- JEFERSON G SILVA DOS SANTOS ---  Data:Mon Aug 29 23:41:34 BRT 2016
+Registro: Gravado o funcionario de código: 7663 nome: JEFERSON G SILVA DOS SANTOS ---  Data:Mon Aug 29 23:41:35 BRT 2016

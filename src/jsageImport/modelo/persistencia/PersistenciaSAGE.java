@@ -428,7 +428,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setInt(1, cdEmpresa);//cd_empresa
             stmt.setInt(2, cdFuncionario);//cd_funcionario
             stmt.setTimestamp(3, trataDados.trataData(df.getDataIncio()));//dt_salario
-            stmt.setString(4, null);//tipo_salario
+            stmt.setString(4, trataDados.recuperaTipoSalario(df.getIdTipoSalario()));//tipo_salario
             stmt.setDouble(5, horasSemanaisDefault);//nr_horas_semanais
             stmt.setDouble(6, trataDados.trataSalario(df.getSalario()));//vl_salario
             stmt.setDouble(7, percAdiantamentoDefault);//perc_adiantamento
@@ -735,7 +735,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
      * @throws JsageImportException 
      */
     @Override
-    public List pesquisaId(String cnpj) throws JsageImportException {
+    public List pesquisaCNPJ(String cnpj) throws JsageImportException {
         if (cnpj == null || cnpj.isEmpty()) {
             return recuperarEmpresas();
         }
@@ -754,7 +754,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             }
             return listaFuncionarios;
             } catch (SQLException exc) {
-                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta.");
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta da empresa de CNPJ: " + cnpj);
                 mensagem.append("\nMotivo: " + exc.getMessage());
                 throw new JsageImportException(mensagem.toString());
             } finally {

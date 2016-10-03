@@ -1,8 +1,0 @@
-Registro: Existentes no SAGE: 7226 --- 95 ----- DAYANE KELLY BEZERRA DA SILVA VICTOR --- Data:Wed Jul 20 17:02:19 BRT 2016
-Registro: Gravado o funcionario de código: 7226 nome: DAYANE KELLY BEZERRA DA SILVA VICTOR ---  Data:Wed Jul 20 17:02:19 BRT 2016
-Registro: Existentes no SAGE: 7229 --- 95 ----- SERLINE PESSOA SANTOS ---  Data:Wed Jul 20 17:02:19 BRT 2016
-Registro: Gravado o funcionario de código: 7229 nome: SERLINE PESSOA SANTOS ---  Data:Wed Jul 20 17:02:20 BRT 2016
-Registro: Existentes no SAGE: 7232 --- 95 ----- JOSE MAURICIO DA SILVA JUNIOR ---  Data:Wed Jul 20 17:02:20 BRT 2016
-Registro: Gravado o funcionario de código: 7232 nome: JOSE MAURICIO DA SILVA JUNIOR ---  Data:Wed Jul 20 17:02:20 BRT 2016
-Registro: Existentes no SAGE: 7235 --- 95 ----- MARIA JOSE EUGENIO CARNEIRO ---  Data:Wed Jul 20 17:02:20 BRT 2016
-Registro: Gravado o funcionario de código: 7235 nome: MARIA JOSE EUGENIO CARNEIRO ---  Data:Wed Jul 20 17:02:21 BRT 2016

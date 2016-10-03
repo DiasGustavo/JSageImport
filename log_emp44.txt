@@ -1,5 +1,0 @@
-Registro: Existentes no SAGE: 6547 --- 44 ----- MARIA DAS GRACAS DOS SANTOS DA SILVA --- Data:Wed Jul 20 16:58:18 BRT 2016
-Registro: Gravado o funcionario de código: 6547 nome: MARIA DAS GRACAS DOS SANTOS DA SILVA ---  Data:Wed Jul 20 16:58:18 BRT 2016
-Registro: Existentes no SAGE: 6549 --- 44 ----- ELSON TARGINO DA SILVA ---  Data:Wed Jul 20 16:58:18 BRT 2016
-Registro: Gravado o funcionario de código: 6549 nome: ELSON TARGINO DA SILVA ---  Data:Wed Jul 20 16:58:19 BRT 2016
-Registro: Existentes no SAGE: 6549 --- 44 ----- ELSON TARGINO DA SILVA ---  Data:Wed Jul 20 16:58:19 BRT 2016

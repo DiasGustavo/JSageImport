@@ -1,56 +1,85 @@
-Registro: Existentes no SAGE: 6676 --- 52 ----- RYUTHE LOPES DA SILVA --- Data:Wed Jul 20 16:22:46 BRT 2016
-Registro: Gravado o funcionario de código: 6676 nome: RYUTHE LOPES DA SILVA ---  Data:Wed Jul 20 16:22:46 BRT 2016
-Registro: Existentes no SAGE: 6679 --- 52 ----- PAULO RICARDO MONTEIRO DA SILVA ---  Data:Wed Jul 20 16:22:46 BRT 2016
-Registro: Gravado o funcionario de código: 6679 nome: PAULO RICARDO MONTEIRO DA SILVA ---  Data:Wed Jul 20 16:22:47 BRT 2016
-Registro: Existentes no SAGE: 6682 --- 52 ----- JOSICLEIDE MARIA LIMA ---  Data:Wed Jul 20 16:22:47 BRT 2016
-Registro: Gravado o funcionario de código: 6682 nome: JOSICLEIDE MARIA LIMA ---  Data:Wed Jul 20 16:22:47 BRT 2016
-Registro: Existentes no SAGE: 6687 --- 52 ----- WANDERSON SILVA DE FARIAS ---  Data:Wed Jul 20 16:22:47 BRT 2016
-Registro: Gravado o funcionario de código: 6687 nome: WANDERSON SILVA DE FARIAS ---  Data:Wed Jul 20 16:22:48 BRT 2016
-Registro: Existentes no SAGE: 6691 --- 52 ----- FLAVIO MELO DO NASCIMENTO ---  Data:Wed Jul 20 16:22:48 BRT 2016
-Registro: Gravado o funcionario de código: 6691 nome: FLAVIO MELO DO NASCIMENTO ---  Data:Wed Jul 20 16:22:49 BRT 2016
-Registro: Existentes no SAGE: 6695 --- 52 ----- SEVERINO DO RAMOS NASCIMENTO ---  Data:Wed Jul 20 16:22:49 BRT 2016
-Registro: Gravado o funcionario de código: 6695 nome: SEVERINO DO RAMOS NASCIMENTO ---  Data:Wed Jul 20 16:22:49 BRT 2016
-Registro: Existentes no SAGE: 6698 --- 52 ----- ERIVANDO SILVA DE LIMA ---  Data:Wed Jul 20 16:22:49 BRT 2016
-Registro: Gravado o funcionario de código: 6698 nome: ERIVANDO SILVA DE LIMA ---  Data:Wed Jul 20 16:22:50 BRT 2016
-Registro: Existentes no SAGE: 6650 --- 52 ----- EDNALVA DAS NEVES LOPES ---  Data:Wed Jul 20 16:22:50 BRT 2016
-Registro: Gravado o funcionario de código: 6650 nome: EDNALVA DAS NEVES LOPES ---  Data:Wed Jul 20 16:22:50 BRT 2016
-Registro: Existentes no SAGE: 6704 --- 52 ----- JAILSON CRUZ SILVA ---  Data:Wed Jul 20 16:22:50 BRT 2016
-Registro: Gravado o funcionario de código: 6704 nome: JAILSON CRUZ SILVA ---  Data:Wed Jul 20 16:22:51 BRT 2016
-Registro: Existentes no SAGE: 6706 --- 52 ----- DJAELSON LIMA DA SILVA ---  Data:Wed Jul 20 16:22:51 BRT 2016
-Registro: Gravado o funcionario de código: 6706 nome: DJAELSON LIMA DA SILVA ---  Data:Wed Jul 20 16:22:51 BRT 2016
-Registro: Existentes no SAGE: 6709 --- 52 ----- ALEX DOS SANTOS PEREIRA ---  Data:Wed Jul 20 16:22:52 BRT 2016
-Registro: Gravado o funcionario de código: 6709 nome: ALEX DOS SANTOS PEREIRA ---  Data:Wed Jul 20 16:22:52 BRT 2016
-Registro: Existentes no SAGE: 6674 --- 52 ----- SUELYNE VARELA NASCIMENTO FREITAS ---  Data:Wed Jul 20 16:22:52 BRT 2016
-Registro: Gravado o funcionario de código: 6674 nome: SUELYNE VARELA NASCIMENTO FREITAS ---  Data:Wed Jul 20 16:22:53 BRT 2016
-Registro: Existentes no SAGE: 6713 --- 52 ----- GEIVE CORREIA DE SANTANA ---  Data:Wed Jul 20 16:22:53 BRT 2016
-Registro: Gravado o funcionario de código: 6713 nome: GEIVE CORREIA DE SANTANA ---  Data:Wed Jul 20 16:22:53 BRT 2016
-Registro: Existentes no SAGE: 6717 --- 52 ----- JOSE CARLOS DE SOUZA BATISTA ---  Data:Wed Jul 20 16:22:53 BRT 2016
-Registro: Gravado o funcionario de código: 6717 nome: JOSE CARLOS DE SOUZA BATISTA ---  Data:Wed Jul 20 16:22:54 BRT 2016
-Registro: Existentes no SAGE: 6720 --- 52 ----- JONATHAN RAIMUNDO DA SILVA ---  Data:Wed Jul 20 16:22:54 BRT 2016
-Registro: Gravado o funcionario de código: 6720 nome: JONATHAN RAIMUNDO DA SILVA ---  Data:Wed Jul 20 16:22:54 BRT 2016
-Registro: Existentes no SAGE: 6709 --- 52 ----- ALEX DOS SANTOS PEREIRA ---  Data:Wed Jul 20 16:22:54 BRT 2016
-Registro: Existentes no SAGE: 6724 --- 52 ----- LAILTON SILVA DO NASCIMENTO ---  Data:Wed Jul 20 16:22:54 BRT 2016
-Registro: Gravado o funcionario de código: 6724 nome: LAILTON SILVA DO NASCIMENTO ---  Data:Wed Jul 20 16:22:55 BRT 2016
-Registro: Existentes no SAGE: 6728 --- 52 ----- GERFESON FONSECA DE MEDEIROS ---  Data:Wed Jul 20 16:22:55 BRT 2016
-Registro: Gravado o funcionario de código: 6728 nome: GERFESON FONSECA DE MEDEIROS ---  Data:Wed Jul 20 16:22:55 BRT 2016
-Registro: Existentes no SAGE: 6731 --- 52 ----- WKELBYSSON DE LIMA CHAVES ---  Data:Wed Jul 20 16:22:55 BRT 2016
-Registro: Gravado o funcionario de código: 6731 nome: WKELBYSSON DE LIMA CHAVES ---  Data:Wed Jul 20 16:22:56 BRT 2016
-Registro: Existentes no SAGE: 6734 --- 52 ----- EDILEUZA PEDRO DOS SANTOS ---  Data:Wed Jul 20 16:22:56 BRT 2016
-Registro: Gravado o funcionario de código: 6734 nome: EDILEUZA PEDRO DOS SANTOS ---  Data:Wed Jul 20 16:22:56 BRT 2016
-Registro: Existentes no SAGE: 6737 --- 52 ----- CARLOS EDUARDO NASCIMENTO DA SILVA ---  Data:Wed Jul 20 16:22:56 BRT 2016
-Registro: Gravado o funcionario de código: 6737 nome: CARLOS EDUARDO NASCIMENTO DA SILVA ---  Data:Wed Jul 20 16:22:57 BRT 2016
-Registro: Existentes no SAGE: 6741 --- 52 ----- ISMAEL CONRADO DA SILVA ---  Data:Wed Jul 20 16:22:57 BRT 2016
-Registro: Gravado o funcionario de código: 6741 nome: ISMAEL CONRADO DA SILVA ---  Data:Wed Jul 20 16:22:58 BRT 2016
-Registro: Existentes no SAGE: 6743 --- 52 ----- JOSIEL FRANCISCO DOS SANTOS ---  Data:Wed Jul 20 16:22:58 BRT 2016
-Registro: Gravado o funcionario de código: 6743 nome: JOSIEL FRANCISCO DOS SANTOS ---  Data:Wed Jul 20 16:22:58 BRT 2016
-Registro: Existentes no SAGE: 6745 --- 52 ----- WILLIAM OLIVEIRA DA SILVA ---  Data:Wed Jul 20 16:22:58 BRT 2016
-Registro: Gravado o funcionario de código: 6745 nome: WILLIAM OLIVEIRA DA SILVA ---  Data:Wed Jul 20 16:22:59 BRT 2016
-Registro: Existentes no SAGE: 7719 --- 52 ----- PEDRO SILVA DE ARAUJO ---  Data:Wed Jul 20 16:22:59 BRT 2016
-Registro: Gravado o funcionario de código: 7719 nome: PEDRO SILVA DE ARAUJO ---  Data:Wed Jul 20 16:22:59 BRT 2016
-Registro: Existentes no SAGE: 7722 --- 52 ----- ERICK DE LIMA FARIAS ---  Data:Wed Jul 20 16:22:59 BRT 2016
-Registro: Gravado o funcionario de código: 7722 nome: ERICK DE LIMA FARIAS ---  Data:Wed Jul 20 16:23:00 BRT 2016
-Registro: Existentes no SAGE: 6737 --- 52 ----- CARLOS EDUARDO NASCIMENTO DA SILVA ---  Data:Wed Jul 20 16:23:00 BRT 2016
-Registro: Existentes no SAGE: 7725 --- 52 ----- ROBERTO CARLOS VERISSIMO CORREIA ---  Data:Wed Jul 20 16:23:00 BRT 2016
-Registro: Gravado o funcionario de código: 7725 nome: ROBERTO CARLOS VERISSIMO CORREIA ---  Data:Wed Jul 20 16:23:00 BRT 2016
-Registro: Existentes no SAGE: 7728 --- 52 ----- ANDERSON FERNANDES DA SILVA ---  Data:Wed Jul 20 16:23:00 BRT 2016
-Registro: Gravado o funcionario de código: 7728 nome: ANDERSON FERNANDES DA SILVA ---  Data:Wed Jul 20 16:23:01 BRT 2016
+Registro: Existentes no SAGE: 6676 --- 52 ----- RYUTHE LOPES DA SILVA --- Data:Sat Aug 27 12:12:24 BRT 2016
+Registro: Gravado o funcionario de código: 6676 nome: RYUTHE LOPES DA SILVA ---  Data:Sat Aug 27 12:12:24 BRT 2016
+Registro: Existentes no SAGE: 6679 --- 52 ----- PAULO RICARDO MONTEIRO DA SILVA ---  Data:Sat Aug 27 12:12:24 BRT 2016
+Registro: Gravado o funcionario de código: 6679 nome: PAULO RICARDO MONTEIRO DA SILVA ---  Data:Sat Aug 27 12:12:25 BRT 2016
+Registro: Existentes no SAGE: 6682 --- 52 ----- JOSICLEIDE MARIA LIMA ---  Data:Sat Aug 27 12:12:25 BRT 2016
+Registro: Gravado o funcionario de código: 6682 nome: JOSICLEIDE MARIA LIMA ---  Data:Sat Aug 27 12:12:26 BRT 2016
+Registro: Existentes no SAGE: 6687 --- 52 ----- WANDERSON SILVA DE FARIAS ---  Data:Sat Aug 27 12:12:26 BRT 2016
+Registro: Gravado o funcionario de código: 6687 nome: WANDERSON SILVA DE FARIAS ---  Data:Sat Aug 27 12:12:27 BRT 2016
+Registro: Existentes no SAGE: 6691 --- 52 ----- FLAVIO MELO DO NASCIMENTO ---  Data:Sat Aug 27 12:12:27 BRT 2016
+Registro: Gravado o funcionario de código: 6691 nome: FLAVIO MELO DO NASCIMENTO ---  Data:Sat Aug 27 12:12:28 BRT 2016
+Registro: Existentes no SAGE: 6695 --- 52 ----- SEVERINO DO RAMOS NASCIMENTO ---  Data:Sat Aug 27 12:12:28 BRT 2016
+Registro: Gravado o funcionario de código: 6695 nome: SEVERINO DO RAMOS NASCIMENTO ---  Data:Sat Aug 27 12:12:28 BRT 2016
+Registro: Existentes no SAGE: 6698 --- 52 ----- ERIVANDO SILVA DE LIMA ---  Data:Sat Aug 27 12:12:28 BRT 2016
+Registro: Gravado o funcionario de código: 6698 nome: ERIVANDO SILVA DE LIMA ---  Data:Sat Aug 27 12:12:29 BRT 2016
+Registro: Existentes no SAGE: 6650 --- 52 ----- EDNALVA DAS NEVES LOPES ---  Data:Sat Aug 27 12:12:29 BRT 2016
+Registro: Gravado o funcionario de código: 6650 nome: EDNALVA DAS NEVES LOPES ---  Data:Sat Aug 27 12:12:30 BRT 2016
+Registro: Existentes no SAGE: 6704 --- 52 ----- JAILSON CRUZ SILVA ---  Data:Sat Aug 27 12:12:30 BRT 2016
+Registro: Gravado o funcionario de código: 6704 nome: JAILSON CRUZ SILVA ---  Data:Sat Aug 27 12:12:31 BRT 2016
+Registro: Existentes no SAGE: 6706 --- 52 ----- DJAELSON LIMA DA SILVA ---  Data:Sat Aug 27 12:12:31 BRT 2016
+Registro: Gravado o funcionario de código: 6706 nome: DJAELSON LIMA DA SILVA ---  Data:Sat Aug 27 12:12:31 BRT 2016
+Registro: Existentes no SAGE: 6709 --- 52 ----- ALEX DOS SANTOS PEREIRA ---  Data:Sat Aug 27 12:12:31 BRT 2016
+Registro: Gravado o funcionario de código: 6709 nome: ALEX DOS SANTOS PEREIRA ---  Data:Sat Aug 27 12:12:32 BRT 2016
+Registro: Existentes no SAGE: 6674 --- 52 ----- SUELYNE VARELA NASCIMENTO FREITAS ---  Data:Sat Aug 27 12:12:32 BRT 2016
+Registro: Gravado o funcionario de código: 6674 nome: SUELYNE VARELA NASCIMENTO FREITAS ---  Data:Sat Aug 27 12:12:33 BRT 2016
+Registro: Existentes no SAGE: 6713 --- 52 ----- GEIVE CORREIA DE SANTANA ---  Data:Sat Aug 27 12:12:33 BRT 2016
+Registro: Gravado o funcionario de código: 6713 nome: GEIVE CORREIA DE SANTANA ---  Data:Sat Aug 27 12:12:34 BRT 2016
+Registro: Existentes no SAGE: 6717 --- 52 ----- JOSE CARLOS DE SOUZA BATISTA ---  Data:Sat Aug 27 12:12:34 BRT 2016
+Registro: Gravado o funcionario de código: 6717 nome: JOSE CARLOS DE SOUZA BATISTA ---  Data:Sat Aug 27 12:12:34 BRT 2016
+Registro: Existentes no SAGE: 6720 --- 52 ----- JONATHAN RAIMUNDO DA SILVA ---  Data:Sat Aug 27 12:12:34 BRT 2016
+Registro: Gravado o funcionario de código: 6720 nome: JONATHAN RAIMUNDO DA SILVA ---  Data:Sat Aug 27 12:12:35 BRT 2016
+Registro: Existentes no SAGE: 6709 --- 52 ----- ALEX DOS SANTOS PEREIRA ---  Data:Sat Aug 27 12:12:35 BRT 2016
+Registro: Existentes no SAGE: 6724 --- 52 ----- LAILTON SILVA DO NASCIMENTO ---  Data:Sat Aug 27 12:12:35 BRT 2016
+Registro: Gravado o funcionario de código: 6724 nome: LAILTON SILVA DO NASCIMENTO ---  Data:Sat Aug 27 12:12:36 BRT 2016
+Registro: Existentes no SAGE: 6728 --- 52 ----- GERFESON FONSECA DE MEDEIROS ---  Data:Sat Aug 27 12:12:36 BRT 2016
+Registro: Gravado o funcionario de código: 6728 nome: GERFESON FONSECA DE MEDEIROS ---  Data:Sat Aug 27 12:12:37 BRT 2016
+Registro: Existentes no SAGE: 6731 --- 52 ----- WKELBYSSON DE LIMA CHAVES ---  Data:Sat Aug 27 12:12:37 BRT 2016
+Registro: Gravado o funcionario de código: 6731 nome: WKELBYSSON DE LIMA CHAVES ---  Data:Sat Aug 27 12:12:37 BRT 2016
+Registro: Existentes no SAGE: 6734 --- 52 ----- EDILEUZA PEDRO DOS SANTOS ---  Data:Sat Aug 27 12:12:37 BRT 2016
+Registro: Gravado o funcionario de código: 6734 nome: EDILEUZA PEDRO DOS SANTOS ---  Data:Sat Aug 27 12:12:38 BRT 2016
+Registro: Existentes no SAGE: 6737 --- 52 ----- CARLOS EDUARDO NASCIMENTO DA SILVA ---  Data:Sat Aug 27 12:12:38 BRT 2016
+Registro: Gravado o funcionario de código: 6737 nome: CARLOS EDUARDO NASCIMENTO DA SILVA ---  Data:Sat Aug 27 12:12:39 BRT 2016
+Registro: Existentes no SAGE: 6741 --- 52 ----- ISMAEL CONRADO DA SILVA ---  Data:Sat Aug 27 12:12:39 BRT 2016
+Registro: Gravado o funcionario de código: 6741 nome: ISMAEL CONRADO DA SILVA ---  Data:Sat Aug 27 12:12:39 BRT 2016
+Registro: Existentes no SAGE: 6743 --- 52 ----- JOSIEL FRANCISCO DOS SANTOS ---  Data:Sat Aug 27 12:12:39 BRT 2016
+Registro: Gravado o funcionario de código: 6743 nome: JOSIEL FRANCISCO DOS SANTOS ---  Data:Sat Aug 27 12:12:40 BRT 2016
+Registro: Existentes no SAGE: 6745 --- 52 ----- WILLIAM OLIVEIRA DA SILVA ---  Data:Sat Aug 27 12:12:40 BRT 2016
+Registro: Gravado o funcionario de código: 6745 nome: WILLIAM OLIVEIRA DA SILVA ---  Data:Sat Aug 27 12:12:41 BRT 2016
+Registro: Existentes no SAGE: 7719 --- 52 ----- PEDRO SILVA DE ARAUJO ---  Data:Sat Aug 27 12:12:41 BRT 2016
+Registro: Gravado o funcionario de código: 7719 nome: PEDRO SILVA DE ARAUJO ---  Data:Sat Aug 27 12:12:41 BRT 2016
+Registro: Existentes no SAGE: 7722 --- 52 ----- ERICK DE LIMA FARIAS ---  Data:Sat Aug 27 12:12:42 BRT 2016
+Registro: Gravado o funcionario de código: 7722 nome: ERICK DE LIMA FARIAS ---  Data:Sat Aug 27 12:12:42 BRT 2016
+Registro: Existentes no SAGE: 6737 --- 52 ----- CARLOS EDUARDO NASCIMENTO DA SILVA ---  Data:Sat Aug 27 12:12:42 BRT 2016
+Registro: Existentes no SAGE: 7725 --- 52 ----- ROBERTO CARLOS VERISSIMO CORREIA ---  Data:Sat Aug 27 12:12:42 BRT 2016
+Registro: Gravado o funcionario de código: 7725 nome: ROBERTO CARLOS VERISSIMO CORREIA ---  Data:Sat Aug 27 12:12:43 BRT 2016
+Registro: Existentes no SAGE: 7728 --- 52 ----- ANDERSON FERNANDES DA SILVA ---  Data:Sat Aug 27 12:12:43 BRT 2016
+Registro: Gravado o funcionario de código: 7728 nome: ANDERSON FERNANDES DA SILVA ---  Data:Sat Aug 27 12:12:44 BRT 2016
+Registro: Existentes no SAGE: 6676 --- 52 ----- RYUTHE LOPES DA SILVA ---  Data:Mon Sep 19 11:09:06 BRT 2016
+Registro: Existentes no SAGE: 6679 --- 52 ----- PAULO RICARDO MONTEIRO DA SILVA ---  Data:Mon Sep 19 11:09:07 BRT 2016
+Registro: Existentes no SAGE: 6682 --- 52 ----- JOSICLEIDE MARIA LIMA ---  Data:Mon Sep 19 11:09:07 BRT 2016
+Registro: Existentes no SAGE: 6687 --- 52 ----- WANDERSON SILVA DE FARIAS ---  Data:Mon Sep 19 11:09:07 BRT 2016
+Registro: Existentes no SAGE: 6691 --- 52 ----- FLAVIO MELO DO NASCIMENTO ---  Data:Mon Sep 19 11:09:07 BRT 2016
+Registro: Existentes no SAGE: 6695 --- 52 ----- SEVERINO DO RAMOS NASCIMENTO ---  Data:Mon Sep 19 11:09:07 BRT 2016
+Registro: Existentes no SAGE: 6698 --- 52 ----- ERIVANDO SILVA DE LIMA ---  Data:Mon Sep 19 11:09:07 BRT 2016
+Registro: Existentes no SAGE: 6650 --- 52 ----- EDNALVA DAS NEVES LOPES ---  Data:Mon Sep 19 11:09:08 BRT 2016
+Registro: Existentes no SAGE: 6704 --- 52 ----- JAILSON CRUZ SILVA ---  Data:Mon Sep 19 11:09:08 BRT 2016
+Registro: Existentes no SAGE: 6706 --- 52 ----- DJAELSON LIMA DA SILVA ---  Data:Mon Sep 19 11:09:08 BRT 2016
+Registro: Existentes no SAGE: 6709 --- 52 ----- ALEX DOS SANTOS PEREIRA ---  Data:Mon Sep 19 11:09:08 BRT 2016
+Registro: Existentes no SAGE: 6674 --- 52 ----- SUELYNE VARELA NASCIMENTO FREITAS ---  Data:Mon Sep 19 11:09:08 BRT 2016
+Registro: Existentes no SAGE: 6713 --- 52 ----- GEIVE CORREIA DE SANTANA ---  Data:Mon Sep 19 11:09:08 BRT 2016
+Registro: Existentes no SAGE: 6717 --- 52 ----- JOSE CARLOS DE SOUZA BATISTA ---  Data:Mon Sep 19 11:09:08 BRT 2016
+Registro: Existentes no SAGE: 6720 --- 52 ----- JONATHAN RAIMUNDO DA SILVA ---  Data:Mon Sep 19 11:09:09 BRT 2016
+Registro: Existentes no SAGE: 6709 --- 52 ----- ALEX DOS SANTOS PEREIRA ---  Data:Mon Sep 19 11:09:09 BRT 2016
+Registro: Existentes no SAGE: 6724 --- 52 ----- LAILTON SILVA DO NASCIMENTO ---  Data:Mon Sep 19 11:09:09 BRT 2016
+Registro: Existentes no SAGE: 6728 --- 52 ----- GERFESON FONSECA DE MEDEIROS ---  Data:Mon Sep 19 11:09:09 BRT 2016
+Registro: Existentes no SAGE: 6731 --- 52 ----- WKELBYSSON DE LIMA CHAVES ---  Data:Mon Sep 19 11:09:09 BRT 2016
+Registro: Existentes no SAGE: 6734 --- 52 ----- EDILEUZA PEDRO DOS SANTOS ---  Data:Mon Sep 19 11:09:09 BRT 2016
+Registro: Existentes no SAGE: 6737 --- 52 ----- CARLOS EDUARDO NASCIMENTO DA SILVA ---  Data:Mon Sep 19 11:09:10 BRT 2016
+Registro: Existentes no SAGE: 6741 --- 52 ----- ISMAEL CONRADO DA SILVA ---  Data:Mon Sep 19 11:09:10 BRT 2016
+Registro: Existentes no SAGE: 6743 --- 52 ----- JOSIEL FRANCISCO DOS SANTOS ---  Data:Mon Sep 19 11:09:10 BRT 2016
+Registro: Existentes no SAGE: 6745 --- 52 ----- WILLIAM OLIVEIRA DA SILVA ---  Data:Mon Sep 19 11:09:10 BRT 2016
+Registro: Existentes no SAGE: 7719 --- 52 ----- PEDRO SILVA DE ARAUJO ---  Data:Mon Sep 19 11:09:10 BRT 2016
+Registro: Existentes no SAGE: 7722 --- 52 ----- ERICK DE LIMA FARIAS ---  Data:Mon Sep 19 11:09:10 BRT 2016
+Registro: Existentes no SAGE: 6737 --- 52 ----- CARLOS EDUARDO NASCIMENTO DA SILVA ---  Data:Mon Sep 19 11:09:10 BRT 2016
+Registro: Existentes no SAGE: 7725 --- 52 ----- ROBERTO CARLOS VERISSIMO CORREIA ---  Data:Mon Sep 19 11:09:11 BRT 2016
+Registro: Existentes no SAGE: 7728 --- 52 ----- ANDERSON FERNANDES DA SILVA ---  Data:Mon Sep 19 11:09:11 BRT 2016

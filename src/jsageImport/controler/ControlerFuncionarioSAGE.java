@@ -21,11 +21,11 @@ import jsageImport.persistencia.IGerenciadorPersistenciaSAGE;
  */
 public class ControlerFuncionarioSAGE {
  
-    public List pesquisarId (String id) throws JsageImportException{
+    public List pesquisarCNPJ (String id) throws JsageImportException{
         List listaEmp;
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
-        listaEmp = PEmpresa.pesquisaId(id);
+        listaEmp = PEmpresa.pesquisaCNPJ(id);
         
         return listaEmp;
     }

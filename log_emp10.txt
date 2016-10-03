@@ -1,0 +1,13 @@
+Registro: Existentes no SAGE: 5832 --- 10 ----- HIRLEN NASCIMENTO DE ALENCAR --- Data:Sat Aug 27 12:03:26 BRT 2016
+Registro: Gravado o funcionario de código: 5832 nome: HIRLEN NASCIMENTO DE ALENCAR ---  Data:Sat Aug 27 12:03:29 BRT 2016
+Registro: Existentes no SAGE: 5837 --- 10 ----- JOSICLAUDIO SILVA DE OLIVEIRA ---  Data:Sat Aug 27 12:03:29 BRT 2016
+Registro: Gravado o funcionario de código: 5837 nome: JOSICLAUDIO SILVA DE OLIVEIRA ---  Data:Sat Aug 27 12:03:30 BRT 2016
+Registro: Existentes no SAGE: 5855 --- 10 ----- REIZONILSON SILVA DE OLIVEIRA ---  Data:Sat Aug 27 12:03:30 BRT 2016
+Registro: Gravado o funcionario de código: 5855 nome: REIZONILSON SILVA DE OLIVEIRA ---  Data:Sat Aug 27 12:03:31 BRT 2016
+Registro: Existentes no SAGE: 5858 --- 10 ----- SERGIO DA SILVA GOMES ---  Data:Sat Aug 27 12:03:31 BRT 2016
+Registro: Gravado o funcionario de código: 5858 nome: SERGIO DA SILVA GOMES ---  Data:Sat Aug 27 12:03:32 BRT 2016
+Registro: Existentes no SAGE: 5862 --- 10 ----- JONATAS RODRIGUES MARINHO ---  Data:Sat Aug 27 12:03:32 BRT 2016
+Registro: Gravado o funcionario de código: 5862 nome: JONATAS RODRIGUES MARINHO ---  Data:Sat Aug 27 12:03:32 BRT 2016
+Registro: Existentes no SAGE: 5862 --- 10 ----- JONATAS RODRIGUES MARINHO ---  Data:Sat Aug 27 12:03:33 BRT 2016
+Registro: Existentes no SAGE: 5866 --- 10 ----- REBECKA MAGBYS NASCIMENTO R DE OLIVEIRA ---  Data:Sat Aug 27 12:03:33 BRT 2016
+Registro: Gravado o funcionario de código: 5866 nome: REBECKA MAGBYS NASCIMENTO R DE OLIVEIRA ---  Data:Sat Aug 27 12:03:33 BRT 2016

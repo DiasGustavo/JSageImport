@@ -1,5 +1,0 @@
-Registro: Existentes no SAGE: 5752 --- 8 ----- FRANCILENE MENDES S FERNANDES --- Data:Wed Jul 20 16:24:53 BRT 2016
-Registro: Gravado o funcionario de código: 5752 nome: FRANCILENE MENDES S FERNANDES ---  Data:Wed Jul 20 16:24:54 BRT 2016
-Registro: Existentes no SAGE: 5752 --- 8 ----- FRANCILENE MENDES S FERNANDES ---  Data:Wed Jul 20 16:24:54 BRT 2016
-Registro: Existentes no SAGE: 5755 --- 8 ----- RAFAELA MINERVINO DE SOUZA ---  Data:Wed Jul 20 16:24:54 BRT 2016
-Registro: Gravado o funcionario de código: 5755 nome: RAFAELA MINERVINO DE SOUZA ---  Data:Wed Jul 20 16:24:54 BRT 2016

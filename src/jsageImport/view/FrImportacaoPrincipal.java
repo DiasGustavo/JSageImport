@@ -28,6 +28,7 @@ public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
      */
     public FrImportacaoPrincipal() {
         initComponents();
+        
     }
     
     public void exibirEmpresas () throws JsageImportException{
@@ -196,7 +197,7 @@ public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
 
     private void jbImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbImportarActionPerformed
         PessoaJuridica pj = null;
-        FrImportacaoFuncionario pjFun = new FrImportacaoFuncionario();
+        FrImportacaoFuncionarioProgresso pjFun = new FrImportacaoFuncionarioProgresso();
         try {
             pj = this.getEmpresa();
             pjFun.setIdPj(pj.getIdPessoa());

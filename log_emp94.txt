@@ -1,7 +1,0 @@
-Registro: Existentes no SAGE: 7216 --- 94 ----- SAMIR ALEXANDRE PEREIRA --- Data:Wed Jul 20 17:02:09 BRT 2016
-Registro: Gravado o funcionario de código: 7216 nome: SAMIR ALEXANDRE PEREIRA ---  Data:Wed Jul 20 17:02:10 BRT 2016
-Registro: Existentes no SAGE: 7219 --- 94 ----- ROGERIO SILVA DE ALMEIDA ---  Data:Wed Jul 20 17:02:10 BRT 2016
-Registro: Gravado o funcionario de código: 7219 nome: ROGERIO SILVA DE ALMEIDA ---  Data:Wed Jul 20 17:02:10 BRT 2016
-Registro: Existentes no SAGE: 7222 --- 94 ----- INALDO SEVERINO DA SILVA ---  Data:Wed Jul 20 17:02:10 BRT 2016
-Registro: Gravado o funcionario de código: 7222 nome: INALDO SEVERINO DA SILVA ---  Data:Wed Jul 20 17:02:11 BRT 2016
-Registro: Existentes no SAGE: 7620 --- 94 ----- EDVALDO JORGE LIMA DE OLIVEIRA ---  Data:Wed Jul 20 17:02:11 BRT 2016

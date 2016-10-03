@@ -18,7 +18,7 @@ import jsageImport.modelo.dominio.PessoaJuridica;
  */
 public interface IPersistenciaSAGE {
     
-    public abstract List pesquisaId(String cnpj) throws JsageImportException;
+    public abstract List pesquisaCNPJ(String cnpj) throws JsageImportException;
     public abstract List pesquisaIdDependente (int cdFuncionario, int idDependente) throws JsageImportException;
     public abstract List pesquisaFuncionario(int idPessoa, int cdEmpresa, String cpf) throws JsageImportException;
     public abstract List pesquisaFuncionarioNome( int cdEmpresa, String cpf) throws JsageImportException;

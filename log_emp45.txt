@@ -1,4 +1,0 @@
-Registro: Existentes no SAGE: 6564 --- 45 ----- PEDRO BECO GOMES --- Data:Wed Jul 20 16:58:26 BRT 2016
-Registro: Gravado o funcionario de código: 6564 nome: PEDRO BECO GOMES ---  Data:Wed Jul 20 16:58:26 BRT 2016
-Registro: Existentes no SAGE: 6567 --- 45 ----- WENDEL PONTES DO NASCIMENTO ---  Data:Wed Jul 20 16:58:26 BRT 2016
-Registro: Gravado o funcionario de código: 6567 nome: WENDEL PONTES DO NASCIMENTO ---  Data:Wed Jul 20 16:58:27 BRT 2016
