@@ -707,9 +707,9 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
         ControlerFuncionarioSAGE controlSAGE = new ControlerFuncionarioSAGE();
         List listaEmpresaSAGE = controlSAGE.pesquisarCNPJ(cnpj);
         if (listaEmpresaSAGE.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Empresa Precisa ser primeiro cadastrada no SAGE\n para importar os seus Funcionários!");
+            JOptionPane.showMessageDialog(null, "Empresa precisa ser primeiro cadastrada no SAGE\n para importar os seus Funcionários!");
             //throw new JsageImportException("Primeiro Cadastre a Empresa no SAGE\n para Depois importar os Funcionários.");
-            int reply = JOptionPane.showConfirmDialog(null, "Empresa não esta cadastrada no SAGE, Deseja Importar agora?", "Aviso de importação", JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(null, "Empresa de CNPJ: "+cnpj+" não esta cadastrada no SAGE, Deseja Importar agora?", "Aviso de importação", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION)
             {
                 List listaEmpresa = pesquisarCnpj(cnpj);//Pesquisar no banco de dados do NG
@@ -717,7 +717,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 controlSAGE.gravarEmpresa(pjGravar);
                 JOptionPane.showMessageDialog(null, "Empresa Gravada com Sucesso!");
             }else if (reply == JOptionPane.NO_OPTION){
-                throw new JsageImportException("Primeiro Importe a Empresa para Depois importar os Funcionários.");
+                throw new JsageImportException("Primeiro importe a empresa para depois importar os Funcionários.");
             }
                        
         }

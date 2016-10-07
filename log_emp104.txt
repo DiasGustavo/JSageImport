@@ -1,8 +1,0 @@
-Registro: Existentes no SAGE: 6828 --- 104 ----- LUCIANO FERREIRA DE LIMA --- Data:Sat Aug 27 15:42:34 BRT 2016
-Registro: Existentes no SAGE: 6828 --- 104 ----- LUCIANO FERREIRA DE LIMA ---  Data:Sat Aug 27 15:42:34 BRT 2016
-Registro: Existentes no SAGE: 6834 --- 104 ----- FLAVIO ANIZIO DA SILVA PONTES ---  Data:Sat Aug 27 15:42:34 BRT 2016
-Registro: Existentes no SAGE: 6834 --- 104 ----- FLAVIO ANIZIO DA SILVA PONTES ---  Data:Sat Aug 27 15:42:34 BRT 2016
-Registro: Existentes no SAGE: 6837 --- 104 ----- WAGNER DE MELO SILVA ---  Data:Sat Aug 27 15:42:34 BRT 2016
-Registro: Existentes no SAGE: 6837 --- 104 ----- WAGNER DE MELO SILVA ---  Data:Sat Aug 27 15:42:35 BRT 2016
-Registro: Existentes no SAGE: 7733 --- 104 ----- JOCELIO DAS NEVES MATIAS DE OLIVEIRA ---  Data:Sat Aug 27 15:42:35 BRT 2016
-Registro: Gravado o funcionario de código: 7733 nome: JOCELIO DAS NEVES MATIAS DE OLIVEIRA ---  Data:Sat Aug 27 15:42:35 BRT 2016

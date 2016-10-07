@@ -1,6 +1,0 @@
-Registro: Existentes no SAGE: 6240 --- 28 ----- EUISLAN FERNANDES DA SILVA --- Data:Mon Aug 29 23:42:05 BRT 2016
-Registro: Gravado o funcionario de código: 6240 nome: EUISLAN FERNANDES DA SILVA ---  Data:Mon Aug 29 23:42:05 BRT 2016
-Registro: Existentes no SAGE: 6290 --- 28 ----- RHAYFF NASCIMENTO RODRIGUES DE OLIVEIRA ---  Data:Mon Aug 29 23:42:06 BRT 2016
-Registro: Gravado o funcionario de código: 6290 nome: RHAYFF NASCIMENTO RODRIGUES DE OLIVEIRA ---  Data:Mon Aug 29 23:42:06 BRT 2016
-Registro: Existentes no SAGE: 6292 --- 28 ----- LENILTO RODRIGUES PEREIRA ---  Data:Mon Aug 29 23:42:06 BRT 2016
-Registro: Gravado o funcionario de código: 6292 nome: LENILTO RODRIGUES PEREIRA ---  Data:Mon Aug 29 23:42:07 BRT 2016
