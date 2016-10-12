@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controller com as funções possíveis a serem utilizadas em relação aos dados do SAGE
  */
 package jsageImport.controler;
 
@@ -16,8 +14,9 @@ import jsageImport.persistencia.GerenciadorPersistenciaSAGE;
 import jsageImport.persistencia.IGerenciadorPersistenciaSAGE;
 
 /**
- *
- * @author Gustavo
+ * @author Gustavo Dias
+ * Criação: 07/06/2016
+ * Última modificação: 12/10/2016
  */
 public class ControlerFuncionarioSAGE {
  
