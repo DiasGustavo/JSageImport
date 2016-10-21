@@ -296,24 +296,24 @@ public class FrConfigServers extends javax.swing.JInternalFrame {
     }
     
     private void carregarConfig (){
-        Properties props = new Properties();
+        Properties propsNG = new Properties();
         Properties propsSAGE = new Properties();
         try {
             //Setamos o arquivo que será lido
             FileInputStream fis = new FileInputStream("NG.properties");
             FileInputStream fisSAGE = new FileInputStream("SAGE.properties");
             //método load faz a leitura através do objeto fis
-            props.load(fis);
+            propsNG.load(fis);
             propsSAGE.load(fisSAGE);
         } catch (IOException e) {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "Falta configuração dos Bancos NG e SAGE.");
         }
         //Captura o valor da propriedade, atraves do nome da propriedade(Key)
-            String p1 = props.getProperty("jdbc.user");
-            String p2 = props.getProperty("jdbc.pass");
-            String p3 = props.getProperty("jdbc.server");
-            String p6 = props.getProperty("jdbc.port");
+            String p1 = propsNG.getProperty("jdbc.user");
+            String p2 = propsNG.getProperty("jdbc.pass");
+            String p3 = propsNG.getProperty("jdbc.server");
+            String p6 = propsNG.getProperty("jdbc.port");
             
             jtxIPServidorNG.setText(p3);
             jtxUsuarioNG.setText(p1);
