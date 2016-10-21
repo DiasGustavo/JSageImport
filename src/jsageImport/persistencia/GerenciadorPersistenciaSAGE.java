@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Implementa a interface de gerenciamento da persistencia do SAGE 
  */
 package jsageImport.persistencia;
 
@@ -9,8 +7,9 @@ import jsageImport.modelo.ipersistencia.IPersistenciaSAGE;
 import jsageImport.modelo.persistencia.PersistenciaSAGE;
 
 /**
- *
- * @author Gustavo
+ * @author Gustavo Dias
+ * Criação: 12/10/2016
+ * Última modificação: 12/10/2016
  */
  public class GerenciadorPersistenciaSAGE implements IGerenciadorPersistenciaSAGE {
     

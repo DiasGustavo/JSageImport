@@ -10,8 +10,9 @@ import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.persistencia.PropertiesLogin;
 
 /**
- *
- * @author Jeff-Info
+ * @author Jefferson Lucena
+ * Criação: 21/10/2016
+ * Última modificação: 21/10/2016
  */
 public class TelaLogin extends javax.swing.JFrame {
 
