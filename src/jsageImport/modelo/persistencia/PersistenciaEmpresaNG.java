@@ -19,11 +19,7 @@ import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaNG;
  * @author Gustavo Dias
  * Criação: 21/10/2016
  * Última modificação: 22/10/2016
-<<<<<<< HEAD
  * Modificado por: Gustavo Dias
-=======
- * Mofificado por: Jefferson Lucena
->>>>>>> origin/master
  */
 public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     private PropertiesJdbc jdbc = new PropertiesJdbc();
@@ -53,7 +49,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     
     private static final String SQL_EMPRESA_PJ_CNAE = "SELECT * FROM (bpm_dadospessoajuridicacnae) WHERE idpessoa = ? ";
    
-    private static final String SQL_EMPRESA_FOLHA = "SELECT DISTINCT *\n" +"FROM (bpm_dadosempresafolha AS efolha INNER JOIN bpm_dadosempresafolhaparametrogeral AS fgeral\n" 
+    private static final String SQL_EMPRESA_FOLHA = "SELECT DISTINCT * " +"FROM (bpm_dadosempresafolha AS efolha INNER JOIN bpm_dadosempresafolhaparametrogeral AS fgeral\n" 
                                                              +"ON efolha.iddadosempresafolha = fgeral.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametro13salario AS fsalario\n"
                                                              +"ON efolha.iddadosempresafolha = fsalario.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametroesocial AS fesocial\n" 
                                                              +"ON fesocial.iddadosempresafolha = efolha.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametroferias AS fferias\n" 
@@ -208,12 +204,12 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             stmt = con.prepareStatement(SQL_EMPRESA_CNPJ);
             stmt.setString(1, cnpj );
             rs = stmt.executeQuery();
-            List listaFuncionarios = new ArrayList();
+            List listaEmpresas = new ArrayList();
             while (rs.next()) {
                 PessoaJuridica pj = criarEmpresaNG(rs);
-                listaFuncionarios.add(pj);
+                listaEmpresas.add(pj);
             }
-            return listaFuncionarios;
+            return listaEmpresas;
             } catch (SQLException exc) {
                 StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta.");
                 mensagem.append("\nMotivo: " + exc.getMessage());
@@ -299,6 +295,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             pj.setCnpjFormatado(rs.getString("cnpjformatado"));
             pj.setIdIdentificadorInscricaoEstadualNfe(rs.getInt("idindicadorinscricaoestadualnfe"));
             pj.setIndEmpresaExterna(rs.getBoolean("indempresaexterna"));
+            
             
         } catch (SQLException ex) {
             StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados da Pessoa Jurídica.");
