@@ -14,6 +14,7 @@ import jsageImport.persistencia.IGerenciadorPersistenciaNG;
  * @author Gustavo Dias
  * Criação: 12/10/2016
  * Última modificação: 22/10/2016
+ * Modificado por: Gustavo Dias
  */
 public class ControlerEmpresaNG {
     
@@ -24,5 +25,11 @@ public class ControlerEmpresaNG {
         listaEmp = PEmpresas.capturarInfoEmpresasComFun();
         
         return listaEmp;
+    }
+    
+    public void ImportarEmpresa(String cnpj)throws JsageImportException{
+        IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
+        IPersistenciaEmpresaNG PFuncionario = gerenteP.getPersistenciaEmpresa();
+        PFuncionario.ImportaEmpresas(cnpj);
     }
 }

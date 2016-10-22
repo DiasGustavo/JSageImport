@@ -9,7 +9,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import jsageImport.controler.ControlerEmpresaNG;
-import jsageImport.controler.ControlerFuncionarioNG;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.PessoaJuridica;
 
@@ -89,7 +88,7 @@ public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null, mensagem, titulo, tipo);
     }
     public void importarDados () throws JsageImportException{
-        ControlerFuncionarioNG control = new ControlerFuncionarioNG();
+        ControlerEmpresaNG control = new ControlerEmpresaNG();
         control.ImportarEmpresa(this.cnpj);
     }
     

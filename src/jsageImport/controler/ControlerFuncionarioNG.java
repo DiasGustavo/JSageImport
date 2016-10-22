@@ -39,15 +39,6 @@ public class ControlerFuncionarioNG {
         return listaFun;
     }
     
-    public List pesquisarEmpresas () throws JsageImportException{
-        List listaEmp;
-        IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
-        IPersistenciaFuncionarioNG PEmpresas = gerenteP.getPersistenciaFuncionario();
-        listaEmp = PEmpresas.capturarInfoEmpresasComFun();
-        
-        return listaEmp;
-    }
-    
     public List pesquisarId (int id) throws JsageImportException{
         List listaEmp;
         IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
@@ -108,12 +99,6 @@ public class ControlerFuncionarioNG {
         IPersistenciaFuncionarioNG PFuncionario = gerenteP.getPersistenciaFuncionario();
         funcionario = PFuncionario.importaFuncionarios(idPessoa, idEmpresa, cpf);
         return funcionario;
-    }
-    
-    public void ImportarEmpresa(String cnpj)throws JsageImportException{
-        IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
-        IPersistenciaFuncionarioNG PFuncionario = gerenteP.getPersistenciaFuncionario();
-        PFuncionario.ImportaEmpresas(cnpj);
     }
     
     public int sizeArrayImport ()throws JsageImportException{

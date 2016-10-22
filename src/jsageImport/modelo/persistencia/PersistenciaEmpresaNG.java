@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Trata a persistencia dos dados das empresas no banco NG 
  */
 package jsageImport.modelo.persistencia;
 
@@ -21,6 +19,7 @@ import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaNG;
  * @author Gustavo Dias
  * Criação: 21/10/2016
  * Última modificação: 22/10/2016
+ * Modificado por: Gustavo Dias
  */
 public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     private PropertiesJdbc jdbc = new PropertiesJdbc();
@@ -41,6 +40,13 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     private static final String SQL_EMPRESA_CNPJ = "SELECT * FROM (bpm_dadospessoajuridica AS pj INNER JOIN bpm_pessoa AS p ON p.idpessoa = pj.idpessoa" 
                                                             + " INNER JOIN bpm_pessoaendereco AS pe ON p.idpessoa = pe.idpessoa) " +
                                                               " WHERE (pj.cnpjformatado = ?);";
+    private static final String SQL_EMPRESA_FOLHA = "SELECT DISTINCT * FROM (bpm_dadosempresafolha AS efolha INNER JOIN bpm_dadosempresafolhaparametrogeral AS fgeral "
+                                                                        + "ON efolha.iddadosempresafolha = fgeral.iddadosempresafolha INNER JOIN bpm_dadosempresafolhaparametro13salario AS fsalario "
+                                                                        + "ON efolha.iddadosempresafolha = fsalario.iddadosempresafolha INNER JOIN bpm_dadosempresafolhaparametroesocial AS fesocial "
+                                                                        + "ON fesocial.iddadosempresafolha = efolha.iddadosempresafolha INNER JOIN bpm_dadosempresafolhaparametroferias AS fferias " 
+                                                                        + "ON efolha.iddadosempresafolha = fferias.iddadosempresafolha LEFT JOIN NG.dbo.bpm_dadosempresafolhasindicato AS fsindicato "
+                                                                        + "ON efolha.iddadosempresafolha = fsindicato.iddadosempresafolha) " 
+                                                                        + "WHERE (efolha.iddadosempresafolha = ?);";
     /*url para conexao com o banco do ng*/    
     //jdbc:sqlserver://servidor:porta;databaseName=banco;user=usuario;password=senha;"
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 

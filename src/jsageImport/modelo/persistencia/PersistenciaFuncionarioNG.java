@@ -10,13 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.DadosFuncionaisNG;
 import jsageImport.modelo.dominio.DadosFuncionario;
 import jsageImport.modelo.dominio.DependenteNG;
-import jsageImport.modelo.dominio.FuncionarioSAGE;
 import jsageImport.modelo.dominio.PessoaFisica;
 import jsageImport.modelo.dominio.PessoaJuridica;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioNG;
@@ -24,7 +22,8 @@ import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioNG;
 /**
  * @author Gustavo Dias
  * Criação: 06/06/2016
- * Última modificação: 07/06/2016
+ * Última modificação: 22/10/2016
+ * Modificado por: Gustavo Dias
  */
 public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     
@@ -41,20 +40,10 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     
     private static final String SQL_EMPRESA = "SELECT * FROM (bpm_dadospessoajuridica AS pj INNER JOIN bpm_pessoa AS p ON p.idpessoa = pj.idpessoa" 
                                                             + " INNER JOIN bpm_pessoaendereco AS pe ON p.idpessoa = pe.idpessoa) " +
-                                                              "WHERE (pj.cnpj <> '');";
-    private static final String SQL_EMPRESA_COM_FUN = "SELECT * FROM (bpm_dadospessoajuridica AS pj INNER JOIN bpm_pessoa AS p ON p.idpessoa = pj.idpessoa" 
-                                                            + " INNER JOIN bpm_pessoaendereco AS pe ON p.idpessoa = pe.idpessoa) " +
-                                                              "WHERE (P.idpessoa = ?);";
-    private static final String SQL_RECUP_EMPRESA_FUN = "SELECT DISTINCT idowner FROM flh_registro";
-    private static final String SQL_EMPRESA_CNPJ = "SELECT * FROM (bpm_dadospessoajuridica AS pj INNER JOIN bpm_pessoa AS p ON p.idpessoa = pj.idpessoa" 
-                                                            + " INNER JOIN bpm_pessoaendereco AS pe ON p.idpessoa = pe.idpessoa) " +
-                                                              " WHERE (pj.cnpjformatado = ?);";
+                                                              " WHERE (pj.cnpj <> '');";    
     
     /*Strings SQL para informações dos funcionarios no NG*/
-    private static final String SQL_INCLUIR = "INSERT INTO Funcionario " + "(nome, endereco, nr_endereco, compl_endereco,bairro, cidade,estado, cep, pai, mae, sexo, estado_civil, nacionalidade, ano_chegada, grau_instrucao,"
-                                                                         + "dt_nascimento, ddd_fone, telefone, apelido, chave_acesso, senha_acesso, raca, deficiente, cidade_nascimento, estado_nascimento, ddd_celular, celular,"
-                                                                         + "nomecompleto, email, data_chegada, tipo_logradouro, cd_municipio, cd_municipio_nascimento, funcionario_aposentado, data_hora_alteracao, id, id_endereco) " 
-                                                                         + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";    
+    
     private static final String SQL_PESQUISAR_FUNCIONARIO = "SELECT * FROM " + "bpm_pessoa as pes" +" INNER JOIN bpm_dadospessoafisica as pesf ON pes.idpessoa = pesf.idpessoa" 
                                                                             + "	INNER JOIN dbo.bpm_pessoaendereco as ed ON pes.idpessoa = ed.idpessoa"
                                                                             + "	INNER JOIN dbo.bpm_dadosfuncionario as dfun ON pes.idpessoa = dfun.idpessoa"
@@ -87,11 +76,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                                                                         + " INNER JOIN  flh_movimentocargo AS flcargo ON fl.idregistro = flcargo.idregistro ) "
                                                                         + " WHERE fl.idtipoadmissao <> 0 AND fl.idpessoaregistro = ?"
                                                                         + " ORDER BY flSal.idmovimentosalario desc";
-    
-    
-    private static final String SQL_DOCUMENTOS = "SELECT * FROM " + "bpm_pessoa as pes" +" INNER JOIN bpm_dadospessoafisica as pesf ON pes.idpessoa = pesf.idpessoa" 
-                                                                             + " WHERE pes.idpessoa = ?";
-    private static final String SQL_EXCLUIR ="DELETE FROM Funcionario " +"WHERE id = ?";    
+ 
     
     /*url para conexao com o banco do ng*/    
     //jdbc:sqlserver://servidor:porta;databaseName=banco;user=usuario;password=senha;"
@@ -100,91 +85,6 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     private final String urlNGDOMINIO = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng_dominio;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
     
     
-    @Override   
-    public void gravarFuncionario(FuncionarioSAGE fun) throws JsageImportException {
-        if (fun == null) {
-            String mensagem = "Não foi informado o Funcionario para cadastrar.";
-            throw new JsageImportException(mensagem);
-        }
-        
-        Connection con = null;
-        PreparedStatement stmt = null;
-        try {
-            con = GerenciadorConexao.getConnection(urlNG);
-            stmt = con.prepareStatement(SQL_INCLUIR);
-            stmt.setString(1, fun.getNome());
-            stmt.setString(2, fun.getEndreco());
-            stmt.setInt(3, fun.getNr_endereco());
-            stmt.setString(4, fun.getCompl_endereco());
-            stmt.setString(5,fun.getBairro());
-            stmt.setString(6, fun.getCidade());
-            stmt.setString(7, fun.getEstado());
-            stmt.setInt(8, fun.getCep());
-            stmt.setString(9, fun.getPai());
-            stmt.setString(10, fun.getMae());
-            stmt.setString(11,fun.getSexo());
-            stmt.setShort(12, fun.getEstado_civil());
-            stmt.setShort(13, fun.getNacionalidade());
-            stmt.setShort(14, fun.getAno_chegada());
-            stmt.setShort(15, fun.getGrau_instrucao());
-            stmt.setTimestamp(16, fun.getDt_nascimento());
-            stmt.setShort(17, fun.getDdd_fone());
-            stmt.setInt(18, fun.getTelefone());
-            stmt.setString(19,fun.getApelido());
-            stmt.setString(20, fun.getChave_acesso());
-            stmt.setString(21, fun.getSenha_acesso());
-            stmt.setString(22, fun.getRaca());
-            stmt.setString(23, fun.getDeficiente());
-            stmt.setString(24, fun.getCidade_nascimento());
-            stmt.setString(25, fun.getEstado_nascimento());
-            stmt.setShort(26, fun.getDdd_celular());
-            stmt.setInt(27, fun.getCelular());
-            stmt.setString(28, fun.getNomecompleto());
-            stmt.setString(29, fun.getEmail());
-            stmt.setTimestamp(30, fun.getData_chegada());
-            stmt.setString(31, fun.getTipo_logradouro());
-            stmt.setInt(32, fun.getCd_municipio());
-            stmt.setInt(33, fun.getCd_municipio_nascimento());
-            stmt.setString(34, fun.getFuncionario_aposentado());
-            stmt.setTimestamp(35, fun.getData_hora_alteracao());
-            stmt.setString(36, fun.getId());
-            stmt.setString(37, fun.getId_endereco());
-            
-            stmt.executeUpdate();
-            
-        } catch (SQLException exc) {
-            StringBuffer msg = new StringBuffer("Não foi possível incluir o Funcionário.");
-            msg.append("\nMotivo: " + exc.getMessage());
-            throw new JsageImportException(msg.toString());
-        } finally {
-            GerenciadorConexao.closeConexao(con, stmt);
-        }
-    }
-    
-    @Override
-    public void excluirFuncionario(FuncionarioSAGE fun) throws JsageImportException {
-        if (fun == null) {
-            String mensagem = "Não foi informado o Leitor a excluir.";
-            throw new JsageImportException(mensagem);
-        }        
-        Connection con = null;
-        PreparedStatement stmt = null;
-        try {
-            con = GerenciadorConexao.getConnection(urlNG);
-            stmt = con.prepareStatement(SQL_EXCLUIR);
-            stmt.setString(1, fun.getId());
-            
-            stmt.executeUpdate();
-            
-        } catch (SQLException exc) {
-            StringBuffer msg = new StringBuffer("Não foi possível excluir o Funcionário.");
-            msg.append("\nMotivo:" + exc.getMessage());
-            throw new JsageImportException(msg.toString());
-        } finally {
-            GerenciadorConexao.closeConexao(con, stmt);
-        }
-    }
-
     @Override
     public List pesquisarTodos() throws JsageImportException {
         
@@ -210,66 +110,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
         }
     }
     
-    private List recuperarEmpresasComFun () throws JsageImportException {
-        
-        Connection con = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        try {
-            con = GerenciadorConexao.getConnection(urlNGFOLHA);
-            stmt = con.prepareStatement(SQL_RECUP_EMPRESA_FUN);
-            rs = stmt.executeQuery();
-            List listaFuncionarios = new ArrayList();
-            while (rs.next()) {
-                listaFuncionarios.add(rs.getInt("idowner"));
-            }
-            return listaFuncionarios;
-        } catch (SQLException exc) {
-            StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta das Empresas no ng_folha.");
-            mensagem.append("\nMotivo: " + exc.getMessage());
-            throw new JsageImportException(mensagem.toString());
-        } finally {
-            GerenciadorConexao.closeConexao(con, stmt, rs);
-        }
-    }
-    @Override
-    public List capturarInfoEmpresasComFun () throws JsageImportException{
-        
-        Connection con = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        try {
-            List listaFuncionarios = new ArrayList();
-            List listaConsulta = recuperarEmpresasComFun();
-            if (listaConsulta.size() > 0){
-                con = GerenciadorConexao.getConnection(urlNG);
-                stmt = con.prepareStatement(SQL_EMPRESA_COM_FUN);
-            
-                for (int i = 0; i < listaConsulta.size(); i++ ){
-                    int idpessoa = (int)listaConsulta.get(i);
-                    stmt.setInt(1,idpessoa);
-                    rs = stmt.executeQuery();
-                    while (rs.next()) {
-                        PessoaJuridica pj = criarEmpresaNG(rs);
-                        listaFuncionarios.add(pj);
-                    }
-                } 
-            }else{
-                throw new JsageImportException("Não foi encontrado Empreasas!");
-            }
-                        
-            
-            return listaFuncionarios;
-        } catch (SQLException exc) {
-            StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta.");
-            mensagem.append("\nMotivo: " + exc.getMessage());
-            throw new JsageImportException(mensagem.toString());
-        } finally {
-            GerenciadorConexao.closeConexao(con, stmt, rs);
-        }
-    }
-
-    @Override
+       
     public List recuperarEmpresas() throws JsageImportException {
         
         Connection con = null;
@@ -411,34 +252,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 GerenciadorConexao.closeConexao(con, stmt, rs);
             }
     }
-    
-    private List pesquisarCnpj(String cnpj) throws JsageImportException {
-        if (cnpj == null || cnpj.isEmpty()) {
-            return recuperarEmpresas();
-        }
-        
-        Connection con = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        try {
-            con = GerenciadorConexao.getConnection(urlNG);
-            stmt = con.prepareStatement(SQL_EMPRESA_CNPJ);
-            stmt.setString(1, cnpj );
-            rs = stmt.executeQuery();
-            List listaFuncionarios = new ArrayList();
-            while (rs.next()) {
-                PessoaJuridica pj = criarEmpresaNG(rs);
-                listaFuncionarios.add(pj);
-            }
-            return listaFuncionarios;
-            } catch (SQLException exc) {
-                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta.");
-                mensagem.append("\nMotivo: " + exc.getMessage());
-                throw new JsageImportException(mensagem.toString());
-            } finally {
-                GerenciadorConexao.closeConexao(con, stmt, rs);
-            }
-    }    
+         
     
     private List pesquisarSalario(int idRegistro) throws JsageImportException{
         Connection con = null;
@@ -699,29 +513,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             flag = true;
         }        
         return flag;
-    }
-      
-    @Override
-    public void ImportaEmpresas(String cnpj) throws JsageImportException {
-               
-        ControlerFuncionarioSAGE controlSAGE = new ControlerFuncionarioSAGE();
-        List listaEmpresaSAGE = controlSAGE.pesquisarCNPJ(cnpj);
-        if (listaEmpresaSAGE.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Empresa precisa ser primeiro cadastrada no SAGE\n para importar os seus Funcionários!");
-            //throw new JsageImportException("Primeiro Cadastre a Empresa no SAGE\n para Depois importar os Funcionários.");
-            int reply = JOptionPane.showConfirmDialog(null, "Empresa de CNPJ: "+cnpj+" não esta cadastrada no SAGE, Deseja Importar agora?", "Aviso de importação", JOptionPane.YES_NO_OPTION);
-            if (reply == JOptionPane.YES_OPTION)
-            {
-                List listaEmpresa = pesquisarCnpj(cnpj);//Pesquisar no banco de dados do NG
-                PessoaJuridica pjGravar =(PessoaJuridica) listaEmpresa.get(0);
-                controlSAGE.gravarEmpresa(pjGravar);
-                JOptionPane.showMessageDialog(null, "Empresa Gravada com Sucesso!");
-            }else if (reply == JOptionPane.NO_OPTION){
-                throw new JsageImportException("Primeiro importe a empresa para depois importar os Funcionários.");
-            }
-                       
-        }
-    }
+    } 
     
     @Override
     public String importaFuncionarios (int idEmpresa, int idPessoa, String nome) throws JsageImportException{

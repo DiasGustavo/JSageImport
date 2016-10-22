@@ -6,7 +6,6 @@
 package jsageImport.view;
 
 import javax.swing.JOptionPane;
-import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.persistencia.PropertiesLogin;
 
 /**
