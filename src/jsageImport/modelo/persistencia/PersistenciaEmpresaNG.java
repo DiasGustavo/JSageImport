@@ -21,6 +21,7 @@ import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaNG;
  * @author Gustavo Dias
  * Criação: 21/10/2016
  * Última modificação: 22/10/2016
+ * Mofificado por: Jefferson Lucena
  */
 public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     private PropertiesJdbc jdbc = new PropertiesJdbc();
@@ -41,6 +42,20 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     private static final String SQL_EMPRESA_CNPJ = "SELECT * FROM (bpm_dadospessoajuridica AS pj INNER JOIN bpm_pessoa AS p ON p.idpessoa = pj.idpessoa" 
                                                             + " INNER JOIN bpm_pessoaendereco AS pe ON p.idpessoa = pe.idpessoa) " +
                                                               " WHERE (pj.cnpjformatado = ?);";
+    private static final String SQL_EMPRESATRIBUTACAO = "SELECT * FROM (bpm_dadosempresaformatributacao AS eformatributacao "
+                                                            +"INNER JOIN bpm_dadosempresaformatributacaocomplementofolha as etribcompfolha ON "
+                                                            + "eformatributacao.iddadosempresaformatributacao = etribcompfolha.iddadosempresaformatributacao ) WHERE eformatributacao.ano = 2016  AND eformatributacao.idpessoa = ?";
+    private static final String SQL_PORTE_EMMPRESA = "SELECT * FROM (bpm_dadosempresaporteempresa) where idpessoa = ? and ano = 2016";
+    
+    private static final String SQL_EMPRESA_PJ_CNAE = "SELECT * FROM (bpm_dadospessoajuridicacnae) WHERE idpessoa = ? ";
+   
+    private static final String SQL_EMPRESA_FOLHA = "SELECT DISTINCT *\n" +"FROM (bpm_dadosempresafolha AS efolha INNER JOIN bpm_dadosempresafolhaparametrogeral AS fgeral\n" 
+                                                             +"ON efolha.iddadosempresafolha = fgeral.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametro13salario AS fsalario\n"
+                                                             +"ON efolha.iddadosempresafolha = fsalario.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametroesocial AS fesocial\n" 
+                                                             +"ON fesocial.iddadosempresafolha = efolha.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametroferias AS fferias\n" 
+                                                             +"ON efolha.iddadosempresafolha = fferias.iddadosempresafolha LEFT JOIN NG.dbo.bpm_dadosempresafolhasindicato AS fsindicato\n" 
+                                                             +"ON efolha.iddadosempresafolha = fsindicato.iddadosempresafolha)" 
+                                                             +"WHERE (efolha.iddadosempresafolha = ? )";
     /*url para conexao com o banco do ng*/    
     //jdbc:sqlserver://servidor:porta;databaseName=banco;user=usuario;password=senha;"
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
