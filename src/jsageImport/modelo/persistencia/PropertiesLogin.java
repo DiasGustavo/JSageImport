@@ -29,7 +29,7 @@ public class PropertiesLogin {
         
         try{
             //criarmos um objeto FileOutputStrema
-            FileOutputStream fos = new FileOutputStream(".//"+nomeArquivo+".properties");
+            FileOutputStream fos = new FileOutputStream(".//Arquivos//Config//"+nomeArquivo+".properties");
             // grava os dados no arquivo
             properties.store(fos, "FILE USUARIO PROPERTIES:");
             //fecha o arquivo
@@ -44,7 +44,7 @@ public class PropertiesLogin {
 
 	try {
 		//Setamos o arquivo que vai ser lido
-		FileInputStream fis = new FileInputStream(".//"+nomeArquivo+".properties");
+		FileInputStream fis = new FileInputStream(".//Arquivos//Config//"+nomeArquivo+".properties");
 		//metodo load faz a leitura atraves do objeto fis
 		properties.load(fis);
 	} catch (IOException e) {
@@ -64,7 +64,7 @@ public class PropertiesLogin {
 
 	try {
 		//Setamos o arquivo que vai ser lido
-		FileInputStream fis = new FileInputStream(".//"+nomeArquivo+".properties");
+		FileInputStream fis = new FileInputStream(".//Arquivos//Config//"+nomeArquivo+".properties");
 		//metodo load faz a leitura atraves do objeto fis
 		properties.load(fis);
 	} catch (IOException e) {
