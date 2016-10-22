@@ -53,7 +53,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     
     private static final String SQL_EMPRESA_PJ_CNAE = "SELECT * FROM (bpm_dadospessoajuridicacnae) WHERE idpessoa = ? ";
    
-    private static final String SQL_EMPRESA_FOLHA = "SELECT DISTINCT *\n" +"FROM (bpm_dadosempresafolha AS efolha INNER JOIN bpm_dadosempresafolhaparametrogeral AS fgeral\n" 
+    private static final String SQL_EMPRESA_FOLHA = "SELECT DISTINCT *" +"FROM (bpm_dadosempresafolha AS efolha INNER JOIN bpm_dadosempresafolhaparametrogeral AS fgeral\n" 
                                                              +"ON efolha.iddadosempresafolha = fgeral.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametro13salario AS fsalario\n"
                                                              +"ON efolha.iddadosempresafolha = fsalario.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametroesocial AS fesocial\n" 
                                                              +"ON fesocial.iddadosempresafolha = efolha.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametroferias AS fferias\n" 
