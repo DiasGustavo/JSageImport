@@ -47,6 +47,22 @@ public class EmpresaTributacao {
         this.idpessoa = idpessoa;
     }
 
+    public int getIdCNAE() {
+        return idCNAE;
+    }
+
+    public void setIdCNAE(int idCNAE) {
+        this.idCNAE = idCNAE;
+    }
+
+    public boolean isIndPrincipal() {
+        return indPrincipal;
+    }
+
+    public void setIndPrincipal(boolean indPrincipal) {
+        this.indPrincipal = indPrincipal;
+    }
+
     public int getAno() {
         return ano;
     }
@@ -55,20 +71,36 @@ public class EmpresaTributacao {
         this.ano = ano;
     }
 
-    public Timestamp getDatainiciovigencia() {
-        return datainiciovigencia;
+    public Timestamp getDatainiciovigenciaTributo() {
+        return datainiciovigenciaTributo;
     }
 
-    public void setDatainiciovigencia(Timestamp datainiciovigencia) {
-        this.datainiciovigencia = datainiciovigencia;
+    public void setDatainiciovigenciaTributo(Timestamp datainiciovigenciaTributo) {
+        this.datainiciovigenciaTributo = datainiciovigenciaTributo;
     }
 
-    public Timestamp getDatafimvigencia() {
-        return datafimvigencia;
+    public Timestamp getDatafimvigenciaTributo() {
+        return datafimvigenciaTributo;
     }
 
-    public void setDatafimvigencia(Timestamp datafimvigencia) {
-        this.datafimvigencia = datafimvigencia;
+    public void setDatafimvigenciaTributo(Timestamp datafimvigenciaTributo) {
+        this.datafimvigenciaTributo = datafimvigenciaTributo;
+    }
+
+    public Timestamp getDatainiciovigenciaCNAE() {
+        return datainiciovigenciaCNAE;
+    }
+
+    public void setDatainiciovigenciaCNAE(Timestamp datainiciovigenciaCNAE) {
+        this.datainiciovigenciaCNAE = datainiciovigenciaCNAE;
+    }
+
+    public Timestamp getDatafimvigenciaCNAE() {
+        return datafimvigenciaCNAE;
+    }
+
+    public void setDatafimvigenciaCNAE(Timestamp datafimvigenciaCNAE) {
+        this.datafimvigenciaCNAE = datafimvigenciaCNAE;
     }
 
     public int getIddadosempresaformatributacao() {
@@ -134,8 +166,6 @@ public class EmpresaTributacao {
     public void setFap(double fap) {
         this.fap = fap;
     }
-           
-           
-
     
+
 }
