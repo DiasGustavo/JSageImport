@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 
 /**
  * @author Gustavo Dias
- * Criação: 22/10/2016
+ * Criação: 21/10/2016
  * Última modificação: 22/10/2016
  * Modificado por: Gustavo Dias
  */
