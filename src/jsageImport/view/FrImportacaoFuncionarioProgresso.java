@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Form responsavel pela lista de funcionarios da empresa e importação da mesma.
  */
 package jsageImport.view;
 
@@ -21,8 +19,9 @@ import jsageImport.modelo.dominio.EmpresaSAGE;
 import jsageImport.modelo.dominio.PessoaFisica;
 
 /**
- *
- * @author Gustavo
+ * @author Gustavo Dias
+ * Criação: 21/10/2016
+ * Última modificação: 22/10/2016
  */
 public class FrImportacaoFuncionarioProgresso extends javax.swing.JInternalFrame {
 

@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Form responsavel pela listagem das empresas com folha
  */
 package jsageImport.view;
 
@@ -10,13 +8,15 @@ import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import jsageImport.controler.ControlerEmpresaNG;
 import jsageImport.controler.ControlerFuncionarioNG;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.PessoaJuridica;
 
 /**
- *
- * @author Gustavo
+ * @author Gustavo Dias
+ * Criação: 21/10/2016
+ * Última modificação: 22/10/2016
  */
 public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
 
@@ -32,7 +32,7 @@ public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
     }
     
     public void exibirEmpresas () throws JsageImportException{
-        ControlerFuncionarioNG control = new ControlerFuncionarioNG();
+        ControlerEmpresaNG control = new ControlerEmpresaNG();
         // O metodo pesquisarTodos retorna um list
         this.empresas = control.pesquisarEmpresas();
         

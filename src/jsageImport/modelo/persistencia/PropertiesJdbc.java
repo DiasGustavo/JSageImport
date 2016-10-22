@@ -31,7 +31,7 @@ public class PropertiesJdbc {
         
         try{
             //criarmos um objeto FileOutputStrema
-            FileOutputStream fos = new FileOutputStream(".//"+nomeArquivo+".properties");
+            FileOutputStream fos = new FileOutputStream(".//Arquivos//Config//"+nomeArquivo+".properties");
             // grava os dados no arquivo
             properties.store(fos, "FILE JDBC PROPERTIES:");
             //fecha o arquivo
@@ -46,7 +46,7 @@ public class PropertiesJdbc {
 
 	try {
 		//Setamos o arquivo que vai ser lido
-		FileInputStream fis = new FileInputStream(".//"+nomeArquivo+".properties");
+		FileInputStream fis = new FileInputStream(".//Arquivos//Config//"+nomeArquivo+".properties");
 		//metodo load faz a leitura atraves do objeto fis
 		properties.load(fis);
 	} catch (IOException e) {
@@ -70,7 +70,7 @@ public class PropertiesJdbc {
 
 	try {
 		//Setamos o arquivo que vai ser lido
-		FileInputStream fis = new FileInputStream(".//"+nomeArquivo+".properties");
+		FileInputStream fis = new FileInputStream(".//Arquivos//Config//"+nomeArquivo+".properties");
 		//metodo load faz a leitura atraves do objeto fis
 		properties.load(fis);
 	} catch (IOException e) {
@@ -83,12 +83,30 @@ public class PropertiesJdbc {
 	return p3;
     }
     
+    public String lerDatabase(String nomeArquivo) {
+	Properties properties = new Properties();
+
+	try {
+		//Setamos o arquivo que vai ser lido
+		FileInputStream fis = new FileInputStream(".//Arquivos//Config//"+nomeArquivo+".properties");
+		//metodo load faz a leitura atraves do objeto fis
+		properties.load(fis);
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+
+	//Captura o valor da propriedade, atraves do nome da propriedade(Key)
+	String p3 = properties.getProperty("jdbc.database");        
+        
+	return p3;
+    }
+    
     public String lerPorta(String nomeArquivo) {
 	Properties properties = new Properties();
 
 	try {
 		//Setamos o arquivo que vai ser lido
-		FileInputStream fis = new FileInputStream(".//"+nomeArquivo+".properties");
+		FileInputStream fis = new FileInputStream(".//Arquivos//Config//"+nomeArquivo+".properties");
 		//metodo load faz a leitura atraves do objeto fis
 		properties.load(fis);
 	} catch (IOException e) {
@@ -106,7 +124,7 @@ public class PropertiesJdbc {
 
 	try {
 		//Setamos o arquivo que vai ser lido
-		FileInputStream fis = new FileInputStream(".//"+nomeArquivo+".properties");
+		FileInputStream fis = new FileInputStream(".//Arquivos//Config//"+nomeArquivo+".properties");
 		//metodo load faz a leitura atraves do objeto fis
 		properties.load(fis);
 	} catch (IOException e) {
@@ -124,7 +142,7 @@ public class PropertiesJdbc {
 
 	try {
 		//Setamos o arquivo que vai ser lido
-		FileInputStream fis = new FileInputStream(".//"+nomeArquivo+".properties");
+		FileInputStream fis = new FileInputStream(".//Arquivos//Config//"+nomeArquivo+".properties");
 		//metodo load faz a leitura atraves do objeto fis
 		properties.load(fis);
 	} catch (IOException e) {

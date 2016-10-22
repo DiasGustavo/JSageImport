@@ -5,6 +5,7 @@ package jsageImport.persistencia;
 
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaNG;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioNG;
+import jsageImport.modelo.persistencia.PersistenciaEmpresaNG;
 import jsageImport.modelo.persistencia.PersistenciaFuncionarioNG;
 
 /**
@@ -21,7 +22,7 @@ public class GerenciadorPersistenciaNG implements IGerenciadorPersistenciaNG {
 
     @Override
     public IPersistenciaEmpresaNG getPersistenciaEmpresa() {
-        throw new UnsupportedOperationException();
+        return new PersistenciaEmpresaNG();
     }
     
 }
