@@ -100,6 +100,27 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
                                                                               " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String SQL_PESQUISAR_DEP_ID = "SELECT * FROM FunDependente WHERE cd_dependente = ?";
     
+    private static final String SQL_CADASTRO_EMPRESA = "INSERT INTO CRDEmpresa (cd_empresa, razao, cnpj_cpf, dt_sistema, dt_inicial, dt_final, integracao_contabil, centro_custo, apropriacao_tributos"
+                                                                        +"pagamento_tributos, contabilizacao-online, agrupar_lancamentos,opcao_agrupamento,excluir_icms_entradas, excluir_ipi"  
+                                                                        +"contabilizar_nota_nota, nivel1,mascara_plano_contas,num_niveis_plano_contas,num_digitos_plano_contas,comprimento_plano_contas"
+                                                                        +"seq_conta,opcao_caixa,libera_lote_aberto,lanca_lote_lib,opcao_conta_cliente,opcao_conta_fornecedor,op_calculo_horista"
+                                                                        +"possui_tomador,pagamento_mes,prolabore_mes,cargos_salarios,pagamento_mes,prolabore_mes, cargos_salarios,produtor_rural,  "
+                                                                        +"naooptante_liminar, optante_liminar,nome_responsavel_rescisao,funcao_responsavel_rescisao,utiliza_conta_clifor,status"
+                                                                        +"integracao_csc,simples_crh,faturamento_simples_crh,microempresa_crh,epp_crh,importa_lote_diferenca,utiliza_controle_clifor"
+                                                                        +"opcao_seguro_desemprego,descontar_13_negativo,op_calculo_numero_dias,EntSemFinsLucrativos,recolhimento_contr_sindical_centralizada"
+                                                                        +"calc30_opcao_salario,calc30_opcao_salario_fevereiro,calc30_opcao_dias,opcao_historico_contabil,optante_liminar_aviso_previo,micro_emp_indiv_crh"
+                                                                        +"empresa_cidada,utiliza_controle_parcelas_auditoria,emitir_aviso_ferias,opcao_data_aviso_previo,forma_digitacao_caixa_banco_auditoria,grau_padrao_relatorio)"
+                                                                        +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
+    private static final String SQL_CADASTRO_ESTABELECIMENTO = "INSERT INTO CRDEstabelecimento   (cd_empresa,cd_estabelecimento,razao,fantasia,endereco,numero,complemento,bairro,cidade,cep,uf,cd_municipio,ddd_telefone\n" +
+"								  ,telefone,natureza_juridica,categoria,cnpj_cpf,cnae,local_registro,atividades,nome_titular,denom_titular,cpf_titular\n" +
+"								  ,cd_responsavel_estabelecimento,cd_responsavel_caged,cd_responsavel_sefip,salario_educacao,denominacao_pagina_csc\n" +
+"								  ,contribuinte_icms,contribuinte_ipi,contribuinte_iss,credita_pis,opcao_ipi,compensacao_tributos_retido,denominacao_pagina_cef\n" +
+"								  ,substituto_tributario,utiliza_ecf,tributacao,qualificacao,dt_inicio_atividade,antecipar_irpj_csll,calcular_excedente_antecipacao_irpj_csll\n" +
+"								  ,parcelamento_irpj_csll,tipo_estabelecimento,instituicao_financeira,status,razao_completa,estatuto_microempresa,opcao_vencimento_darf\n" +
+"								  ,beneficiario_prodepe,difere_icms_rs,opcao_super,vl_super_icms_fixo,vl_super_iss_fixo,protocolos_baixa_guias,cd_classificacao\n" +
+"								  ,natureza_juridica_ecf,tipo_entidade_ecf,tipo_plano_ecf,coeficiente_ciap_opcao)\n" +
+"								  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     /*Strings de url*/
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
