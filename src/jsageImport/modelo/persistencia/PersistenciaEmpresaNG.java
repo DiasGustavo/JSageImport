@@ -432,6 +432,15 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             pj.setCno(rs.getString("cno"));
             pj.setCaepf(rs.getString("caepf"));
             pj.setIdtipocaepf(rs.getInt("idtipocaepf"));
+            /*Dados endereço*/
+            pj.setLogradouro(rs.getString("logradouro"));
+            pj.setNumeroEndereco(rs.getString("numeroendereco"));
+            pj.setComplemento(rs.getString("complemento"));
+            pj.setBairro(rs.getString("bairro"));
+            pj.setIdmunicipio(rs.getInt("idmunicipio"));
+            pj.setCep(rs.getString("cep"));
+            pj.setIdmunicipio(rs.getInt("idmunicipio"));
+            
             /*Dados da pessoa juridica*/
             pj.setNomeFantasia(rs.getString("nomefantasia"));
             pj.setCnpj(rs.getString("cnpj"));
@@ -534,24 +543,24 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             empFolha.setDataemissaocertificado(rs.getTimestamp("dataemissaocertificado"));
             empFolha.setDatarenovacaocertificado(rs.getTimestamp("datarenovacaocertificado"));
             empFolha.setDatavencimentocertificado(rs.getTimestamp("datavencimentocertificado"));
-            empFolha.setDatapublicacaodoucertificado(rs.getTimestamp("datapublicacaocertificado"));
+            empFolha.setDatapublicacaodoucertificado(rs.getTimestamp("datapublicacaodoucertificado"));
             empFolha.setNumerocertificado(rs.getString("numerocertificado"));
             empFolha.setNumeroprotocolorenovacaocertificado(rs.getString("numeroprotocolorenovacaocertificado"));
             empFolha.setNumeropaginadoucertificado(rs.getString("numeropaginadoucertificado"));
-            empFolha.setInddadosinternacionalizacao(rs.getBoolean("inddadossinternacionalizacao"));
+            empFolha.setInddadosinternacionalizacao(rs.getBoolean("inddadosinternacionalizacao"));
             empFolha.setIdacordointernacionalisencaomulta(rs.getInt("idacordointernacionalisencaomulta"));
             empFolha.setIndsocioostensivo(rs.getBoolean("indsocioostensivo"));
-            empFolha.setIdsituacaoespecial(rs.getInt("idtsituacaoespecial"));
+            empFolha.setIdsituacaoespecial(rs.getInt("idsituacaoespecial"));
             empFolha.setIddesoneracaofolha(rs.getInt("iddesoneracaofolha"));
-            empFolha.setIdregistroeletronicoempregados(rs.getInt("idregistroeletronicoempregrados"));
+            empFolha.setIdregistroeletronicoempregados(rs.getInt("idregistroeletronicoempregados"));
             empFolha.setIndinformacoescomplementares(rs.getBoolean("indinformacoescomplementares"));
             empFolha.setIndprocessosjudiciaisrelativooutrasentidadesfundos(rs.getBoolean("indprocessosjudiciaisrelativooutrasentidadesfundos"));
-            empFolha.setNumerosiafi(rs.getString("numeroiafi"));
+            empFolha.setNumerosiafi(rs.getString("numerosiafi"));
             empFolha.setIdsituacaopf(rs.getInt("idsituacaopf"));
             //empFolha.setIndativoEsocial(rs.getBoolean("indativoesocial"));
             empFolha.setInddescontoproporcionalinss(rs.getBoolean("inddescontoproporcionalinss"));
             empFolha.setInddesconsiderarfalta(rs.getBoolean("inddesconsiderarfalta"));
-            empFolha.setInddescontarcontribuicaosindical(rs.getBoolean("inddescontarcontribuicaoindicial"));
+            empFolha.setInddescontarcontribuicaosindical(rs.getBoolean("inddescontarcontribuicaosindical"));
             empFolha.setIndmostrardataretornorecibo(rs.getBoolean("indmostrardataretornorecibo"));
             empFolha.setInddataretornodianaoutil(rs.getBoolean("inddataretornodianaoutil"));
             empFolha.setIndemitiralertavencimentoavisoprevio(rs.getBoolean("indemitiralertavencimentoavisoprevio"));
@@ -576,7 +585,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             empFolha.setIndhorascalculosalariofamilia(rs.getBoolean("indhorascalculosalariofamilia"));
             empFolha.setIndabonarirmenor(rs.getBoolean("indabonarirmenor"));
             empFolha.setIdtipodiatrabalhado(rs.getInt("idtipodiatrabalhado"));
-            empFolha.setIdtipoarredondamentoGeral(rs.getInt("idtipoarredondamentogeral"));
+            //empFolha.setIdtipoarredondamentoGeral(rs.getInt("idtipoarredondamentogeral"));
             empFolha.setValorarredondamento(rs.getDouble("valorarredondamento"));
             empFolha.setIdtipocalculomedia(rs.getInt("idtipocalculomedia"));
             empFolha.setIndmescorrentecalculomedia(rs.getBoolean("indmescorrentecalculomedia"));
@@ -588,7 +597,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             empFolha.setIndparalisacaoafastamentodoenca(rs.getBoolean("indparalisacaoafastamentodoenca"));
             empFolha.setIndutilizareventoocorridomesrecisaocalculomedia(rs.getBoolean("indutilizareventoocorridomesrecisaocalculomedia"));
             empFolha.setIndparalisacaocontagemcontrato(rs.getBoolean("indparalisacaocontagemcontrato"));
-            empFolha.setIndpagardescansoindenizadodemissao(rs.getBoolean("indparagardescansoindenizadodemissao"));
+            empFolha.setIndpagardescansoindenizadodemissao(rs.getBoolean("indpagardescansoindenizadodemissao"));
             empFolha.setIndbeneficiotransporteabaterdiasferias(rs.getBoolean("indbeneficiotransporteabaterdiasferias"));
             empFolha.setIndbeneficiotransporteabaterdiasafastamento(rs.getBoolean("indbeneficiotransporteabaterdiasafastamento"));
             empFolha.setIndbeneficiotransporteproporcionaljornadareduzida(rs.getBoolean("indbeneficiotransporteproporcionaljornadareduzida"));
@@ -605,7 +614,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             empFolha.setIndtarefeiro(rs.getBoolean("indtarefeiro"));
             empFolha.setIndconsiderartambemmesesferiasafastamento(rs.getBoolean("indconsiderartambemmesesferiasafastamento"));
             empFolha.setIdtipoadiantamentoadmissao(rs.getInt("idtipoadiantamentoadmissao"));
-            empFolha.setNumerominimodiatrabalhoadiantamentoadmissao(rs.getInt("numerominimodiatrabalhaadiantamentoadmissao"));
+            empFolha.setNumerominimodiatrabalhoadiantamentoadmissao(rs.getInt("numerominimodiatrabalhoadiantamentoadmissao"));
             empFolha.setIdpagamentofolhamensal(rs.getInt("idpagamentofolhamensal"));
             empFolha.setDiainicioapuracaofatogerador(rs.getInt("diainicioapuracaofatogerador"));
             empFolha.setDiafimapuracaofatogerador(rs.getInt("diafimapuracaofatogerador"));
@@ -614,9 +623,9 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             empFolha.setIdconsiderarparacalculodsr(rs.getInt("idconsiderarparacalculodsr"));
             empFolha.setIndconsiderartambemmesadmissao(rs.getBoolean("indconsiderartambemmesadmissao"));
             empFolha.setIndcontrolarmotivocalculosalariofamilia(rs.getBoolean("indcontrolarmotivocalculosalariofamilia"));
-            empFolha.setIndconsiderarverbasrescisaomedia(rs.getBoolean("indconsiderarverbasrecisaomedia"));
+            empFolha.setIndconsiderarverbasrescisaomedia(rs.getBoolean("indconsiderarverbasrescisaomedia"));
             empFolha.setIndbeneficiotransporteabaterfaltas(rs.getBoolean("indbeneficiotransporteabaterfaltas"));
-            empFolha.setIndconsiderardiasapuracaodsrintegral(rs.getBoolean("indconsiderardiaspauracaodsrintegral"));
+            empFolha.setIndconsiderardiasapuracaodsrintegral(rs.getBoolean("indconsiderardiasapuracaodsrintegral"));
             empFolha.setIndverbaprogramadaperiodoafastamento(rs.getBoolean("indverbaprogramadaperiodoafastamento"));
             empFolha.setIndsepararumavoferiasindenizado(rs.getBoolean("indsepararumavoferiasindenizado"));
             empFolha.setIndmediacalculoferiasindenizado(rs.getBoolean("indmediacalculoferiasindenizado"));
@@ -624,12 +633,12 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             empFolha.setIdtipoadiantamentoafastamento(rs.getInt("idtipoadiantamentoafastamento"));
             empFolha.setNumerominimodiatrabalhoadiantamentoferias(rs.getInt("numerominimodiatrabalhoadiantamentoferias"));
             empFolha.setNumerominimodiatrabalhoadiantamentoafastamento(rs.getInt("numerominimodiatrabalhoadiantamentoafastamento"));
-            empFolha.setIndpagarfaltasjustificadasseparadassalario(rs.getBoolean("indpagarfaltasjustificadassepradassalario"));
+            empFolha.setIndpagarfaltasjustificadasseparadassalario(rs.getBoolean("indpagarfaltasjustificadasseparadassalario"));
             empFolha.setIndtrabalhotemporario(rs.getBoolean("indtrabalhotemporario"));
             empFolha.setIndconsiderarsalfamcalculocontroleautomaticosaldo(rs.getBoolean("indconsiderarsalfamcalculocontroleautomaticosaldo"));
             empFolha.setIndconsiderararredondamentoparaautonomostransportadores(rs.getBoolean("indconsiderararredondamentoparaautonomostransportadores"));
             empFolha.setIndconsiderararredondamentoparasocios(rs.getBoolean("indconsiderararredondamentoparasocios"));
-            empFolha.setIndlimitarcontagemdiastrabalhadosdatair(rs.getBoolean("indlimitarcontagemdiastrabalhosdatair"));
+            empFolha.setIndlimitarcontagemdiastrabalhadosdatair(rs.getBoolean("indlimitarcontagemdiastrabalhadosdatair"));
             empFolha.setIndcalculardsrsobreferiadosverba(rs.getBoolean("indcalculardsrsobreferiadosverba"));
             empFolha.setIndconsiderardiasmesfolhaferias(rs.getBoolean("indconsiderardiasmesfolhaferias"));
             empFolha.setIndgerarfluxocaixa(rs.getBoolean("indgerarfluxocaixa"));
