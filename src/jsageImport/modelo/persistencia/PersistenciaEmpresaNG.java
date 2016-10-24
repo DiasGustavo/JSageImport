@@ -388,7 +388,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 //Pesquisar no banco de dados do NG as informações cadastrais da empresa do cnpj
                 List listaEmpresa = pesquisarCnpj(cnpj);
                 //Pesquisa informações sobre o porte da empresa no banco do NG
-                List listaPorteEmpresa = recuperarPorteEmpresa(idEmpresa);
+                //List listaPorteEmpresa = recuperarPorteEmpresa(idEmpresa);
                 //Pesquisa informaçoes sobre a tributação da empresa no banco NG
                 List listaTributacaoEmpresa = capturarInfoEmpresaTributacao(idEmpresa);
                 //Pesquisa informações sobre o cnae da empresa no banco NG
@@ -396,8 +396,19 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 //Pesquisa configuracoes da folha da empresa no banco NG
                 List listaFolhaEmpresa = capturarInfoEmpresasFolha(idEmpresa);
                 
-                //PessoaJuridica pjGravar =(PessoaJuridica) listaEmpresa.get(0);
-                //controlSAGE.gravarEmpresa(pjGravar);
+                 //instancias dos objetos
+                EmpresaTributacao empTrib = (EmpresaTributacao)listaTributacaoEmpresa.get(0);
+                EmpresaTributacao empTribCNAE = new EmpresaTributacao();
+                
+                EmpresaFolha empFolha = (EmpresaFolha) listaFolhaEmpresa.get(0);
+                
+                PessoaJuridica pjGravar =(PessoaJuridica) listaEmpresa.get(0);
+                controlSAGE.gravarEmpresa(pjGravar);
+                
+                controlSAGE.gravarEstabelecimento(pjGravar, empTrib, empFolha);
+                
+                
+                           
                 JOptionPane.showMessageDialog(null, "Empresa Gravada com Sucesso!");
             }else if (reply == JOptionPane.NO_OPTION){
                 throw new JsageImportException("Primeiro importe a empresa para depois importar os Funcionários.");

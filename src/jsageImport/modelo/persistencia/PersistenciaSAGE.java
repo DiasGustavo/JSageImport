@@ -16,7 +16,9 @@ import jsageImport.modelo.dominio.DadosFuncionaisNG;
 import jsageImport.modelo.dominio.DadosFuncionario;
 import jsageImport.modelo.dominio.DependenteNG;
 import jsageImport.modelo.dominio.DependenteSAGE;
+import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaSAGE;
+import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.FuncionarioSAGE;
 import jsageImport.modelo.dominio.PessoaJuridica;
 import jsageImport.modelo.ipersistencia.IPersistenciaSAGE;
@@ -100,27 +102,27 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
                                                                               " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String SQL_PESQUISAR_DEP_ID = "SELECT * FROM FunDependente WHERE cd_dependente = ?";
     
-    private static final String SQL_CADASTRO_EMPRESA = "INSERT INTO CRDEmpresa (cd_empresa, razao, cnpj_cpf, dt_sistema, dt_inicial, dt_final, integracao_contabil, centro_custo, apropriacao_tributos"
-                                                                        +"pagamento_tributos, contabilizacao-online, agrupar_lancamentos,opcao_agrupamento,excluir_icms_entradas, excluir_ipi"  
-                                                                        +"contabilizar_nota_nota, nivel1,mascara_plano_contas,num_niveis_plano_contas,num_digitos_plano_contas,comprimento_plano_contas"
-                                                                        +"seq_conta,opcao_caixa,libera_lote_aberto,lanca_lote_lib,opcao_conta_cliente,opcao_conta_fornecedor,op_calculo_horista"
-                                                                        +"possui_tomador,pagamento_mes,prolabore_mes,cargos_salarios,pagamento_mes,prolabore_mes, cargos_salarios,produtor_rural,  "
-                                                                        +"naooptante_liminar, optante_liminar,nome_responsavel_rescisao,funcao_responsavel_rescisao,utiliza_conta_clifor,status"
-                                                                        +"integracao_csc,simples_crh,faturamento_simples_crh,microempresa_crh,epp_crh,importa_lote_diferenca,utiliza_controle_clifor"
-                                                                        +"opcao_seguro_desemprego,descontar_13_negativo,op_calculo_numero_dias,EntSemFinsLucrativos,recolhimento_contr_sindical_centralizada"
-                                                                        +"calc30_opcao_salario,calc30_opcao_salario_fevereiro,calc30_opcao_dias,opcao_historico_contabil,optante_liminar_aviso_previo,micro_emp_indiv_crh"
-                                                                        +"empresa_cidada,utiliza_controle_parcelas_auditoria,emitir_aviso_ferias,opcao_data_aviso_previo,forma_digitacao_caixa_banco_auditoria,grau_padrao_relatorio)"
-                                                                        +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_CADASTRO_EMPRESA = "INSERT INTO CRDEmpresa (cd_empresa, razao, cnpj_cpf, dt_sistema, dt_inicial, dt_final, integracao_contabil, centro_custo, apropriacao_tributos,"
+                                                                        +"pagamento_tributos, contabilizacao_online, agrupar_lancamentos,opcao_agrupamento,excluir_icms_entradas, excluir_ipi,"  
+                                                                        +"contabilizar_nota_nota, nivel1,mascara_plano_contas,num_niveis_plano_contas,num_digitos_plano_contas,comprimento_plano_contas,"
+                                                                        +"seq_conta,opcao_caixa,libera_lote_aberto,lanca_lote_lib,opcao_conta_cliente,opcao_conta_fornecedor,op_calculo_horista,"
+                                                                        +"possui_tomador,pagamento_mes,prolabore_mes,cargos_salarios,produtor_rural,  "
+                                                                        +"naooptante_liminar, optante_liminar,utiliza_conta_clifor,status,"
+                                                                        +"integracao_csc,simples_crh,faturamento_simples_crh,microempresa_crh,epp_crh,importa_lote_diferenca,utiliza_controle_clifor,"
+                                                                        +"opcao_seguro_desemprego,descontar_13_negativo,op_calculo_numero_dias,EntSemFinsLucrativos,recolhimento_contr_sindical_centralizada,"
+                                                                        +"calc30_opcao_salario,calc30_opcao_salario_fevereiro,calc30_opcao_dias,opcao_historico_contabil,optante_liminar_aviso_previo,micro_emp_indiv_crh,"
+                                                                        +"empresa_cidada,utiliza_controle_parcelas_auditoria,emitir_aviso_ferias,opcao_data_aviso_previo,forma_digitacao_caixa_banco_auditoria,grau_padrao_relatorio,data_hora_alteracao)"
+                                                                        +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     private static final String SQL_CADASTRO_ESTABELECIMENTO = "INSERT INTO CRDEstabelecimento   (cd_empresa,cd_estabelecimento,razao,fantasia,endereco,numero,complemento,bairro,cidade,cep,uf,cd_municipio,ddd_telefone\n" +
 "								  ,telefone,natureza_juridica,categoria,cnpj_cpf,cnae,local_registro,atividades,nome_titular,denom_titular,cpf_titular\n" +
 "								  ,cd_responsavel_estabelecimento,cd_responsavel_caged,cd_responsavel_sefip,salario_educacao,denominacao_pagina_csc\n" +
-"								  ,contribuinte_icms,contribuinte_ipi,contribuinte_iss,credita_pis,opcao_ipi,compensacao_tributos_retido,denominacao_pagina_cef\n" +
+"								  ,contribuinte_icms,contribuinte_ipi,contribuinte_iss,opcao_ipi,compensacao_tributos_retido,denominacao_pagina_cef\n" +
 "								  ,substituto_tributario,utiliza_ecf,tributacao,qualificacao,dt_inicio_atividade,antecipar_irpj_csll,calcular_excedente_antecipacao_irpj_csll\n" +
 "								  ,parcelamento_irpj_csll,tipo_estabelecimento,instituicao_financeira,status,razao_completa,estatuto_microempresa,opcao_vencimento_darf\n" +
 "								  ,beneficiario_prodepe,difere_icms_rs,opcao_super,vl_super_icms_fixo,vl_super_iss_fixo,protocolos_baixa_guias,cd_classificacao\n" +
-"								  ,natureza_juridica_ecf,tipo_entidade_ecf,tipo_plano_ecf,coeficiente_ciap_opcao)\n" +
-"								  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+"								  ,natureza_juridica_ecf,tipo_entidade_ecf,tipo_plano_ecf,coeficiente_ciap_opcao, data_hora_alteracao)\n" +
+"								  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     /*Strings de url*/
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
@@ -139,16 +141,16 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
                 
         try {
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
-            stmt = con.prepareStatement(SQL_INCLUIR_EMPRESA);
+            stmt = con.prepareStatement(SQL_CADASTRO_EMPRESA);
             stmt.setInt(1, (short) pj.getIdPessoa());
             stmt.setString(2, pj.getNomePessoa());
             stmt.setString(3, pj.getCnpjFormatado());
-            stmt.setTimestamp(4, pj.getDataFundacao());//dt_sistema
+            stmt.setTimestamp(4,trataDados.horaAtual()) ;//dt_sistema
             stmt.setTimestamp(5, pj.getDataInicioAtividade());//dt_inicial
-            stmt.setTimestamp(6, null);//dt_fim
-            stmt.setString(7, "S");//integracao_contabil
+            stmt.setTimestamp(6, pj.getDataTerminoSociedade());//dt_fim
+            stmt.setString(7, "N");//integracao_contabil
             stmt.setString(8, "N");//centro_custo
-            stmt.setString(9, "S");//apropriacao_tributo
+            stmt.setString(9, "N");//apropriacao_tributo
             stmt.setString(10,"N");//pagamento_tributo
             stmt.setString(11,"N");//contabilizacao_online
             stmt.setString(12, "N");//agrupar_lancamento
@@ -157,10 +159,10 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setString(15, "N");//excluir_ipi
             stmt.setString(16, "N");//contabilizar_nota_nota
             stmt.setString(17, "GERAL");//nivel1
-            stmt.setString(18,"X-X-X-XX-X");//mascara_plano_contas
-            stmt.setInt(19, 5);//num_niveis_plano_contas
-            stmt.setString(20, "11123");//num_digito_plano_contas
-            stmt.setString(21,"0102030508");//comprimento_plano_contas
+            stmt.setString(18,"X");//mascara_plano_contas
+            stmt.setInt(19, 1);//num_niveis_plano_contas
+            stmt.setString(20, "1");//num_digito_plano_contas
+            stmt.setString(21,"01");//comprimento_plano_contas
             stmt.setInt(22, 0);//seq_conta
             stmt.setInt(23, 1);//opcao_caixa
             stmt.setString(24, "N");//libera_lote_aberto
@@ -178,9 +180,9 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setString(36, "N");//utiliza_conta_clifor
             stmt.setString(37, "A");//status
             stmt.setString(38, "N");//integracao_csc
-            stmt.setString(39, "S");//simpesl_crh
+            stmt.setString(39, "N");//simpesl_crh
             stmt.setString(40, "N");//faturamento_simples_crh
-            stmt.setString(41, "S");//microempresa_crh
+            stmt.setString(41, "N");//microempresa_crh
             stmt.setString(42, "N");//epp_crh
             stmt.setString(43, "N");//importa_lote_diferenca
             stmt.setString(44, "N");//utiliza_controle_clifor
@@ -192,20 +194,19 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setInt(50, 1);//calc30_opcao_salario
             stmt.setString(51, "N");//calc30_opca_salario_fevereiro
             stmt.setInt(52, 1);//calc30_opca_dias
-            stmt.setString(53, "R");//opcao_shitorico_contabil
-            stmt.setString(54, "C");//opcao_data_lancamento_contabil
-            stmt.setString(55, "N");//optante_liminar_aviso_previo
-            stmt.setString(56, "N");//micro_emp_indiv_crh
-            stmt.setString(57, "N");//empresa_cidade
-            stmt.setInt(58, 0);//utiliza_controle_parcelas_auditoria
-            stmt.setString(59, "N");//emitir_aviso_ferias
-            stmt.setString(60, "l");//opcao_data_aviso_previo
-            stmt.setInt(61,0);//forma_digitacao_caixa_banco_auditoria
-            stmt.setInt(62, 2);//grau_padrao_relatorio
-            stmt.setTimestamp(63, trataDados.horaAtual());//data_hora_alteracao
+            stmt.setString(53, "F");//opcao_shitorico_contabil
+            stmt.setString(54, "N");//optante_liminar_aviso_previo
+            stmt.setString(55, "N");//micro_emp_indiv_crh
+            stmt.setString(56, "N");//empresa_cidade
+            stmt.setInt(57, 0);//utiliza_controle_parcelas_auditoria
+            stmt.setString(58, "N");//emitir_aviso_ferias
+            stmt.setString(59, "l");//opcao_data_aviso_previo
+            stmt.setInt(60,0);//forma_digitacao_caixa_banco_auditoria
+            stmt.setInt(61, 2);//grau_padrao_relatorio
+            stmt.setTimestamp(62, trataDados.horaAtual());//data_hora_alteracao
             
             stmt.executeUpdate();
-            this.gravarEstabelecimento(pj);
+            
             
         } catch (SQLException exc) {
             StringBuffer msg = new StringBuffer("Não foi possível incluir a Empresa no SAGE.");
@@ -216,7 +217,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
         }
     }
     
-    public void gravarEstabelecimento (PessoaJuridica pj) throws JsageImportException{
+    public void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaFolha empFolha) throws JsageImportException{
         if (pj == null) {
             String mensagem = "Não foi informada a Empresa para importar";
             throw new JsageImportException(mensagem);
@@ -227,71 +228,73 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
                 
         try {
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
-            stmt = con.prepareStatement(SQL_INCLUIR_ESTABELECIMENTO);
+            stmt = con.prepareStatement(SQL_CADASTRO_ESTABELECIMENTO);
             stmt.setInt(1, pj.getIdPessoa());//cd_empresa
             stmt.setInt(2, 1);//cd_estabelecimento
             stmt.setString(3, pj.getNomePessoa());//razao
             stmt.setString(4, pj.getNomeFantasia());//fantasia
             stmt.setString(5, pj.getLogradouro());//endereco
             //trataDados.converterSrintInt(pj.getNumeroEndereco())
-            stmt.setInt(6, 1000);//numero
-            stmt.setString(7, pj.getBairro());//bairro
-            stmt.setString(8, trataDados.recuperarCidade(pj.getIdmunicipio()));
-            stmt.setString(9, "PB");//uf
-            stmt.setShort(10, (short) 83);//ddd_telefone
-            stmt.setInt(11, 34210000); //telefone
+            stmt.setInt(6, trataDados.converterSrintInt(pj.getNumeroEndereco()));//numero
+            stmt.setString(7, pj.getComplemento()); //complemento
+            stmt.setString(8, pj.getBairro());//bairro
+            stmt.setString(9, trataDados.recuperarCidade(pj.getIdmunicipio()));//cidade
+            stmt.setInt(10, trataDados.converterSrintIntCom0(pj.getCep()));//cep
+            stmt.setString(11, "PE");//UF
+            stmt.setInt(12, pj.getIdmunicipio());//codMunicipio
+            stmt.setInt(13, (short) 81); //DDD
+            stmt.setInt(14, 000000000); //telefone
             //trataDados.recuperarNaturezaJuridica(pj.getIdNaturezaJuridica())
-            stmt.setString(12, "2602");//natureza_juridica
-            stmt.setShort(13, (short)9);//categoria
-            stmt.setString(14, pj.getCnpjFormatado());//cnpj_cpf
-            stmt.setString(15, "J");//local_registro
-            stmt.setString(16, "TITULAR PADRAO");//nome_titular
-            stmt.setString(17, "ADMINISTRADOR");//denom_titular
-            stmt.setString(18, "156.690.111-12");//CPF TITULAR
-            stmt.setShort(19, (short) 1);//CD_RESPONSAVEL_ESTABELECIMENTO
-            stmt.setString(20, "N");//SALARIO EDUCACAO
-            stmt.setString(21, "PÁGINA");//denominacao_pagina_csc
-            stmt.setString(22, "N");//contribuinte icms
-            stmt.setString(23, "N");//contribuinte ipi
-            stmt.setString(24, "N");//contribuinte iss
-            stmt.setString(25, "M");//opcao ipi
-            stmt.setInt(26, 1);//compensacao tributos retidos
-            stmt.setDouble(27, 0);//perc vendas
-            stmt.setString(28, "PÁGINA");//denominacao_pagina_cef
-            stmt.setString(29, "N");//substituto tributario
-            stmt.setString(30, "N");//utiliza ecf
-            stmt.setShort(31,(short) 6);//tributacao
-            stmt.setShort(32, (short) 7);//qualificacao
-            stmt.setTimestamp(33, pj.getDataInicioAtividade());
-            stmt.setString(34, "N");//antecipar_irpj_csll
-            stmt.setString(35, "N");//calcular_excedente_antecipacao_irpj_csll
-            stmt.setShort(36, (short) 1);//parcelamento_irpj_csll
-            stmt.setString(37, "M");//tipo estabelecimento
-            stmt.setString(38, "NA");//instituicao_financeira
-            stmt.setString(39, "A");//status
-            stmt.setString(40, pj.getNomeFantasia());//RAZAO COMPLETA
-            stmt.setString(41, "N");//estatuto_microempresa
-            stmt.setShort(42, (short) 0);//opcao_vencimento_darf
-            stmt.setString(43, "N");//beneficio proged
-            stmt.setString(44, "N");//difere_icms_rs
-            stmt.setInt(45, 0);//OPCAO SUPER
-            stmt.setDouble(46, 0);//vl_super_icms_fixo
-            stmt.setDouble(47, 0);//vl_super_iss_fixo
-            stmt.setString(48, "S");//protocolos_baixa_guias
-            stmt.setDouble(49, 0);//VL MINIMO CSLL
-            stmt.setDouble(50, 0);//VL MINIMO irf
-            stmt.setInt(51, 205);//CODIGO CLASSIFICACAO
-            stmt.setDouble(52, 0);//aliquota cef
-            stmt.setInt(53, 1);//natureza juridica
-            stmt.setInt(54, 0);//tipo entidade
-            stmt.setInt(55, 1);//tipo plano
-            stmt.setInt(56, 1);//coeficiente_ciap_opcao
-            stmt.setTimestamp(57, trataDados.horaAtual());//hora alteracao
+            stmt.setString(15, trataDados.recuperarNaturezaJuridica(pj.getIdNaturezaJuridica()));//natureza_juridica
+            stmt.setShort(16, (short)9);//categoria
+            stmt.setString(17, pj.getCnpjFormatado());//cnpj_cpf
+            stmt.setInt(18, empTrib.getIdCNAE());
+            stmt.setString(19, "J");//local_registro
+            stmt.setString(20, null );//atividades
+            stmt.setString(21, pj.getNomePessoa());//nome_titular
+            stmt.setString(22, "ADMINISTRADOR");//denom_titular
+            stmt.setString(23, null);//CPF TITULAR
+            stmt.setShort(24, (short) 1);//CD_RESPONSAVEL_ESTABELECIMENTO
+            stmt.setShort(25, (short) 1);//CD_RESPONSAVEL_CAGED
+            stmt.setShort(26, (short) 1);//CD_RESPONSAVEL_CEFIP
+            stmt.setString(27, "N");//SALARIO EDUCACAO
+            stmt.setString(28, "PÁGINA");//denominacao_pagina_csc
+            stmt.setString(29, "N");//contribuinte icms
+            stmt.setString(30, "N");//contribuinte ipi
+            stmt.setString(31, "N");//contribuinte iss
+            stmt.setString(32, "M");//opcao ipi
+            stmt.setInt(33, 1);//compensacao tributos retidos
+            stmt.setString(34, "PÁGINA");//denominacao_pagina_cef
+            stmt.setString(35, "N");//substituto tributario
+            stmt.setString(36, "N");//utiliza ecf
+            stmt.setShort(37,(short) empTrib.getIdformatributacao());//tributacao
+            stmt.setShort(38, (short) pj.getIdQualificacaoEmpresa());//qualficacao
+            stmt.setTimestamp(39, pj.getDataInicioAtividade());
+            stmt.setString(40, "N");//antecipar_irpj_csll
+            stmt.setString(41, "N");//calcular_excedente_antecipacao_irpj_csll
+            stmt.setShort(42, (short) 1);//parcelamento_irpj_csll
+            stmt.setString(43, "M");//tipo estabelecimento
+            stmt.setString(44, "NA");//instituicao_financeira
+            stmt.setString(45, "A");//status
+            stmt.setString(46, pj.getNomeFantasia());//RAZAO COMPLETA
+            stmt.setString(47, "N");//estatuto_microempresa
+            stmt.setString(48, "N");//beneficio prodepe
+            stmt.setString(49, "N");//difere_icms_rs
+            stmt.setInt(50, 0);//OPCAO SUPER
+            stmt.setDouble(51, 0);//vl_super_icms_fixo
+            stmt.setDouble(52, 0);//vl_super_iss_fixo
+            stmt.setString(53, "S");//protocolos_baixa_guias
+            stmt.setInt(54, empFolha.getIdclassificacaotributaria() );//CODIGO CLASSIFICACAO
+            stmt.setInt(55, 1);//natureza juridica ecf
+            stmt.setInt(56, 0);//tipo entidade ecf
+            stmt.setInt(57, 1);//tipo plano ecf
+            stmt.setInt(58, 1);//coeficiente_ciap_opcao
+            stmt.setTimestamp(59, trataDados.horaAtual());//data_hora_alteracao
             
             stmt.executeUpdate();
             
         } catch (SQLException exc) {
-            StringBuffer msg = new StringBuffer("Não foi possível incluir a Empresa no SAGE.");
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o estabelecimento no SAGE.");
             msg.append("\nMotivo: " + exc.getMessage());
             throw new JsageImportException(msg.toString());
         } finally {
