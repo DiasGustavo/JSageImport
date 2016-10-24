@@ -12,13 +12,16 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
+import jsageImport.modelo.dominio.EmpresaFolha;
+import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
+import jsageImport.modelo.dominio.PorteEmpresa;
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaNG;
 
 /**
  * @author Gustavo Dias
  * Criação: 21/10/2016
- * Última modificação: 22/10/2016
+ * Última modificação: 24/10/2016
  * Modificado por: Gustavo Dias
  */
 public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
@@ -42,20 +45,20 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                                                               " WHERE (pj.cnpjformatado = ?);";
 
 
-    private static final String SQL_EMPRESATRIBUTACAO = "SELECT * FROM (bpm_dadosempresaformatributacao AS eformatributacao "
-                                                            +"INNER JOIN bpm_dadosempresaformatributacaocomplementofolha as etribcompfolha ON "
-                                                            + "eformatributacao.iddadosempresaformatributacao = etribcompfolha.iddadosempresaformatributacao ) WHERE eformatributacao.ano = 2016  AND eformatributacao.idpessoa = ?";
-    private static final String SQL_PORTE_EMMPRESA = "SELECT * FROM (bpm_dadosempresaporteempresa) where idpessoa = ? and ano = 2016";
+    private static final String SQL_EMPRESATRIBUTACAO = "SELECT * FROM (bpm_dadosempresaformatributacao AS eformatributacao INNER JOIN bpm_dadosempresaformatributacaocomplementofolha AS etribcompfolha "
+                                                            + "ON eformatributacao.iddadosempresaformatributacao = etribcompfolha.iddadosempresaformatributacao )" 
+                                                            + "WHERE eformatributacao.ano = 2016  AND eformatributacao.idpessoa = ?";
     
-    private static final String SQL_EMPRESA_PJ_CNAE = "SELECT * FROM (bpm_dadospessoajuridicacnae) WHERE idpessoa = ? ";
+    private static final String SQL_PORTE_EMPRESA = "SELECT * FROM bpm_dadosempresaporteempresa WHERE idpessoa = ? and ano = 2016";
+    
+    private static final String SQL_EMPRESA_PJ_CNAE = "SELECT * FROM bpm_dadospessoajuridicacnae WHERE idpessoa = ? ";
    
-
-    private static final String SQL_EMPRESA_FOLHA = "SELECT DISTINCT *" +"FROM (bpm_dadosempresafolha AS efolha INNER JOIN bpm_dadosempresafolhaparametrogeral AS fgeral\n" 
-
-                                                             +"ON efolha.iddadosempresafolha = fgeral.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametro13salario AS fsalario\n"
-                                                             +"ON efolha.iddadosempresafolha = fsalario.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametroesocial AS fesocial\n" 
-                                                             +"ON fesocial.iddadosempresafolha = efolha.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametroferias AS fferias\n" 
-                                                             +"ON efolha.iddadosempresafolha = fferias.iddadosempresafolha LEFT JOIN NG.dbo.bpm_dadosempresafolhasindicato AS fsindicato\n" 
+    private static final String SQL_FOLHA_ID = "SELECT idpessoa,iddadosempresafolha FROM bpm_dadosempresafolha WHERE idpessoa = ?;";
+    private static final String SQL_EMPRESA_FOLHA = "SELECT DISTINCT *" +"FROM (bpm_dadosempresafolha AS efolha INNER JOIN bpm_dadosempresafolhaparametrogeral AS fgeral " 
+                                                             +"ON efolha.iddadosempresafolha = fgeral.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametro13salario AS fsalario "
+                                                             +"ON efolha.iddadosempresafolha = fsalario.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametroesocial AS fesocial " 
+                                                             +"ON fesocial.iddadosempresafolha = efolha.iddadosempresafolha INNER JOIN NG.dbo.bpm_dadosempresafolhaparametroferias AS fferias " 
+                                                             +"ON efolha.iddadosempresafolha = fferias.iddadosempresafolha LEFT JOIN NG.dbo.bpm_dadosempresafolhasindicato AS fsindicato " 
                                                              +"ON efolha.iddadosempresafolha = fsindicato.iddadosempresafolha)" 
                                                              +"WHERE (efolha.iddadosempresafolha = ? )";
 
@@ -147,6 +150,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             GerenciadorConexao.closeConexao(con, stmt, rs);
         }
     }
+    
     /**
      * Recupera de uma empresa que possui folha de pagamento específica os seus dados cadastrais
      * @return
@@ -188,6 +192,102 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         }
     }
     /**
+     * Recuperar a id da empresa que é utilizado na configuração da folha
+     * @return List
+     * @throws JsageImportException 
+     */
+    private List recuperarIdFolha (int id) throws JsageImportException {
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_FOLHA_ID);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            List listaIdFolhas = new ArrayList();
+            while (rs.next()) {
+                listaIdFolhas.add(rs.getInt("iddadosempresafolha"));
+            }
+            return listaIdFolhas;
+        } catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta da id da empresa.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+    }
+    /**
+     * Retorna todas as informações de configuração da folha de uma empresa
+     * @param id
+     * @return List
+     * @throws JsageImportException 
+     */
+    public List capturarInfoEmpresasFolha(int id) throws JsageImportException {
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            List listaEmpresaFolha = new ArrayList();
+            List listaConsulta = recuperarIdFolha(id);
+            if (listaConsulta.size() > 0){
+                con = GerenciadorConexao.getConnection(urlNG);
+                stmt = con.prepareStatement(SQL_EMPRESA_FOLHA);
+            
+                for (int i = 0; i < listaConsulta.size(); i++ ){
+                    int iddadosempresafolha = (int)listaConsulta.get(i);
+                    stmt.setInt(1,iddadosempresafolha);
+                    rs = stmt.executeQuery();
+                    while (rs.next()) {
+                        EmpresaFolha pj = criarEmpresaFolhaNG(rs);
+                        listaEmpresaFolha.add(pj);
+                    }
+                } 
+            }else{
+                throw new JsageImportException("Não foi encontrado Empreasas!");
+            }           
+            return listaEmpresaFolha;
+        } catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta das informações da folha da empresa.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+    }
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws JsageImportException 
+     */
+    private List capturarInfoEmpresaTributacao (int id) throws JsageImportException {
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_EMPRESATRIBUTACAO);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            List listaEmpresaTributacao = new ArrayList();
+            while (rs.next()) {
+                EmpresaTributacao empTributo = criarEmpresaTributacao(rs);
+                listaEmpresaTributacao.add(empTributo);
+            }
+            return listaEmpresaTributacao;
+        } catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta da forma da tributação da empresa.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+    }
+    /**
      * Pesquisa as informações de uma empresa específica através do seu cnpj
      * @param cnpj
      * @return List
@@ -213,31 +313,91 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             }
             return listaEmpresas;
             } catch (SQLException exc) {
-                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta.");
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta do CNPJ.");
                 mensagem.append("\nMotivo: " + exc.getMessage());
                 throw new JsageImportException(mensagem.toString());
             } finally {
                 GerenciadorConexao.closeConexao(con, stmt, rs);
             }
     }
+    
+    private List recuperarPorteEmpresa (int id) throws JsageImportException {
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_PORTE_EMPRESA);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            List listaPorteEmpresa = new ArrayList();
+            while (rs.next()) {
+                PorteEmpresa pj = criarPorteEmpresa(rs);
+                listaPorteEmpresa.add(pj);
+            }
+            return listaPorteEmpresa;
+        } catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta do porte da Empresa.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+    }
+    private List recuperarCnaeEmpresa (int id) throws JsageImportException {
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_EMPRESA_PJ_CNAE);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            List listaCnaeEmpresa = new ArrayList();
+            while (rs.next()) {
+                EmpresaTributacao pj = criarEmpresaCnae(rs);
+                listaCnaeEmpresa.add(pj);
+            }
+            return listaCnaeEmpresa;
+        } catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta do CNAE da Empresa.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+    }
     /**
      * Realiza a importação de uma empresa para o banco de dados do SAGE
+     * @param idEmpresa
      * @param cnpj
      * @throws JsageImportException 
      */
     @Override
-    public void ImportaEmpresas(String cnpj) throws JsageImportException {
+    public void ImportaEmpresas(int idEmpresa, String cnpj) throws JsageImportException {
         ControlerFuncionarioSAGE controlSAGE = new ControlerFuncionarioSAGE();
         List listaEmpresaSAGE = controlSAGE.pesquisarCNPJ(cnpj);
         if (listaEmpresaSAGE.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Empresa precisa ser primeiro cadastrada no SAGE\n para importar os seus Funcionários!");
+            //JOptionPane.showMessageDialog(null, "Empresa precisa ser primeiro cadastrada no SAGE\n para importar os seus Funcionários!");
             //throw new JsageImportException("Primeiro Cadastre a Empresa no SAGE\n para Depois importar os Funcionários.");
             int reply = JOptionPane.showConfirmDialog(null, "Empresa de CNPJ: "+cnpj+" não esta cadastrada no SAGE, Deseja Importar agora?", "Aviso de importação", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION)
             {
-                List listaEmpresa = pesquisarCnpj(cnpj);//Pesquisar no banco de dados do NG
-                PessoaJuridica pjGravar =(PessoaJuridica) listaEmpresa.get(0);
-                controlSAGE.gravarEmpresa(pjGravar);
+                //Pesquisar no banco de dados do NG as informações cadastrais da empresa do cnpj
+                List listaEmpresa = pesquisarCnpj(cnpj);
+                //Pesquisa informações sobre o porte da empresa no banco do NG
+                List listaPorteEmpresa = recuperarPorteEmpresa(idEmpresa);
+                //Pesquisa informaçoes sobre a tributação da empresa no banco NG
+                List listaTributacaoEmpresa = capturarInfoEmpresaTributacao(idEmpresa);
+                //Pesquisa informações sobre o cnae da empresa no banco NG
+                List listaCnaeEmpresa = recuperarCnaeEmpresa(idEmpresa);
+                //Pesquisa configuracoes da folha da empresa no banco NG
+                List listaFolhaEmpresa = capturarInfoEmpresasFolha(idEmpresa);
+                
+                //PessoaJuridica pjGravar =(PessoaJuridica) listaEmpresa.get(0);
+                //controlSAGE.gravarEmpresa(pjGravar);
                 JOptionPane.showMessageDialog(null, "Empresa Gravada com Sucesso!");
             }else if (reply == JOptionPane.NO_OPTION){
                 throw new JsageImportException("Primeiro importe a empresa para depois importar os Funcionários.");
@@ -305,6 +465,272 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             throw new JsageImportException(mensagem.toString());
         }
         return pj;
+    }
+    /**
+     * Configura o objeto com os dados da folha de pagamento
+     * @param ResulSet
+     * @return EmpresaFolha
+     * @throws JsageImportException 
+     */
+    private EmpresaFolha criarEmpresaFolhaNG (ResultSet rs) throws JsageImportException{
+        EmpresaFolha empFolha = new EmpresaFolha();
+        try{
+            empFolha.setIddadosempresafolha(rs.getInt("iddadosempresafolha"));
+            empFolha.setIdpessoa(rs.getInt("idpessoa"));
+            empFolha.setIdfpas(rs.getInt("idfpas"));
+            empFolha.setIdcodigosterceiros(rs.getInt("idcodigosterceiros"));
+            empFolha.setIdtipoarredondamento(rs.getInt("idtipoarredondamento"));
+            empFolha.setContafgts(rs.getString("contafgts"));
+            empFolha.setIdcodigogps(rs.getInt("idcodigogps"));
+            empFolha.setPercentualrat(rs.getDouble("percentualrat"));
+            empFolha.setIndcalcularpis(rs.getBoolean("indcalcularpis"));
+            empFolha.setIndencargosgpsporcc(rs.getBoolean("indencargosgpsporcc"));
+            empFolha.setIndparticipapat(rs.getBoolean("indparticipapat"));
+            empFolha.setPercentualterceiro(rs.getDouble("percentualterceiro"));
+            empFolha.setIdoptantesimples(rs.getInt("idoptantesimples"));
+            empFolha.setPercentualinss(rs.getDouble("percentualinss"));
+            empFolha.setIndativo(rs.getBoolean("indativo"));
+            empFolha.setIndfiliadasindicato(rs.getBoolean("indfiliadasindicato"));
+            empFolha.setIndapropriacaohorasfatogerador(rs.getBoolean("indapropriacaohorasfatogerador"));
+            empFolha.setIndsuprimirapropriacaofatogerador(rs.getBoolean("indsuprimirapropriacaofatogerador"));
+            empFolha.setIdregimetributario(rs.getString("idregimetributario"));
+            empFolha.setIndexcluido(rs.getBoolean("indexcluido"));
+            empFolha.setIdtipoempresalei12546(rs.getInt("idtipoempresalei12546"));
+            empFolha.setIndefetuarecolhimentopatronallei12546(rs.getBoolean("indefetuarecolhimentopatronallei12546"));
+            empFolha.setIdtipovigencialei12546(rs.getInt("idtipovigencialei12546"));
+            empFolha.setIndeduzirdiasdescontodsrcalculodiasuteis(rs.getBoolean("indeduzirdiasdescontodsrcalculodiasuteis"));
+            empFolha.setIndconsideraradiantamento13provisao(rs.getBoolean("indconsideraradiantamento13provisao"));
+            empFolha.setIndcopafifa(rs.getBoolean("indcopafifa"));
+            empFolha.setIdaliquotalei12546(rs.getInt("idaliquotalei12546"));
+            empFolha.setIndinssempresaintegralfolhaeprovisaoferias(rs.getBoolean("indinssempresaintegralfolhaeprovisaoferias"));
+            empFolha.setIndvisualizadadosonline(rs.getBoolean("indvisualizadadosonline"));
+            empFolha.setInddarfindividual(rs.getBoolean("inddarfindividual"));
+            empFolha.setIndconsolidardarfporcodigo(rs.getBoolean("indconsolidardarfporcodigo"));
+            empFolha.setIdtipocontagemmesadiantamento(rs.getInt("idtipocontagemmesadiantamento"));
+            empFolha.setIdtipocalculomediaadiantamento(rs.getInt("idtipocalculomediaadiantamento"));
+            empFolha.setIndconsiderarmescorrenteadiantamento(rs.getBoolean("indconsiderarmescorrenteadiantamento"));
+            empFolha.setInddeduzirvaloroutroadiantamento(rs.getBoolean("inddeduzirvaloroutroadiantamento"));
+            empFolha.setIndconsiderarmetadereferenciaeventoadiantamento(rs.getBoolean("indconsiderarmetadereferenciaeventoadiantamento"));
+            empFolha.setPercentualcalculoadiantamento(rs.getDouble("percentualcalculoadiantamento"));
+            empFolha.setIdtipocontagemmes13salario(rs.getInt("idtipocontagemmes13salario"));
+            empFolha.setIdtipocalculomedia13salario(rs.getInt("idtipocalculomedia13salario"));
+            empFolha.setIndconsiderarmescorrente13salario(rs.getBoolean("indconsiderarmescorrente13salario"));
+            empFolha.setIndpagarproporcionalacidentetrabalho(rs.getBoolean("indpagarproporcionalacidentetrabalho"));
+            empFolha.setIdtipocalculomediacomplemento(rs.getInt("idtipocalculomediacomplemento"));
+            empFolha.setIndconsiderarmescorrentecomplemento(rs.getBoolean("indconsiderarmescorrentecomplemento"));
+            empFolha.setIndbaixapagto13salario(rs.getBoolean("indbaixapagto13salario"));
+            //empFolha.setIndativoSalario(rs.getBoolean("indativosalario"));
+            empFolha.setIdclassificacaotributaria(rs.getInt("idclassificacaotributaria"));
+            empFolha.setIdcooperativa(rs.getInt("idcooperativa"));
+            empFolha.setIdconstrutora(rs.getInt("idconstrutora"));
+            empFolha.setIndprocessorat(rs.getBoolean("indprocessorat"));
+            empFolha.setIdtipoprocessorat(rs.getInt("idtipoprocessorat"));
+            empFolha.setNumeroprocessorat(rs.getString("numeroprocessorat"));
+            empFolha.setIndprocessofap(rs.getBoolean("indprocessofap"));
+            empFolha.setIdtipoprocessofap(rs.getInt("idtipoprocessofap"));
+            empFolha.setNumeroprocessofap(rs.getString("numeroprocessofap"));
+            empFolha.setInddadosisencao(rs.getBoolean("inddadosisencao"));
+            empFolha.setIdcertificador(rs.getInt("idcertificador"));
+            empFolha.setDataemissaocertificado(rs.getTimestamp("dataemissaocertificado"));
+            empFolha.setDatarenovacaocertificado(rs.getTimestamp("datarenovacaocertificado"));
+            empFolha.setDatavencimentocertificado(rs.getTimestamp("datavencimentocertificado"));
+            empFolha.setDatapublicacaodoucertificado(rs.getTimestamp("datapublicacaocertificado"));
+            empFolha.setNumerocertificado(rs.getString("numerocertificado"));
+            empFolha.setNumeroprotocolorenovacaocertificado(rs.getString("numeroprotocolorenovacaocertificado"));
+            empFolha.setNumeropaginadoucertificado(rs.getString("numeropaginadoucertificado"));
+            empFolha.setInddadosinternacionalizacao(rs.getBoolean("inddadossinternacionalizacao"));
+            empFolha.setIdacordointernacionalisencaomulta(rs.getInt("idacordointernacionalisencaomulta"));
+            empFolha.setIndsocioostensivo(rs.getBoolean("indsocioostensivo"));
+            empFolha.setIdsituacaoespecial(rs.getInt("idtsituacaoespecial"));
+            empFolha.setIddesoneracaofolha(rs.getInt("iddesoneracaofolha"));
+            empFolha.setIdregistroeletronicoempregados(rs.getInt("idregistroeletronicoempregrados"));
+            empFolha.setIndinformacoescomplementares(rs.getBoolean("indinformacoescomplementares"));
+            empFolha.setIndprocessosjudiciaisrelativooutrasentidadesfundos(rs.getBoolean("indprocessosjudiciaisrelativooutrasentidadesfundos"));
+            empFolha.setNumerosiafi(rs.getString("numeroiafi"));
+            empFolha.setIdsituacaopf(rs.getInt("idsituacaopf"));
+            //empFolha.setIndativoEsocial(rs.getBoolean("indativoesocial"));
+            empFolha.setInddescontoproporcionalinss(rs.getBoolean("inddescontoproporcionalinss"));
+            empFolha.setInddesconsiderarfalta(rs.getBoolean("inddesconsiderarfalta"));
+            empFolha.setInddescontarcontribuicaosindical(rs.getBoolean("inddescontarcontribuicaoindicial"));
+            empFolha.setIndmostrardataretornorecibo(rs.getBoolean("indmostrardataretornorecibo"));
+            empFolha.setInddataretornodianaoutil(rs.getBoolean("inddataretornodianaoutil"));
+            empFolha.setIndemitiralertavencimentoavisoprevio(rs.getBoolean("indemitiralertavencimentoavisoprevio"));
+            empFolha.setIndconsiderarabonopecuniario(rs.getBoolean("indconsiderarabonopecuniario"));
+            empFolha.setQuantidadeanosdireitolicensapremio(rs.getInt("quantidadeanosdireitolicensapremio"));
+            empFolha.setIndagruparvinculado(rs.getBoolean("indagruparvinculado"));
+            empFolha.setIndpagarsalariofamiliaabonofamilia(rs.getBoolean("indpagarsalariofamiliaabonofamilia"));
+            empFolha.setIndpagarlicencaremuneradafuncionariomaisumano(rs.getBoolean("indpagarlicencaremuneradafuncionariomaisumano"));
+            empFolha.setIndmudarperiodoaquisitivo(rs.getBoolean("indmudarperiodoaquisitivo"));
+            empFolha.setIndpagarlicencaremunerada(rs.getBoolean("indpagarlicencaremunerada"));
+            empFolha.setIndpagaradiantamento13salario(rs.getBoolean("indpagaradiantamento13salario"));
+            //empFolha.setIndativoFerias(rs.getBoolean("indativoferias"));
+            empFolha.setIndconsiderardiasfaltasperiodofatosgeradores(rs.getBoolean("indconsiderardiasfaltasperiodofatosgeradores"));
+            empFolha.setIndpagarmediaferiasverbaseparada(rs.getBoolean("indpagarmediaferiasverbaseparada"));
+            empFolha.setIndconsiderarvalorinssferiasverbaseparada(rs.getBoolean("indconsiderarvalorinssferiasverbaseparada"));
+            empFolha.setIndconsiderarbaixaproporcionalprovisaoferias(rs.getBoolean("indconsiderarbaixaproporcionalprovisaoferias"));
+            empFolha.setIndconsiderarbaixaprovisaoferiasconformevaloresferias(rs.getBoolean("indconsiderarbaixaprovisaoferiasconformevaloresferias"));
+            empFolha.setInddescontarinss(rs.getBoolean("inddescontarinss"));
+            empFolha.setIndgeralmostrarverbaferias(rs.getBoolean("indgeralmostrarverbaferias"));
+            empFolha.setIndutilizarcasadecimal(rs.getBoolean("indutilizarcasadecimal"));
+            empFolha.setIndcontroleautomaticosaldo(rs.getBoolean("indcontroleautomaticosaldo"));
+            empFolha.setIndhorascalculosalariofamilia(rs.getBoolean("indhorascalculosalariofamilia"));
+            empFolha.setIndabonarirmenor(rs.getBoolean("indabonarirmenor"));
+            empFolha.setIdtipodiatrabalhado(rs.getInt("idtipodiatrabalhado"));
+            empFolha.setIdtipoarredondamentoGeral(rs.getInt("idtipoarredondamentogeral"));
+            empFolha.setValorarredondamento(rs.getDouble("valorarredondamento"));
+            empFolha.setIdtipocalculomedia(rs.getInt("idtipocalculomedia"));
+            empFolha.setIndmescorrentecalculomedia(rs.getBoolean("indmescorrentecalculomedia"));
+            empFolha.setIndbasecalculomediadsr(rs.getBoolean("indbasecalculomediadsr"));
+            empFolha.setInddeduzirfaltadsr(rs.getBoolean("inddeduzirfaltadsr"));
+            empFolha.setIndcalculocomissionistadsr(rs.getBoolean("indcalculocomissionistadsr"));
+            empFolha.setDiainicioapuracaodsr(rs.getInt("diainicioapuracaodsr"));
+            empFolha.setDiafimapuracaodsr(rs.getInt("diafimapuracaodsr"));
+            empFolha.setIndparalisacaoafastamentodoenca(rs.getBoolean("indparalisacaoafastamentodoenca"));
+            empFolha.setIndutilizareventoocorridomesrecisaocalculomedia(rs.getBoolean("indutilizareventoocorridomesrecisaocalculomedia"));
+            empFolha.setIndparalisacaocontagemcontrato(rs.getBoolean("indparalisacaocontagemcontrato"));
+            empFolha.setIndpagardescansoindenizadodemissao(rs.getBoolean("indparagardescansoindenizadodemissao"));
+            empFolha.setIndbeneficiotransporteabaterdiasferias(rs.getBoolean("indbeneficiotransporteabaterdiasferias"));
+            empFolha.setIndbeneficiotransporteabaterdiasafastamento(rs.getBoolean("indbeneficiotransporteabaterdiasafastamento"));
+            empFolha.setIndbeneficiotransporteproporcionaljornadareduzida(rs.getBoolean("indbeneficiotransporteproporcionaljornadareduzida"));
+            empFolha.setIndbeneficioticketabaterdiasferias(rs.getBoolean("indbeneficioticketabaterdiasferias"));
+            empFolha.setIndbeneficioticketabaterdiasafastamento(rs.getBoolean("indbeneficioticketabaterdiasafastamento"));
+            empFolha.setIndbeneficioticketproporcionaljornadareduzida(rs.getBoolean("indbeneficioticketproporcionaljornadareduzida"));
+            empFolha.setIndlancarverbadescontodsrmensalistaquinzenalista(rs.getBoolean("indlancarverbadescontodsrmensalistaquinzenalista"));
+            empFolha.setIndlancarverbadescontodsrhoristasemanalistadiarista(rs.getBoolean("indlancarverbadescontodsrhoristasemanalistadiarista"));
+            empFolha.setIndmensalista(rs.getBoolean("indmensalista"));
+            empFolha.setIndsemanalista(rs.getBoolean("indsemanalista"));
+            empFolha.setIndhorista(rs.getBoolean("indhorista"));
+            empFolha.setIndquinzenalista(rs.getBoolean("indquinzenalista"));
+            empFolha.setInddiarista(rs.getBoolean("inddiarista"));
+            empFolha.setIndtarefeiro(rs.getBoolean("indtarefeiro"));
+            empFolha.setIndconsiderartambemmesesferiasafastamento(rs.getBoolean("indconsiderartambemmesesferiasafastamento"));
+            empFolha.setIdtipoadiantamentoadmissao(rs.getInt("idtipoadiantamentoadmissao"));
+            empFolha.setNumerominimodiatrabalhoadiantamentoadmissao(rs.getInt("numerominimodiatrabalhaadiantamentoadmissao"));
+            empFolha.setIdpagamentofolhamensal(rs.getInt("idpagamentofolhamensal"));
+            empFolha.setDiainicioapuracaofatogerador(rs.getInt("diainicioapuracaofatogerador"));
+            empFolha.setDiafimapuracaofatogerador(rs.getInt("diafimapuracaofatogerador"));
+            //empFolha.setIndativoGeral(rs.getBoolean("indativogeral"));
+            empFolha.setIndconsiderararredondamentofolhaferias(rs.getBoolean("indconsiderararredondamentofolhaferias"));
+            empFolha.setIdconsiderarparacalculodsr(rs.getInt("idconsiderarparacalculodsr"));
+            empFolha.setIndconsiderartambemmesadmissao(rs.getBoolean("indconsiderartambemmesadmissao"));
+            empFolha.setIndcontrolarmotivocalculosalariofamilia(rs.getBoolean("indcontrolarmotivocalculosalariofamilia"));
+            empFolha.setIndconsiderarverbasrescisaomedia(rs.getBoolean("indconsiderarverbasrecisaomedia"));
+            empFolha.setIndbeneficiotransporteabaterfaltas(rs.getBoolean("indbeneficiotransporteabaterfaltas"));
+            empFolha.setIndconsiderardiasapuracaodsrintegral(rs.getBoolean("indconsiderardiaspauracaodsrintegral"));
+            empFolha.setIndverbaprogramadaperiodoafastamento(rs.getBoolean("indverbaprogramadaperiodoafastamento"));
+            empFolha.setIndsepararumavoferiasindenizado(rs.getBoolean("indsepararumavoferiasindenizado"));
+            empFolha.setIndmediacalculoferiasindenizado(rs.getBoolean("indmediacalculoferiasindenizado"));
+            empFolha.setIdtipoadiantamentoferias(rs.getInt("idtipoadiantamentoferias"));
+            empFolha.setIdtipoadiantamentoafastamento(rs.getInt("idtipoadiantamentoafastamento"));
+            empFolha.setNumerominimodiatrabalhoadiantamentoferias(rs.getInt("numerominimodiatrabalhoadiantamentoferias"));
+            empFolha.setNumerominimodiatrabalhoadiantamentoafastamento(rs.getInt("numerominimodiatrabalhoadiantamentoafastamento"));
+            empFolha.setIndpagarfaltasjustificadasseparadassalario(rs.getBoolean("indpagarfaltasjustificadassepradassalario"));
+            empFolha.setIndtrabalhotemporario(rs.getBoolean("indtrabalhotemporario"));
+            empFolha.setIndconsiderarsalfamcalculocontroleautomaticosaldo(rs.getBoolean("indconsiderarsalfamcalculocontroleautomaticosaldo"));
+            empFolha.setIndconsiderararredondamentoparaautonomostransportadores(rs.getBoolean("indconsiderararredondamentoparaautonomostransportadores"));
+            empFolha.setIndconsiderararredondamentoparasocios(rs.getBoolean("indconsiderararredondamentoparasocios"));
+            empFolha.setIndlimitarcontagemdiastrabalhadosdatair(rs.getBoolean("indlimitarcontagemdiastrabalhosdatair"));
+            empFolha.setIndcalculardsrsobreferiadosverba(rs.getBoolean("indcalculardsrsobreferiadosverba"));
+            empFolha.setIndconsiderardiasmesfolhaferias(rs.getBoolean("indconsiderardiasmesfolhaferias"));
+            empFolha.setIndgerarfluxocaixa(rs.getBoolean("indgerarfluxocaixa"));
+            empFolha.setIndclientedireto(rs.getBoolean("indclientedireto"));
+            empFolha.setIndconsiderardiasmesapropriacaohoras(rs.getBoolean("indconsiderardiasmesapropriacaohoras"));
+            empFolha.setDatainicioservico(rs.getTimestamp("datainicioservico"));
+            empFolha.setIndpreencherdatairrfautomaticamentefolhamensal(rs.getBoolean("indpreencherdatairrfautomaticamentefolhamensal"));
+            empFolha.setDiapagamentoirrffolhamensal(rs.getInt("diapagamentoirrffolhamensal"));
+            empFolha.setIndtipodiairrffolhamensal(rs.getBoolean("indtipodiairrffolhamensal"));
+            empFolha.setIndantecipadiautildatairrf(rs.getBoolean("indantecipadiautildatairrf"));
+            empFolha.setIndconsiderasabadodiautil(rs.getBoolean("indconsiderasabadodiautil"));
+            empFolha.setIndconsiderarlimitemaximoavisopreviotrabalhado(rs.getBoolean("indconsiderarlimitemaximoavisopreviotrabalhado"));
+            empFolha.setIndoperacaoparalelo(rs.getBoolean("indoperacaoparalelo"));
+            empFolha.setIndconsiderar15diaspagopelaempresareferenteafastamentos(rs.getBoolean("indconsiderar15diaspagopelaempresareferenteafastamentos"));
+            empFolha.setPercentualadiantamento(rs.getDouble("percentualadiantamento"));
+            empFolha.setIndcalcularadiantamentodiasmesesdiferente30empregadoshoristas(rs.getBoolean("indcalcularadiantamentodiasmesesdiferente30empregadoshoristas"));
+            empFolha.setIndconsiderarfolharescisao(rs.getBoolean("indconsiderarfolharescisao"));
+            empFolha.setIndgerarferiasproporcionaisrescisoesjustacausa(rs.getBoolean("indgerarferiasproporcionaisrescisoesjustacausa"));
+            empFolha.setIndbeneficioticketabaterfaltas(rs.getBoolean("indbeneficioticketabaterfaltas"));
+            empFolha.setDatafimservico(rs.getTimestamp("datafimservico"));
+            empFolha.setPercentualdescontoBeneficioFolha(rs.getDouble("percentualdescontobeneficiofolha"));
+            empFolha.setIddadossindicato(rs.getInt("iddadossindicato"));
+            empFolha.setAno(rs.getInt("ano"));
+            empFolha.setValorcontribuicaosindical(rs.getDouble("valorcontribuicaosindical"));
+            empFolha.setValorcontribuicaoassociativa(rs.getDouble("valorcontribuicaoassociativa"));
+            empFolha.setValorcontribuicaoassistencial(rs.getDouble("valorcontribuicaoassistencial"));
+            empFolha.setValorcontribuicaoconfederativa(rs.getDouble("valorcontribuicaoconfederativa"));
+            //empFolha.setIndativoSindicato(rs.getBoolean("indativosindicato"));
+            empFolha.setIndprincipal(rs.getBoolean("indprincipal"));         
+            
+        }catch (SQLException ex) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados da Folha da Empresa.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        
+        return empFolha;
+    }
+    
+    private EmpresaTributacao criarEmpresaTributacao (ResultSet rs)throws JsageImportException{
+        EmpresaTributacao empTrib = new EmpresaTributacao ();
+        
+        try {
+            empTrib.setAno((rs.getInt("ano")));
+            empTrib.setDatafimvigenciaTributo(rs.getTimestamp("datafimvigencia"));
+            empTrib.setDatainiciovigenciaTributo(rs.getTimestamp("datainiciovigencia"));
+            empTrib.setFap(rs.getDouble("fap"));
+            empTrib.setIdcodigogps(rs.getInt("idcodigogps"));
+            empTrib.setIdcodigosterceiros(rs.getInt("idcodigosterceiros"));
+            empTrib.setIddadosempresaformatributacao(rs.getInt("iddadosempresaformatributacao"));
+            empTrib.setIdformatributacao(rs.getInt("idformatributacao"));
+            empTrib.setIdoptantesimples(rs.getInt("idoptantesimples"));
+            empTrib.setIdpessoa(rs.getInt("idpessoa"));
+            empTrib.setPercentualinss(rs.getDouble("percentualinss"));
+            empTrib.setPercentualrat(rs.getDouble("percentualrat"));
+            empTrib.setPercentualterceiro(rs.getDouble("percentualterceiro"));
+            
+            
+        } catch (SQLException ex) {
+             StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados da Tributação da empresa.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return empTrib;
+        
+    } 
+    
+    private EmpresaTributacao criarEmpresaCnae (ResultSet rs)throws JsageImportException{
+        EmpresaTributacao empTrib = new EmpresaTributacao ();
+        
+        try {
+            empTrib.setDatafimvigenciaCNAE(rs.getTimestamp("datafimvigencia"));
+            empTrib.setDatainiciovigenciaCNAE(rs.getTimestamp("datainiciovigencia"));
+            empTrib.setIdCNAE(rs.getInt("idcnae"));
+            empTrib.setIdpessoa(rs.getInt("idpessoa"));
+            empTrib.setIndPrincipal(rs.getBoolean("indprincipal"));         
+            
+        } catch (SQLException ex) {
+             StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados do CNAE da empresa.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return empTrib;
+        
+    }
+    
+    private PorteEmpresa criarPorteEmpresa (ResultSet rs) throws JsageImportException{
+        PorteEmpresa empPorte = new PorteEmpresa();
+        try {
+            empPorte.setIdporteempresa(rs.getInt("idporteempresa"));
+            empPorte.setIdpessoa(rs.getInt("idpessoa"));
+            empPorte.setDatainiciovigencia(rs.getTimestamp("datainiciovigencia"));
+            empPorte.setDatafimvigencia(rs.getTimestamp("datafimvigencia"));
+            empPorte.setAno(rs.getInt("ano"));
+            
+        } catch (SQLException ex) {
+             StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados do porte da empresa.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return empPorte;
     }
     
 }

@@ -27,9 +27,9 @@ public class ControlerEmpresaNG {
         return listaEmp;
     }
     
-    public void ImportarEmpresa(String cnpj)throws JsageImportException{
+    public void ImportarEmpresa(int idEmpresa, String cnpj)throws JsageImportException{
         IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
         IPersistenciaEmpresaNG PFuncionario = gerenteP.getPersistenciaEmpresa();
-        PFuncionario.ImportaEmpresas(cnpj);
+        PFuncionario.ImportaEmpresas(idEmpresa,cnpj);
     }
 }

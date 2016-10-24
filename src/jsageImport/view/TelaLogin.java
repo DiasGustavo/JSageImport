@@ -11,7 +11,8 @@ import jsageImport.modelo.persistencia.PropertiesLogin;
 /**
  * @author Jefferson Lucena
  * Criação: 21/10/2016
- * Última modificação: 21/10/2016
+ * Última modificação: 24/10/2016
+ * Modificado por: Gustavo Dais
  */
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -20,6 +21,7 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        setLocationRelativeTo( null );
     }
 
     /**
@@ -164,7 +166,8 @@ public class TelaLogin extends javax.swing.JFrame {
             
         
         
-    }
+    }    
+    
     /**
      * @param args the command line arguments
      */

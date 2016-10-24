@@ -15,13 +15,15 @@ import jsageImport.modelo.dominio.PessoaJuridica;
 /**
  * @author Gustavo Dias
  * Criação: 21/10/2016
- * Última modificação: 22/10/2016
+ * Última modificação: 24/10/2016
+ * Modificador por: Gustavo Dias
  */
 public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
 
     private List empresas;
     private String nomeEmpresa;
     private String cnpj;
+    private int idEmpresa;
     /**
      * Creates new form PesquisarFrame
      */
@@ -70,6 +72,7 @@ public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
         pj = (PessoaJuridica) this.empresas.get(linhaSelecionada);
         this.nomeEmpresa = pj.getNomeAbreviado();
         this.cnpj = pj.getCnpjFormatado();
+        this.idEmpresa = pj.getIdPessoa();
         return pj;
     }
     
@@ -89,7 +92,7 @@ public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
     }
     public void importarDados () throws JsageImportException{
         ControlerEmpresaNG control = new ControlerEmpresaNG();
-        control.ImportarEmpresa(this.cnpj);
+        control.ImportarEmpresa(this.idEmpresa,this.cnpj);
     }
     
     public void setPosicao() {
