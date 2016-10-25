@@ -23,6 +23,7 @@ import jsageImport.modelo.dominio.PessoaFisica;
 public class TratamentoDados {
     
     private static final String SQL_RECUP_CIDADE = "SELECT * FROM dom_municipio WHERE idmunicipio = ?;";
+    private static final String SQL_RECUP_CNAE = "SELECT * FROM dom_cnae WHERE idcnae = ?;";
     private static final String SQL_RECUP_ESTADO = "SELECT * FROM dom_uf WHERE iduf = ?;";
     private static final String SQL_RECUP_CATCNH = "SELECT * FROM dom_categoriahabilitacaocnh WHERE idcategoriahabilitacaocnh = ?;";
     private static final String SQL_PESQUISA_PIS = "SELECT idtipoinscricao, numeroinscricao FROM bpm_dadospessoafisica WHERE idpessoa = ?";
@@ -79,9 +80,13 @@ public class TratamentoDados {
      * @param inteiro
      * @return short
      */
-    private short converterIntShort (int inteiro){
+    public short converterIntShort (int inteiro){
         short valor;
-        valor = (short) inteiro;              
+        try{
+            valor = (short) inteiro;              
+        } catch(Exception e){
+            valor = 0;
+        }
         return valor;
     } 
     
@@ -315,6 +320,63 @@ public class TratamentoDados {
         }
         
         return tipoAd;
+    }
+    
+    public String recuperarCnaeEmpresa (int idcnae) throws JsageImportException {
+        String cnae = "";
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNGDOMINIO);
+            stmt = con.prepareStatement(SQL_RECUP_CNAE);
+            
+            stmt.setInt(1,  idcnae );
+            
+            rs = stmt.executeQuery();
+                       
+            while(rs.next()){
+                cnae = rs.getString("subclasse");
+            }
+            cnae = cnae.replace("-", "");
+            cnae = cnae.replace("/", "");
+            
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta do cnae.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        return cnae;
+    }
+    
+    public short recuperarFormaTributacao (int tributacao) throws JsageImportException{
+        short tributo;
+        switch (tributacao){
+            case 21:
+                tributo = 0;
+                break;
+            case 20:
+                tributo = 1;
+                break;
+            case 22:
+                tributo = 2;
+                break;
+            case 27:
+                tributo = 3;
+                break;
+            case 23:
+                tributo = 4;
+                break;
+            case 24:
+                tributo = 5;
+                break;
+            default:
+                tributo = 6;
+        }       
+        return tributo;
     }
     
     public String recuperarNaturezaJuridica (int natureza)throws JsageImportException{

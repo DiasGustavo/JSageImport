@@ -114,15 +114,15 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
                                                                         +"empresa_cidada,utiliza_controle_parcelas_auditoria,emitir_aviso_ferias,opcao_data_aviso_previo,forma_digitacao_caixa_banco_auditoria,grau_padrao_relatorio,data_hora_alteracao)"
                                                                         +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
-    private static final String SQL_CADASTRO_ESTABELECIMENTO = "INSERT INTO CRDEstabelecimento   (cd_empresa,cd_estabelecimento,razao,fantasia,endereco,numero,complemento,bairro,cidade,cep,uf,cd_municipio,ddd_telefone\n" +
-"								  ,telefone,natureza_juridica,categoria,cnpj_cpf,cnae,local_registro,atividades,nome_titular,denom_titular,cpf_titular\n" +
-"								  ,cd_responsavel_estabelecimento,cd_responsavel_caged,cd_responsavel_sefip,salario_educacao,denominacao_pagina_csc\n" +
-"								  ,contribuinte_icms,contribuinte_ipi,contribuinte_iss,opcao_ipi,compensacao_tributos_retido,denominacao_pagina_cef\n" +
-"								  ,substituto_tributario,utiliza_ecf,tributacao,qualificacao,dt_inicio_atividade,antecipar_irpj_csll,calcular_excedente_antecipacao_irpj_csll\n" +
-"								  ,parcelamento_irpj_csll,tipo_estabelecimento,instituicao_financeira,status,razao_completa,estatuto_microempresa,opcao_vencimento_darf\n" +
-"								  ,beneficiario_prodepe,difere_icms_rs,opcao_super,vl_super_icms_fixo,vl_super_iss_fixo,protocolos_baixa_guias,cd_classificacao\n" +
-"								  ,natureza_juridica_ecf,tipo_entidade_ecf,tipo_plano_ecf,coeficiente_ciap_opcao, data_hora_alteracao)\n" +
-"								  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_CADASTRO_ESTABELECIMENTO = "INSERT INTO CRDEstabelecimento   (cd_empresa,cd_estabelecimento,razao,fantasia,endereco,numero,complemento,bairro,cidade,cep,uf,cd_municipio,ddd_telefone " +
+                                                                        ",telefone,natureza_juridica,categoria,cnpj_cpf,cnae,local_registro,atividades,nome_titular,denom_titular,cpf_titular " +
+                                                                        ",cd_responsavel_estabelecimento,cd_responsavel_caged,cd_responsavel_sefip,salario_educacao,denominacao_pagina_csc " +
+                                                                        ",contribuinte_icms,contribuinte_ipi,contribuinte_iss,opcao_ipi,compensacao_tributos_retido,denominacao_pagina_cef " +
+                                                                        ",substituto_tributario,utiliza_ecf,tributacao,qualificacao,dt_inicio_atividade,antecipar_irpj_csll,calcular_excedente_antecipacao_irpj_csll " +
+                                                                        ",parcelamento_irpj_csll,tipo_estabelecimento,instituicao_financeira,status,razao_completa,estatuto_microempresa,opcao_vencimento_darf " +
+                                                                        ",beneficiario_prodepe,difere_icms_rs,opcao_super,vl_super_icms_fixo,vl_super_iss_fixo,protocolos_baixa_guias,cd_classificacao " +
+                                                                        ",natureza_juridica_ecf,tipo_entidade_ecf,tipo_plano_ecf,coeficiente_ciap_opcao,data_hora_alteracao) " +
+                                                                " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     /*Strings de url*/
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
@@ -209,7 +209,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             
             
         } catch (SQLException exc) {
-            StringBuffer msg = new StringBuffer("Não foi possível incluir a Empresa no SAGE.");
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o cadastro da Empresa no SAGE.");
             msg.append("\nMotivo: " + exc.getMessage());
             throw new JsageImportException(msg.toString());
         } finally {
@@ -217,7 +217,9 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
         }
     }
     
-    public void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaFolha empFolha) throws JsageImportException{
+    @Override
+    public void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException{
+        
         if (pj == null) {
             String mensagem = "Não foi informada a Empresa para importar";
             throw new JsageImportException(mensagem);
@@ -248,7 +250,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setString(15, trataDados.recuperarNaturezaJuridica(pj.getIdNaturezaJuridica()));//natureza_juridica
             stmt.setShort(16, (short)9);//categoria
             stmt.setString(17, pj.getCnpjFormatado());//cnpj_cpf
-            stmt.setInt(18, empTrib.getIdCNAE());
+            stmt.setInt(18, trataDados.converterSrintInt(trataDados.recuperarCnaeEmpresa(empCnae.getIdformatributacao())));
             stmt.setString(19, "J");//local_registro
             stmt.setString(20, null );//atividades
             stmt.setString(21, pj.getNomePessoa());//nome_titular
@@ -267,7 +269,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setString(34, "PÁGINA");//denominacao_pagina_cef
             stmt.setString(35, "N");//substituto tributario
             stmt.setString(36, "N");//utiliza ecf
-            stmt.setShort(37,(short) empTrib.getIdformatributacao());//tributacao
+            stmt.setShort(37, trataDados.recuperarFormaTributacao(empTrib.getIdformatributacao()));//tributacao
             stmt.setShort(38, (short) pj.getIdQualificacaoEmpresa());//qualficacao
             stmt.setTimestamp(39, pj.getDataInicioAtividade());
             stmt.setString(40, "N");//antecipar_irpj_csll
@@ -278,23 +280,24 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setString(45, "A");//status
             stmt.setString(46, pj.getNomeFantasia());//RAZAO COMPLETA
             stmt.setString(47, "N");//estatuto_microempresa
-            stmt.setString(48, "N");//beneficio prodepe
-            stmt.setString(49, "N");//difere_icms_rs
-            stmt.setInt(50, 0);//OPCAO SUPER
-            stmt.setDouble(51, 0);//vl_super_icms_fixo
-            stmt.setDouble(52, 0);//vl_super_iss_fixo
-            stmt.setString(53, "S");//protocolos_baixa_guias
-            stmt.setInt(54, empFolha.getIdclassificacaotributaria() );//CODIGO CLASSIFICACAO
-            stmt.setInt(55, 1);//natureza juridica ecf
-            stmt.setInt(56, 0);//tipo entidade ecf
-            stmt.setInt(57, 1);//tipo plano ecf
-            stmt.setInt(58, 1);//coeficiente_ciap_opcao
-            stmt.setTimestamp(59, trataDados.horaAtual());//data_hora_alteracao
+            stmt.setShort(48, (short)0);//opcao_vencimento_darf
+            stmt.setString(49, "N");//beneficio prodepe
+            stmt.setString(50, "N");//difere_icms_rs
+            stmt.setInt(51, 0);//OPCAO SUPER
+            stmt.setDouble(52, 0);//vl_super_icms_fixo
+            stmt.setDouble(53, 0);//vl_super_iss_fixo
+            stmt.setString(54, "S");//protocolos_baixa_guias
+            stmt.setInt(55, empFolha.getIdclassificacaotributaria() );//CODIGO CLASSIFICACAO
+            stmt.setInt(56, 1);//natureza juridica ecf
+            stmt.setInt(57, 0);//tipo entidade ecf
+            stmt.setInt(58, 1);//tipo plano ecf
+            stmt.setInt(59, 1);//coeficiente_ciap_opcao
+            stmt.setTimestamp(60, trataDados.horaAtual());//data_hora_alteracao
             
             stmt.executeUpdate();
             
         } catch (SQLException exc) {
-            StringBuffer msg = new StringBuffer("Não foi possível incluir o estabelecimento no SAGE.");
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o cadastro do estabelecimento no SAGE.");
             msg.append("\nMotivo: " + exc.getMessage());
             throw new JsageImportException(msg.toString());
         } finally {

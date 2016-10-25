@@ -397,15 +397,25 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 List listaFolhaEmpresa = capturarInfoEmpresasFolha(idEmpresa);
                 
                  //instancias dos objetos
-                EmpresaTributacao empTrib = (EmpresaTributacao)listaTributacaoEmpresa.get(0);
-                EmpresaTributacao empTribCNAE = new EmpresaTributacao();
+                PessoaJuridica pjGravar = null;
+                if (listaEmpresa.size() > 0){
+                    pjGravar =(PessoaJuridica) listaEmpresa.get(0);
+                    controlSAGE.gravarEmpresa(pjGravar);
+                }
+                EmpresaTributacao empTrib = null;
+                if (listaTributacaoEmpresa.size()> 0){
+                    empTrib = (EmpresaTributacao)listaTributacaoEmpresa.get(0);
+                }
+                EmpresaTributacao empTribCNAE = null;
+                if (listaCnaeEmpresa.size() > 0){
+                    empTribCNAE = (EmpresaTributacao)listaCnaeEmpresa.get(0);
+                }
+                EmpresaFolha empFolha = null;
+                if (listaFolhaEmpresa.size()>0){
+                    empFolha = (EmpresaFolha) listaFolhaEmpresa.get(0);
+                }
                 
-                EmpresaFolha empFolha = (EmpresaFolha) listaFolhaEmpresa.get(0);
-                
-                PessoaJuridica pjGravar =(PessoaJuridica) listaEmpresa.get(0);
-                controlSAGE.gravarEmpresa(pjGravar);
-                
-                controlSAGE.gravarEstabelecimento(pjGravar, empTrib, empFolha);
+                controlSAGE.gravarEstabelecimento(pjGravar, empTrib, empTribCNAE, empFolha);
                 
                 
                            

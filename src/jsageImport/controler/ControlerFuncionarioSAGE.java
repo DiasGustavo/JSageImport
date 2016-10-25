@@ -65,10 +65,10 @@ public class ControlerFuncionarioSAGE {
         
     }
     
-    public void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaFolha empFolha) throws JsageImportException {
+    public void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException {
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
-        PEmpresa.gravarEstabelecimento(pj, empTrib, empFolha);
+        PEmpresa.gravarEstabelecimento(pj, empTrib, empCnae, empFolha);
     }
     
     public void gravarFuncionario (int cdEmpresa, DadosFuncionario pf, DadosFuncionaisNG fun) throws JsageImportException{

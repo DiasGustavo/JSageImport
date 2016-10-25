@@ -36,6 +36,6 @@ public interface IPersistenciaSAGE {
     public abstract void gravarDependentes (int cdFuncionario, int cdEmpresa, DependenteNG dep) throws JsageImportException;
     public abstract void gravarDadosFuncionais (int cdEmpresa, int cdFuncionario, DadosFuncionaisNG df, DadosFuncionario fun) throws JsageImportException;
     
-    public abstract void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaFolha empFolha) throws JsageImportException;
+    public abstract void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException;
     public boolean testaConexaoSAGE (String server, String bd, String port, String user, String password) throws JsageImportException;
 }
