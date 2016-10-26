@@ -32,6 +32,7 @@ public class TratamentoDados {
     private static final String SQL_AGENCIA = "SELECT * FROM bpm_dadosagencia WHERE iddadosagencia = ? ";
     private static final String SQL_BANCO = "SELECT * FROM bpm_dadosbanco WHERE iddadosbanco = ? ";
     private static final String SQL_CONTA = "SELECT * FROM bpm_dadosfuncionario WHERE idpessoa = ? ";
+    private static final String SQL_RECUPERA_CPFTITULAR = "SELECT * FROM bpm_dadospessoafisica where idpessoa = ?";
     
     
     PropertiesJdbc jdbc = new PropertiesJdbc();
@@ -40,6 +41,40 @@ public class TratamentoDados {
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
     private final String urlNGFOLHA = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng_folha;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
     private final String urlNGDOMINIO = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng_dominio;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
+    
+    public String recupararCPFTitular (int idPessoa)throws JsageImportException{
+        String cpf = "";
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_RECUPERA_CPFTITULAR );
+            stmt.setInt(1, idPessoa);
+            rs = stmt.executeQuery();
+            
+         
+            while(rs.next()){
+                cpf = rs.getString("cpf");
+                
+            }
+            
+            if (cpf == null){
+                
+                cpf = "00000000000";
+            }
+            
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta da cpf.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        
+        return cpf;
+    }
     /**
      * Converte os valores Strings para inteiros
      * @param string
