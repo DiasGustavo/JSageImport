@@ -2,3 +2,7 @@ Registro: Existentes no SAGE: 7867 --- 7866 ----- COSME GONCALVES DE CARVALHO --
 Registro: Gravado o funcionario de código: 7867 nome: COSME GONCALVES DE CARVALHO ---  Data:Mon Oct 24 19:10:28 GFT 2016
 Registro: Existentes no SAGE: 7867 --- 7866 ----- COSME GONCALVES DE CARVALHO ---  Data:Tue Oct 25 18:53:45 GMT-03:00 2016
 Registro: Gravado o funcionario de código: 7867 nome: COSME GONCALVES DE CARVALHO ---  Data:Tue Oct 25 18:53:49 GMT-03:00 2016
+Registro: Existentes no SAGE: 7867 --- 7866 ----- COSME GONCALVES DE CARVALHO ---  Data:Thu Oct 27 12:55:54 GFT 2016
+Registro: Gravado o funcionario de código: 7867 nome: COSME GONCALVES DE CARVALHO ---  Data:Thu Oct 27 12:55:55 GFT 2016
+Registro: Existentes no SAGE: 7867 --- 7866 ----- COSME GONCALVES DE CARVALHO ---  Data:Thu Oct 27 17:39:48 GFT 2016
+Registro: Gravado o funcionario de código: 7867 nome: COSME GONCALVES DE CARVALHO ---  Data:Thu Oct 27 17:39:49 GFT 2016

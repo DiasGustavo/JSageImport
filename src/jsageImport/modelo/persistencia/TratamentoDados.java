@@ -24,6 +24,7 @@ public class TratamentoDados {
     
     private static final String SQL_RECUP_CIDADE = "SELECT * FROM dom_municipio WHERE idmunicipio = ?;";
     private static final String SQL_RECUP_CNAE = "SELECT * FROM dom_cnae WHERE idcnae = ?;";
+     private static final String SQL_RECUPERA_FORMA_TRIBUTACAO = "SELECT * FROM dom_formatributacao where idformatributacao = ?";
     private static final String SQL_RECUP_ESTADO = "SELECT * FROM dom_uf WHERE iduf = ?;";
     private static final String SQL_RECUP_CATCNH = "SELECT * FROM dom_categoriahabilitacaocnh WHERE idcategoriahabilitacaocnh = ?;";
     private static final String SQL_PESQUISA_PIS = "SELECT idtipoinscricao, numeroinscricao FROM bpm_dadospessoafisica WHERE idpessoa = ?";
@@ -390,8 +391,25 @@ public class TratamentoDados {
     }
     
     public short recuperarFormaTributacao (int tributacao) throws JsageImportException{
-        short tributo;
-        switch (tributacao){
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            int codtributo = 0;
+            con = GerenciadorConexao.getConnection(urlNGDOMINIO);
+            stmt = con.prepareStatement(SQL_RECUPERA_FORMA_TRIBUTACAO);
+            
+            stmt.setInt(1,  tributacao );
+            
+            rs = stmt.executeQuery();
+                       
+            while(rs.next()){
+                codtributo = rs.getInt("idformatributacao");
+            }
+                       
+            short tributo;
+        switch (codtributo){
             case 21:
                 tributo = 0;
                 break;
@@ -414,6 +432,15 @@ public class TratamentoDados {
                 tributo = 6;
         }       
         return tributo;
+            
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta da forma tributação.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+               
     }
     
     public String recuperarNaturezaJuridica (int natureza)throws JsageImportException{

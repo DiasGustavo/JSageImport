@@ -47,7 +47,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
 
     private static final String SQL_EMPRESATRIBUTACAO = "SELECT * FROM (bpm_dadosempresaformatributacao AS eformatributacao INNER JOIN bpm_dadosempresaformatributacaocomplementofolha AS etribcompfolha "
                                                             + "ON eformatributacao.iddadosempresaformatributacao = etribcompfolha.iddadosempresaformatributacao )" 
-                                                            + "WHERE eformatributacao.ano = 2016  AND eformatributacao.idpessoa = ?";
+                                                            + "WHERE  eformatributacao.idpessoa = ?";
     
     private static final String SQL_PORTE_EMPRESA = "SELECT * FROM bpm_dadosempresaporteempresa WHERE idpessoa = ? and ano = 2016";
     
@@ -404,7 +404,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 }
                 EmpresaTributacao empTrib = null;
                 if (listaTributacaoEmpresa.size()> 0){
-                    empTrib = (EmpresaTributacao)listaTributacaoEmpresa.get(0);
+                    empTrib = (EmpresaTributacao)listaTributacaoEmpresa.get(listaTributacaoEmpresa.size()-1);
                 }
                 EmpresaTributacao empTribCNAE = null;
                 if (listaCnaeEmpresa.size() > 0){
@@ -418,19 +418,16 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 controlSAGE.gravarEstabelecimento(pjGravar, empTrib, empTribCNAE, empFolha);
                 controlSAGE.gravarEstabelecimentoParametro(pjGravar);
                 controlSAGE.gravarCRDPermissaoGrupoEstabelecimento(idEmpresa);
-                controlSAGE.gravarEmpresaMatrizContabilizacao(idEmpresa);
-                controlSAGE.gravarCRDSCPRODEC(idEmpresa);
-                controlSAGE.gravarTipoDRE(idEmpresa);
-                controlSAGE.gravarTituloDRE(idEmpresa);;
-                controlSAGE.gravarCSCDFCEPlano(idEmpresa);
-                controlSAGE.gravarCSCDFCEquivalenteCaixa(idEmpresa);
-                controlSAGE.gravarCapaLote(idEmpresa);;
-                controlSAGE.gravarTomador(idEmpresa);
                 controlSAGE.gravarCSCDRAPlano(idEmpresa);
+                controlSAGE.gravarCSCDFCEPlano(idEmpresa);
+                //controlSAGE.gravarCSCDFCEquivalenteCaixa(idEmpresa);
+                controlSAGE.gravarTomador(idEmpresa);
+                //controlSAGE.gravarTituloDRE(idEmpresa);
+                controlSAGE.gravarTipoDRE(idEmpresa);
+                controlSAGE.gravarCRDSCPRODEC(idEmpresa);
+                controlSAGE.gravarCapaLote(idEmpresa);
+                controlSAGE.gravarEmpresaMatrizContabilizacao(idEmpresa);
                 
-                
-                
-                           
                 JOptionPane.showMessageDialog(null, "Empresa Gravada com Sucesso!");
             }else if (reply == JOptionPane.NO_OPTION){
                 throw new JsageImportException("Primeiro importe a empresa para depois importar os Funcionários.");

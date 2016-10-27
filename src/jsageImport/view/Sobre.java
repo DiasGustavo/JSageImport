@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Sobre extends JOptionPane{
     
-    String mensagem = "Sistema SAGEImport \n versão 1.2   \n Copyright © Gustavo Dias. Todos os direitos Reservados. \n Contato: gustavouepb@gmail.com";
+    String mensagem = "Sistema SAGEImport \n versão 1.2   \n Copyright © GoldenSoft. Todos os direitos Reservados. \n Contato: gustavouepb@gmail.com";
     String titulo = "Sobre";
     
     public Sobre(){

@@ -135,29 +135,26 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
 "                                                               ,soma_icms_st,soma_ipi,zerar_credito_icms_importacao,opcao_importar_notas_dropdrive_nfe,opcao_buscar_notas_iob_gerencia,opcao_buscar_notas_armazenadas" +
 "                                                               ,opcao_rateio_despesas,livro_diario_numero,livro_diario_registro,livro_diario_folha_inicial,livro_diario_folha_final,sociedade_conselho_fiscal_instalado" +
 "                                                               ,sociedade_auditoria_independente,oficio_circular_dnrc,credito_aquisicao_bebidas,iob_armazernar_notas,monitorar_ncm,opcao_estimativa_anual" +
-"                                                               ,opcao_fechamento_trimestral,opcao_buscar_chaves_entrada_rfb,opcao_importar_observacoes_entrada,opcao_incluir_prod_nao_vinculados" +
-"                                                               ,regravar_produtos_existentes,opcao_importar_observacoes_saida,regravar_emit_dest_frete,listar_reg_adv_frete,opcao_importar_observacoes_frete,recolhe_diferencial_aliquota" +
-"                                                               ,diferencial_aliquota_opcao_importados,diferencial_aliquota_opcao_nao_importados,diferencial_aliquota_opcao_simples,diferencial_aliquota_opcao_recolhimento" +
-"                                                               ,diferencial_aliquota_opcao_mes_vencimento,diferencial_aliquota_opcao_vencimento,recolhe_antecipacao_parcial,antecipacao_parcial_opcao_importados" +
-"                                                               ,antecipacao_parcial_opcao_nao_importados,antecipacao_parcial_opcao_simples,antecipacao_parcial_opcao_recolhimento,antecipacao_parcial_opcao_mes_vencimento" +
-"                                                               ,antecipacao_parcial_opcao_vencimento,recolhe_antecipacao_parcial_st,antecipacao_parcial_st_opcao_importados,antecipacao_parcial_st_opcao_nao_importados,antecipacao_parcial_st_opcao_simples" +
-"                                                               ,antecipacao_parcial_st_opcao_recolhimento,antecipacao_parcial_st_opcao_mes_vencimento,antecipacao_parcial_st_opcao_vencimento)"+
-                                                                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
+"                                                               ,opcao_fechamento_trimestral)"+
+                                                                " VALUES  (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
+    
     
     private static final String SQL_CAPA_LOTE = "INSERT INTO CapaLote (nr_lote,enterprise_id,descricao,dt_lote,periodo,origem,tipo,situacao,repete_debito,repete_credito,repete_historico,repete_ccusto,repete_complemento" +
 "                                                                      ,identificador,historico_especial,lote_caixa,repete_valor)"+
                                                                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
-    private static final String SQL_CRDSCPRODEC = " INSERT INTO CRDSPRODEC (cd_empresa, cd_estabelecimento,solicita_confirmacao,status)"+
+    private static final String SQL_CRDSCPRODEC = " INSERT INTO CRDSCPRODEC (cd_empresa, cd_estabelecimento,solicita_confirmacao,status)"+
                                                                 "VALUES (?,?,?,?)";
     
     private static final String SQL_TIPODRE = " INSERT INTO TipoDRE (cd_tipoDRE, enterprise_id, descricao, nr_ordem, natureza)"+
-                                                                "SELET DISTINCT dre.cd_tipoDRE, emp.cd_empresa, dre.descricao, dre.nr_ordem, dre.natureza"+
-                                                                "FROM tipoDRE dre, CRDEmpresa emp where emp.cd_empresa = ? and dre.cd_tipoDRE = ?";
+                                                                " SELECT DISTINCT dre.cd_tipoDRE, emp.cd_empresa, dre.descricao, dre.nr_ordem, dre.natureza "+
+                                                                " FROM TipoDRE dre, CRDEmpresa emp "+
+                                                                " where emp.cd_empresa = ? and dre.cd_tipoDRE = ?";
     
-    private static final String SQL_TITULODRE = "INSERT INTO tituloDRE (cd_tituloRE, enterprise_id, descricao, ordem)"+
-                                                "SELECT DISTINCT dre.cd_tirularDRE, emp.cd_empresa, dre.descricao, dre.ordem"+
-                                                "FROM TituloDre dre, CRDEmpresa emp WHERE emp.cd_empresa = ? and dre.cd_titularDRE = ?";
+    private static final String SQL_TITULODRE = "INSERT INTO TituloDRE (cd_tituloDRE, enterprise_id, descricao, ordem)"+
+                                                " SELECT DISTINCT dre.cd_tituloDRE, emp.cd_empresa, dre.descricao, dre.ordem"+
+                                                " FROM TituloDRE dre, CRDEmpresa emp"+ 
+                                                " WHERE emp.cd_empresa = ? and dre.cd_tituloDRE = ?";
     
     private static final String SQL_TOMADOR = "INSERT INTO Tomador (cd_empresa,cd_tomador,nome,obra_construcao_civil,cd_filial,status,sujeita_a_desoneracao)"+
                                                                  "VALUES (?,?,?,?,?,?,?)";
@@ -165,12 +162,13 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
     private static final String SQL_CSCDFCEQUIVALENTECAIXA = "INSERT INTO CSCDFCEquivalenteCaixa (enterprise_id, opcao_plano, classificacao)"+
                                                                   "VALUES (?,?,?)";
     
-    private static final String SQL_CSCDFCEPLANO = "INSERT INTO CSCDFCEPlano (enterprise_id, cd_plano_dfc, opcao_plano, descricao,opcao_metodo, opcao_niveis)"+
-                                                    "SELECT DISTINCT emp.cd_empresa, pl.cd_plano_dfc, pl.opcao_plano, pl.descricao, pl.opcao_metodo, pl.opcao_niveis"+
-                                                    "FROM CSCDFCPlano pl, CRDEmpresa emp where emp.cd_empresa = ? and pl.cd_plano_dfc = ?";
+    private static final String SQL_CSCDFCPLANO = "INSERT INTO CSCDFCPlano (enterprise_id, cd_plano_dfc, opcao_plano, descricao,opcao_metodo, opcao_niveis)"+
+                                                    " SELECT DISTINCT emp.cd_empresa, plano.cd_plano_dfc, plano.opcao_plano, plano.descricao, plano.opcao_metodo, plano.opcao_niveis"+
+                                                    " FROM CSCDFCPlano plano, CRDEmpresa emp"+
+                                                    " where emp.cd_empresa = ? and plano.cd_plano_dfc = ?";
     
     private static final String SQL_CSCDRAPLANO = "INSERT INTO CSCDRAPlano (enterprise_id, cd_plano_DRA, descricao, opcao_plano)"+
-                                                    "VALUES (?,?,?,?)";
+                                                    " VALUES (?,?,?,?)";
     
   private static final String SQL_CRDPERMISSAOGRUPOESTABELECIMENTO = "INSERT INTO CRDPermissaoGrupoEstabelecimento (cd_empresa, cd_estabelecimento, cd_grupo_estabelecimento)"+
                                                                     "VALUES (?,?,?)";
@@ -289,7 +287,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setString(4, pj.getNomeFantasia());//fantasia
             stmt.setString(5, pj.getLogradouro());//endereco
             //trataDados.converterSrintInt(pj.getNumeroEndereco())
-            stmt.setInt(6, trataDados.converterSrintInt(pj.getNumeroEndereco()));//numero
+            stmt.setInt(6, trataDados.tratarNrEndereco(pj.getNumeroEndereco()));//numero
           
             stmt.setString(7, pj.getBairro());//bairro
             stmt.setString(8, trataDados.recuperarCidade(pj.getIdmunicipio()));//cidade
@@ -302,7 +300,8 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setString(13, trataDados.recuperarNaturezaJuridica(pj.getIdNaturezaJuridica()));//natureza_juridica
             stmt.setShort(14, (short)9);//categoria
             stmt.setString(15, pj.getCnpjFormatado());//cnpj_cpf
-            stmt.setInt(16, empTrib.getIdCNAE());
+            System.out.println(trataDados.converterSrintInt(trataDados.recuperarCnaeEmpresa(empCnae.getIdCNAE())));
+            stmt.setInt(16, trataDados.converterSrintInt(trataDados.recuperarCnaeEmpresa(empCnae.getIdCNAE())));
             stmt.setString(17, "J");//local_registro
             
             stmt.setString(18, pj.getNomePessoa());//nome_titular
@@ -322,8 +321,9 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setString(32, "PÁGINA");//denominacao_pagina_cef
             stmt.setString(33, "N");//substituto tributario
             stmt.setString(34, "N");//utiliza ecf
-            stmt.setShort(35,(short) empTrib.getIdformatributacao());//tributacao
-            stmt.setShort(36, (short) pj.getIdQualificacaoEmpresa());//qualficacao
+            //System.out.println(empTrib.getIdformatributacao() + "passou aki nesse caraii");
+            stmt.setShort(35,(short) trataDados.recuperarFormaTributacao(empTrib.getIdformatributacao()));//tributacao
+            stmt.setShort(36, (short) 7);//qualficacao
             stmt.setTimestamp(37, pj.getDataInicioAtividade());//dt_inicio_atividade
             stmt.setString(38, "N");//antecipar_irpj_csll
             stmt.setString(39, "N");//calcular_excedente_antecipacao_irpj_csll
@@ -340,7 +340,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setDouble(50, 0);//vl_super_icms_fixo
             stmt.setDouble(51, 0);//vl_super_iss_fixo
             stmt.setString(52, "S");//protocolos_baixa_guias
-            stmt.setInt(53, empFolha.getIdclassificacaotributaria() );//CODIGO CLASSIFICACAO
+            stmt.setInt(53, 203 );//CODIGO CLASSIFICACAO
             stmt.setDouble(54, 0);//aliquota_fecp
             stmt.setInt(55, 1);//natureza juridica ecf
             stmt.setInt(56, 0);//tipo entidade ecf
@@ -448,7 +448,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setString(46, "N");
             stmt.setInt(47, 1);
             stmt.setInt(48,1);
-            stmt.setString(49, "N");
+            /*stmt.setString(49, "N");
             stmt.setString(50, "N");
             stmt.setString(51, "N");
             stmt.setString(52, "N");
@@ -476,7 +476,7 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt.setInt(74, 1);
             stmt.setInt(75, 1);
             stmt.setInt(76, 1);
-            stmt.setInt(77, 1);
+            stmt.setInt(77, 1);*/
                       
             
             stmt.executeUpdate();
@@ -609,19 +609,17 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
         
         try{
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
-            stmt = con.prepareStatement(SQL_CSCDFCEPLANO);
+            stmt = con.prepareStatement(SQL_CSCDFCPLANO);
             
             int [] tipoPlanoDFC = {501,505,551,555,601,605,651,655};
             
             for (int i = 0; i < 8; i++) {
                 stmt.setInt(1, cd_empresa);
                 stmt.setInt(2, tipoPlanoDFC[i]);
+                stmt.executeUpdate();
             }
-          
-            stmt.executeUpdate();
-        
         }catch (SQLException exc) {
-            StringBuffer msg = new StringBuffer("Não foi possível incluir o CSCDFCEPlano no SAGE.");
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o CSCDFCPlano no SAGE.");
             msg.append("\nMotivo: " + exc.getMessage());
             throw new JsageImportException(msg.toString());
         } finally {
@@ -666,10 +664,10 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             stmt = con.prepareStatement(SQL_TITULODRE);
             
             for (int i =  1; i < 31; i++) {
-            stmt.setInt(1, cd_empresa);
-            stmt.setInt(2, i);
-            
-            stmt.executeUpdate();
+                stmt.setInt(1, cd_empresa);
+                stmt.setInt(2, i);            
+                
+                stmt.executeUpdate();
             
             }
        
