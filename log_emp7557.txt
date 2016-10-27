@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 7642 --- 7557 ----- MAGNA ALEXANDRE LOPES --- Data:Tue Oct 25 18:10:54 GFT 2016
+Registro: Gravado o funcionario de código: 7642 nome: MAGNA ALEXANDRE LOPES ---  Data:Tue Oct 25 18:10:56 GFT 2016
+Registro: Existentes no SAGE: 7645 --- 7557 ----- MARIA DA PENHA DA SILVA ROCHA ---  Data:Tue Oct 25 18:10:56 GFT 2016
+Registro: Gravado o funcionario de código: 7645 nome: MARIA DA PENHA DA SILVA ROCHA ---  Data:Tue Oct 25 18:10:56 GFT 2016

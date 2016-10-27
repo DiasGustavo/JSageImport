@@ -416,6 +416,18 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 }
                 
                 controlSAGE.gravarEstabelecimento(pjGravar, empTrib, empTribCNAE, empFolha);
+                controlSAGE.gravarEstabelecimentoParametro(pjGravar);
+                controlSAGE.gravarCRDPermissaoGrupoEstabelecimento(idEmpresa);
+                controlSAGE.gravarEmpresaMatrizContabilizacao(idEmpresa);
+                controlSAGE.gravarCRDSCPRODEC(idEmpresa);
+                controlSAGE.gravarTipoDRE(idEmpresa);
+                controlSAGE.gravarTituloDRE(idEmpresa);;
+                controlSAGE.gravarCSCDFCEPlano(idEmpresa);
+                controlSAGE.gravarCSCDFCEquivalenteCaixa(idEmpresa);
+                controlSAGE.gravarCapaLote(idEmpresa);;
+                controlSAGE.gravarTomador(idEmpresa);
+                controlSAGE.gravarCSCDRAPlano(idEmpresa);
+                
                 
                 
                            

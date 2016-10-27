@@ -25,8 +25,6 @@ public interface IPersistenciaSAGE {
     public abstract List pesquisaFuncionario(int idPessoa, int cdEmpresa, String cpf) throws JsageImportException;
     public abstract List pesquisaFuncionarioNome( int cdEmpresa, String cpf) throws JsageImportException;
     
-    public abstract void gravarEmpresa (PessoaJuridica pj) throws JsageImportException;
-    
     public abstract void gravarFuncionario (int cdEmpresa, DadosFuncionario pf, DadosFuncionaisNG fun) throws JsageImportException;
     public abstract void gravarDocumentos (int cdFuncionario, int cdEmpresa, DadosFuncionario pf) throws JsageImportException;
     public abstract void gravarLotacao (int cdFuncionario, int cdEmpresa, DadosFuncionaisNG df) throws JsageImportException;
@@ -36,6 +34,21 @@ public interface IPersistenciaSAGE {
     public abstract void gravarDependentes (int cdFuncionario, int cdEmpresa, DependenteNG dep) throws JsageImportException;
     public abstract void gravarDadosFuncionais (int cdEmpresa, int cdFuncionario, DadosFuncionaisNG df, DadosFuncionario fun) throws JsageImportException;
     
+    
+    public void gravarEmpresaMatrizContabilizacao (int cd_empresa)throws JsageImportException;
+    public void gravarEstabelecimentoParametro(PessoaJuridica pj) throws JsageImportException;
+    public void gravarTomador (int cd_empresa) throws JsageImportException;
+    public void gravarCSCDFCEquivalenteCaixa (int cd_empresa)throws JsageImportException;
+    public void gravarCRDPermissaoGrupoEstabelecimento (int cd_empresa) throws JsageImportException;
+    public void gravarCSCDRAPlano(int cd_empresa)throws JsageImportException;
+    public void gravarCSCDFCEPlano (int cd_empresa)throws JsageImportException;
+    public void gravarCRDSCPRODEC (int cd_empresa) throws JsageImportException;
+    public void gravarTituloDRE (int cd_empresa)throws JsageImportException;
+    public void gravarTipoDRE (int cd_empresa) throws JsageImportException;
+    public void gravarCapaLote (int cd_empresa) throws JsageImportException;
+    
+    
     public abstract void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException;
+    public abstract void gravarEmpresa (PessoaJuridica pj) throws JsageImportException;
     public boolean testaConexaoSAGE (String server, String bd, String port, String user, String password) throws JsageImportException;
 }

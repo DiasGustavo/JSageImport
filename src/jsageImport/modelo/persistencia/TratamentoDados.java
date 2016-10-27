@@ -80,6 +80,8 @@ public class TratamentoDados {
      * @param string
      * @return Retorna o valor em inteiro (int)
      */
+   
+    
     public int converterSrintInt (String string){
         int valor;
         if ((string != null) && (string.isEmpty() == false)){

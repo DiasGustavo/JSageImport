@@ -124,6 +124,57 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
 "								  ,aliquota_fecp,natureza_juridica_ecf,tipo_entidade_ecf,tipo_plano_ecf,coeficiente_ciap_opcao, data_hora_alteracao)\n" +
 "								  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
+    private static final String SQL_CADASTRO_EMPRESA_MATRIZ = " INSERT INTO EmpresaMatrizContabilizacao (cd_empresa, id_matriz, operacao_contabil)"
+                                                              +"VALUES (?,?,?)";
+    
+    private static final String SQL_ESTABELECIMENTO_PARAMETRO = "INSERT INTO CRDEstabelecimentoParametro (cd_empresa,cd_estabelecimento,apura_grcsu_patronal,dia_vencto_GIA_RS,opcao_calculo_piscofins"+
+"                                                               ,regime_piscofins,opcao_agrupamento_retencao_tributos,opcao_relatorio_agrupamento_itens,prestador_servico_telecom,regravar_emit_dest_entrada" +
+"                                                               ,importar_nf_dupli_entrada,listar_reg_adv_entrada,regravar_emit_dest_saida,importar_nf_dupli_saida,listar_reg_adv_saida,op_importar_automatico" +
+"                                                               ,aliq_pis_cum,aliq_cofins_cum,regime_caixa_competencia,averb_exportacao,info_cred_icms_ex_apur,comercio_varejista_combust,prod_acucar_alcool_carbur" +
+"                                                               ,info_vl_adicionado,distr_ener_consum_outra_uf,vendas_cartao_credito_debito,contr_utiliz_doc_fiscais_papel,serv_trans_aereo_cargas_pass,aliq_dif_uni_med" +
+"                                                               ,soma_icms_st,soma_ipi,zerar_credito_icms_importacao,opcao_importar_notas_dropdrive_nfe,opcao_buscar_notas_iob_gerencia,opcao_buscar_notas_armazenadas" +
+"                                                               ,opcao_rateio_despesas,livro_diario_numero,livro_diario_registro,livro_diario_folha_inicial,livro_diario_folha_final,sociedade_conselho_fiscal_instalado" +
+"                                                               ,sociedade_auditoria_independente,oficio_circular_dnrc,credito_aquisicao_bebidas,iob_armazernar_notas,monitorar_ncm,opcao_estimativa_anual" +
+"                                                               ,opcao_fechamento_trimestral,opcao_buscar_chaves_entrada_rfb,opcao_importar_observacoes_entrada,opcao_incluir_prod_nao_vinculados" +
+"                                                               ,regravar_produtos_existentes,opcao_importar_observacoes_saida,regravar_emit_dest_frete,listar_reg_adv_frete,opcao_importar_observacoes_frete,recolhe_diferencial_aliquota" +
+"                                                               ,diferencial_aliquota_opcao_importados,diferencial_aliquota_opcao_nao_importados,diferencial_aliquota_opcao_simples,diferencial_aliquota_opcao_recolhimento" +
+"                                                               ,diferencial_aliquota_opcao_mes_vencimento,diferencial_aliquota_opcao_vencimento,recolhe_antecipacao_parcial,antecipacao_parcial_opcao_importados" +
+"                                                               ,antecipacao_parcial_opcao_nao_importados,antecipacao_parcial_opcao_simples,antecipacao_parcial_opcao_recolhimento,antecipacao_parcial_opcao_mes_vencimento" +
+"                                                               ,antecipacao_parcial_opcao_vencimento,recolhe_antecipacao_parcial_st,antecipacao_parcial_st_opcao_importados,antecipacao_parcial_st_opcao_nao_importados,antecipacao_parcial_st_opcao_simples" +
+"                                                               ,antecipacao_parcial_st_opcao_recolhimento,antecipacao_parcial_st_opcao_mes_vencimento,antecipacao_parcial_st_opcao_vencimento)"+
+                                                                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
+    
+    private static final String SQL_CAPA_LOTE = "INSERT INTO CapaLote (nr_lote,enterprise_id,descricao,dt_lote,periodo,origem,tipo,situacao,repete_debito,repete_credito,repete_historico,repete_ccusto,repete_complemento" +
+"                                                                      ,identificador,historico_especial,lote_caixa,repete_valor)"+
+                                                                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
+    private static final String SQL_CRDSCPRODEC = " INSERT INTO CRDSPRODEC (cd_empresa, cd_estabelecimento,solicita_confirmacao,status)"+
+                                                                "VALUES (?,?,?,?)";
+    
+    private static final String SQL_TIPODRE = " INSERT INTO TipoDRE (cd_tipoDRE, enterprise_id, descricao, nr_ordem, natureza)"+
+                                                                "SELET DISTINCT dre.cd_tipoDRE, emp.cd_empresa, dre.descricao, dre.nr_ordem, dre.natureza"+
+                                                                "FROM tipoDRE dre, CRDEmpresa emp where emp.cd_empresa = ? and dre.cd_tipoDRE = ?";
+    
+    private static final String SQL_TITULODRE = "INSERT INTO tituloDRE (cd_tituloRE, enterprise_id, descricao, ordem)"+
+                                                "SELECT DISTINCT dre.cd_tirularDRE, emp.cd_empresa, dre.descricao, dre.ordem"+
+                                                "FROM TituloDre dre, CRDEmpresa emp WHERE emp.cd_empresa = ? and dre.cd_titularDRE = ?";
+    
+    private static final String SQL_TOMADOR = "INSERT INTO Tomador (cd_empresa,cd_tomador,nome,obra_construcao_civil,cd_filial,status,sujeita_a_desoneracao)"+
+                                                                 "VALUES (?,?,?,?,?,?,?)";
+    
+    private static final String SQL_CSCDFCEQUIVALENTECAIXA = "INSERT INTO CSCDFCEquivalenteCaixa (enterprise_id, opcao_plano, classificacao)"+
+                                                                  "VALUES (?,?,?)";
+    
+    private static final String SQL_CSCDFCEPLANO = "INSERT INTO CSCDFCEPlano (enterprise_id, cd_plano_dfc, opcao_plano, descricao,opcao_metodo, opcao_niveis)"+
+                                                    "SELECT DISTINCT emp.cd_empresa, pl.cd_plano_dfc, pl.opcao_plano, pl.descricao, pl.opcao_metodo, pl.opcao_niveis"+
+                                                    "FROM CSCDFCPlano pl, CRDEmpresa emp where emp.cd_empresa = ? and pl.cd_plano_dfc = ?";
+    
+    private static final String SQL_CSCDRAPLANO = "INSERT INTO CSCDRAPlano (enterprise_id, cd_plano_DRA, descricao, opcao_plano)"+
+                                                    "VALUES (?,?,?,?)";
+    
+  private static final String SQL_CRDPERMISSAOGRUPOESTABELECIMENTO = "INSERT INTO CRDPermissaoGrupoEstabelecimento (cd_empresa, cd_estabelecimento, cd_grupo_estabelecimento)"+
+                                                                    "VALUES (?,?,?)";
+    
     /*Strings de url*/
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
     private final String urlNGFOLHA = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng_folha;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
@@ -307,6 +358,400 @@ public class PersistenciaSAGE implements IPersistenciaSAGE {
             GerenciadorConexao.closeConexao(con, stmt);
         }
     }
+    
+    @Override
+    public void gravarEmpresaMatrizContabilizacao (int cd_empresa)throws JsageImportException{
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+       
+        int [] listaOperacaoContabil = {1,2,3,4,5,6,7,21,22,23,24,41,42,43,44,101,102,103,104,121,122,123,124,201,202,203,204,205,206,207,208,209,210,211,212,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,401,402,403,404,421,422,316,105,230,330};
+        
+          
+        
+        try {
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CADASTRO_EMPRESA_MATRIZ);
+            
+            for (int i =  0; i < 60; i++) {
+            stmt.setInt(1, cd_empresa);
+            stmt.setInt(2, i + 1);
+            stmt.setInt(3, listaOperacaoContabil[i]);
+            
+            stmt.executeUpdate();
+        }
+            
+        } catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir a empresa matriz no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+        
+         
+    }
+    
+    public void gravarEstabelecimentoParametro(PessoaJuridica pj ) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try {
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_ESTABELECIMENTO_PARAMETRO);
+            
+            stmt.setInt(1, (short) pj.getIdPessoa());
+            stmt.setInt(2, 1);
+            stmt.setString(3, "N");
+            stmt.setInt(4,21 ) ;
+            stmt.setInt(5, 1);
+            stmt.setInt(6, 3);
+            stmt.setInt(7, 1);
+            stmt.setString(8, "N");
+            stmt.setInt(9, 0);
+            stmt.setString(10,"N");
+            stmt.setString(11,"N");
+            stmt.setString(12, "N");
+            stmt.setString(13, "N");
+            stmt.setString(14, "N");
+            stmt.setString(15, "N");
+            stmt.setString(16, "N");
+            stmt.setDouble(17, 0.65);
+            stmt.setDouble(18,3);
+            stmt.setInt(19, 1);
+            stmt.setString(20, "N");
+            stmt.setString(21,"N");
+            stmt.setString(22, "N");
+            stmt.setString(23, "N");
+            stmt.setString(24, "N");
+            stmt.setString(25, "N");
+            stmt.setString(26, "N");
+            stmt.setString(27, "N");
+            stmt.setString(28, "N");
+            stmt.setString(29, "N");;
+            stmt.setString(30, "N");
+            stmt.setString(31, "N");
+            stmt.setString(32, "N");
+            stmt.setString(33, "N");
+            stmt.setString(34, "N");
+            stmt.setString(35, "N");
+            stmt.setInt(36, 1); 
+            stmt.setInt(37, 0);
+            stmt.setInt(38, 0);
+            stmt.setInt(39, 1);
+            stmt.setInt(40, 1);
+            stmt.setString(41, "N");
+            stmt.setString(42, "N");
+            stmt.setString(43, "N");
+            stmt.setString(44, "N");
+            stmt.setInt(45, 1);
+            stmt.setString(46, "N");
+            stmt.setInt(47, 1);
+            stmt.setInt(48,1);
+            stmt.setString(49, "N");
+            stmt.setString(50, "N");
+            stmt.setString(51, "N");
+            stmt.setString(52, "N");
+            stmt.setString(53, "N");
+            stmt.setString(54, "N");
+            stmt.setString(55, "N");
+            stmt.setString(56, "N");
+            stmt.setString(57, "N");
+            stmt.setInt(58, 1);
+            stmt.setInt(59, 1);
+            stmt.setInt(60, 1);
+            stmt.setInt(61, 1);
+            stmt.setInt(62,1);
+            stmt.setInt(63, 1);
+            stmt.setString(64, "N");
+            stmt.setInt(65, 1);
+            stmt.setInt(66, 1);
+            stmt.setInt(67, 1);
+            stmt.setInt(68, 1);
+            stmt.setInt(69, 1);
+            stmt.setInt(70, 1);
+            stmt.setString(71, "N");
+            stmt.setInt(72, 1);
+            stmt.setInt(73, 1);
+            stmt.setInt(74, 1);
+            stmt.setInt(75, 1);
+            stmt.setInt(76, 1);
+            stmt.setInt(77, 1);
+                      
+            
+            stmt.executeUpdate();
+        
+            
+        } catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o estabelecimento paramentro no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+    }
+    
+    public void gravarTomador (int cd_empresa) throws JsageImportException {
+        
+         Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_TOMADOR);
+            
+            stmt.setInt(1, cd_empresa);
+            stmt.setInt(2, 0);
+            stmt.setString(3, "RETORNO A MATRIZ");
+            stmt.setString(4, "N");
+            stmt.setInt(5, 1);
+            stmt.setString(6, "A");
+            stmt.setString(7, "N");
+            
+            
+            stmt.executeUpdate();
+        
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o Tomador no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }    
+        
+        
+    }
+    
+    public void gravarCSCDFCEquivalenteCaixa (int cd_empresa)throws JsageImportException{
+        
+         Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CSCDFCEQUIVALENTECAIXA);
+            
+            stmt.setInt(1, cd_empresa);
+            stmt.setInt(2, 2);
+            stmt.setString(3, "1.01.01");
+            
+            
+            
+            stmt.executeUpdate();
+        
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o CSCDFCEquivalenteCaixa no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }    
+        
+    }
+    
+    public void gravarCRDPermissaoGrupoEstabelecimento (int cd_empresa) throws JsageImportException{
+         Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CRDPERMISSAOGRUPOESTABELECIMENTO);
+               
+          
+            stmt.setInt(1, cd_empresa);
+            stmt.setInt(2, 1);
+            stmt.setInt(3,1);
+           
+            
+            stmt.executeUpdate();
+        
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o CRDPermissaoGrupoEstabelecimento no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }    
+        
+    }
+    
+    public void gravarCSCDRAPlano(int cd_empresa)throws JsageImportException{
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CSCDRAPLANO);
+               
+          
+            stmt.setInt(1, cd_empresa);
+            stmt.setInt(2, 501);
+            stmt.setString(3, "Padrão, plano da empresa");
+            stmt.setInt(4, 1);
+            
+            stmt.executeUpdate();
+        
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o CSCDRAPlano no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }    
+        
+    }
+    
+    public void gravarCSCDFCEPlano (int cd_empresa)throws JsageImportException{
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CSCDFCEPLANO);
+            
+            int [] tipoPlanoDFC = {501,505,551,555,601,605,651,655};
+            
+            for (int i = 0; i < 8; i++) {
+                stmt.setInt(1, cd_empresa);
+                stmt.setInt(2, tipoPlanoDFC[i]);
+            }
+          
+            stmt.executeUpdate();
+        
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o CSCDFCEPlano no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }    
+        
+    }
+    
+    public void gravarCRDSCPRODEC (int cd_empresa) throws JsageImportException {
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CRDSCPRODEC);
+            stmt.setInt(1, cd_empresa);
+            stmt.setInt(2, 1);
+            stmt.setString(3, "N");
+            stmt.setString(4, "A");
+            
+            
+            stmt.executeUpdate();
+        
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o CDRSCPRODEC no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }    
+        
+    }
+    
+    public void gravarTituloDRE (int cd_empresa)throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+          
+        try {
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_TITULODRE);
+            
+            for (int i =  1; i < 31; i++) {
+            stmt.setInt(1, cd_empresa);
+            stmt.setInt(2, i);
+            
+            stmt.executeUpdate();
+            
+            }
+       
+            
+        } catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o tituloDRE no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+        
+    }
+    
+    public void gravarTipoDRE (int cd_empresa) throws JsageImportException {
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        String [] listaCdTipoDRE = {"CM", "CS","CT", "DO", "DO1", "DO2","DO4", "DO5", "DO6", "DO7","DO8", "BR", "PI","RB","RN1","RN2"};
+       
+        
+        
+        try {
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_TIPODRE);
+            
+            for (int i =  0; i < 16; i++) {
+            stmt.setInt(1, cd_empresa);
+            stmt.setString(2, listaCdTipoDRE[i]);
+           
+            
+            stmt.executeUpdate();
+        }
+            
+        } catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o tipoDRE no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+        
+    }
+    
+    public void gravarCapaLote (int cd_empresa) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CAPA_LOTE);
+            stmt.setInt(1, 0);
+            stmt.setInt(2, cd_empresa);
+            stmt.setString(3, "ONLINE");
+            stmt.setTimestamp(4, trataDados.horaAtual());
+            stmt.setString(5, "M");
+            stmt.setString(6, "CTB");
+            stmt.setString(7, "N");
+            stmt.setString(8, "L");
+            stmt.setString(9, "S");
+            stmt.setString(10, "S");
+            stmt.setString(11, "S");
+            stmt.setString(12, "S");
+            stmt.setString(13, "S");
+            stmt.setString(14, null);
+            stmt.setString(15, "S");
+            stmt.setString(16, "N");
+            stmt.setString(17, "S");
+            
+            
+            stmt.executeUpdate();
+        
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o capaLote no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+         
+     }
     
     @Override
     public void gravarFuncionario (int cdEmpresa, DadosFuncionario pf, DadosFuncionaisNG fun) throws JsageImportException{
