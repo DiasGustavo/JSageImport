@@ -3,8 +3,10 @@
  */
 package jsageImport.persistencia;
 
+import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaSAGE;
 import jsageImport.modelo.ipersistencia.IPersistenciaSAGE;
-import jsageImport.modelo.persistencia.PersistenciaSAGE;
+import jsageImport.modelo.persistencia.PersistenciaEmpresaSAGE;
+import jsageImport.modelo.persistencia.PersistenciaFuncionarioSAGE;
 
 /**
  * @author Gustavo Dias
@@ -15,7 +17,12 @@ import jsageImport.modelo.persistencia.PersistenciaSAGE;
     
     @Override
     public IPersistenciaSAGE getPersistenciaFuncionario() {
-        return new PersistenciaSAGE();
+        return new PersistenciaFuncionarioSAGE();
+    }
+
+    @Override
+    public IPersistenciaEmpresaSAGE getPersistenciaEmpresa() {
+        return new PersistenciaEmpresaSAGE();
     }
     
 }

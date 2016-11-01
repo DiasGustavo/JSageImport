@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import jsageImport.controler.ControlerEmpresaSAGE;
 import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.EmpresaFolha;
@@ -377,8 +378,9 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
      */
     @Override
     public void ImportaEmpresas(int idEmpresa, String cnpj) throws JsageImportException {
-        ControlerFuncionarioSAGE controlSAGE = new ControlerFuncionarioSAGE();
-        List listaEmpresaSAGE = controlSAGE.pesquisarCNPJ(cnpj);
+        ControlerFuncionarioSAGE controlFunSAGE = new ControlerFuncionarioSAGE();
+        ControlerEmpresaSAGE controlEmpSAGE = new ControlerEmpresaSAGE();
+        List listaEmpresaSAGE = controlFunSAGE.pesquisarCNPJ(cnpj);
         if (listaEmpresaSAGE.isEmpty()){
             //JOptionPane.showMessageDialog(null, "Empresa precisa ser primeiro cadastrada no SAGE\n para importar os seus Funcionários!");
             //throw new JsageImportException("Primeiro Cadastre a Empresa no SAGE\n para Depois importar os Funcionários.");
@@ -400,7 +402,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 PessoaJuridica pjGravar = null;
                 if (listaEmpresa.size() > 0){
                     pjGravar =(PessoaJuridica) listaEmpresa.get(0);
-                    controlSAGE.gravarEmpresa(pjGravar);
+                    controlEmpSAGE.gravarEmpresa(pjGravar);
                 }
                 EmpresaTributacao empTrib = null;
                 if (listaTributacaoEmpresa.size()> 0){
@@ -415,18 +417,20 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                     empFolha = (EmpresaFolha) listaFolhaEmpresa.get(0);
                 }
                 
-                controlSAGE.gravarEstabelecimento(pjGravar, empTrib, empTribCNAE, empFolha);
-                controlSAGE.gravarEstabelecimentoParametro(pjGravar);
-                controlSAGE.gravarCRDPermissaoGrupoEstabelecimento(idEmpresa);
-                controlSAGE.gravarCSCDRAPlano(idEmpresa);
-                controlSAGE.gravarCSCDFCEPlano(idEmpresa);
+                controlEmpSAGE.gravarEmpresaParametro(pjGravar);
+                controlEmpSAGE.gravarEstabelecimento(pjGravar, empTrib, empTribCNAE, empFolha);
+                controlEmpSAGE.gravarEstabelecimentoParametro(pjGravar);
+                controlEmpSAGE.gravarCRDPermissaoGrupoEstabelecimento(idEmpresa);
+                controlEmpSAGE.gravarCSCDRAPlano(idEmpresa);
+                controlEmpSAGE.gravarCSCDFCEPlano(idEmpresa);
                 //controlSAGE.gravarCSCDFCEquivalenteCaixa(idEmpresa);
-                controlSAGE.gravarTomador(idEmpresa);
+                controlEmpSAGE.gravarTomador(idEmpresa);
                 //controlSAGE.gravarTituloDRE(idEmpresa);
-                controlSAGE.gravarTipoDRE(idEmpresa);
-                controlSAGE.gravarCRDSCPRODEC(idEmpresa);
-                controlSAGE.gravarCapaLote(idEmpresa);
-                controlSAGE.gravarEmpresaMatrizContabilizacao(idEmpresa);
+                controlEmpSAGE.gravarTipoDRE(idEmpresa);
+                controlEmpSAGE.gravarCRDSCPRODEC(idEmpresa);
+                controlEmpSAGE.gravarCapaLote(idEmpresa);
+                controlEmpSAGE.gravarEmpresaMatrizContabilizacao(idEmpresa);
+                controlEmpSAGE.gravarCSCDMPLPLANO(idEmpresa);
                 
                 JOptionPane.showMessageDialog(null, "Empresa Gravada com Sucesso!");
             }else if (reply == JOptionPane.NO_OPTION){
