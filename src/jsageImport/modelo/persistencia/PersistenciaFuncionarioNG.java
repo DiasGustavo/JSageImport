@@ -697,6 +697,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             pf.setNumeroEndereco(rs.getString("numeroendereco"));
             pf.setComplemento(rs.getString("complemento"));
             pf.setBairro(rs.getString("bairro"));
+            pf.setCep(rs.getString("cep"));
             pf.setIdmunicipio(rs.getInt("idmunicipio"));
             
             /*Dados referentes a pessoa física*/

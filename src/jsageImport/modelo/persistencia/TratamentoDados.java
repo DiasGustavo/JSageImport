@@ -678,12 +678,10 @@ public class TratamentoDados {
     public int recuperarCEP (String cep){
         int cepInt = 0;
         String stcep = cep;
-        stcep = stcep.trim();
-        String c = "-";
-        int pos = stcep.indexOf(c);
         if (cep.equals("") || stcep.isEmpty()){
             return cepInt;
-        } else if (pos == -1) {
+        } else {
+            String c = "-";
             stcep = stcep.replace(c,"");
             stcep = stcep.replace(" ", "");
             cepInt = Integer.parseInt(stcep);
