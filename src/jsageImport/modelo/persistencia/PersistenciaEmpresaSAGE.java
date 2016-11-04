@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import jsageImport.exception.JsageImportException;
+import jsageImport.modelo.dominio.ContaBancaria;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -121,6 +122,9 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
 "                                                                                           ,lei13161_possui_mais_de_uma_aliquota)"+
                                                                                             "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   
+    private static final String SQL_CRD_BANCO = "INSERT INTO Banco(cd_empresa,cd_banco,nome,endereco,nr_endereco,bairro,cidade,estado,cep,codigo_banco,dv_agencia,nr_agencia,nr_conta,dv_conta,estabelecimento_titular,opcao_titular_conta)"+
+                                                                  "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
     @Override
     public void gravarEmpresa (PessoaJuridica pj) throws JsageImportException{
         if (pj == null) {
@@ -690,6 +694,42 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             GerenciadorConexao.closeConexao(con, stmt);
         }    
         
+    }
+    
+    public void gravarBanco (ContaBancaria conta, int cd_empresa)throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CRD_BANCO);
+            
+            stmt.setInt(1, cd_empresa);
+            stmt.setShort(2, (short) conta.getIddadosbanco());
+            stmt.setString(3,conta.getNomePessoa());
+            stmt.setString(4, conta.getLogradouro());
+            stmt.setInt(5, trataDados.tratarNrEndereco(conta.getNumeroEndereco()));
+            stmt.setString(6, conta.getBairro());
+            stmt.setString(7, trataDados.recuperarCidade(conta.getIdmunicipio()));
+            stmt.setString(8, "");
+            stmt.setInt(9,0);
+            stmt.setShort(10,(short) trataDados.convertStringToShort(conta.getCodigobanco()));
+            stmt.setString(11, conta.getNumdvagencia());
+            stmt.setInt(12, trataDados.converterSrintInt(conta.getCodigoagencia()));
+            stmt.setInt(13, trataDados.converterSrintInt(conta.getNumeroconta()));
+            stmt.setString(14, conta.getDigitoverificador());
+            stmt.setInt(15, 1);
+            stmt.setString(16, "E");
+            
+            stmt.executeUpdate();
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir a Agência no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }    
     }
     
     public void gravarEmpresaParametro (PessoaJuridica pj) throws JsageImportException{

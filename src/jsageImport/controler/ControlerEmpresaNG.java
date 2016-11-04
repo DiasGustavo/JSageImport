@@ -32,4 +32,15 @@ public class ControlerEmpresaNG {
         IPersistenciaEmpresaNG PFuncionario = gerenteP.getPersistenciaEmpresa();
         PFuncionario.ImportaEmpresas(idEmpresa,cnpj);
     }
+    
+    public List recuperarAgenciaNG () throws JsageImportException{
+        List listaAge;
+        IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
+        IPersistenciaEmpresaNG PFuncionario = gerenteP.getPersistenciaEmpresa();
+        listaAge = PFuncionario.recuperarAgenciaNG();
+        
+        return listaAge;
+    }
+    
+    
 }
