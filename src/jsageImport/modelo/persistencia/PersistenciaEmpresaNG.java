@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import jsageImport.controler.ControlerEmpresaSAGE;
 import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
+import jsageImport.modelo.dominio.AgenciaNG;
+import jsageImport.modelo.dominio.ContaBancaria;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -62,6 +64,13 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                                                              +"ON efolha.iddadosempresafolha = fferias.iddadosempresafolha LEFT JOIN NG.dbo.bpm_dadosempresafolhasindicato AS fsindicato " 
                                                              +"ON efolha.iddadosempresafolha = fsindicato.iddadosempresafolha)" 
                                                              +"WHERE (efolha.iddadosempresafolha = ? )";
+    
+    private static final String SQL_AGENCIANG = "SELECT * FROM (ng.dbo.bpm_pessoa as pes LEFT JOIN ng.dbo.bpm_pessoaendereco as pesEnd ON pes.idpessoa = pesEnd.idpessoa "+
+                                                      "LEFT JOIN ng.dbo.bpm_dadosbanco as bd ON pes.idpessoa = bd.idpessoa LEFT JOIN ng.dbo.bpm_dadosagencia as ag ON bd.iddadosbanco = ag.iddadosbanco " +
+                                                      "LEFT JOIN bpm_contabancaria AS cont ON ag.iddadosagencia = cont.iddadosagencia)"+
+                                                      "WHERE pes.idpessoa = ? ";
+    
+    private static final String SQL_BANCO = " SELECT *  from bpm_dadosbanco ";
 
     /*url para conexao com o banco do ng*/    
     //jdbc:sqlserver://servidor:porta;databaseName=banco;user=usuario;password=senha;"
@@ -370,6 +379,75 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             GerenciadorConexao.closeConexao(con, stmt, rs);
         }
     }
+    
+    private List recuperarBanco () throws JsageImportException{
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_BANCO);
+            
+            rs = stmt.executeQuery();
+            List listaBanco = new ArrayList();
+            
+            while(rs.next()){
+                listaBanco.add(rs.getInt("idpessoa"));
+            }
+            
+            return listaBanco;
+            
+            
+        } catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível realizar a recuperação do Banco.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+    }
+    
+    public List recuperarAgenciaNG () throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        try {
+                   
+            
+            List listaAgenciaNG = new ArrayList();
+            List listaBanco = recuperarBanco();
+            if (listaBanco.size() > 0){
+                con = GerenciadorConexao.getConnection(urlNG);
+                stmt = con.prepareStatement(SQL_AGENCIANG);
+                
+                for (int i = 0; i < listaBanco.size(); i++) {
+                    int idpessoa = (int) listaBanco.get(i);
+                    
+                    stmt.setInt(1, idpessoa);
+                    rs = stmt.executeQuery();
+                    
+                    while (rs.next()){
+                        ContaBancaria conta = criarAgenciaNG(rs);
+                        listaAgenciaNG.add(conta);
+                    }
+                }    
+            }else {
+                JOptionPane.showMessageDialog(null, "O Banco não pode ser inserido");
+            }
+            return listaAgenciaNG;
+            
+        } catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível realizar a Agência do Banco.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+        
+    }
     /**
      * Realiza a importação de uma empresa para o banco de dados do SAGE
      * @param idEmpresa
@@ -398,6 +476,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 //Pesquisa configuracoes da folha da empresa no banco NG
                 List listaFolhaEmpresa = capturarInfoEmpresasFolha(idEmpresa);
                 
+                List listaBanco = recuperarAgenciaNG();
+                
                  //instancias dos objetos
                 PessoaJuridica pjGravar = null;
                 if (listaEmpresa.size() > 0){
@@ -417,6 +497,16 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                     empFolha = (EmpresaFolha) listaFolhaEmpresa.get(0);
                 }
                 
+                ContaBancaria conta = null;                
+                if(listaBanco.size() > 0){
+                    
+                    for (int i = 0; i < listaBanco.size(); i++) {
+                        conta = (ContaBancaria) listaBanco.get(i); 
+                        controlEmpSAGE.gravarBanco(conta, idEmpresa);
+                    }
+                }
+                
+                
                 controlEmpSAGE.gravarEmpresaParametro(pjGravar);
                 controlEmpSAGE.gravarEstabelecimento(pjGravar, empTrib, empTribCNAE, empFolha);
                 controlEmpSAGE.gravarEstabelecimentoParametro(pjGravar);
@@ -431,6 +521,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 controlEmpSAGE.gravarCapaLote(idEmpresa);
                 controlEmpSAGE.gravarEmpresaMatrizContabilizacao(idEmpresa);
                 controlEmpSAGE.gravarCSCDMPLPLANO(idEmpresa);
+                
                 
                 JOptionPane.showMessageDialog(null, "Empresa Gravada com Sucesso!");
             }else if (reply == JOptionPane.NO_OPTION){
@@ -739,6 +830,45 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         return empTrib;
         
     } 
+    
+    private ContaBancaria criarAgenciaNG (ResultSet rs) throws JsageImportException{
+        ContaBancaria conta = new ContaBancaria();
+        
+        
+        try {
+            conta.setIdPessoa(rs.getInt("idpessoa"));
+            conta.setIddadosbanco(rs.getInt("iddadosbanco"));
+            conta.setCodigobanco(rs.getString("codigobanco"));
+            conta.setPracacompensacao(rs.getString("pracacompensacao"));
+            conta.setIndativo(rs.getBoolean("indativo"));
+            conta.setCodigoagencia(rs.getString("codigoagencia"));
+            conta.setNumdvagencia(rs.getString("numdvagencia"));
+            conta.setDescricao(rs.getString("descricao"));
+            conta.setCodcompensacao(rs.getString("codcompensacao"));
+            conta.setNomePessoa(rs.getString("nomepessoa"));
+            conta.setLogradouro(rs.getString("logradouro"));
+            conta.setNumeroEndereco(rs.getString("numeroendereco"));
+            conta.setBairro(rs.getString("bairro"));
+            conta.setIdmunicipio(rs.getInt("idmunicipio"));
+            conta.setCep(rs.getString("cep"));
+            conta.setIdtipocontabancaria(rs.getInt("idtipocontabancaria"));
+            conta.setNumeroconta(rs.getString("numeroconta"));
+            conta.setDigitoverificador(rs.getString("digitoverificador"));
+            conta.setDataabertura(rs.getTimestamp("dataabertura"));
+            conta.setDatasaldoinicial(rs.getTimestamp("datasaldoinicial"));
+            conta.setSaldoinicial(rs.getDouble("saldoinicial"));
+            conta.setResponsavel(rs.getString("responsavel"));
+         
+            
+        } catch (Exception ex) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados da agência da empresa.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        
+        return conta;
+        
+    }
     
     private EmpresaTributacao criarEmpresaCnae (ResultSet rs)throws JsageImportException{
         EmpresaTributacao empTrib = new EmpresaTributacao ();

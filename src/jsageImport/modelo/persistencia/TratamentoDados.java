@@ -791,9 +791,23 @@ public class TratamentoDados {
         String normalRG = "";
         if (rg != null){
             String stnr = rg;
-            stnr = stnr.trim();
+            //stnr = stnr.trim();
             stnr = stnr.replaceAll(" ","");
             stnr = stnr.replace("'", "");
+            stnr = stnr.substring(0, 2);
+            normalRG = stnr;
+        }
+        return normalRG;
+    }
+    
+     public String tratarUFRG (String rg) throws JsageImportException{
+        String normalRG = "";
+        if (rg != null){
+            String stnr = rg;
+            //stnr = stnr.trim();
+            stnr = stnr.replaceAll(" ","");
+            stnr = stnr.replace("'", "");
+            stnr = stnr.substring(3, stnr.length()-1);
             normalRG = stnr;
         }
         return normalRG;

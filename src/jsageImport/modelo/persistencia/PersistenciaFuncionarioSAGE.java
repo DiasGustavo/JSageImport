@@ -317,7 +317,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaSAGE {
             stmt.setString(8, pf.getCpfFormatado());//cpf
             stmt.setString(9, pf.getNumeroDocumentoIdentidade());//nr_identidade
             stmt.setString(10, trataDados.tratarOrgaoRG(pf.getOrgaoExpedidorDocumentoIdentidade()));//orgao_identidade
-            stmt.setString(11, null);//uf_identidade   
+            stmt.setString(11, trataDados.tratarUFRG(pf.getOrgaoExpedidorDocumentoIdentidade()));//uf_identidade   
             //trataDados.converterSrintIntCom0(pf.getNumeroCnh())
             stmt.setInt(12, 0);//nr_habilitacao 
             //trataDados.convertIntToString(pf.getIdcategoriaHabilitacaoCnh()) tamanho da string problema

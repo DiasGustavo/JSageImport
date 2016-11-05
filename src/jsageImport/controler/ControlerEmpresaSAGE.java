@@ -6,6 +6,7 @@
 package jsageImport.controler;
 
 import jsageImport.exception.JsageImportException;
+import jsageImport.modelo.dominio.ContaBancaria;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -112,5 +113,9 @@ public class ControlerEmpresaSAGE {
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
         PEmpresa.gravarEmpresaParametro(pj);
     }
-    
+    public void gravarBanco (ContaBancaria conta, int cd_empresa)throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
+        PEmpresa.gravarBanco(conta, cd_empresa);
+    }
 }
