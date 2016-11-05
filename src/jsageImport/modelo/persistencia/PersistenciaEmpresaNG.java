@@ -497,6 +497,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                     empFolha = (EmpresaFolha) listaFolhaEmpresa.get(0);
                 }
                 
+                controlEmpSAGE.gravarBancoGeral(idEmpresa);
+                
                 ContaBancaria conta = null;                
                 if(listaBanco.size() > 0){
                     

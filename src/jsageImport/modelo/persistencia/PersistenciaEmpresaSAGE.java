@@ -125,6 +125,8 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
     private static final String SQL_CRD_BANCO = "INSERT INTO Banco(cd_empresa,cd_banco,nome,endereco,nr_endereco,bairro,cidade,estado,cep,codigo_banco,dv_agencia,nr_agencia,nr_conta,dv_conta,estabelecimento_titular,opcao_titular_conta)"+
                                                                   "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
+    private static final String SQL_CRD_BANCOGERAL = "INSERT INTO Banco (cd_empresa, cd_banco, nome) VALUES (?,?,?)";
+    
     @Override
     public void gravarEmpresa (PessoaJuridica pj) throws JsageImportException{
         if (pj == null) {
@@ -696,14 +698,40 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         
     }
     
-    public void gravarBanco (ContaBancaria conta, int cd_empresa)throws JsageImportException{
+    public void gravarBancoGeral (int cd_empresa) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
         
         try{
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CRD_BANCOGERAL);
+            
+            stmt.setInt(1, cd_empresa);
+            stmt.setInt(2, 0);
+            stmt.setString(3,"Geral");
+            
+            stmt.executeUpdate();
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o Banco geral no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }    
+        
+    }
+    
+    public void gravarBanco (ContaBancaria conta, int cd_empresa)throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+                       
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_CRD_BANCO);
             
+                       
             stmt.setInt(1, cd_empresa);
             stmt.setShort(2, (short) conta.getIddadosbanco());
             stmt.setString(3,conta.getNomePessoa());

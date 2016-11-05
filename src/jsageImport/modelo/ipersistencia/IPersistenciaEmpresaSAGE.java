@@ -31,6 +31,7 @@ public interface IPersistenciaEmpresaSAGE {
     public void gravarCSCDMPLPLANO (int cd_empresa) throws JsageImportException;
     public void gravarEmpresaParametro (PessoaJuridica pj) throws JsageImportException;
     public void gravarBanco (ContaBancaria conta, int cd_empresa)throws JsageImportException;
+    public void gravarBancoGeral (int cd_empresa) throws JsageImportException;
     
     
     public abstract void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException;

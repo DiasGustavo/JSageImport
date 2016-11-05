@@ -794,7 +794,7 @@ public class TratamentoDados {
             //stnr = stnr.trim();
             stnr = stnr.replaceAll(" ","");
             stnr = stnr.replace("'", "");
-            stnr = stnr.substring(0, 2);
+            stnr = stnr.substring(0, 3);
             normalRG = stnr;
         }
         return normalRG;
@@ -807,7 +807,7 @@ public class TratamentoDados {
             //stnr = stnr.trim();
             stnr = stnr.replaceAll(" ","");
             stnr = stnr.replace("'", "");
-            stnr = stnr.substring(3, stnr.length()-1);
+            stnr = stnr.substring(4, stnr.length()-1);
             normalRG = stnr;
         }
         return normalRG;

@@ -118,4 +118,9 @@ public class ControlerEmpresaSAGE {
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
         PEmpresa.gravarBanco(conta, cd_empresa);
     }
+    public void gravarBancoGeral (int cd_empresa) throws JsageImportException {
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
+        PEmpresa.gravarBancoGeral(cd_empresa);
+    }
 }
