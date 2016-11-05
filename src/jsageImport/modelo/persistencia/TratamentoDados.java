@@ -698,6 +698,13 @@ public class TratamentoDados {
         return currentTimestamp;
     }
     
+    public Timestamp DataFimSistema () throws JsageImportException{
+        String data = "2020-12-31 08:00:00";
+        Timestamp tempo = Timestamp.valueOf(data);
+        
+        return tempo;
+    }
+    
     public String recuperaApelido (String apelido) throws JsageImportException{
         String ap= "";
         if (apelido != null){
