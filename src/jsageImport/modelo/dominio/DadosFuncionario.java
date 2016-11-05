@@ -25,6 +25,54 @@ public class DadosFuncionario extends PessoaFisica{
     int idCodigoDirf;
     int idTipoFuncionario;
     boolean indAtivo;
+    /*Dados Bancarios*/
+    String codigoagencia;
+    String numdvagencia;
+    int idtipocontabancaria; 
+    String numeroconta;
+    String digitoverificador;
+
+    public String getCodigoagencia() {
+        return codigoagencia;
+    }
+
+    public void setCodigoagencia(String codigoagencia) {
+        this.codigoagencia = codigoagencia;
+    }
+
+    public String getNumdvagencia() {
+        return numdvagencia;
+    }
+
+    public void setNumdvagencia(String numdvagencia) {
+        this.numdvagencia = numdvagencia;
+    }
+
+    public int getIdtipocontabancaria() {
+        return idtipocontabancaria;
+    }
+
+    public void setIdtipocontabancaria(int idtipocontabancaria) {
+        this.idtipocontabancaria = idtipocontabancaria;
+    }
+
+    public String getNumeroconta() {
+        return numeroconta;
+    }
+
+    public void setNumeroconta(String numeroconta) {
+        this.numeroconta = numeroconta;
+    }
+
+    public String getDigitoverificador() {
+        return digitoverificador;
+    }
+
+    public void setDigitoverificador(String digitoverificador) {
+        this.digitoverificador = digitoverificador;
+    }
+    
+    
 
     public int getIdDadosAgencia() {
         return idDadosAgencia;

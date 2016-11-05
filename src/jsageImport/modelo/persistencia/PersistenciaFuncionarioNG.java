@@ -45,8 +45,11 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     /*Strings SQL para informações dos funcionarios no NG*/
     
     private static final String SQL_PESQUISAR_FUNCIONARIO = "SELECT * FROM " + "bpm_pessoa as pes" +" INNER JOIN bpm_dadospessoafisica as pesf ON pes.idpessoa = pesf.idpessoa" 
-                                                                            + "	INNER JOIN dbo.bpm_pessoaendereco as ed ON pes.idpessoa = ed.idpessoa"
-                                                                            + "	INNER JOIN dbo.bpm_dadosfuncionario as dfun ON pes.idpessoa = dfun.idpessoa"
+                                                                            + "	LEFT JOIN bpm_pessoaendereco as ed ON pes.idpessoa = ed.idpessoa"
+                                                                            + "	LEFT JOIN bpm_dadosfuncionario as dfun ON pes.idpessoa = dfun.idpessoa"
+                                                                            + " LEFT JOIN bpm_dadosbanco as bd ON dfun.iddadosbanco = bd.iddadosbanco"
+                                                                            + " LEFT JOIN bpm_dadosagencia as ag ON bd.iddadosbanco = ag.iddadosbanco"
+                                                                            + " LEFT JOIN bpm_contabancaria as conta ON ag.iddadosagencia = conta.iddadosagencia"
                                                                             + " WHERE pes.idpessoa = ?"
                                                                             + " ORDER BY pes.nomepessoa ASC";
     
@@ -790,6 +793,12 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             pf.setIdCodigoDirf(rs.getInt("idcodigodirf"));
             pf.setIdTipoFuncionario(rs.getInt("idtipofuncionario"));
             pf.setIndAtivo(rs.getBoolean("indativo"));
+            /*Dados bancarios*/
+            pf.setCodigoagencia(rs.getString("codigoagencia"));
+            pf.setNumdvagencia(rs.getString("numdvagencia"));
+            pf.setIdtipocontabancaria(rs.getInt("idtipocontabancaria"));
+            pf.setNumeroconta(rs.getString("numeroconta"));
+            pf.setDigitoverificador(rs.getString("digitoverificador"));
             
         } catch (SQLException ex) {
             StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados da Pessoa Fisica." + pf.getIdPessoa());

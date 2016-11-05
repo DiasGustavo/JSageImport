@@ -6,7 +6,6 @@
 package JTesteSage;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 
 /**
  *
@@ -16,9 +15,13 @@ public class Teste {
     
    public static void main (String args []){
        
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        /*Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String date = new SimpleDateFormat("dd/MM/yyyy").format(timestamp.getTime());
-	System.out.println(date);
+	System.out.println(date);*/
+        String data = "2006-02-21 08:35:20";
+        Timestamp tempo = Timestamp.valueOf(data);
+        System.out.println("Data gerada: "+ tempo);
+       
        
       
    }

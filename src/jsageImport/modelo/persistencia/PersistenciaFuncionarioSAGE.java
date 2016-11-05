@@ -79,7 +79,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaSAGE {
                                                                               " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String SQL_PESQUISAR_DEP_ID = "SELECT * FROM FunDependente WHERE cd_dependente = ?";
     
-   
+     
     /*Strings de url*/
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
     private final String urlNGFOLHA = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng_folha;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
@@ -400,11 +400,12 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaSAGE {
             stmt.setInt(14, 0);//ocorrencia
             //stmt.setInt(21, cdEmpresa);//cd_banco_fgts
             //trataDados.converterSrintInt(trataDados.recuperarBanco(fun.getIdDadosBanco()))
-            stmt.setInt(15, 0);//cd_banco_deposito
-            stmt.setInt(16, trataDados.converterSrintInt(trataDados.recuperarAgencia(fun.getIdDadosAgencia())));//nr_agencia_deposito
-            stmt.setString(17, trataDados.recuperarDVAgencia(fun.getIdDadosAgencia()));//dv_agencia_deposito
-            stmt.setInt(18, trataDados.converterSrintInt(trataDados.recuperarConta(cdFuncionario)));//nr_conta_deposito
-            stmt.setString(19, trataDados.recuperarDVConta(fun.getIdDadosBanco()));//dv_conta_deposito
+            stmt.setInt(15, fun.getIdDadosBanco());//cd_banco_deposito
+            //trataDados.converterSrintInt(trataDados.recuperarAgencia(fun.getIdDadosAgencia()))
+            stmt.setInt(16, trataDados.converterSrintInt(fun.getCodigoagencia()));//nr_agencia_deposito
+            stmt.setString(17, fun.getNumdvagencia());//dv_agencia_deposito
+            stmt.setInt(18, trataDados.converterSrintInt(fun.getNumeroconta()));//nr_conta_deposito
+            stmt.setString(19, fun.getDigitoverificador());//dv_conta_deposito
             stmt.setInt(20, 1);//op_desconto_inss - recolhimento normal
             stmt.setString(21, "N");//adto_13_ferias
             stmt.setInt(22, 0);//nr_tabela_ats

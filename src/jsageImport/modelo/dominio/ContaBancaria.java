@@ -14,8 +14,7 @@ import java.sql.Timestamp;
 public class ContaBancaria extends AgenciaNG{
     
        int iddadosagencia;
-       int idtipocontabancaria;
-     
+       int idtipocontabancaria;     
        String numeroconta;
        String digitoverificador;
        String descricao;
