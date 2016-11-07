@@ -14,6 +14,7 @@ import jsageImport.controler.ControlerEmpresaSAGE;
 import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.AgenciaNG;
+import jsageImport.modelo.dominio.CargoFun;
 import jsageImport.modelo.dominio.ContaBancaria;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
@@ -71,6 +72,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                                                       "WHERE pes.idpessoa = ? ";
     
     private static final String SQL_BANCO = " SELECT *  from bpm_dadosbanco ";
+    
+    private static final String SQL_FLH_CARGO = "SELECT * from flh_cargo where idowner = ?";
 
     /*url para conexao com o banco do ng*/    
     //jdbc:sqlserver://servidor:porta;databaseName=banco;user=usuario;password=senha;"
@@ -200,6 +203,35 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         } finally {
             GerenciadorConexao.closeConexao(con, stmt, rs);
         }
+    }
+    
+    private List recuperarCargoFuncioario (int idempresa)throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        try {
+            con = GerenciadorConexao.getConnection(urlNGFOLHA);
+            stmt = con.prepareStatement(SQL_FLH_CARGO);
+            stmt.setInt (1, idempresa);
+            rs = stmt.executeQuery();
+            List listaCargoFun = new ArrayList();
+            
+            while (rs.next()){
+               CargoFun cargofun = criarCargo(rs);
+               listaCargoFun.add(cargofun);
+            }
+            
+        return listaCargoFun;
+        
+        }catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível recuperar o cargo do funcionário.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+        
     }
     /**
      * Recuperar a id da empresa que é utilizado na configuração da folha
@@ -478,6 +510,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 
                 List listaBanco = recuperarAgenciaNG();
                 
+                List listaCargo = recuperarCargoFuncioario(idEmpresa);
+                
                  //instancias dos objetos
                 PessoaJuridica pjGravar = null;
                 if (listaEmpresa.size() > 0){
@@ -505,6 +539,14 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                     for (int i = 0; i < listaBanco.size(); i++) {
                         conta = (ContaBancaria) listaBanco.get(i); 
                         controlEmpSAGE.gravarBanco(conta, idEmpresa);
+                    }
+                }
+                
+                CargoFun cargo = null;
+                if (listaCargo.size()>0){
+                    for (int i = 0; i < listaCargo.size(); i++) {
+                        cargo = (CargoFun) listaCargo.get(i);
+                        controlEmpSAGE.gravarCargo(cargo, idEmpresa);
                     }
                 }
                 
@@ -906,6 +948,46 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             throw new JsageImportException(mensagem.toString());
         }
         return empPorte;
+    }
+    
+    private CargoFun criarCargo (ResultSet rs) throws JsageImportException {
+        CargoFun cargofun = new CargoFun();
+        
+         try {
+             
+             cargofun.setIdcargo(rs.getInt ("idcargo"));
+             cargofun.setCodigocargo(rs.getString("codigocargo"));
+             cargofun.setDescricaocargoreduzida(rs.getString("descricaocargoreduzida"));
+             cargofun.setDescricaocargo(rs.getString("descricaocargo"));
+             cargofun.setDescricaocargodetalhada(rs.getString("descricaocargodetalhada"));
+             cargofun.setIndinativo(rs.getBoolean("indinativo"));
+             cargofun.setSalariosugeridocargo(rs.getBigDecimal("salariosugeridocargo"));
+             cargofun.setIdcbo(rs.getInt("idcbo"));
+             cargofun.setIndpericulosidade(rs.getBoolean("indpericulosidade"));
+             cargofun.setIndinsalubridade(rs.getBoolean("indinsalubridade"));
+             cargofun.setIdtiposalario(rs.getInt("idtiposalario"));
+             cargofun.setIdowner(rs.getInt("idowner"));
+             cargofun.setCodigosincronismo(rs.getString("codigosincronismo"));
+             cargofun.setCodigoesocial(rs.getString("codigoesocial"));
+             cargofun.setIndcargopublico(rs.getBoolean("indcargopublico"));
+             cargofun.setIdacumulacao(rs.getInt("idacumulacao"));
+             cargofun.setIdcontagemtempoespecial(rs.getInt("idcontagemtempoespecial"));
+             cargofun.setInddedicacaoexclusiva(rs.getBoolean("inddedicacaoexclusiva"));
+             cargofun.setNumerolei(rs.getString("numerolei"));
+             cargofun.setDatalei(rs.getTimestamp("datalei"));
+             cargofun.setIdsituacaogeradapelalei(rs.getInt("idsituacaogeradapelalei"));
+             cargofun.setIndquebracaixa(rs.getBoolean("indquebracaixa"));
+            
+            
+        } catch (SQLException ex) {
+             StringBuffer mensagem = new StringBuffer("Não foi possível obter o cargo do funcionário da empresa.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return cargofun;
+        
+        
+        
     }
     
 }

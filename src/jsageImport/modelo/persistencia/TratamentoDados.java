@@ -34,7 +34,7 @@ public class TratamentoDados {
     private static final String SQL_BANCO = "SELECT * FROM bpm_dadosbanco WHERE iddadosbanco = ? ";
     private static final String SQL_CONTA = "SELECT * FROM bpm_dadosfuncionario WHERE idpessoa = ? ";
     private static final String SQL_RECUPERA_CPFTITULAR = "SELECT * FROM bpm_dadospessoafisica where idpessoa = ?";
-    
+    private static final String SQL_CBO = "SELECT idcbo,codigocbo FROM dom_cbo where idcbo = ?";
     
     PropertiesJdbc jdbc = new PropertiesJdbc();
     
@@ -973,4 +973,30 @@ public class TratamentoDados {
         
         return admissao;
     }
+    public String recuperarCodigoCBO (int idCbo) throws JsageImportException{
+        String cbo = "";
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNGDOMINIO);
+            stmt = con.prepareStatement(SQL_CBO);
+            stmt.setInt(1, idCbo);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                cbo = rs.getString("codigocbo");
+            }
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta do codido cbo do cargo da conta.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        return cbo;
+    }
+    
+    
+    
 }

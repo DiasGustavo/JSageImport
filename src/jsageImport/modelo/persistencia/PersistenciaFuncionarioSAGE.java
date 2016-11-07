@@ -42,8 +42,8 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaSAGE {
                                                                                    ",data_chegada,tipo_logradouro,cd_municipio,cd_municipio_nascimento,funcionario_aposentado,data_hora_alteracao" +
                                                                                    ")" + 
                                                                     " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    private static final String SQL_INCLUIR_FUNCAO = "INSERT INTO FunFuncao (cd_empresa,cd_funcionario,dt_funcao,cd_funcao,dt_final,data_hora_alteracao)" +
-                                                                    " VALUES (?,?,?,?,?,?)";
+    private static final String SQL_INCLUIR_FUNCAO = "INSERT INTO FunFuncao (cd_empresa,cd_funcionario,dt_funcao,cd_nivel,cd_funcao,dt_final,data_hora_alteracao)" +
+                                                                    " VALUES (?,?,?,?,?,?,?)";
     private static final String SQL_INCLUIR_DOCUMENTOS ="INSERT INTO FunDocumento  (cd_empresa,cd_funcionario,nr_carteira,serie_carteira,dv_serie_carteira,uf_carteira,pis,cpf,nr_identidade,orgao_identidade,uf_identidade" +
                                                                                     ",nr_habilitacao,categoria_habilitacao,vcto_habilitacao,foto,nr_titulo,zona_titulo,secao_titulo,dt_emissao_carteira,dt_emissao_identidade" +
                                                                                     ",dt_emissao_habilitacao,dt_emissao_titulo,dt_emissao_pis,novo_nr_titulo,novo_nr_habilitacao,certificado_militar,orgao_reg_prof,nr_reg_prof" +
@@ -173,9 +173,10 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaSAGE {
             stmt.setInt(1, cdEmpresa);//cd_empresa
             stmt.setInt(2, cdFuncionario);//cd_funcionario
             stmt.setTimestamp(3, df.getDataAdmissao());//dt_funcao
-            stmt.setInt(4, 6);//cd_funcao - todos como aux administrativo tabelas incompativeis
-            stmt.setTimestamp(5, trataDados.horaAtual());//dt_final
-            stmt.setTimestamp(6, trataDados.horaAtual());//data_hora_alteracao           
+            stmt.setString (4, "");
+            stmt.setInt(5, df.getIdcargo());//cd_funcao - todos como aux administrativo tabelas incompativeis
+            stmt.setTimestamp(6, df.getDataFim());//dt_final
+            stmt.setTimestamp(7, trataDados.horaAtual());//data_hora_alteracao           
             
             stmt.executeUpdate();
             

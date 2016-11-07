@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import jsageImport.exception.JsageImportException;
+import jsageImport.modelo.dominio.CargoFun;
 import jsageImport.modelo.dominio.ContaBancaria;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
@@ -126,6 +127,9 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
                                                                   "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     private static final String SQL_CRD_BANCOGERAL = "INSERT INTO Banco (cd_empresa, cd_banco, nome) VALUES (?,?,?)";
+    
+    private static final String SQL_CARGO = "INSERT INTO Funcao (cd_funcao,enterprise_id,descricao,cbo,cbo2002,atividades,requisitos,status,descricao_completa,cbo_sefip)"+
+                                                                "VALUES (?,?,?,?,?,?,?,?,?,?)";
     
     @Override
     public void gravarEmpresa (PessoaJuridica pj) throws JsageImportException{
@@ -833,6 +837,37 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             GerenciadorConexao.closeConexao(con, stmt);
         }    
         
+    }
+    
+    public void gravarCargo (CargoFun cargo, int cd_empresa ) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CARGO);
+            
+            stmt.setInt(1, cargo.getIdcargo());
+            stmt.setInt(2, cd_empresa);
+            stmt.setString(3,cargo.getDescricaocargoreduzida());
+            stmt.setInt(4, 0);
+            stmt.setInt(5, trataDados.converterSrintInt(trataDados.recuperarCodigoCBO(cargo.getIdcbo())));
+            stmt.setString (6, "");
+            stmt.setString(7, "");
+            stmt.setString(8, "A");
+            stmt.setString(9, cargo.getDescricaocargoreduzida());
+            stmt.setInt(10, trataDados.converterSrintInt(trataDados.recuperarCodigoCBO(cargo.getIdcbo())));
+            
+            stmt.executeUpdate();
+            
+                       
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o cargo do funcionário da empresa no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }    
     }
     
     
