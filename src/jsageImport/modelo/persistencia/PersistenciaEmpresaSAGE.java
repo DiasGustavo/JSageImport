@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.CargoFun;
+import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
@@ -130,6 +131,10 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
     
     private static final String SQL_CARGO = "INSERT INTO Funcao (cd_funcao,enterprise_id,descricao,cbo,cbo2002,atividades,requisitos,status,descricao_completa,cbo_sefip)"+
                                                                 "VALUES (?,?,?,?,?,?,?,?,?,?)";
+    
+    private static final String SQL_CENTRO_CUSTO = "INSERT INTO ccusto (cd_ccusto,enterprise_id,descricao,status,cd_scp)"+
+                                                   "VALUES (?,?,?,?,?)";
+    
     
     @Override
     public void gravarEmpresa (PessoaJuridica pj) throws JsageImportException{
@@ -868,7 +873,32 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         } finally {
             GerenciadorConexao.closeConexao(con, stmt);
         }    
+        
     }
     
-    
+    public void gravarCentroCusto (CentroCusto centroCusto, int cd_empresa) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CENTRO_CUSTO);
+            
+            stmt.setInt(1, 1);
+            stmt.setInt(2, cd_empresa);
+            stmt.setString(3,"Geral");
+            stmt.setString(4, "A");
+            stmt.setInt(5, 0);
+           
+            stmt.executeUpdate();
+                                
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o centro custo da empresa no SAGE.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }    
+        
+    }
 }

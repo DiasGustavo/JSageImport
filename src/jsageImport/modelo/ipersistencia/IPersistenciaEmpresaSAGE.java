@@ -7,6 +7,7 @@ package jsageImport.modelo.ipersistencia;
 
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.CargoFun;
+import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
@@ -34,6 +35,7 @@ public interface IPersistenciaEmpresaSAGE {
     public void gravarBanco (ContaBancaria conta, int cd_empresa)throws JsageImportException;
     public void gravarBancoGeral (int cd_empresa) throws JsageImportException;
     public void gravarCargo (CargoFun cargo, int cd_empresa ) throws JsageImportException;
+    public void gravarCentroCusto (CentroCusto centroCusto, int cd_empresa) throws JsageImportException;
     
     
     public abstract void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException;
