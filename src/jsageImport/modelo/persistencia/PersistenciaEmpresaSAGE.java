@@ -149,7 +149,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.setString(3, pj.getCnpjFormatado());
             stmt.setTimestamp(4,trataDados.horaAtual()) ;//dt_sistema
             stmt.setTimestamp(5, pj.getDataInicioAtividade());//dt_inicial
-            stmt.setTimestamp(6, pj.getDataTerminoSociedade());//dt_fim
+            stmt.setTimestamp(6, trataDados.DataFimSistema());//dt_fim
             stmt.setString(7, "N");//integracao_contabil
             stmt.setString(8, "N");//centro_custo
             stmt.setString(9, "N");//apropriacao_tributo

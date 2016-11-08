@@ -560,8 +560,10 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 
                 // havendo salario do funcionario é gravado 
                 if (listaSalarios.size()> 0){
-                    DadosFuncionaisNG funFuncionais = (DadosFuncionaisNG) listaSalarios.get(0);
-                    controlSAGE.gravarSalario(idPessoa, idEmpresa, funFuncionais);
+                    for (int i = 0; i < listaSalarios.size(); i++){
+                        DadosFuncionaisNG funFuncionais = (DadosFuncionaisNG) listaSalarios.get(i);
+                        controlSAGE.gravarSalario(idPessoa, idEmpresa, funFuncionais);
+                    }
                     
                 }               
                 //gravar os dependentes do funcionário.                
