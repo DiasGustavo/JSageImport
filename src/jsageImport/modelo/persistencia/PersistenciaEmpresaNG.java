@@ -10,11 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import jsageImport.controller.ControlerEmpresaSAGE;
-import jsageImport.controller.ControlerFuncionarioSAGE;
+import jsageImport.controler.ControlerEmpresaSAGE;
+import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.AgenciaNG;
 import jsageImport.modelo.dominio.CargoFun;
+import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
@@ -74,6 +75,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     private static final String SQL_BANCO = " SELECT *  from bpm_dadosbanco ";
     
     private static final String SQL_FLH_CARGO = "SELECT * from flh_cargo where idowner = ?";
+    
+    private static final String SQL_CENTRO_CUSTO = "SELECT * from bpm_centrocusto where idowner = ?";
 
     /*url para conexao com o banco do ng*/    
     //jdbc:sqlserver://servidor:porta;databaseName=banco;user=usuario;password=senha;"
@@ -231,6 +234,37 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         } finally {
             GerenciadorConexao.closeConexao(con, stmt, rs);
         }
+        
+    }
+    
+    public List recuperarCentroCusto (int idempresa) throws JsageImportException{
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_CENTRO_CUSTO);
+            stmt.setInt (1, idempresa);
+            rs = stmt.executeQuery();
+            List listaCentroCusto = new ArrayList();
+            
+            while (rs.next()){
+               CentroCusto centroCusto = criarCentroCusto(rs);
+               listaCentroCusto.add(centroCusto);
+            }
+            
+        return listaCentroCusto;
+        
+        }catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível recuperar o centro custo da empresa.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+        
         
     }
     /**
@@ -512,6 +546,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 
                 List listaCargo = recuperarCargoFuncioario(idEmpresa);
                 
+                List listaCentroCusto = recuperarCentroCusto(idEmpresa);
+                
                  //instancias dos objetos
                 PessoaJuridica pjGravar = null;
                 if (listaEmpresa.size() > 0){
@@ -547,6 +583,14 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                     for (int i = 0; i < listaCargo.size(); i++) {
                         cargo = (CargoFun) listaCargo.get(i);
                         controlEmpSAGE.gravarCargo(cargo, idEmpresa);
+                    }
+                }
+                
+                CentroCusto centroCusto = null;
+                if(listaCentroCusto.size()>0){
+                    for (int i = 0; i < listaCentroCusto.size(); i++) {
+                        centroCusto = (CentroCusto) listaCentroCusto.get(i);
+                        controlEmpSAGE.gravarCentroCusto(centroCusto, idEmpresa);
                     }
                 }
                 
@@ -987,6 +1031,26 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         return cargofun;
         
         
+        
+    }
+    
+    private CentroCusto criarCentroCusto (ResultSet rs)throws JsageImportException {
+        CentroCusto centrocusto = new CentroCusto();
+        
+        try{
+            centrocusto.setIdowner(rs.getInt("idcentrocusto"));
+            centrocusto.setIdcentrocusto(rs.getInt("idowner"));
+            centrocusto.setCodigocentrocusto(rs.getString("codigocentrocusto"));
+            centrocusto.setCodigoestruturado(rs.getString("codigoestruturado"));
+            centrocusto.setDescricaocentrocusto(rs.getString("descricaocentrocusto"));
+            centrocusto.setIndativo(rs.getBoolean("indativo"));  
+       
+        }catch (SQLException ex) {
+             StringBuffer mensagem = new StringBuffer("Não foi possível obter o centro custo da empresa.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return centrocusto;
         
     }
     

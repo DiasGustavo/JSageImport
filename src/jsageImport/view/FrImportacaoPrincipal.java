@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import jsageImport.controller.ControlerEmpresaNG;
+import jsageImport.controler.ControlerEmpresaNG;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.PessoaJuridica;
 

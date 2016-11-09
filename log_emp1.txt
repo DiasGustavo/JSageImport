@@ -1,6 +1,0 @@
-Registro: Existentes no SAGE: 5031 --- 1 ----- TANIA MARIA DO NASCIMENTO RIBEIRO --- Data:Wed Nov 09 01:21:29 GFT 2016
-Registro: Gravado o funcionario de código: 5031 nome: TANIA MARIA DO NASCIMENTO RIBEIRO ---  Data:Wed Nov 09 01:21:30 GFT 2016
-Registro: Existentes no SAGE: 5031 --- 1 ----- TANIA MARIA DO NASCIMENTO RIBEIRO ---  Data:Wed Nov 09 01:21:30 GFT 2016
-Registro: Existentes no SAGE: 5675 --- 1 ----- SUZANA BATISTA EGIDIO ---  Data:Wed Nov 09 01:21:30 GFT 2016
-Registro: Gravado o funcionario de código: 5675 nome: SUZANA BATISTA EGIDIO ---  Data:Wed Nov 09 01:21:31 GFT 2016
-Registro: Existentes no SAGE: 5677 --- 1 ----- ALYSSON BATISTA EGIDIO ---  Data:Wed Nov 09 01:21:31 GFT 2016

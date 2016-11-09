@@ -1,7 +1,7 @@
 /*
  * Controller com as funções possíveis a serem utilizadas em relação ao funcionário NG
  */
-package jsageImport.controller;
+package jsageImport.controler;
 
 import java.util.List;
 import jsageImport.exception.JsageImportException;

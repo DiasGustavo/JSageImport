@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.List;
-import jsageImport.controller.ControlerFuncionarioNG;
+import jsageImport.controler.ControlerFuncionarioNG;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.PessoaFisica;
 

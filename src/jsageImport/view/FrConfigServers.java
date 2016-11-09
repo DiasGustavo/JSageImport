@@ -4,8 +4,8 @@
 package jsageImport.view;
 
 import javax.swing.JOptionPane;
-import jsageImport.controller.ControlerFuncionarioNG;
-import jsageImport.controller.ControlerFuncionarioSAGE;
+import jsageImport.controler.ControlerFuncionarioNG;
+import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.persistencia.JdbcConnection;
 import jsageImport.modelo.persistencia.PropertiesJdbc;

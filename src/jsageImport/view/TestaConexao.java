@@ -6,7 +6,7 @@
 package jsageImport.view;
 
 import javax.swing.JOptionPane;
-import jsageImport.controller.ControlerFuncionarioNG;
+import jsageImport.controler.ControlerFuncionarioNG;
 import jsageImport.exception.JsageImportException;
 
 
