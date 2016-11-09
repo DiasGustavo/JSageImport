@@ -16,18 +16,16 @@ import jsageImport.modelo.dominio.DadosFuncionaisNG;
 import jsageImport.modelo.dominio.DadosFuncionario;
 import jsageImport.modelo.dominio.DependenteNG;
 import jsageImport.modelo.dominio.DependenteSAGE;
-import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaSAGE;
-import jsageImport.modelo.dominio.EmpresaTributacao;
+import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.FuncionarioSAGE;
-import jsageImport.modelo.dominio.PessoaJuridica;
-import jsageImport.modelo.ipersistencia.IPersistenciaSAGE;
+import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 
 /**
  *
  * @author Gustavo
  */
-public class PersistenciaFuncionarioSAGE implements IPersistenciaSAGE {
+public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE {
 
     PropertiesJdbc jdbc = new PropertiesJdbc();
     TratamentoDados trataDados = new TratamentoDados();
@@ -77,6 +75,12 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaSAGE {
     private static final String SQL_INCLUIR_DEP = "INSERT INTO FunDependente (cd_empresa,cd_funcionario,cd_dependente,dt_inclusao,nome,tipo_parentesco,descricao_parentesco,dt_nascimento,suspende_sf,observacao,cpf_dependente"+
                                                                               ",esocial_tipo_parentesco,esocial_pensionista,data_hora_alteracao)" +
                                                                               " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_INCLUIR_FERIAS = "INSERT INTO Ferias (cd_empresa,cd_funcionario,dt_processamento,tipo_ferias,dt_inicio_aquisicao " +
+                                                                          ",dt_fim_aquisicao,dt_inicio_gozo,dt_fim_gozo,dt_inicio_abono,dt_fim_abono " +
+                                                                          ",dt_retorno,vl_salario,nr_faltas,dt_pagamento,alterado,nr_dias_ferias,dt_nova_aquisicao,vl_abono,seq_processamento,dias_ferias " +
+                                                                          ",saldo_ferias,ferias_tributada) " +
+                                                            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
     private static final String SQL_PESQUISAR_DEP_ID = "SELECT * FROM FunDependente WHERE cd_dependente = ?";
     
      
@@ -510,6 +514,53 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaSAGE {
             
         }catch (SQLException exc) {
             StringBuffer msg = new StringBuffer("Não foi possível incluir os dependentes do Funcionário." + cdFuncionario);
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+    }
+    
+    @Override
+    public void gravarFerias (int cdFuncionario,int cdEmpresa, FeriasNG ferias) throws JsageImportException{
+        if (ferias == null || cdFuncionario == 0 || cdEmpresa == 0){
+            String mensagem = "Não foi informada os dados de ferias da empresa para importar";
+            throw new JsageImportException(mensagem);
+        }
+        
+        Connection con = null;
+        PreparedStatement stmt = null;               
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_INCLUIR_FERIAS);
+            stmt.setInt(1, cdEmpresa);//cd_empresa
+            stmt.setInt(2, cdFuncionario);//cd_funcionario
+            stmt.setTimestamp(3, trataDados.trataDataVazia(ferias.getDatainicioferias()));//data de processamento
+            stmt.setString(4, "N");
+            stmt.setTimestamp(5, ferias.getDatainicioperiodoaquisitivo());
+            stmt.setTimestamp (6, ferias.getDatafimperiodoaquisitivo());
+            stmt.setTimestamp(7, ferias.getDatainicioperiodogozo());
+            stmt.setTimestamp(8, ferias.getDatafimperiodogozo());
+            stmt.setTimestamp(9, ferias.getDatainicioabono());
+            stmt.setTimestamp(10, ferias.getDatafimabono());
+            stmt.setTimestamp(11, ferias.getDataretornoferias());
+            stmt.setDouble(12, ferias.getSalario());
+            stmt.setDouble(13, ferias.getDiasfalta());
+            stmt.setTimestamp(14, trataDados.horaAtual());
+            stmt.setString(15,"N");
+            stmt.setInt(16, (int)ferias.getDiasferias());
+            stmt.setTimestamp(17, trataDados.criarData("2016-01-01"));
+            stmt.setDouble(18, 0);
+            stmt.setInt(19, 1);
+            stmt.setInt(20, (int)ferias.getDiasferias());
+            stmt.setDouble(21, ferias.getSaldodias());
+            stmt.setString(22, "N");            
+            
+            stmt.executeUpdate();
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir as férias do Funcionário." + cdFuncionario);
             msg.append("\nMotivo: " + exc.getMessage());
             throw new JsageImportException(msg.toString());            
         } finally {

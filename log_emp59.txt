@@ -1,0 +1,6 @@
+Registro: Existentes no SAGE: 6775 --- 59 ----- RICARDO AGRIPINO CAMPOS --- Data:Wed Nov 09 09:17:23 GFT 2016
+Registro: Gravado o funcionario de código: 6775 nome: RICARDO AGRIPINO CAMPOS ---  Data:Wed Nov 09 09:17:24 GFT 2016
+Registro: Existentes no SAGE: 6780 --- 59 ----- JOVELINA DA SILVA SANTOS ---  Data:Wed Nov 09 09:17:24 GFT 2016
+Registro: Gravado o funcionario de código: 6780 nome: JOVELINA DA SILVA SANTOS ---  Data:Wed Nov 09 09:17:28 GFT 2016
+Registro: Existentes no SAGE: 6783 --- 59 ----- EVERALDO RODRIGUES ---  Data:Wed Nov 09 09:17:28 GFT 2016
+Registro: Gravado o funcionario de código: 6783 nome: EVERALDO RODRIGUES ---  Data:Wed Nov 09 09:17:28 GFT 2016

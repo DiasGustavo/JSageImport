@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.List;
-import jsageImport.controler.ControlerFuncionarioNG;
+import jsageImport.controller.ControlerFuncionarioNG;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.PessoaFisica;
 
@@ -24,7 +24,7 @@ public class TratamentoDados {
     
     private static final String SQL_RECUP_CIDADE = "SELECT * FROM dom_municipio WHERE idmunicipio = ?;";
     private static final String SQL_RECUP_CNAE = "SELECT * FROM dom_cnae WHERE idcnae = ?;";
-     private static final String SQL_RECUPERA_FORMA_TRIBUTACAO = "SELECT * FROM dom_formatributacao where idformatributacao = ?";
+    private static final String SQL_RECUPERA_FORMA_TRIBUTACAO = "SELECT * FROM dom_formatributacao where idformatributacao = ?";
     private static final String SQL_RECUP_ESTADO = "SELECT * FROM dom_uf WHERE iduf = ?;";
     private static final String SQL_RECUP_CATCNH = "SELECT * FROM dom_categoriahabilitacaocnh WHERE idcategoriahabilitacaocnh = ?;";
     private static final String SQL_PESQUISA_PIS = "SELECT idtipoinscricao, numeroinscricao FROM bpm_dadospessoafisica WHERE idpessoa = ?";
@@ -704,6 +704,12 @@ public class TratamentoDados {
         
         return tempo;
     }
+    public Timestamp criarData (String data) throws JsageImportException{
+        String date = data+" 08:00:00";
+        Timestamp tempo = Timestamp.valueOf(date);
+        
+        return tempo;
+    }
     
     public String recuperaApelido (String apelido) throws JsageImportException{
         String ap= "";
@@ -996,7 +1002,12 @@ public class TratamentoDados {
             }
         return cbo;
     }
-    
-    
+    public Timestamp trataDataVazia (Timestamp data) throws JsageImportException{
+        Timestamp dataReturn = null;
+        if(data == null){
+            dataReturn = horaAtual();
+        }
+        return dataReturn;
+    }
     
 }

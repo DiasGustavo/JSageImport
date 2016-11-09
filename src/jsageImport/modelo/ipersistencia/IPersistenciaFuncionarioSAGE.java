@@ -12,13 +12,14 @@ import jsageImport.modelo.dominio.DadosFuncionario;
 import jsageImport.modelo.dominio.DependenteNG;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
+import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.PessoaJuridica;
 
 /**
  *
  * @author Gustavo
  */
-public interface IPersistenciaSAGE {
+public interface IPersistenciaFuncionarioSAGE {
     
     public abstract List pesquisaCNPJ(String cnpj) throws JsageImportException;
     public abstract List pesquisaIdDependente (int cdFuncionario, int idDependente) throws JsageImportException;
@@ -33,7 +34,7 @@ public interface IPersistenciaSAGE {
     public abstract void gravarSalario (int cdFuncionario, int cdEmpresa, DadosFuncionaisNG df) throws JsageImportException;
     public abstract void gravarDependentes (int cdFuncionario, int cdEmpresa, DependenteNG dep) throws JsageImportException;
     public abstract void gravarDadosFuncionais (int cdEmpresa, int cdFuncionario, DadosFuncionaisNG df, DadosFuncionario fun) throws JsageImportException;
-    
+    public abstract void gravarFerias (int cdFuncionario,int cdEmpresa, FeriasNG ferias) throws JsageImportException;
     
     public boolean testaConexaoSAGE (String server, String bd, String port, String user, String password) throws JsageImportException;
 }

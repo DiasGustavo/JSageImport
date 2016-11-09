@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 6636 --- 49 ----- SHIRLEI OLIVEIRA DE MEDEIROS --- Data:Wed Nov 09 00:21:03 GFT 2016
+Registro: Gravado o funcionario de código: 6636 nome: SHIRLEI OLIVEIRA DE MEDEIROS ---  Data:Wed Nov 09 00:21:05 GFT 2016
+Registro: Existentes no SAGE: 6296 --- 49 ----- ELIZANGELA FERREIRA DO NASCIMENTO ---  Data:Wed Nov 09 00:21:05 GFT 2016
+Registro: Existentes no SAGE: 6636 --- 49 ----- SHIRLEI OLIVEIRA DE MEDEIROS ---  Data:Wed Nov 09 09:06:09 GFT 2016

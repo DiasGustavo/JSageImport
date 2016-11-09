@@ -4,7 +4,7 @@
 package jsageImport.persistencia;
 
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaSAGE;
-import jsageImport.modelo.ipersistencia.IPersistenciaSAGE;
+import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 import jsageImport.modelo.persistencia.PersistenciaEmpresaSAGE;
 import jsageImport.modelo.persistencia.PersistenciaFuncionarioSAGE;
 
@@ -16,7 +16,7 @@ import jsageImport.modelo.persistencia.PersistenciaFuncionarioSAGE;
  public class GerenciadorPersistenciaSAGE implements IGerenciadorPersistenciaSAGE {
     
     @Override
-    public IPersistenciaSAGE getPersistenciaFuncionario() {
+    public IPersistenciaFuncionarioSAGE getPersistenciaFuncionario() {
         return new PersistenciaFuncionarioSAGE();
     }
 

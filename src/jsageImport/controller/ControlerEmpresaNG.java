@@ -2,7 +2,7 @@
  * Controller com as funções possíveis a serem utilizadas em relação a dados das
  * Empresas no NG.
  */
-package jsageImport.controler;
+package jsageImport.controller;
 
 import java.util.List;
 import jsageImport.exception.JsageImportException;

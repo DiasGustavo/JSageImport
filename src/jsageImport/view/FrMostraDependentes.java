@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import jsageImport.controler.ControlerFuncionarioNG;
+import jsageImport.controller.ControlerFuncionarioNG;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.DadosFuncionaisNG;
 

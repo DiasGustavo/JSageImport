@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jsageImport.controler;
+package jsageImport.controller;
 
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.CargoFun;
@@ -12,7 +12,7 @@ import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaSAGE;
-import jsageImport.modelo.ipersistencia.IPersistenciaSAGE;
+import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 import jsageImport.persistencia.GerenciadorPersistenciaSAGE;
 import jsageImport.persistencia.IGerenciadorPersistenciaSAGE;
 

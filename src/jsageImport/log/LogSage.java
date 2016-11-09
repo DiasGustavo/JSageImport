@@ -12,7 +12,7 @@ public class LogSage
 {
     public void LogTxt(String nome,String classe, String arquivo )
     {
-        File arquivoTxt = new File("log_"+arquivo+".txt");
+        File arquivoTxt = new File(".//Arquivos//Log//"+"log_"+arquivo+".txt");
 
         if(!arquivoTxt.exists())
         {

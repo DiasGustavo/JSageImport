@@ -10,11 +10,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import jsageImport.controler.ControlerFuncionarioSAGE;
+import jsageImport.controller.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.DadosFuncionaisNG;
 import jsageImport.modelo.dominio.DadosFuncionario;
 import jsageImport.modelo.dominio.DependenteNG;
+import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.PessoaFisica;
 import jsageImport.modelo.dominio.PessoaJuridica;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioNG;
@@ -79,6 +80,11 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                                                                         + " INNER JOIN  flh_movimentocargo AS flcargo ON fl.idregistro = flcargo.idregistro ) "
                                                                         + " WHERE fl.idtipoadmissao <> 0 AND fl.idpessoaregistro = ?"
                                                                         + " ORDER BY flSal.idmovimentosalario desc";
+    
+    private static final String SQL_CONSULTA_FERIAS = "SELECT * FROM flh_registro AS fl "+ 
+                                                                " LEFT JOIN flh_ferias AS flFerias ON fl.idregistro = flFerias.idregistro" +
+                                                                "  WHERE idpessoaregistro = ?" +
+                                                                "  order by flFerias.datainicioferias asc";
  
     
     /*url para conexao com o banco do ng*/    
@@ -111,8 +117,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
         } finally {
             GerenciadorConexao.closeConexao(con, stmt, rs);
         }
-    }
-    
+    }    
        
     public List recuperarEmpresas() throws JsageImportException {
         
@@ -254,8 +259,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             } finally {
                 GerenciadorConexao.closeConexao(con, stmt, rs);
             }
-    }
-         
+    }         
     
     private List pesquisarSalario(int idRegistro) throws JsageImportException{
         Connection con = null;
@@ -507,6 +511,31 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 GerenciadorConexao.closeConexao(con, stmt, rs);
             }
     }
+    
+    public List recuperarFeriasFuncionario (int id) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNGFOLHA);
+            stmt = con.prepareStatement(SQL_CONSULTA_FERIAS);
+            stmt.setInt(1, id );
+            
+            rs = stmt.executeQuery();
+            List listaFerias = new ArrayList();
+            while (rs.next()) {
+                FeriasNG dados = criarFeriasFuncionario(rs);
+                listaFerias.add(dados);
+            }
+            return listaFerias;
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta dos dados das férias.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+    }
     @Override
     public boolean TestaConexao(String server, String bd, String port, String user, String password) throws JsageImportException {
         Connection con = null;
@@ -541,6 +570,8 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 List listaDependentes = capturarInfoDependente(idPessoa);                
                 //verifica os salarios dos funcionarios
                 List listaSalarios = pesquisarSalario(idPessoa);
+                //captura as informações das ferias do funcionario
+                List listaFerias = recuperarFeriasFuncionario(idPessoa);
 
                 //captura as informações de pessoa física do funcionário
                 //captura dos dados funcionais do funcinário
@@ -565,7 +596,14 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                         controlSAGE.gravarSalario(idPessoa, idEmpresa, funFuncionais);
                     }
                     
-                }               
+                }
+                // gravar as ferias do funcionario
+                if (listaFerias.size()>0){
+                    for (int i=0; i < listaFerias.size(); i++){
+                        FeriasNG ferias = (FeriasNG) listaFerias.get(i);
+                        controlSAGE.gravarFerias(idPessoa, idEmpresa, ferias);
+                    }
+                }
                 //gravar os dependentes do funcionário.                
                 if(listaDependentes.size() > 0){
                     for (int i =0; i < listaDependentes.size(); i++){
@@ -588,9 +626,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
         funcionario = "código: " + idPessoa + " Nome:" + nome;
         
         return funcionario;
-    }
-    
-    
+    }    
     
     @Override
     public int SizeImport() throws JsageImportException {
@@ -1057,6 +1093,47 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             throw new JsageImportException(mensagem.toString());
         }
         return dados;
-    }       
+    } 
+    
+    private FeriasNG criarFeriasFuncionario (ResultSet rs) throws JsageImportException{
+        FeriasNG ferias = new FeriasNG();
+        try{
+            ferias.setIdRegistro(rs.getInt("idregistro"));
+            ferias.setCodigoRegistro(rs.getString("codigoregistro"));
+            ferias.setDatainicioferias(rs.getTimestamp("datainicioferias"));
+            ferias.setDatainicioperiodoaquisitivo(rs.getTimestamp("datainicioperiodoaquisitivo"));
+            ferias.setDatafimperiodoaquisitivo(rs.getTimestamp("datafimperiodoaquisitivo"));
+            ferias.setDatainicioperiodogozo(rs.getTimestamp("datainicioperiodogozo"));
+            ferias.setDatafimperiodogozo(rs.getTimestamp("datafimperiodogozo"));
+            ferias.setDatainicioabono(rs.getTimestamp("datainicioabono"));
+            ferias.setDatafimabono(rs.getTimestamp("datafimabono"));
+            ferias.setDiasfalta(rs.getInt("diasfalta"));
+            ferias.setDiasferias(rs.getInt("diasferias"));
+            ferias.setDiasdesconsiderar(rs.getInt("diasdesconsiderar"));
+            ferias.setIndconcederabonopecuniario(rs.getBoolean("indconcederabonopecuniario"));
+            ferias.setDiasabono(rs.getInt("diasabono"));
+            ferias.setIndabonoinicioferias(rs.getBoolean("indabonoinicioferias"));
+            ferias.setIndpagar13salario(rs.getBoolean("indpagar13salario"));
+            ferias.setDataretornoferias(rs.getTimestamp("dataretornoferias"));
+            ferias.setDatalimitegozo(rs.getTimestamp("datalimitegozo"));
+            ferias.setIndstatus(rs.getInt("indstatus"));
+            ferias.setSalario(rs.getDouble("salario"));
+            ferias.setSalarioferias(rs.getDouble("salarioferias"));
+            ferias.setMediasalarial(rs.getDouble("mediasalarial"));
+            ferias.setDatairrf(rs.getTimestamp("datairrf"));
+            ferias.setSaldodias(rs.getDouble("saldodias"));
+            ferias.setIndoculto(rs.getBoolean("indoculto"));
+            ferias.setIndferiascoletivas(rs.getBoolean("indferiascoletivas"));
+            ferias.setDiaslicenca(rs.getDouble("diaslicenca"));
+            ferias.setValorcomposicaosalarialferias(rs.getInt("valorcomposicaosalarialferias")); 
+            ferias.setDatahoralog(rs.getTimestamp("datahoralog"));
+            
+        }catch (SQLException ex) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados das férias do Funcionário.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return ferias;        
+    }
         
 }

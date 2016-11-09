@@ -4,14 +4,14 @@
 package jsageImport.persistencia;
 
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaSAGE;
-import jsageImport.modelo.ipersistencia.IPersistenciaSAGE;
+import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 
 /**
  *
  * @author Gustavo
  */
 public interface IGerenciadorPersistenciaSAGE {
-    public IPersistenciaSAGE getPersistenciaFuncionario();
+    public IPersistenciaFuncionarioSAGE getPersistenciaFuncionario();
     
     public IPersistenciaEmpresaSAGE getPersistenciaEmpresa ();
 }
