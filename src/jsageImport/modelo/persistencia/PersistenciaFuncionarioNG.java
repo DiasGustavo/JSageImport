@@ -82,9 +82,9 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                                                                         + " ORDER BY flSal.idmovimentosalario desc";
     
     private static final String SQL_CONSULTA_FERIAS = "SELECT * FROM flh_registro AS fl "+ 
-                                                                " LEFT JOIN flh_ferias AS flFerias ON fl.idregistro = flFerias.idregistro" +
-                                                                "  WHERE idpessoaregistro = ?" +
-                                                                "  order by flFerias.datainicioferias asc";
+                                                                " INNER JOIN flh_ferias AS flFerias ON fl.idregistro = flFerias.idregistro" +
+                                                                " WHERE idpessoaregistro = ?" +
+                                                                " order by flFerias.datainicioferias asc";
  
     
     /*url para conexao com o banco do ng*/    
@@ -604,6 +604,9 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                         controlSAGE.gravarFerias(idPessoa, idEmpresa, ferias);
                     }
                 }
+                //gravar o controleEsocial
+                controlSAGE.gravarControleESocial(idPessoa, idEmpresa);
+                
                 //gravar os dependentes do funcionário.                
                 if(listaDependentes.size() > 0){
                     for (int i =0; i < listaDependentes.size(); i++){
@@ -1127,7 +1130,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             ferias.setDiaslicenca(rs.getDouble("diaslicenca"));
             ferias.setValorcomposicaosalarialferias(rs.getInt("valorcomposicaosalarialferias")); 
             ferias.setDatahoralog(rs.getTimestamp("datahoralog"));
-            
+            ferias.setDataInicioPeriodoAquisitivoFeriasPendente(rs.getTimestamp("datainicioperiodoaquisitivoferiaspendente"));
         }catch (SQLException ex) {
             StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados das férias do Funcionário.");
             mensagem.append("\nMotivo: " + ex.getMessage());

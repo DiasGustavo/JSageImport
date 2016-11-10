@@ -716,8 +716,9 @@ public class TratamentoDados {
         if (apelido != null){
             if (apelido.length() > 10){
                 ap = apelido.substring(0, 8);
-            }
-            ap = apelido;
+            }           
+        }else {
+            ap = "";
         }
         
         return ap;
@@ -812,9 +813,14 @@ public class TratamentoDados {
             String stnr = rg;
             //stnr = stnr.trim();
             stnr = stnr.replaceAll(" ","");
-            stnr = stnr.replace("'", "");
-            stnr = stnr.substring(4, stnr.length()-1);
-            normalRG = stnr;
+            if(stnr.indexOf("'")!= 0){
+              stnr = stnr.replace("'", "");  
+            }else if (stnr.indexOf("/")!=0){
+              stnr = stnr.replace("/", "");
+            }else{            
+                stnr = stnr.substring(4, stnr.length());
+                normalRG = stnr;
+            }
         }
         return normalRG;
     }
@@ -1006,6 +1012,8 @@ public class TratamentoDados {
         Timestamp dataReturn = null;
         if(data == null){
             dataReturn = horaAtual();
+        }else{
+            dataReturn = data;
         }
         return dataReturn;
     }

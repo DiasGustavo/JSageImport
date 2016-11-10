@@ -1,0 +1,7 @@
+Registro: Existentes no SAGE: 6067 --- 5978 ----- Vanderly Freitas Silva --- Data:Wed Nov 09 20:35:46 GFT 2016
+Registro: Gravado o funcionario de código: 6067 nome: Vanderly Freitas Silva ---  Data:Wed Nov 09 20:35:47 GFT 2016
+Registro: Existentes no SAGE: 6906 --- 5978 ----- Francisco Thales Batista Anacleto ---  Data:Wed Nov 09 20:35:48 GFT 2016
+Registro: Existentes no SAGE: 6067 --- 5978 ----- Vanderly Freitas Silva ---  Data:Sat Jul 02 00:30:23 GFT 2016
+Registro: Gravado o funcionario de código: 6067 nome: Vanderly Freitas Silva ---  Data:Sat Jul 02 00:30:24 GFT 2016
+Registro: Existentes no SAGE: 6906 --- 5978 ----- Francisco Thales Batista Anacleto ---  Data:Sat Jul 02 00:30:24 GFT 2016
+Registro: Gravado o funcionario de código: 6906 nome: Francisco Thales Batista Anacleto ---  Data:Sat Jul 02 00:30:24 GFT 2016

@@ -332,12 +332,12 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt = con.prepareStatement(SQL_CADASTRO_EMPRESA_MATRIZ);
             
             for (int i =  0; i < 60; i++) {
-            stmt.setInt(1, cd_empresa);
-            stmt.setInt(2, i + 1);
-            stmt.setInt(3, listaOperacaoContabil[i]);
+                stmt.setInt(1, cd_empresa);
+                stmt.setInt(2, i + 1);
+                stmt.setInt(3, listaOperacaoContabil[i]);
             
-            stmt.executeUpdate();
-        }
+                stmt.executeUpdate();
+            }
             
         } catch (SQLException exc) {
             StringBuffer msg = new StringBuffer("Não foi possível incluir a empresa matriz no SAGE.");

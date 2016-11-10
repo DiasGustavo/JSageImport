@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 3415 --- 1 ----- Jose Solaniel Alexandre de Santana --- Data:Wed Nov 09 23:15:50 GFT 2016
+Registro: Gravado o funcionario de código: 3415 nome: Jose Solaniel Alexandre de Santana ---  Data:Wed Nov 09 23:15:51 GFT 2016
+Registro: Existentes no SAGE: 3415 --- 1 ----- Jose Solaniel Alexandre de Santana ---  Data:Wed Nov 09 23:15:51 GFT 2016
+Registro: Existentes no SAGE: 3429 --- 1 ----- Carlos Lindemberg Santos ---  Data:Wed Nov 09 23:15:52 GFT 2016

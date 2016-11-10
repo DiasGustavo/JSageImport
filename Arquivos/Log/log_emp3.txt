@@ -1,0 +1,31 @@
+Registro: Existentes no SAGE: 3631 --- 3 ----- Francicleida Medeiros de freitas --- Data:Wed Nov 09 21:08:58 GFT 2016
+Registro: Existentes no SAGE: 3631 --- 3 ----- Francicleida Medeiros de freitas ---  Data:Wed Nov 09 21:10:21 GFT 2016
+Registro: Existentes no SAGE: 3634 --- 3 ----- Helder Stenio Gomes Ribeiro ---  Data:Wed Nov 09 21:10:21 GFT 2016
+Registro: Existentes no SAGE: 3631 --- 3 ----- Francicleida Medeiros de freitas ---  Data:Wed Nov 09 21:13:04 GFT 2016
+Registro: Existentes no SAGE: 3634 --- 3 ----- Helder Stenio Gomes Ribeiro ---  Data:Wed Nov 09 21:13:04 GFT 2016
+Registro: Existentes no SAGE: 3638 --- 3 ----- Francisca Aline Dantas Brilhante ---  Data:Wed Nov 09 21:13:04 GFT 2016
+Registro: Gravado o funcionario de código: 3638 nome: Francisca Aline Dantas Brilhante ---  Data:Wed Nov 09 21:13:05 GFT 2016
+Registro: Existentes no SAGE: 5226 --- 3 ----- Delise Santana Nogueira ---  Data:Wed Nov 09 21:13:05 GFT 2016
+Registro: Gravado o funcionario de código: 5226 nome: Delise Santana Nogueira ---  Data:Wed Nov 09 21:13:06 GFT 2016
+Registro: Existentes no SAGE: 5921 --- 3 ----- Rita de Cassia Fragoso de Freitas ---  Data:Wed Nov 09 21:13:06 GFT 2016
+Registro: Gravado o funcionario de código: 5921 nome: Rita de Cassia Fragoso de Freitas ---  Data:Wed Nov 09 21:13:06 GFT 2016
+Registro: Existentes no SAGE: 5922 --- 3 ----- Elvis de Souza Egidio ---  Data:Wed Nov 09 21:13:06 GFT 2016
+Registro: Gravado o funcionario de código: 5922 nome: Elvis de Souza Egidio ---  Data:Wed Nov 09 21:13:07 GFT 2016
+Registro: Existentes no SAGE: 6275 --- 3 ----- Maria do Socorro Mendes dos Santos ---  Data:Wed Nov 09 21:13:07 GFT 2016
+Registro: Existentes no SAGE: 3631 --- 3 ----- Francicleida Medeiros de freitas ---  Data:Wed Nov 09 21:14:03 GFT 2016
+Registro: Existentes no SAGE: 3634 --- 3 ----- Helder Stenio Gomes Ribeiro ---  Data:Wed Nov 09 21:14:03 GFT 2016
+Registro: Existentes no SAGE: 3638 --- 3 ----- Francisca Aline Dantas Brilhante ---  Data:Wed Nov 09 21:14:04 GFT 2016
+Registro: Existentes no SAGE: 5226 --- 3 ----- Delise Santana Nogueira ---  Data:Wed Nov 09 21:14:04 GFT 2016
+Registro: Existentes no SAGE: 5921 --- 3 ----- Rita de Cassia Fragoso de Freitas ---  Data:Wed Nov 09 21:14:04 GFT 2016
+Registro: Existentes no SAGE: 5922 --- 3 ----- Elvis de Souza Egidio ---  Data:Wed Nov 09 21:14:04 GFT 2016
+Registro: Existentes no SAGE: 6275 --- 3 ----- Maria do Socorro Mendes dos Santos ---  Data:Wed Nov 09 21:14:04 GFT 2016
+Registro: Existentes no SAGE: 3631 --- 3 ----- Francicleida Medeiros de freitas ---  Data:Wed Nov 09 23:04:28 GFT 2016
+Registro: Gravado o funcionario de código: 3631 nome: Francicleida Medeiros de freitas ---  Data:Wed Nov 09 23:04:31 GFT 2016
+Registro: Existentes no SAGE: 3634 --- 3 ----- Helder Stenio Gomes Ribeiro ---  Data:Wed Nov 09 23:04:31 GFT 2016
+Registro: Gravado o funcionario de código: 3634 nome: Helder Stenio Gomes Ribeiro ---  Data:Wed Nov 09 23:04:32 GFT 2016
+Registro: Existentes no SAGE: 3638 --- 3 ----- Francisca Aline Dantas Brilhante ---  Data:Wed Nov 09 23:04:32 GFT 2016
+Registro: Gravado o funcionario de código: 3638 nome: Francisca Aline Dantas Brilhante ---  Data:Wed Nov 09 23:04:32 GFT 2016
+Registro: Existentes no SAGE: 5226 --- 3 ----- Delise Santana Nogueira ---  Data:Wed Nov 09 23:04:32 GFT 2016
+Registro: Existentes no SAGE: 3631 --- 3 ----- Francicleida Medeiros de freitas ---  Data:Wed Nov 09 23:07:54 GFT 2016
+Registro: Existentes no SAGE: 3631 --- 3 ----- Francicleida Medeiros de freitas ---  Data:Wed Nov 09 23:09:39 GFT 2016
+Registro: Existentes no SAGE: 3634 --- 3 ----- Helder Stenio Gomes Ribeiro ---  Data:Wed Nov 09 23:09:39 GFT 2016

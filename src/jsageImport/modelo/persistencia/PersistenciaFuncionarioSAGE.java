@@ -83,6 +83,12 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
     
     private static final String SQL_PESQUISAR_DEP_ID = "SELECT * FROM FunDependente WHERE cd_dependente = ?";
     
+    private static final String SQL_CONTROLE_ESOCIAL = "INSERT INTO CRHFuncionarioControleESocial (cd_empresa,cd_funcionario,leiaute,nome_tabela,status)" +            
+                                                               " VALUES (?,?,?,?,?)";
+    
+    private static final String SQL_CONTROLE_CAMPOS_ESOCIAL = "INSERT INTO CRHFuncionarioControleCamposESocial (cd_empresa,cd_funcionario,leiaute,nome_tabela,descricao,tipo_requerido)" +
+                                                                    " VALUES(?,?,?,?,?)";
+    
      
     /*Strings de url*/
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
@@ -134,7 +140,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setShort(19, dddDefault);//ddd
             stmt.setShort(20, telefoneDefault);//telefone
             //trataDados.recuperaApelido(pf.getApelido())
-            stmt.setString(21, null);//apelido
+            stmt.setString(21, trataDados.recuperaApelido(pf.getApelido()));//apelido
             stmt.setString(22, null);//chave_acesso
             stmt.setString(23, null);//senha_acesso
             stmt.setString(24, trataDados.recuperarRaca(pf.getIdRaca()));//raca
@@ -536,7 +542,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt = con.prepareStatement(SQL_INCLUIR_FERIAS);
             stmt.setInt(1, cdEmpresa);//cd_empresa
             stmt.setInt(2, cdFuncionario);//cd_funcionario
-            stmt.setTimestamp(3, trataDados.trataDataVazia(ferias.getDatainicioferias()));//data de processamento
+            stmt.setTimestamp(3, trataDados.trataDataVazia(ferias.getDatainicioperiodogozo()));//data de processamento
             stmt.setString(4, "N");
             stmt.setTimestamp(5, ferias.getDatainicioperiodoaquisitivo());
             stmt.setTimestamp (6, ferias.getDatafimperiodoaquisitivo());
@@ -547,10 +553,10 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setTimestamp(11, ferias.getDataretornoferias());
             stmt.setDouble(12, ferias.getSalario());
             stmt.setDouble(13, ferias.getDiasfalta());
-            stmt.setTimestamp(14, trataDados.horaAtual());
+            stmt.setTimestamp(14, trataDados.trataDataVazia(ferias.getDatainicioperiodogozo()));
             stmt.setString(15,"N");
             stmt.setInt(16, (int)ferias.getDiasferias());
-            stmt.setTimestamp(17, trataDados.criarData("2016-01-01"));
+            stmt.setTimestamp(17, trataDados.trataDataVazia(ferias.getDataInicioPeriodoAquisitivoFeriasPendente()));
             stmt.setDouble(18, 0);
             stmt.setInt(19, 1);
             stmt.setInt(20, (int)ferias.getDiasferias());
@@ -561,6 +567,71 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             
         }catch (SQLException exc) {
             StringBuffer msg = new StringBuffer("Não foi possível incluir as férias do Funcionário." + cdFuncionario);
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+    }
+    
+    @Override
+    public void gravarControleESocial (int cdEmpresa, int cdFuncionario) throws JsageImportException{
+        if ( cdFuncionario == 0 || cdEmpresa == 0){
+            String mensagem = "Não foi informada os dados do esocial da empresa para importar";
+            throw new JsageImportException(mensagem);
+        }
+        
+        Connection con = null;
+        PreparedStatement stmt = null;  
+        String tabelas [] = {"CRHFuncionarioEstagio","CRHFuncionarioTipoAdmissao","CRHFunDadosEstrangeiro","CRHFunTemporario","Funcionario","FunDependente","FunDocumento","FunFuncao","Funfuncional","FunHorario","FunLotacao","FunSalario"};
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CONTROLE_ESOCIAL);
+            for (int i=0; i < tabelas.length-1; i++){
+                stmt.setInt(1, cdEmpresa);//cd_empresa
+                stmt.setInt(2, cdFuncionario);//cd_funcionario
+                stmt.setString(3, "S-2200");
+                stmt.setString(4, tabelas[i]);
+                stmt.setString(5, "A");            
+            
+            stmt.executeUpdate();
+            }
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o controle do esocial do Funcionário." + cdFuncionario);
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+    }
+    
+    public void gravarControleCamposESocial (int cdEmpresa, int cdFuncionario) throws JsageImportException{
+        if ( cdFuncionario == 0 || cdEmpresa == 0){
+            String mensagem = "Não foi informada os dados do controle campos esocial da empresa para importar";
+            throw new JsageImportException(mensagem);
+        }
+        
+        Connection con = null;
+        PreparedStatement stmt = null;  
+        String tabelas [] = {"Funfuncional","FunHorario","FunHorario"};
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CONTROLE_ESOCIAL);
+            for (int i=0; i < tabelas.length-1; i++){
+                stmt.setInt(1, cdEmpresa);//cd_empresa
+                stmt.setInt(2, cdFuncionario);//cd_funcionario
+                stmt.setString(3, "S-2200");
+                stmt.setString(4, tabelas[i]);
+                stmt.setString(5, "A");            
+            
+            stmt.executeUpdate();
+            }
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir os controles dos campos do esocial do Funcionário." + cdFuncionario);
             msg.append("\nMotivo: " + exc.getMessage());
             throw new JsageImportException(msg.toString());            
         } finally {

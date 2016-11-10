@@ -1,0 +1,16 @@
+Registro: Existentes no SAGE: 6636 --- 49 ----- SHIRLEI OLIVEIRA DE MEDEIROS --- Data:Wed Nov 09 11:22:08 GFT 2016
+Registro: Gravado o funcionario de código: 6636 nome: SHIRLEI OLIVEIRA DE MEDEIROS ---  Data:Wed Nov 09 11:22:09 GFT 2016
+Registro: Existentes no SAGE: 6296 --- 49 ----- ELIZANGELA FERREIRA DO NASCIMENTO ---  Data:Wed Nov 09 11:22:09 GFT 2016
+Registro: Gravado o funcionario de código: 6296 nome: ELIZANGELA FERREIRA DO NASCIMENTO ---  Data:Wed Nov 09 11:22:12 GFT 2016
+Registro: Existentes no SAGE: 6299 --- 49 ----- MARIA DA GUIA NOGUEIRA FERREIRA ---  Data:Wed Nov 09 11:22:13 GFT 2016
+Registro: Gravado o funcionario de código: 6299 nome: MARIA DA GUIA NOGUEIRA FERREIRA ---  Data:Wed Nov 09 11:22:16 GFT 2016
+Registro: Existentes no SAGE: 6299 --- 49 ----- MARIA DA GUIA NOGUEIRA FERREIRA ---  Data:Wed Nov 09 11:22:16 GFT 2016
+Registro: Existentes no SAGE: 6296 --- 49 ----- ELIZANGELA FERREIRA DO NASCIMENTO ---  Data:Wed Nov 09 11:22:16 GFT 2016
+Registro: Existentes no SAGE: 6636 --- 49 ----- SHIRLEI OLIVEIRA DE MEDEIROS ---  Data:Wed Nov 09 17:04:11 GFT 2016
+Registro: Gravado o funcionario de código: 6636 nome: SHIRLEI OLIVEIRA DE MEDEIROS ---  Data:Wed Nov 09 17:04:12 GFT 2016
+Registro: Existentes no SAGE: 6296 --- 49 ----- ELIZANGELA FERREIRA DO NASCIMENTO ---  Data:Wed Nov 09 17:04:12 GFT 2016
+Registro: Gravado o funcionario de código: 6296 nome: ELIZANGELA FERREIRA DO NASCIMENTO ---  Data:Wed Nov 09 17:04:13 GFT 2016
+Registro: Existentes no SAGE: 6299 --- 49 ----- MARIA DA GUIA NOGUEIRA FERREIRA ---  Data:Wed Nov 09 17:04:13 GFT 2016
+Registro: Gravado o funcionario de código: 6299 nome: MARIA DA GUIA NOGUEIRA FERREIRA ---  Data:Wed Nov 09 17:04:14 GFT 2016
+Registro: Existentes no SAGE: 6299 --- 49 ----- MARIA DA GUIA NOGUEIRA FERREIRA ---  Data:Wed Nov 09 17:04:14 GFT 2016
+Registro: Existentes no SAGE: 6296 --- 49 ----- ELIZANGELA FERREIRA DO NASCIMENTO ---  Data:Wed Nov 09 17:04:14 GFT 2016

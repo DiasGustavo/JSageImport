@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 7299 --- 7298 ----- MONICA DA SILVA SANTOS --- Data:Wed Nov 09 11:25:31 GFT 2016
+Registro: Gravado o funcionario de código: 7299 nome: MONICA DA SILVA SANTOS ---  Data:Wed Nov 09 11:25:31 GFT 2016
+Registro: Existentes no SAGE: 7300 --- 7298 ----- ANGELICA CLEMENTE DA S SOUZA ---  Data:Wed Nov 09 11:25:32 GFT 2016
+Registro: Gravado o funcionario de código: 7300 nome: ANGELICA CLEMENTE DA S SOUZA ---  Data:Wed Nov 09 11:25:32 GFT 2016
