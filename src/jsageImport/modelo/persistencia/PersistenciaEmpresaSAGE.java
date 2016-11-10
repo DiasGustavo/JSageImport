@@ -15,6 +15,7 @@ import jsageImport.modelo.dominio.ContaBancaria;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
+import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaSAGE;
 
 /**
@@ -134,6 +135,10 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
     
     private static final String SQL_CENTRO_CUSTO = "INSERT INTO ccusto (cd_ccusto,enterprise_id,descricao,status,cd_scp)"+
                                                    "VALUES (?,?,?,?,?)";
+    
+     private static final String SQL_SINDICATO = "INSERT INTO TO SindicatoGen (cd_sindicato,descricao,nome_trct,sigla,endereco,nr_endereco,bairro,cidade,estado,cep,cgc" +
+                                                                             ",status,mes_data_base,nr_semanas_mes,tipo_entidade,tipo_sindicato)"+
+                                                                              "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     
     @Override
@@ -899,6 +904,39 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         } finally {
             GerenciadorConexao.closeConexao(con, stmt);
         }    
+    }
+    
+     public void gravarSindicato (Sindicato sindicato) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;               
         
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_SINDICATO);
+            stmt.setInt(1, sindicato.getIddadossindicato());
+            stmt.setString(2, sindicato.getNomePessoa());
+            stmt.setString(3, sindicato.getNomePessoa());
+            stmt.setString(4, trataDados.converterSigla(sindicato.getNomePessoa()));
+            stmt.setString(5, sindicato.getLogradouro());
+            stmt.setInt (6, trataDados.tratarNrEndereco(sindicato.getNumeroEndereco()));
+            stmt.setString(7, sindicato.getBairro() );
+            stmt.setString(8, trataDados.recuperarCidade(sindicato.getIdmunicipio()));
+            stmt.setString(9, trataDados.recuperarEstado(sindicato.getIdmunicipio()));
+            stmt.setInt(10, trataDados.recuperarCEP(sindicato.getCep()));
+            stmt.setString(11, "");
+            stmt.setString(12, "A");
+            stmt.setInt(13, sindicato.getMescontribuicao());
+            stmt.setInt(14, 5);
+            stmt.setString(15, "1");
+            stmt.setString(16, "L");
+            
+                     
+           }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o sindicato do Funcionário.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
     }
 }

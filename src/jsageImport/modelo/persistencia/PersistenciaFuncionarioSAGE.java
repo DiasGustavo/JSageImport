@@ -19,6 +19,7 @@ import jsageImport.modelo.dominio.DependenteSAGE;
 import jsageImport.modelo.dominio.EmpresaSAGE;
 import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.FuncionarioSAGE;
+import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 
 /**
@@ -89,6 +90,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
     private static final String SQL_CONTROLE_CAMPOS_ESOCIAL = "INSERT INTO CRHFuncionarioControleCamposESocial (cd_empresa,cd_funcionario,leiaute,nome_tabela,descricao,tipo_requerido)" +
                                                                     " VALUES(?,?,?,?,?)";
     
+   
      
     /*Strings de url*/
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
@@ -964,5 +966,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             mensagem.append("\nMotivo: " + ex.getMessage());
             throw new JsageImportException(mensagem.toString());
         }
-    }            
+    }  
+    
+   
 }

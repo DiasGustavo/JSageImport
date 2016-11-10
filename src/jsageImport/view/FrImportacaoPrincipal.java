@@ -93,6 +93,7 @@ public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
     public void importarDados () throws JsageImportException{
         ControlerEmpresaNG control = new ControlerEmpresaNG();
         control.ImportarEmpresa(this.idEmpresa,this.cnpj);
+        
     }
     
     public void setPosicao() {

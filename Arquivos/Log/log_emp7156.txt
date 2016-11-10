@@ -1,2 +1,4 @@
 Registro: Existentes no SAGE: 7157 --- 7156 ----- RAIANA CRISTINA BEZERRA --- Data:Wed Nov 09 12:32:30 GFT 2016
 Registro: Gravado o funcionario de código: 7157 nome: RAIANA CRISTINA BEZERRA ---  Data:Wed Nov 09 12:32:33 GFT 2016
+Registro: Existentes no SAGE: 7157 --- 7156 ----- RAIANA CRISTINA BEZERRA ---  Data:Thu Nov 10 18:39:41 GFT 2016
+Registro: Gravado o funcionario de código: 7157 nome: RAIANA CRISTINA BEZERRA ---  Data:Thu Nov 10 18:39:42 GFT 2016

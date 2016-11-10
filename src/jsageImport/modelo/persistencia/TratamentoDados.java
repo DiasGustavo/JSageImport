@@ -88,6 +88,7 @@ public class TratamentoDados {
         if ((string != null) && (string.isEmpty() == false)){
             //valor = Integer.parseInt(string);
             valor = Integer.valueOf(string);
+            
         } else {
             valor = 0;            
         }        
@@ -678,7 +679,10 @@ public class TratamentoDados {
     public int recuperarCEP (String cep){
         int cepInt = 0;
         String stcep = cep;
-        if (cep.equals("") || stcep.isEmpty()){
+        if (cep == null){
+            return cepInt;
+        }else{
+             if (cep.equals("") || stcep.isEmpty()){
             return cepInt;
         } else {
             String c = "-";
@@ -688,6 +692,9 @@ public class TratamentoDados {
         }
         
         return cepInt;
+            
+        }
+       
     }
     
     public Timestamp horaAtual() throws JsageImportException{
@@ -1016,6 +1023,17 @@ public class TratamentoDados {
             dataReturn = data;
         }
         return dataReturn;
+    }
+
+    String converterSigla(String nomePessoa) throws JsageImportException {
+        if (nomePessoa != null && nomePessoa.length() >= 20){
+            nomePessoa.substring(0, 19);
+        }else if (nomePessoa.length() < 20){
+            nomePessoa.substring(0, 10);
+        }else if (nomePessoa == null){
+            nomePessoa = "SIND";
+        }
+        return nomePessoa;
     }
     
 }

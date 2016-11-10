@@ -12,6 +12,7 @@ import jsageImport.modelo.dominio.ContaBancaria;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
+import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaSAGE;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 import jsageImport.persistencia.GerenciadorPersistenciaSAGE;
@@ -133,5 +134,11 @@ public class ControlerEmpresaSAGE {
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
         PEmpresa.gravarCentroCusto(centroCusto, cd_empresa);     
-    }    
+    }  
+     public void gravarSindicato (Sindicato sindicato) throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
+        PEmpresa.gravarSindicato(sindicato); 
+    }
+   
 }

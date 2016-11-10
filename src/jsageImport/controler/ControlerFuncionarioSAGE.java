@@ -12,6 +12,7 @@ import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.PessoaJuridica;
+import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 import jsageImport.persistencia.GerenciadorPersistenciaSAGE;
 import jsageImport.persistencia.IGerenciadorPersistenciaSAGE;
@@ -128,6 +129,7 @@ public class ControlerFuncionarioSAGE {
         PEmpresa.gravarControleESocial(cdFuncionario, cdEmpresa);
     }
     
+       
     public boolean testarConexao (String server, String bd, String port, String user, String password) throws JsageImportException{
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaFuncionarioSAGE PFuncionario = gerenteP.getPersistenciaFuncionario();

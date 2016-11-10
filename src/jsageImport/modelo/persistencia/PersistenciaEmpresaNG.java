@@ -21,6 +21,7 @@ import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
 import jsageImport.modelo.dominio.PorteEmpresa;
+import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaNG;
 
 /**
@@ -77,6 +78,10 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     private static final String SQL_FLH_CARGO = "SELECT * from flh_cargo where idowner = ?";
     
     private static final String SQL_CENTRO_CUSTO = "SELECT * from bpm_centrocusto where idowner = ?";
+    
+    private static final String SQL_SINDICATO = "SELECT * FROM (bpm_dadossindicato as sindicato INNER JOIN bpm_pessoa as pessoa on sindicato.idpessoa = pessoa.idpessoa " +
+                                                "INNER JOIN bpm_pessoaendereco as pessoaEnd on sindicato.idpessoa = pessoaEnd.idpessoa)";
+                                                 
 
     /*url para conexao com o banco do ng*/    
     //jdbc:sqlserver://servidor:porta;databaseName=banco;user=usuario;password=senha;"
@@ -166,7 +171,31 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             GerenciadorConexao.closeConexao(con, stmt, rs);
         }
     }
-    
+    public List recuperarSindicato () throws JsageImportException{
+         Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_SINDICATO);
+            
+            
+            rs = stmt.executeQuery();
+            List listaSindicato = new ArrayList();
+            while (rs.next()) {
+                Sindicato sind = criarSindicato(rs);
+                listaSindicato.add(sind);
+            }
+            return listaSindicato;
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta dos dados do sindicato.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        
+    }
     /**
      * Recupera de uma empresa que possui folha de pagamento específica os seus dados cadastrais
      * @return
@@ -548,6 +577,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 
                 List listaCentroCusto = recuperarCentroCusto(idEmpresa);
                 
+                List listaSindicato = recuperarSindicato();
+                
                  //instancias dos objetos
                 PessoaJuridica pjGravar = null;
                 if (listaEmpresa.size() > 0){
@@ -591,6 +622,14 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                     for (int i = 0; i < listaCentroCusto.size(); i++) {
                         centroCusto = (CentroCusto) listaCentroCusto.get(i);
                         controlEmpSAGE.gravarCentroCusto(centroCusto, idEmpresa);
+                    }
+                }
+                
+                Sindicato sind = null;
+                if (listaSindicato.size()> 0){
+                    for (int i = 0;i < listaSindicato.size(); i++) {
+                        sind = (Sindicato) listaSindicato.get(i);
+                        controlEmpSAGE.gravarSindicato(sind);
                     }
                 }
                 
@@ -1051,6 +1090,42 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             throw new JsageImportException(mensagem.toString());
         }
         return centrocusto;
+        
+    }
+    
+     private Sindicato criarSindicato (ResultSet rs) throws JsageImportException{
+        Sindicato sind = new Sindicato();
+        
+        try{
+            sind.setIddadossindicato(rs.getInt("iddadossindicato"));
+            sind.setIdPessoa(rs.getInt("idpessoa"));
+            sind.setIdtiposindicato(rs.getInt("idtiposindicato"));
+            sind.setCodigoentidade(rs.getString("codigoentidade"));
+            sind.setMescontribuicao(rs.getInt("mescontribuicao"));
+            sind.setMesdissidio(rs.getInt("mesdissidio"));
+            sind.setInddescontarmesadmissao(rs.getBoolean("inddescontarmesadmissao"));
+            sind.setFatoradicionalferias(rs.getDouble("fatoradicionalferias"));
+            sind.setIndativo(rs.getBoolean("indativo"));
+            sind.setDiaslicencamaternidade(rs.getInt("diaslicencamaternidade"));
+            sind.setPercentualminimohoraextra(rs.getDouble("percentualminimohoraextra"));
+            sind.setNumerodiasavisoprevio(rs.getInt("numerodiasavisoprevio"));
+            sind.setNumerodiasantecedenciapgtoferias(rs.getInt("numerodiasantecedenciapgtoferias"));
+            sind.setDesconsiderardiasferiascoletivas(rs.getInt("desconsiderardiasferiascoletivas"));
+            sind.setNomePessoa(rs.getString("nomepessoa"));
+            sind.setIdmunicipio(rs.getInt("idmunicipio"));
+            sind.setCep(rs.getString("cep"));
+            sind.setBairro(rs.getString("bairro"));
+            sind.setNumeroEndereco(rs.getString("numeroendereco"));
+            sind.setLogradouro(rs.getString("logradouro"));
+            
+           
+                    
+        }catch (SQLException ex) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados do sindicato do Funcionário.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return sind;        
         
     }
     
