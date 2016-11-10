@@ -83,14 +83,14 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                                                                         + " ORDER BY flSal.idmovimentosalario desc";
     
     private static final String SQL_CONSULTA_FERIAS = "SELECT * FROM flh_registro AS fl "+ 
-
                                                                 " INNER JOIN flh_ferias AS flFerias ON fl.idregistro = flFerias.idregistro" +
                                                                 " WHERE idpessoaregistro = ?" +
                                                                 " order by flFerias.datainicioferias asc";
                                                                 
     private static final String SQL_SINDICATO = "SELECT * FROM (bpm_dadossindicato as sindicato INNER JOIN bpm_pessoa as pessoa on sindicato.idpessoa = pessoa.idpessoa" +
                                                 "INNER JOIN bpm_pessoaendereco as pessoaEnd on sindicato.idpessoa = pessoaEnd.idpessoa)"+
-                                                "WHERE sindicato.idpessoa = ?";
+                                                "WHERE sindicato.idpessoa = ?";                                                            
+    
 
  
     
