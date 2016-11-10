@@ -18,6 +18,7 @@ import jsageImport.modelo.dominio.DependenteNG;
 import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.PessoaFisica;
 import jsageImport.modelo.dominio.PessoaJuridica;
+import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioNG;
 
 /**
@@ -85,6 +86,9 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                                                                 " LEFT JOIN flh_ferias AS flFerias ON fl.idregistro = flFerias.idregistro" +
                                                                 "  WHERE idpessoaregistro = ?" +
                                                                 "  order by flFerias.datainicioferias asc";
+    private static final String SQL_SINDICATO = "SELECT * FROM (bpm_dadossindicato as sindicato INNER JOIN bpm_pessoa as pessoa on sindicato.idpessoa = pessoa.idpessoa" +
+                                                "INNER JOIN bpm_pessoaendereco as pessoaEnd on sindicato.idpessoa = pessoaEnd.idpessoa)"+
+                                                "WHERE sindicato.idpessoa = ?";
  
     
     /*url para conexao com o banco do ng*/    
@@ -536,6 +540,32 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 GerenciadorConexao.closeConexao(con, stmt, rs);
             }
     }
+    public List recuperarSindicato (int id) throws JsageImportException{
+         Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_SINDICATO);
+            stmt.setInt(1, id );
+            
+            rs = stmt.executeQuery();
+            List listaSindicato = new ArrayList();
+            while (rs.next()) {
+                Sindicato sind = criarSindicato(rs);
+                listaSindicato.add(sind);
+            }
+            return listaSindicato;
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta dos dados do sindicato.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        
+    }
+    
     @Override
     public boolean TestaConexao(String server, String bd, String port, String user, String password) throws JsageImportException {
         Connection con = null;
@@ -1134,6 +1164,35 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             throw new JsageImportException(mensagem.toString());
         }
         return ferias;        
+    }
+    
+    private Sindicato criarSindicato (ResultSet rs) throws JsageImportException{
+        Sindicato sind = new Sindicato();
+        
+        try{
+            sind.setIddadossindicato(rs.getInt("iddadossindicato"));
+            sind.setIdPessoa(rs.getInt("idpessoa"));
+            sind.setIdtiposindicato(rs.getInt("idtiposindicato"));
+            sind.setCodigoentidade(rs.getString("codigoentidade"));
+            sind.setMescontribuicao(rs.getInt("mescontribuicao"));
+            sind.setMesdissidio(rs.getInt("mesdissidio"));
+            sind.setInddescontarmesadmissao(rs.getBoolean("inddescontarmesadmissao"));
+            sind.setFatoradicionalferias(rs.getDouble("fatoradicionalferias"));
+            sind.setIndativo(rs.getBoolean("indativo"));
+            sind.setDiaslicencamaternidade(rs.getInt("diaslicencamaternidade"));
+            sind.setPercentualminimohoraextra(rs.getDouble("percentualminimohoraextra"));
+            sind.setNumerodiasavisoprevio(rs.getInt("numerodiasavisoprevio"));
+            sind.setNumerodiasantecedenciapgtoferias(rs.getInt("numerodiasantecendenciapgtoferias"));
+            sind.setDesconsiderardiasferiascoletivas(rs.getInt("desconsiderardiasferiascoletivas"));
+           
+                    
+        }catch (SQLException ex) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados do sindicato do Funcionário.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return sind;        
+        
     }
         
 }
