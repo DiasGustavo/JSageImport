@@ -627,6 +627,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
                 stmt.setInt(2, cdFuncionario);//cd_funcionario
                 stmt.setString(3, "S-2200");
                 stmt.setString(4, tabelas[i]);
+                stmt.setInt(5, trataDados.gerarSequenciaESocial()+1);
                 stmt.setString(5, "A");            
             
             stmt.executeUpdate();

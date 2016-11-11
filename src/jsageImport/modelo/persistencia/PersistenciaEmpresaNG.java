@@ -32,7 +32,7 @@ import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaNG;
  */
 public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     private PropertiesJdbc jdbc = new PropertiesJdbc();
-    
+    private TratamentoDados trataDados = new TratamentoDados();
    /*
     * String SQL para consultas no banco NG  
     * Strings SQL para informações das empreas no NG
@@ -629,7 +629,10 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 if (listaSindicato.size()> 0){
                     for (int i = 0;i < listaSindicato.size(); i++) {
                         sind = (Sindicato) listaSindicato.get(i);
-                        controlEmpSAGE.gravarSindicato(sind);
+                        if(trataDados.pesquisarSindicato(sind.getNomePessoa()) == false){
+                            controlEmpSAGE.gravarSindicato(sind);
+                        }
+                     
                     }
                 }
                 

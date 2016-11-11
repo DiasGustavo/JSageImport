@@ -129,6 +129,12 @@ public class ControlerFuncionarioSAGE {
         PEmpresa.gravarControleESocial(cdFuncionario, cdEmpresa);
     }
     
+    public void gravarControleCamposESocial (int cdEmpresa, int cdFuncionario) throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
+        PEmpresa.gravarControleCamposESocial(cdEmpresa, cdFuncionario);
+    }
+    
        
     public boolean testarConexao (String server, String bd, String port, String user, String password) throws JsageImportException{
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();

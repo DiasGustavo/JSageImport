@@ -613,6 +613,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 }
                 //gravar o controleEsocial
                 controlSAGE.gravarControleESocial(idPessoa, idEmpresa);
+                //controlSAGE.gravarControleCamposESocial(idEmpresa, idPessoa);
                 
                 //gravar os dependentes do funcionário.                
                 if(listaDependentes.size() > 0){

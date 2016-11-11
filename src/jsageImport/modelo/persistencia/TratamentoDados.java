@@ -37,6 +37,10 @@ public class TratamentoDados {
     private static final String SQL_RECUPERA_CPFTITULAR = "SELECT * FROM bpm_dadospessoafisica where idpessoa = ?";
     private static final String SQL_CBO = "SELECT idcbo,codigocbo FROM dom_cbo where idcbo = ?";
     private static final String SQL_ID_SINDICATO = "SELECT cd_sindicato FROM SindicatoGen order by cd_sindicato desc";
+    private static final String SQL_ID_SEQUENCIA = " SELECT sequencia FROM CRHFuncionarioControleCamposESocial  ORDER BY sequencia DESC";
+     private static final String SQL_NOME_SINDICATO = "SELECT nome_trct FROM SindicatoGen ";
+    
+  
     
     PropertiesJdbc jdbc = new PropertiesJdbc();
     
@@ -1084,6 +1088,64 @@ public class TratamentoDados {
                 GerenciadorConexao.closeConexao(con, stmt, rs);
             }
         return id;
+    }
+
+    public int gerarSequenciaESocial() throws JsageImportException {
+         int id;
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_ID_SEQUENCIA);
+            List ids = new ArrayList();
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                id = rs.getInt("sequencia");
+                ids.add(id);
+            }
+            id = (int) ids.get(0);
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível gerar a sequencia do ESocial conta.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        return id;
+       
+    }
+    
+    public boolean pesquisarSindicato( String nomeSind ) throws JsageImportException {
+        boolean sind = false;
+        String nome = null;
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_NOME_SINDICATO);
+            List ids = new ArrayList();
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                nome= rs.getString("nome_trct");
+                ids.add(nome);
+            }
+            
+            if (ids.size() > 0){
+                sind = true;
+            }
+            
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível pesquisar o sindicato.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        return sind;
     }
     
 }
