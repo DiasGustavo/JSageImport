@@ -12,6 +12,7 @@ import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.CargoFun;
 import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
+import jsageImport.modelo.dominio.Contador;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -136,11 +137,15 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
     private static final String SQL_CENTRO_CUSTO = "INSERT INTO ccusto (cd_ccusto,enterprise_id,descricao,status,cd_scp)"+
                                                    "VALUES (?,?,?,?,?)";
     
-     private static final String SQL_SINDICATO = "INSERT INTO SindicatoGen (cd_sindicato,descricao,nome_trct,sigla,endereco,nr_endereco,bairro,cidade,estado,cep,cgc" +
+    private static final String SQL_SINDICATO = "INSERT INTO SindicatoGen (cd_sindicato,descricao,nome_trct,sigla,endereco,nr_endereco,bairro,cidade,estado,cep,cgc" +
                                                                              ",status,mes_data_base,nr_semanas_mes,tipo_entidade,tipo_sindicato)"+
                                                                               "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-     private static final String SQL_ESTRUTURA = "INSERT INTO Estrutura (cd_empresa,cd_filial,cd_nivel1,cd_nivel2,cd_nivel3,descricao,data_hora_alteracao)" +
+    private static final String SQL_ESTRUTURA = "INSERT INTO Estrutura (cd_empresa,cd_filial,cd_nivel1,cd_nivel2,cd_nivel3,descricao,data_hora_alteracao)" +
                                                          " VALUES(?,?,?,?,?,?,?)";
+     
+    private static final String SQL_CONTADOR = "INSERT INTO ResponsavelG (cd_responsavel,nome,cgc,contato,ddd_fone,telefone,endereco,nr_endereco,bairro,cidade,estado,cep " +
+                                                                            ",identificacao,cpfcontato,email,denominacao,rg,crc,status,uf_crc,cd_municipio,dt_nasc_responsavel" +
+                                                                            ",cd_classificacao) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     
     @Override
@@ -751,7 +756,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
     }
     
     @Override
-    public void gravarBanco (ContaBancaria conta, int cd_empresa)throws JsageImportException{
+    public void gravarBanco (int id, ContaBancaria conta, int cd_empresa)throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
         
@@ -762,7 +767,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             
                        
             stmt.setInt(1, cd_empresa);
-            stmt.setShort(2, (short) conta.getIddadosbanco());
+            stmt.setInt(2, conta.getIddadosbanco()+id);
             stmt.setString(3,conta.getNomePessoa());
             stmt.setString(4, conta.getLogradouro());
             stmt.setInt(5, trataDados.tratarNrEndereco(conta.getNumeroEndereco()));
@@ -899,7 +904,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
     }
     
     @Override
-    public void gravarCentroCusto (CentroCusto centroCusto, int cd_empresa) throws JsageImportException{
+    public void gravarCentroCusto (int id, CentroCusto centroCusto, int cd_empresa) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
         
@@ -907,7 +912,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_CENTRO_CUSTO);
             
-            stmt.setInt(1, 1);
+            stmt.setInt(1, id);
             stmt.setInt(2, cd_empresa);
             stmt.setString(3,"Geral");
             stmt.setString(4, "A");
@@ -980,6 +985,49 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
                      
            }catch (SQLException exc) {
             StringBuffer msg = new StringBuffer("Não foi possível incluir a Estrutura da Empresa.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+    }
+    
+    @Override
+    public void gravarContador (Contador contador) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;               
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_CONTADOR);
+            stmt.setInt(1, contador.getIdPessoa());
+            stmt.setString(2, contador.getNomePessoa());
+            stmt.setString(3, contador.getCpfFormatado());
+            stmt.setString(4, contador.getApelido());
+            stmt.setInt(5, 0);
+            stmt.setInt(6,0);
+            stmt.setString(7, contador.getLogradouro() );
+            stmt.setInt(8, trataDados.tratarNrEndereco(contador.getNumeroEndereco()));
+            stmt.setString(9, contador.getBairro());
+            stmt.setString(10, trataDados.recuperarCidade(contador.getIdmunicipio()));
+            stmt.setString(11, trataDados.recuperarUFMunicipio(contador.getIdmunicipio()));
+            stmt.setInt(12, trataDados.recuperarCEP(contador.getCep()));
+            stmt.setInt (13, 2); //indica que um cpf
+            stmt.setString(14, contador.getCpfFormatado());
+            stmt.setString(15,"");
+            stmt.setString(16, "CONTADOR");
+            stmt.setString(17, contador.getNumeroDocumentoIdentidade());
+            stmt.setString(18, contador.getCrc());
+            stmt.setString(19, "A");
+            stmt.setString(20, trataDados.recuperarUF(contador.getUfcrc()));
+            stmt.setInt(21, trataDados.recuperarCodigoIBGE(contador.getIdmunicipio()));
+            stmt.setTimestamp(22, contador.getDataNascimento());
+            stmt.setInt(23, 900);
+            
+            stmt.executeUpdate();
+                     
+           }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir contador na Empresa: " + contador.getIdPessoa());
             msg.append("\nMotivo: " + exc.getMessage());
             throw new JsageImportException(msg.toString());            
         } finally {

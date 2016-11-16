@@ -2,3 +2,7 @@ Registro: Existentes no SAGE: 4562 --- 3712 ----- CICERO VALERIO TAVARES --- Dat
 Registro: Gravado o funcionario de código: 4562 nome: CICERO VALERIO TAVARES ---  Data:Wed Nov 09 21:15:47 GFT 2016
 Registro: Existentes no SAGE: 6796 --- 3712 ----- Ricardo Gomes de Sousa ---  Data:Wed Nov 09 21:15:47 GFT 2016
 Registro: Gravado o funcionario de código: 6796 nome: Ricardo Gomes de Sousa ---  Data:Wed Nov 09 21:15:47 GFT 2016
+Registro: Existentes no SAGE: 4562 --- 3712 ----- CICERO VALERIO TAVARES ---  Data:Tue Jul 12 02:17:55 GFT 2016
+Registro: Gravado o funcionario de código: 4562 nome: CICERO VALERIO TAVARES ---  Data:Tue Jul 12 02:17:55 GFT 2016
+Registro: Existentes no SAGE: 6796 --- 3712 ----- Ricardo Gomes de Sousa ---  Data:Tue Jul 12 02:17:55 GFT 2016
+Registro: Gravado o funcionario de código: 6796 nome: Ricardo Gomes de Sousa ---  Data:Tue Jul 12 02:17:56 GFT 2016

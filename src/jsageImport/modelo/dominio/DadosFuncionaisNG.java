@@ -95,8 +95,16 @@ public class DadosFuncionaisNG extends DadosFuncionario {
     String motivoMovimento;
     Timestamp datadissidio;
     boolean inddissidio;
-    
+    int iddadossindicato;
     int idcargo;
+
+    public int getIddadossindicato() {
+        return iddadossindicato;
+    }
+
+    public void setIddadossindicato(int iddadossindicato) {
+        this.iddadossindicato = iddadossindicato;
+    }   
 
     public int getIdcargo() {
         return idcargo;

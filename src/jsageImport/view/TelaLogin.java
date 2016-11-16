@@ -44,6 +44,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         usuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         usuario.setText("Usuário:");
@@ -145,9 +146,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void acessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acessarActionPerformed
         // TODO add your handling code here:
-        validarUsuario();
-        this.dispose();
-        
+        validarUsuario();        
     }//GEN-LAST:event_acessarActionPerformed
 
     private void jTextSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextSenhaActionPerformed
@@ -174,6 +173,8 @@ public class TelaLogin extends javax.swing.JFrame {
             Jprincipal jprin = new Jprincipal();
             
             jprin.setVisible(true);
+            this.setVisible(false);
+            
         }else{
             
             JOptionPane.showMessageDialog(null,"Usuáro ou senha incorretos", "Alerta", JOptionPane.ERROR_MESSAGE);

@@ -5,3 +5,10 @@ Registro: Gravado o funcionario de código: 3753 nome: Roberta Coelli da Silva M
 Registro: Existentes no SAGE: 3753 --- 3748 ----- Roberta Coelli da Silva Maia ---  Data:Wed Nov 09 21:31:26 GFT 2016
 Registro: Existentes no SAGE: 4184 --- 3748 ----- Ninajara Fernandes da Silva ---  Data:Wed Nov 09 21:31:27 GFT 2016
 Registro: Gravado o funcionario de código: 4184 nome: Ninajara Fernandes da Silva ---  Data:Wed Nov 09 21:31:27 GFT 2016
+Registro: Existentes no SAGE: 3749 --- 3748 ----- Cicero Bezerra Ricarte ---  Data:Mon Jul 11 17:34:52 GFT 2016
+Registro: Gravado o funcionario de código: 3749 nome: Cicero Bezerra Ricarte ---  Data:Mon Jul 11 17:34:52 GFT 2016
+Registro: Existentes no SAGE: 3753 --- 3748 ----- Roberta Coelli da Silva Maia ---  Data:Mon Jul 11 17:34:53 GFT 2016
+Registro: Gravado o funcionario de código: 3753 nome: Roberta Coelli da Silva Maia ---  Data:Mon Jul 11 17:34:53 GFT 2016
+Registro: Existentes no SAGE: 3753 --- 3748 ----- Roberta Coelli da Silva Maia ---  Data:Mon Jul 11 17:34:53 GFT 2016
+Registro: Existentes no SAGE: 4184 --- 3748 ----- Ninajara Fernandes da Silva ---  Data:Mon Jul 11 17:34:53 GFT 2016
+Registro: Gravado o funcionario de código: 4184 nome: Ninajara Fernandes da Silva ---  Data:Mon Jul 11 17:34:54 GFT 2016

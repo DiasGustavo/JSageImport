@@ -29,3 +29,17 @@ Registro: Existentes no SAGE: 5226 --- 3 ----- Delise Santana Nogueira ---  Data
 Registro: Existentes no SAGE: 3631 --- 3 ----- Francicleida Medeiros de freitas ---  Data:Wed Nov 09 23:07:54 GFT 2016
 Registro: Existentes no SAGE: 3631 --- 3 ----- Francicleida Medeiros de freitas ---  Data:Wed Nov 09 23:09:39 GFT 2016
 Registro: Existentes no SAGE: 3634 --- 3 ----- Helder Stenio Gomes Ribeiro ---  Data:Wed Nov 09 23:09:39 GFT 2016
+Registro: Existentes no SAGE: 3631 --- 3 ----- Francicleida Medeiros de freitas ---  Data:Tue Jul 12 02:10:54 GFT 2016
+Registro: Existentes no SAGE: 3631 --- 3 ----- Francicleida Medeiros de freitas ---  Data:Tue Jul 12 02:12:37 GFT 2016
+Registro: Existentes no SAGE: 3634 --- 3 ----- Helder Stenio Gomes Ribeiro ---  Data:Tue Jul 12 02:12:38 GFT 2016
+Registro: Gravado o funcionario de código: 3634 nome: Helder Stenio Gomes Ribeiro ---  Data:Tue Jul 12 02:12:39 GFT 2016
+Registro: Existentes no SAGE: 3638 --- 3 ----- Francisca Aline Dantas Brilhante ---  Data:Tue Jul 12 02:12:39 GFT 2016
+Registro: Gravado o funcionario de código: 3638 nome: Francisca Aline Dantas Brilhante ---  Data:Tue Jul 12 02:12:40 GFT 2016
+Registro: Existentes no SAGE: 5226 --- 3 ----- Delise Santana Nogueira ---  Data:Tue Jul 12 02:12:40 GFT 2016
+Registro: Gravado o funcionario de código: 5226 nome: Delise Santana Nogueira ---  Data:Tue Jul 12 02:12:41 GFT 2016
+Registro: Existentes no SAGE: 5921 --- 3 ----- Rita de Cassia Fragoso de Freitas ---  Data:Tue Jul 12 02:12:41 GFT 2016
+Registro: Gravado o funcionario de código: 5921 nome: Rita de Cassia Fragoso de Freitas ---  Data:Tue Jul 12 02:12:42 GFT 2016
+Registro: Existentes no SAGE: 5922 --- 3 ----- Elvis de Souza Egidio ---  Data:Tue Jul 12 02:12:42 GFT 2016
+Registro: Gravado o funcionario de código: 5922 nome: Elvis de Souza Egidio ---  Data:Tue Jul 12 02:12:43 GFT 2016
+Registro: Existentes no SAGE: 6275 --- 3 ----- Maria do Socorro Mendes dos Santos ---  Data:Tue Jul 12 02:12:43 GFT 2016
+Registro: Gravado o funcionario de código: 6275 nome: Maria do Socorro Mendes dos Santos ---  Data:Tue Jul 12 02:12:44 GFT 2016

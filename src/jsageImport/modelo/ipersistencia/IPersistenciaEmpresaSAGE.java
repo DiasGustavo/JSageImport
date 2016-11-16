@@ -9,6 +9,7 @@ import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.CargoFun;
 import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
+import jsageImport.modelo.dominio.Contador;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -33,12 +34,13 @@ public interface IPersistenciaEmpresaSAGE {
     public void gravarCapaLote (int cd_empresa) throws JsageImportException;
     public void gravarCSCDMPLPLANO (int cd_empresa) throws JsageImportException;
     public void gravarEmpresaParametro (PessoaJuridica pj) throws JsageImportException;
-    public void gravarBanco (ContaBancaria conta, int cd_empresa)throws JsageImportException;
+    public void gravarBanco (int id, ContaBancaria conta, int cd_empresa)throws JsageImportException;
     public void gravarBancoGeral (int cd_empresa) throws JsageImportException;
     public void gravarCargo (CargoFun cargo, int cd_empresa ) throws JsageImportException;
-    public void gravarCentroCusto (CentroCusto centroCusto, int cd_empresa) throws JsageImportException;
+    public void gravarCentroCusto (int id, CentroCusto centroCusto, int cd_empresa) throws JsageImportException;
     public void gravarSindicato (Sindicato sindicato) throws JsageImportException;
     public void gravarEstrutura (int cdEmpresa) throws JsageImportException;
+    public void gravarContador (Contador contador) throws JsageImportException;
     
     
     public abstract void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException;

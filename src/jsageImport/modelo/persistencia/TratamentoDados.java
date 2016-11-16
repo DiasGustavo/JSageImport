@@ -38,7 +38,10 @@ public class TratamentoDados {
     private static final String SQL_CBO = "SELECT idcbo,codigocbo FROM dom_cbo where idcbo = ?";
     private static final String SQL_ID_SINDICATO = "SELECT cd_sindicato FROM SindicatoGen order by cd_sindicato desc";
     private static final String SQL_ID_SEQUENCIA = " SELECT sequencia FROM CRHFuncionarioControleCamposESocial  ORDER BY sequencia DESC";
-     private static final String SQL_NOME_SINDICATO = "SELECT nome_trct FROM SindicatoGen ";
+    private static final String SQL_NOME_SINDICATO = "SELECT nome_trct FROM SindicatoGen ";
+    private static final String SQL_NOME_SINDICATO_ID = "SELECT nomepessoa FROM bpm_pessoa AS pessoa INNER JOIN  bpm_dadossindicato AS sindicato ON pessoa.idpessoa = sindicato.idpessoa" +
+                                                                           " WHERE sindicato.iddadossindicato = ?";
+    private static final String SQL_ID_SINDICATO_SAGE = "SELECT cd_sindicato FROM SindicatoGen WHERE nome_trct = ?";
     
   
     
@@ -586,6 +589,103 @@ public class TratamentoDados {
         return est;
     }
     
+    public int recuperarIdUF(int cidade)throws JsageImportException{
+        int cid = 0;
+        if (cidade == 0) {
+            return cid;
+        }
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNGDOMINIO);
+            stmt = con.prepareStatement(SQL_RECUP_CIDADE);
+            
+            stmt.setInt(1,  cidade );
+            
+            rs = stmt.executeQuery();
+                       
+            while(rs.next()){
+                cid = rs.getInt("iduf");
+            }
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível recuperar a cidade.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }        
+        return cid;
+    }
+    /**
+     * Retorna a uf do municipio através do código do município
+     * @param idMunicipio
+     * @return String
+     * @throws JsageImportException 
+     */
+    public String recuperarUFMunicipio (int idMunicipio) throws JsageImportException{
+        String est = "";
+        int iduf;
+        if (idMunicipio == 0) {
+            return est;
+        }
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            iduf = recuperarIdUF(idMunicipio);
+            if (iduf != 0){
+                con = GerenciadorConexao.getConnection(urlNGDOMINIO);
+                stmt = con.prepareStatement(SQL_RECUP_ESTADO);
+                stmt.setInt(1,  iduf );
+            
+                rs = stmt.executeQuery();
+                while(rs.next()){
+                    est = rs.getString("abreviaturauf");
+                }
+            }else{
+                return est;
+            }
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta do estado.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        
+        return est;
+    }
+    
+    public int recuperarCodigoIBGE (int idMunicipio) throws JsageImportException{
+        int codigo= 0;
+        if (idMunicipio == 0) {
+            return codigo;
+        }
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNGDOMINIO);
+            stmt = con.prepareStatement(SQL_RECUP_CIDADE);
+                stmt.setInt(1,  idMunicipio );
+            
+                rs = stmt.executeQuery();
+                while(rs.next()){
+                    codigo = rs.getInt("codigoibge");
+                }
+            
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta do código do ibge");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        
+        return codigo;
+    }
+    
     public String recuperarEstado (int iduf) throws JsageImportException{
         String est = "";
         if (iduf == 0) {
@@ -815,7 +915,12 @@ public class TratamentoDados {
             //stnr = stnr.trim();
             stnr = stnr.replaceAll(" ","");
             stnr = stnr.replace("'", "");
-            stnr = stnr.substring(0, 3);
+            if (stnr.length()>=3){
+                stnr = stnr.substring(0, 3);
+            } else{
+                stnr = stnr.substring(0, 2);
+            }
+            
             normalRG = stnr;
         }
         return normalRG;
@@ -1146,6 +1251,106 @@ public class TratamentoDados {
                 GerenciadorConexao.closeConexao(con, stmt, rs);
             }
         return sind;
+    }
+
+    public String ValidaCampo(boolean marcaCampo) {
+        String valor = null;
+        
+        if(marcaCampo){
+            valor = "S";
+        }else{
+            valor = "N";
+        }
+        
+        return valor;
+    }
+
+    public int compararTimestamp(Timestamp data) throws JsageImportException {
+        int contribuicao = 0;
+        if(data == null){
+            contribuicao = 3;
+        }else if(data.before(criarData("2016-01-01"))){
+            contribuicao = 1;
+        }else if(data.after(criarData("2016-01-01"))){
+            contribuicao = 2;
+        }else {
+            contribuicao = 3;
+        }
+        
+        return contribuicao;
+    }
+
+    public int pesquisarIDSindicatoSAGE (String nomeSindicato) throws JsageImportException{
+        
+        int idSindicato;
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_ID_SINDICATO_SAGE);
+            stmt.setString(1, nomeSindicato);
+            
+            List nomes = new ArrayList();
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                int idSind= rs.getInt("cd_sindicato");
+                nomes.add(idSind);
+            }
+            if (nomes.size()>0){
+                idSindicato = (int)nomes.get(0);
+                if(idSindicato > 0){
+                    idSindicato = idSindicato;
+                }else{
+                    idSindicato = 1;
+                }
+            }else{
+                idSindicato = 1;
+            }
+            
+            
+            
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível pesquisar o sindicato.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        return idSindicato;
+    }
+    
+    public int pesquisarIDSindicato(int iddadossindicato) throws JsageImportException {
+        String nomeSind = null; 
+        int idSindicato;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_NOME_SINDICATO_ID);
+            stmt.setInt(1, iddadossindicato);
+            
+            List nomes = new ArrayList();
+            rs = stmt.executeQuery();
+            String name = null;
+            while(rs.next()){
+                name= rs.getString("nomepessoa");
+                nomes.add(name);
+            }
+            nomeSind = (String) nomes.get(0);
+            idSindicato = pesquisarIDSindicatoSAGE(trataGrandesString(nomeSind,70));
+            
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível pesquisar o sindicato.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        return idSindicato;
     }
     
 }

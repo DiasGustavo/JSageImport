@@ -130,7 +130,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setString(8, trataDados.recuperarCidade(pf.getIdmunicipio()));//cidade
             stmt.setString(9, trataDados.recuperarEstado(pf.getIdmunicipio()));//estado
             //trataDados.recuperarCEP(pf.getCep())
-            stmt.setInt(10, 58700001);//cep
+            stmt.setInt(10, trataDados.converterSrintIntCom0(pf.getCep()));//cep
             stmt.setString(11, trataDados.recuperarPai(pf.getIdPessoa()));//pai
             stmt.setString(12, trataDados.recuperarMae (pf.getIdPessoa()));//mae
             stmt.setString(13, pf.getIndSexo());//sexo
@@ -404,10 +404,10 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             //stmt.setInt(11, trataDados.converterSrintInt(trataDados.recuperarAgencia(fun.getIdDadosAgencia())));//nr_agencia_temporario
             //stmt.setString(12, trataDados.recuperarDVAgencia(fun.getIdDadosAgencia()));//dv_agencia_temporario
             //stmt.setInt(13, trataDados.converterSrintInt(trataDados.recuperarConta(cdFuncionario)));//nr_conta_temporario
-            stmt.setInt(10, 1);//cd_sindicato - não encontrado no ng
+            stmt.setInt(10, trataDados.pesquisarIDSindicato(df.getIddadossindicato()));//cd_sindicato - não encontrado no ng
             //stmt.setString(14, trataDados.recuperarDVConta(fun.getIdDadosBanco()));//dv_conta_temporario
-            stmt.setString(11, "N");//sindicalizado
-            stmt.setInt(12, 2);//situacao_contr_sindical
+            stmt.setString(11, trataDados.ValidaCampo(df.isIndSindicalizado()));//sindicalizado
+            stmt.setInt(12, trataDados.compararTimestamp(df.getDataUltimaContribuicaoSindical()));//situacao_contr_sindical
             //stmt.setInt(18, cdEmpresa);//nr_cartao_ponto
             stmt.setInt(13, 1);//categoria
             stmt.setInt(14, 0);//ocorrencia

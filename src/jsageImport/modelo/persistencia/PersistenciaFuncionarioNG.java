@@ -75,10 +75,12 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                                                                              
     private static final String SQL_DADOS_FUNCIONAIS = "SELECT *  FROM (flh_registro AS fl LEFT JOIN flh_movimentosalario AS flSal ON fl.idregistro = flSal.idregistro " 
                                                                         + " LEFT JOIN  flh_movimentocargo AS flcargo ON fl.idregistro = flcargo.idregistro ) "
+                                                                        + " LEFT JOIN  flh_movimentosindicato AS flsind ON fl.idregistro = flsind.idregistro"
                                                                         + " WHERE fl.idtipoadmissao <> 0 AND fl.idpessoaregistro = ?";
     
     private static final String SQL_CONSULTA_SALARIO = "SELECT *  FROM (flh_registro AS fl LEFT JOIN flh_movimentosalario AS flSal ON fl.idregistro = flSal.idregistro " 
-                                                                        + " INNER JOIN  flh_movimentocargo AS flcargo ON fl.idregistro = flcargo.idregistro ) "
+                                                                        + " LEFT JOIN  flh_movimentocargo AS flcargo ON fl.idregistro = flcargo.idregistro ) "
+                                                                        + " LEFT JOIN  flh_movimentosindicato AS flsind ON fl.idregistro = flsind.idregistro"
                                                                         + " WHERE fl.idtipoadmissao <> 0 AND fl.idpessoaregistro = ?"
                                                                         + " ORDER BY flSal.idmovimentosalario desc";
     
@@ -1097,6 +1099,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             dados.setDatadissidio(rs.getTimestamp("datadissidio"));
             dados.setInddissidio(rs.getBoolean("inddissidio"));
             dados.setIdcargo(rs.getInt("idcargo"));
+            dados.setIddadossindicato(rs.getInt("iddadossindicato"));
             
         }catch (SQLException ex) {
             StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados funcionais do Funcionário.");

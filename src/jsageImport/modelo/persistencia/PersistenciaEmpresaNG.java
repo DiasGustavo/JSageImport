@@ -13,10 +13,10 @@ import javax.swing.JOptionPane;
 import jsageImport.controler.ControlerEmpresaSAGE;
 import jsageImport.controler.ControlerFuncionarioSAGE;
 import jsageImport.exception.JsageImportException;
-import jsageImport.modelo.dominio.AgenciaNG;
 import jsageImport.modelo.dominio.CargoFun;
 import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
+import jsageImport.modelo.dominio.Contador;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -68,8 +68,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                                                              +"ON efolha.iddadosempresafolha = fsindicato.iddadosempresafolha)" 
                                                              +"WHERE (efolha.iddadosempresafolha = ? )";
     
-    private static final String SQL_AGENCIANG = "SELECT * FROM (ng.dbo.bpm_pessoa as pes LEFT JOIN ng.dbo.bpm_pessoaendereco as pesEnd ON pes.idpessoa = pesEnd.idpessoa "+
-                                                      "LEFT JOIN ng.dbo.bpm_dadosbanco as bd ON pes.idpessoa = bd.idpessoa LEFT JOIN ng.dbo.bpm_dadosagencia as ag ON bd.iddadosbanco = ag.iddadosbanco " +
+    private static final String SQL_AGENCIANG = "SELECT * FROM (bpm_pessoa as pes LEFT JOIN bpm_pessoaendereco as pesEnd ON pes.idpessoa = pesEnd.idpessoa "+
+                                                      "LEFT JOIN bpm_dadosbanco as bd ON pes.idpessoa = bd.idpessoa LEFT JOIN bpm_dadosagencia as ag ON bd.iddadosbanco = ag.iddadosbanco " +
                                                       "LEFT JOIN bpm_contabancaria AS cont ON ag.iddadosagencia = cont.iddadosagencia)"+
                                                       "WHERE pes.idpessoa = ? ";
     
@@ -81,6 +81,11 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     
     private static final String SQL_SINDICATO = "SELECT * FROM (bpm_dadossindicato as sindicato INNER JOIN bpm_pessoa as pessoa on sindicato.idpessoa = pessoa.idpessoa " +
                                                 "INNER JOIN bpm_pessoaendereco as pessoaEnd on sindicato.idpessoa = pessoaEnd.idpessoa)";
+    
+    private static final String SQL_RECUPERA_CONTADOR = " SELECT * FROM (bpm_pessoa as pessoa INNER JOIN bpm_dadospessoafisica as pessoaf on pessoa.idpessoa =pessoaf.idpessoa" +
+                                                                        " INNER JOIN bpm_pessoaendereco as pessoaE on pessoa.idpessoa = pessoaE.idpessoa " +
+                                                                        " INNER JOIN bpm_dadoscontador as contador on contador.idpessoa = pessoa.idpessoa) " +
+                                                                        " WHERE contador.idowner = ?";
                                                  
 
     /*url para conexao com o banco do ng*/    
@@ -504,13 +509,13 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         }
     }
     
+    @Override
     public List recuperarAgenciaNG () throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        try {
-                   
+        try {             
             
             List listaAgenciaNG = new ArrayList();
             List listaBanco = recuperarBanco();
@@ -543,6 +548,33 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         }
         
     }
+    
+    public List recuperarContador (int idEmpresa)throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        try {             
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_RECUPERA_CONTADOR);
+            stmt.setInt(1, idEmpresa);
+            rs = stmt.executeQuery();
+            List listaContador = new ArrayList();
+            
+            while(rs.next()){
+                Contador contador = criarContador(rs);
+                listaContador.add(contador);
+            }
+            
+            return listaContador;                    
+        } catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível realizar a Agência do Banco.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+    }
     /**
      * Realiza a importação de uma empresa para o banco de dados do SAGE
      * @param idEmpresa
@@ -574,6 +606,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 List listaCargo = recuperarCargoFuncioario(idEmpresa);                
                 List listaCentroCusto = recuperarCentroCusto(idEmpresa);                
                 List listaSindicato = recuperarSindicato();
+                List listaContador = recuperarContador(idEmpresa);
                 
                  //Sequencia de gravação das informações no SAGE
                 PessoaJuridica pjGravar = null;
@@ -603,7 +636,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                     
                     for (int i = 0; i < listaBanco.size(); i++) {
                         conta = (ContaBancaria) listaBanco.get(i); 
-                        controlEmpSAGE.gravarBanco(conta, idEmpresa);
+                        controlEmpSAGE.gravarBanco(i, conta, idEmpresa);
                     }
                 }
                 
@@ -619,10 +652,18 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 if(listaCentroCusto.size()>0){
                     for (int i = 0; i < listaCentroCusto.size(); i++) {
                         centroCusto = (CentroCusto) listaCentroCusto.get(i);
-                        controlEmpSAGE.gravarCentroCusto(centroCusto, idEmpresa);
+                        controlEmpSAGE.gravarCentroCusto(i, centroCusto, idEmpresa);
                     }
                 }else{
-                    controlEmpSAGE.gravarCentroCusto(centroCusto, idEmpresa);
+                    controlEmpSAGE.gravarCentroCusto(1, centroCusto, idEmpresa);
+                }
+                
+                Contador contador = null;
+                if(listaContador.size()>0){
+                    for(int i=0; i < listaContador.size(); i++){
+                        contador = (Contador) listaContador.get(i);
+                        controlEmpSAGE.gravarContador(contador);
+                    }
                 }
                 
                 Sindicato sind = null;
@@ -1063,7 +1104,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
              cargofun.setNumerolei(rs.getString("numerolei"));
              cargofun.setDatalei(rs.getTimestamp("datalei"));
              cargofun.setIdsituacaogeradapelalei(rs.getInt("idsituacaogeradapelalei"));
-             cargofun.setIndquebracaixa(rs.getBoolean("indquebracaixa"));
+             
             
             
         } catch (SQLException ex) {
@@ -1097,7 +1138,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         
     }
     
-     private Sindicato criarSindicato (ResultSet rs) throws JsageImportException{
+    private Sindicato criarSindicato (ResultSet rs) throws JsageImportException{
         Sindicato sind = new Sindicato();
         
         try{
@@ -1132,5 +1173,32 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         return sind;        
         
     }
-    
+     
+    private Contador criarContador (ResultSet rs) throws JsageImportException{
+        Contador contador = new Contador();
+        try{
+            contador.setIdPessoa(rs.getInt("idpessoa"));
+            contador.setNomePessoa(rs.getString("nomepessoa"));
+            contador.setCep(rs.getString("cep"));
+            contador.setLogradouro(rs.getString("logradouro"));
+            contador.setNumeroEndereco(rs.getString("numeroendereco"));
+            contador.setBairro(rs.getString("bairro"));
+            contador.setIdmunicipio(rs.getInt("idmunicipio"));
+            contador.setNumeroCei(rs.getString("numerocei"));
+            contador.setCpf(rs.getString("cpf"));
+            contador.setCpfFormatado(rs.getString("cpfformatado"));
+            contador.setCrc(rs.getString("crc"));
+            contador.setUfcrc(rs.getInt("ufcrc"));
+            contador.setIndativo(rs.getBoolean("indativo"));
+            contador.setNumeroDocumentoIdentidade(rs.getString("numerodocumentoidentidade"));
+            contador.setDataNascimento(rs.getTimestamp("datanascimento"));
+            contador.setApelido(rs.getString("apelido"));
+            
+        }catch (SQLException ex) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados do sindicato do Funcionário.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return contador;
+    }
 }

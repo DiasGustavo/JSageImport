@@ -9,3 +9,8 @@ Registro: Gravado o funcionario de código: 5918 nome: Eduardo Peixoto Pinheiro 
 Registro: Existentes no SAGE: 3433 --- 5906 ----- Manuel Goncalves Ribeiro Neto ---  Data:Sat Jul 02 00:26:43 GFT 2016
 Registro: Gravado o funcionario de código: 3433 nome: Manuel Goncalves Ribeiro Neto ---  Data:Sat Jul 02 00:26:44 GFT 2016
 Registro: Existentes no SAGE: 3433 --- 5906 ----- Manuel Goncalves Ribeiro Neto ---  Data:Sat Jul 02 00:26:44 GFT 2016
+Registro: Existentes no SAGE: 5918 --- 5906 ----- Eduardo Peixoto Pinheiro ---  Data:Tue Jul 12 00:16:05 GFT 2016
+Registro: Gravado o funcionario de código: 5918 nome: Eduardo Peixoto Pinheiro ---  Data:Tue Jul 12 00:16:06 GFT 2016
+Registro: Existentes no SAGE: 3433 --- 5906 ----- Manuel Goncalves Ribeiro Neto ---  Data:Tue Jul 12 00:16:06 GFT 2016
+Registro: Gravado o funcionario de código: 3433 nome: Manuel Goncalves Ribeiro Neto ---  Data:Tue Jul 12 00:16:06 GFT 2016
+Registro: Existentes no SAGE: 3433 --- 5906 ----- Manuel Goncalves Ribeiro Neto ---  Data:Tue Jul 12 00:16:06 GFT 2016

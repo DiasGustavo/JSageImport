@@ -9,6 +9,7 @@ import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.CargoFun;
 import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
+import jsageImport.modelo.dominio.Contador;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -114,10 +115,10 @@ public class ControlerEmpresaSAGE {
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
         PEmpresa.gravarEmpresaParametro(pj);
     }
-    public void gravarBanco (ContaBancaria conta, int cd_empresa)throws JsageImportException{
+    public void gravarBanco (int id, ContaBancaria conta, int cd_empresa)throws JsageImportException{
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
-        PEmpresa.gravarBanco(conta, cd_empresa);
+        PEmpresa.gravarBanco(id, conta, cd_empresa);
     }
     public void gravarBancoGeral (int cd_empresa) throws JsageImportException {
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
@@ -130,10 +131,10 @@ public class ControlerEmpresaSAGE {
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
         PEmpresa.gravarCargo(cargo, cd_empresa);        
     }
-    public void gravarCentroCusto (CentroCusto centroCusto, int cd_empresa) throws JsageImportException{
+    public void gravarCentroCusto (int id, CentroCusto centroCusto, int cd_empresa) throws JsageImportException{
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
-        PEmpresa.gravarCentroCusto(centroCusto, cd_empresa);     
+        PEmpresa.gravarCentroCusto(id, centroCusto, cd_empresa);     
     }  
     public void gravarSindicato (Sindicato sindicato) throws JsageImportException{
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
@@ -145,6 +146,12 @@ public class ControlerEmpresaSAGE {
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
         PEmpresa.gravarEstrutura(cdEmpresa);
+    }
+    
+    public void gravarContador (Contador contador) throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
+        PEmpresa.gravarContador(contador);
     }
    
 }

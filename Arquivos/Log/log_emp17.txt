@@ -3,3 +3,5 @@ Registro: Existentes no SAGE: 3598 --- 17 ----- Rademaker dantas Duarte ---  Dat
 Registro: Gravado o funcionario de código: 3598 nome: Rademaker dantas Duarte ---  Data:Wed Nov 09 23:13:20 GFT 2016
 Registro: Existentes no SAGE: 3601 --- 17 ----- Enilda Dantas Pereira Neto ---  Data:Wed Nov 09 23:13:20 GFT 2016
 Registro: Gravado o funcionario de código: 3601 nome: Enilda Dantas Pereira Neto ---  Data:Wed Nov 09 23:13:21 GFT 2016
+Registro: Existentes no SAGE: 3598 --- 17 ----- Rademaker dantas Duarte ---  Data:Tue Jul 12 02:03:03 GFT 2016
+Registro: Existentes no SAGE: 3598 --- 17 ----- Rademaker dantas Duarte ---  Data:Tue Jul 12 02:06:36 GFT 2016
