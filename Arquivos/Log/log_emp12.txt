@@ -1,4 +1,0 @@
-Registro: Existentes no SAGE: 6561 --- 12 ----- Alan Daniel da Silva --- Data:Wed Nov 09 23:17:00 GFT 2016
-Registro: Gravado o funcionario de código: 6561 nome: Alan Daniel da Silva ---  Data:Wed Nov 09 23:17:01 GFT 2016
-Registro: Existentes no SAGE: 6558 --- 12 ----- Antonio Marcos de Oliveira ---  Data:Wed Nov 09 23:17:01 GFT 2016
-Registro: Gravado o funcionario de código: 6558 nome: Antonio Marcos de Oliveira ---  Data:Wed Nov 09 23:17:01 GFT 2016

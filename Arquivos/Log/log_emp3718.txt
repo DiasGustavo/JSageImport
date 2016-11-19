@@ -1,9 +1,0 @@
-Registro: Existentes no SAGE: 3722 --- 3718 ----- Talles Moreira de Abrantes --- Data:Wed Nov 09 21:17:09 GFT 2016
-Registro: Gravado o funcionario de código: 3722 nome: Talles Moreira de Abrantes ---  Data:Wed Nov 09 21:17:09 GFT 2016
-Registro: Existentes no SAGE: 3725 --- 3718 ----- Rita de Cassia de Sousa Lima ---  Data:Wed Nov 09 21:17:09 GFT 2016
-Registro: Gravado o funcionario de código: 3725 nome: Rita de Cassia de Sousa Lima ---  Data:Wed Nov 09 21:17:10 GFT 2016
-Registro: Existentes no SAGE: 3728 --- 3718 ----- Elisangela Monteiro Bezerra ---  Data:Wed Nov 09 21:17:10 GFT 2016
-Registro: Gravado o funcionario de código: 3728 nome: Elisangela Monteiro Bezerra ---  Data:Wed Nov 09 21:17:11 GFT 2016
-Registro: Existentes no SAGE: 3731 --- 3718 ----- Adelson Alves Cavalcante ---  Data:Wed Nov 09 21:17:11 GFT 2016
-Registro: Gravado o funcionario de código: 3731 nome: Adelson Alves Cavalcante ---  Data:Wed Nov 09 21:17:11 GFT 2016
-Registro: Existentes no SAGE: 3722 --- 3718 ----- Talles Moreira de Abrantes ---  Data:Wed Nov 09 21:17:11 GFT 2016

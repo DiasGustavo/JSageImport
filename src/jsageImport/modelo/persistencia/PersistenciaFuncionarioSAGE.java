@@ -87,8 +87,9 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
     private static final String SQL_CONTROLE_ESOCIAL = "INSERT INTO CRHFuncionarioControleESocial (cd_empresa,cd_funcionario,leiaute,nome_tabela,status)" +            
                                                                " VALUES (?,?,?,?,?)";
     
-    private static final String SQL_CONTROLE_CAMPOS_ESOCIAL = "INSERT INTO CRHFuncionarioControleCamposESocial (cd_empresa,cd_funcionario,leiaute,nome_tabela,descricao,tipo_requerido)" +
-                                                                    " VALUES(?,?,?,?,?)";
+    private static final String SQL_CONTROLE_CAMPOS_ESOCIAL = "INSERT INTO CRHFuncionarioControleCamposESocial (cd_empresa,cd_funcionario,leiaute,nome_tabela)" +
+                                                                    " VALUES(?,?,?,?)";
+    private static final String SQL_INCLUIR_FUNESPECIFICO = "INSERT INTO FunEspecificos (cd_empresa,cd_funcionario) VALUES (?,?)";
     
    
      
@@ -110,7 +111,6 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
         short dddDefault = 00;
         short telefoneDefault = 0000000;
         int celularDefault = 000000000;
-        int cdMunicipioDefault =2510808;
         String funAposentado = "N";
 
         try{
@@ -118,18 +118,13 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt = con.prepareStatement(SQL_INCLUIR_FUNCIONARIO);
             stmt.setInt(1, cdEmpresa);//cd_empresa
             stmt.setInt(2, pf.getIdPessoa());//cd_funcionario
-            stmt.setString(3, pf.getNomePessoa());//nome            
-            stmt.setString(4, pf.getLogradouro());//endereco
-            //trataDados.tratarNrEndereco(pf.getNumeroEndereco())
+            stmt.setString(3, trataDados.trataGrandesString(pf.getNomePessoa(),40));//nome            
+            stmt.setString(4, trataDados.trataGrandesString(pf.getLogradouro(),40));//endereco
             stmt.setInt(5, trataDados.tratarNrEndereco(pf.getNumeroEndereco()));//nr_endereco
-            //trataDados.recuperarComplemento(pf.getComplemento())
-            stmt.setString(6, trataDados.recuperarComplemento(pf.getComplemento()));//compl_endereco
-            //trataDados.recuperarBairro(pf.getBairro())
-            stmt.setString(7, trataDados.recuperarBairro(pf.getBairro()));//bairro
-            //trataDados.recuperarCidade(pf.getIdmunicipio())
+            stmt.setString(6, trataDados.trataGrandesString(trataDados.recuperarComplemento(pf.getComplemento()),15));//compl_endereco
+            stmt.setString(7, trataDados.trataGrandesString(pf.getBairro(),20));//bairro
             stmt.setString(8, trataDados.recuperarCidade(pf.getIdmunicipio()));//cidade
-            stmt.setString(9, trataDados.recuperarEstado(pf.getIdmunicipio()));//estado
-            //trataDados.recuperarCEP(pf.getCep())
+            stmt.setString(9, trataDados.recuperarUFMunicipio(pf.getIdmunicipio()));//estado
             stmt.setInt(10, trataDados.converterSrintIntCom0(pf.getCep()));//cep
             stmt.setString(11, trataDados.recuperarPai(pf.getIdPessoa()));//pai
             stmt.setString(12, trataDados.recuperarMae (pf.getIdPessoa()));//mae
@@ -137,28 +132,25 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setShort(14, trataDados.recuperarEstadoCivil(pf.getIdEStadoCivil()));//estado_civil
             stmt.setShort(15, (short) 10);//nacionalidade - todos como brasileiros
             stmt.setShort(16, anoChegadaDefault);//ano_chegada
-            stmt.setShort(17, (short) 7);//grau_instrucao - todos com o ensino medio completo
+            stmt.setInt(17, pf.getIdGrauInstrucao());//grau_instrucao - todos com o ensino medio completo
             stmt.setTimestamp(18, pf.getDataNascimento());//dt_nascimento
             stmt.setShort(19, dddDefault);//ddd
             stmt.setShort(20, telefoneDefault);//telefone
-            //trataDados.recuperaApelido(pf.getApelido())
-            stmt.setString(21, trataDados.recuperaApelido(pf.getApelido()));//apelido
+            stmt.setString(21, trataDados.trataGrandesString(pf.getApelido(),15));//apelido
             stmt.setString(22, null);//chave_acesso
             stmt.setString(23, null);//senha_acesso
             stmt.setString(24, trataDados.recuperarRaca(pf.getIdRaca()));//raca
-            //trataDados.recuperarTipoDeficiente(pf.getIdTipoDeficiencia())
-            stmt.setString(25,"0" );//deficiente - todos não deficientes
-            //trataDados.convertIntToString(pf.getIdMunicipioNaturalidade())
-            stmt.setString(26, null);//cidade_nascimento
-            stmt.setString(27, null);//estado_nascimento
+            stmt.setString(25,trataDados.convertIntToString(pf.getIdTipoDeficiencia()));//deficiente
+            stmt.setString(26, trataDados.recuperarCidade(pf.getIdMunicipioNaturalidade()));//cidade_nascimento
+            stmt.setString(27, trataDados.recuperarUFMunicipio(pf.getIdMunicipioNaturalidade()));//estado_nascimento
             stmt.setShort(28, dddDefault);//ddd_celular
             stmt.setInt(29, celularDefault);//celular
-            stmt.setString(30, pf.getNomePessoa());//nomecompleto
+            stmt.setString(30, trataDados.trataGrandesString(pf.getNomePessoa(),70));//nomecompleto
             stmt.setString(31, null);//email
             stmt.setTimestamp(32, pf.getDataChegada());//data_chegada
             stmt.setString(33, "R");//tipo logradouro
-            stmt.setInt(34, cdMunicipioDefault);//cd_municipio
-            stmt.setInt(35, pf.getIdMunicipioNaturalidade());//cd_municipio_nascimento
+            stmt.setInt(34, trataDados.recuperarCodigoIBGE(pf.getIdMunicipioNaturalidade()));//cd_municipio
+            stmt.setInt(35, trataDados.recuperarCodigoIBGE(pf.getIdMunicipioNaturalidade()));//cd_municipio_nascimento
             stmt.setString(36, funAposentado);//funcionario_aposentado
             stmt.setTimestamp(37, trataDados.horaAtual());//data_hora_alteracao
                         
@@ -187,7 +179,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setTimestamp(3, df.getDataAdmissao());//dt_funcao
             stmt.setString (4, "");
             stmt.setInt(5, df.getIdcargo());//cd_funcao - todos como aux administrativo tabelas incompativeis
-            stmt.setTimestamp(6, df.getDataFim());//dt_final
+            stmt.setTimestamp(6, trataDados.DataFimSistema());//dt_final
             stmt.setTimestamp(7, trataDados.horaAtual());//data_hora_alteracao           
             
             stmt.executeUpdate();
@@ -248,14 +240,14 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt = con.prepareStatement(SQL_INCLUIR_SALARIO);
             stmt.setInt(1, cdEmpresa);//cd_empresa
             stmt.setInt(2, cdFuncionario);//cd_funcionario
-            stmt.setTimestamp(3, trataDados.trataData(df.getDataIncio()));//dt_salario
+            stmt.setTimestamp(3, df.getDataIncio());//dt_salario
             stmt.setString(4, trataDados.recuperaTipoSalario(df.getIdTipoSalario()));//tipo_salario
             stmt.setDouble(5, horasSemanaisDefault);//nr_horas_semanais
             stmt.setDouble(6, trataDados.trataSalario(df.getSalario()));//vl_salario
             stmt.setDouble(7, percAdiantamentoDefault);//perc_adiantamento
             stmt.setString(8, df.getMotivoMovimento());//motivo
             stmt.setDouble(9, percAdiantamentoDefault);//vl_adiantamento
-            stmt.setTimestamp(10, df.getDataFim());//dt_final
+            stmt.setTimestamp(10, trataDados.DataFimSistema());//dt_final
             stmt.setDouble(11, percAdiantamentoDefault);//perc_adiantamento_mes_anterior
             stmt.setString(12, null);//remuneracao_registro
             stmt.setTimestamp(13, null);//dt_validade_salario
@@ -331,8 +323,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setString(9, pf.getNumeroDocumentoIdentidade());//nr_identidade
             stmt.setString(10, trataDados.tratarOrgaoRG(pf.getOrgaoExpedidorDocumentoIdentidade()));//orgao_identidade
             stmt.setString(11, trataDados.tratarUFRG(pf.getOrgaoExpedidorDocumentoIdentidade()));//uf_identidade   
-            //trataDados.converterSrintIntCom0(pf.getNumeroCnh())
-            stmt.setInt(12, 0);//nr_habilitacao 
+            stmt.setInt(12, trataDados.converterSrintInt(pf.getNumeroCnh()));//nr_habilitacao 
             //trataDados.convertIntToString(pf.getIdcategoriaHabilitacaoCnh()) tamanho da string problema
             stmt.setString(13, trataDados.recuperarCNH(pf.getIdcategoriaHabilitacaoCnh()));//categoria_habilitacao
             stmt.setTimestamp(14, pf.getVencimentoCnh());//vcto_habilitacao
@@ -394,11 +385,10 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setInt(2, cdFuncionario);//cd_funcionario
             stmt.setTimestamp(3, df.getDataAdmissao());//dt_admissao
             stmt.setInt(4, trataDados.recuperarVinculo(df.getIdVinculoEmpregaticio()));//vinculo_empregaticio_rais 
-            //trataDados.converterSrintInt(trataDados.recuperarAdmissaoCaged(df.getIdTipoAdmissaoCaged()))
             stmt.setInt(5, trataDados.trataTipoAdmissaoCaged(trataDados.recuperarAdmissaoCaged(df.getIdTipoAdmissaoCaged())) );//codigo_admissao_caged -> idtipoadmissaocaged string
             stmt.setInt(6, trataDados.converterSrintInt(df.getCodigoRegistro()));//nr_registro
             stmt.setInt(7, df.getNumeroDiasContratoExperiencia());//dias_experiencia
-            stmt.setString(8, null);//temporario
+            stmt.setString(8, "N");//temporario
             stmt.setTimestamp(9, null);//vcto_contrato_temporario
             //stmt.setInt(10, trataDados.converterSrintInt(trataDados.recuperarBanco(fun.getIdDadosBanco())));//cd_banco_temporario
             //stmt.setInt(11, trataDados.converterSrintInt(trataDados.recuperarAgencia(fun.getIdDadosAgencia())));//nr_agencia_temporario
@@ -577,6 +567,33 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
     }
     
     @Override
+    public void gravarFunEspecifico (int cdFuncionario, int cdEmpresa) throws JsageImportException{
+        if (cdFuncionario == 0 || cdEmpresa == 0){
+            String mensagem = "Não foi informada os dados de Específico da empresa para importar";
+            throw new JsageImportException(mensagem);
+        }
+        
+        Connection con = null;
+        PreparedStatement stmt = null;               
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_INCLUIR_FUNESPECIFICO);
+            stmt.setInt(1, cdEmpresa);//cd_empresa
+            stmt.setInt(2, cdFuncionario);//cd_funcionario           
+            
+            stmt.executeUpdate();
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir os dados específicos do Funcionário." + cdFuncionario);
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+    }
+    
+    @Override
     public void gravarControleESocial (int cdEmpresa, int cdFuncionario) throws JsageImportException{
         if ( cdFuncionario == 0 || cdEmpresa == 0){
             String mensagem = "Não foi informada os dados do esocial da empresa para importar";
@@ -590,7 +607,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
         try{
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_CONTROLE_ESOCIAL);
-            for (int i=0; i < tabelas.length-1; i++){
+            for (int i=0; i < tabelas.length; i++){
                 stmt.setInt(1, cdEmpresa);//cd_empresa
                 stmt.setInt(2, cdFuncionario);//cd_funcionario
                 stmt.setString(3, "S-2200");
@@ -609,6 +626,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
         }
     }
     
+    @Override
     public void gravarControleCamposESocial (int cdEmpresa, int cdFuncionario) throws JsageImportException{
         if ( cdFuncionario == 0 || cdEmpresa == 0){
             String mensagem = "Não foi informada os dados do controle campos esocial da empresa para importar";
@@ -618,17 +636,18 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
         Connection con = null;
         PreparedStatement stmt = null;  
         String tabelas [] = {"Funfuncional","FunHorario","FunHorario"};
-        
+        String descricao [] ={"CNPJ do Sindicato","Tipo de Regime de Jornada","Tabela de Horário"};
         try{
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
-            stmt = con.prepareStatement(SQL_CONTROLE_ESOCIAL);
-            for (int i=0; i < tabelas.length-1; i++){
+            stmt = con.prepareStatement(SQL_CONTROLE_CAMPOS_ESOCIAL);
+            for (int i=0; i < tabelas.length; i++){
                 stmt.setInt(1, cdEmpresa);//cd_empresa
                 stmt.setInt(2, cdFuncionario);//cd_funcionario
                 stmt.setString(3, "S-2200");
                 stmt.setString(4, tabelas[i]);
-                stmt.setInt(5, trataDados.gerarSequenciaESocial()+1);
-                stmt.setString(5, "A");            
+                //stmt.setInt(5, trataDados.gerarSequenciaESocial()+1);
+                //stmt.setString(6, descricao[i]);
+                //stmt.setString(7, "verdadeiro");            
             
             stmt.executeUpdate();
             }
@@ -641,6 +660,8 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             GerenciadorConexao.closeConexao(con, stmt);
         }
     }
+    
+    
     public List pesquisarTodos() throws JsageImportException {
         Connection con = null;
         PreparedStatement stmt = null;

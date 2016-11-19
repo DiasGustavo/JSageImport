@@ -597,6 +597,8 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 controlSAGE.gravarColaborador(idEmpresa, idPessoa, pjGravar);
                 //grava a função do funcionario
                 controlSAGE.gravarFuncao(idPessoa, idEmpresa, funDadosFuncionais);
+                //grava os dados especificos do funcionario
+                controlSAGE.gravarFunEspecifico(idPessoa, idEmpresa);
                 
                 // havendo salario do funcionario é gravado 
                 if (listaSalarios.size()> 0){
@@ -615,7 +617,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 }
                 //gravar o controleEsocial
                 controlSAGE.gravarControleESocial(idPessoa, idEmpresa);
-                //controlSAGE.gravarControleCamposESocial(idEmpresa, idPessoa);
+                controlSAGE.gravarControleCamposESocial(idEmpresa, idPessoa);
                 
                 //gravar os dependentes do funcionário.                
                 if(listaDependentes.size() > 0){
@@ -632,7 +634,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 //gravar os dados funcionais do funcionário
                 controlSAGE.gravarDadosFuncionais(idEmpresa, idPessoa, funDadosFuncionais, pjGravar);               
                 log =  "Gravado o funcionario de código: "+idPessoa + " nome: " + nome;
-                System.out.print(log);                
+                //System.out.print(log);                
                 logarq.LogTxt(log, "PersisntenciaNG", "emp"+idEmpresa);               
             }
         }

@@ -256,28 +256,28 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.setInt(2, 1);//cd_estabelecimento
             stmt.setString(3, trataDados.trataGrandesString(pj.getNomePessoa(),40));//razao
             stmt.setString(4, trataDados.trataGrandesString(pj.getNomeFantasia(),40));//fantasia
-            stmt.setString(5, pj.getLogradouro());//endereco
+            stmt.setString(5, trataDados.trataGrandesString(pj.getLogradouro(),40));//endereco
             //trataDados.converterSrintInt(pj.getNumeroEndereco())
             stmt.setInt(6, trataDados.tratarNrEndereco(pj.getNumeroEndereco()));//numero
           
-            stmt.setString(7, pj.getBairro());//bairro
-            stmt.setString(8, trataDados.recuperarCidade(pj.getIdmunicipio()));//cidade
+            stmt.setString(7, trataDados.trataGrandesString(pj.getBairro(),20));//bairro
+            stmt.setString(8, trataDados.trataGrandesString(trataDados.recuperarCidade(pj.getIdmunicipio()),20));//cidade
             stmt.setInt(9, trataDados.converterSrintIntCom0(pj.getCep()));//cep
-            stmt.setString(10, "PE");//UF
+            stmt.setString(10, trataDados.recuperarUFMunicipio(pj.getIdmunicipio()));//UF
             
-            stmt.setInt(11, (short) 81); //DDD
+            stmt.setInt(11, (short) 00); //DDD
             stmt.setInt(12, 000000000); //telefone
             //trataDados.recuperarNaturezaJuridica(pj.getIdNaturezaJuridica())
-            stmt.setString(13, trataDados.recuperarNaturezaJuridica(pj.getIdNaturezaJuridica()));//natureza_juridica
+            stmt.setString(13, trataDados.trataGrandesString(trataDados.recuperarNaturezaJuridica(pj.getIdNaturezaJuridica()),5));//natureza_juridica
             stmt.setShort(14, (short)9);//categoria
             stmt.setString(15, pj.getCnpjFormatado());//cnpj_cpf
-            System.out.println(trataDados.converterSrintInt(trataDados.recuperarCnaeEmpresa(empCnae.getIdCNAE())));
+            //System.out.println(trataDados.converterSrintInt(trataDados.recuperarCnaeEmpresa(empCnae.getIdCNAE())));
             stmt.setInt(16, trataDados.converterSrintInt(trataDados.recuperarCnaeEmpresa(empCnae.getIdCNAE())));
             stmt.setString(17, "J");//local_registro
             
-            stmt.setString(18, pj.getNomePessoa());//nome_titular
+            stmt.setString(18, trataDados.trataGrandesString(pj.getNomePessoa(),40));//nome_titular
             stmt.setString(19, "ADMINISTRADOR");//denom_titular
-            stmt.setString(20, trataDados.recupararCPFTitular(pj.getIdPessoa()));//CPF TITULAR
+            stmt.setString(20, trataDados.trataGrandesString(trataDados.recupararCPFTitular(pj.getIdPessoa()),14));//CPF TITULAR
             stmt.setShort(21, (short) 1);//CD_RESPONSAVEL_ESTABELECIMENTO
             stmt.setShort(22, (short) 1);//CD_RESPONSAVEL_CAGED
             stmt.setShort(23, (short) 1);//CD_RESPONSAVEL_SEFIP
@@ -302,7 +302,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.setString(41, "M");//tipo estabelecimento
             stmt.setString(42, "NA");//instituicao_financeira
             stmt.setString(43, "A");//status
-            stmt.setString(44, pj.getNomeFantasia());//RAZAO COMPLETA
+            stmt.setString(44, trataDados.trataGrandesString(pj.getNomeFantasia(),40));//RAZAO COMPLETA
             stmt.setString(45, "N");//estatuto_microempresa
             stmt.setShort(46, (short)0);//opcao_vencimento_darf
             stmt.setString(47, "N");//beneficio prodepe
@@ -1002,14 +1002,14 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_CONTADOR);
             stmt.setInt(1, contador.getIdPessoa());
-            stmt.setString(2, contador.getNomePessoa());
+            stmt.setString(2, trataDados.trataGrandesString(contador.getNomePessoa(),40));
             stmt.setString(3, contador.getCpfFormatado());
-            stmt.setString(4, contador.getApelido());
+            stmt.setString(4, trataDados.trataGrandesString(contador.getApelido(),20));
             stmt.setInt(5, 0);
             stmt.setInt(6,0);
-            stmt.setString(7, contador.getLogradouro() );
+            stmt.setString(7, trataDados.trataGrandesString(contador.getLogradouro(),40) );
             stmt.setInt(8, trataDados.tratarNrEndereco(contador.getNumeroEndereco()));
-            stmt.setString(9, contador.getBairro());
+            stmt.setString(9, trataDados.trataGrandesString(contador.getBairro(),20));
             stmt.setString(10, trataDados.recuperarCidade(contador.getIdmunicipio()));
             stmt.setString(11, trataDados.recuperarUFMunicipio(contador.getIdmunicipio()));
             stmt.setInt(12, trataDados.recuperarCEP(contador.getCep()));
@@ -1028,7 +1028,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.executeUpdate();
                      
            }catch (SQLException exc) {
-            StringBuffer msg = new StringBuffer("Não foi possível incluir contador na Empresa: " + contador.getIdPessoa());
+            StringBuffer msg = new StringBuffer("Não foi possível incluir contador de ID: " + contador.getIdPessoa() +" na Empresa");
             msg.append("\nMotivo: " + exc.getMessage());
             throw new JsageImportException(msg.toString());            
         } finally {
@@ -1036,6 +1036,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         }
     }
     
+    @Override
      public void gravarContadorPJuridica (ContadorPJuridica contador) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;               
@@ -1044,12 +1045,12 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_CONTADOR);
             stmt.setInt(1, contador.getIdPessoa());
-            stmt.setString(2, contador.getNomePessoa());
+            stmt.setString(2, trataDados.trataGrandesString(contador.getNomePessoa(),40));
             stmt.setString(3, contador.getCnpjFormatado());
-            stmt.setString(4, contador.getNomeAbreviado());
+            stmt.setString(4, trataDados.trataGrandesString(contador.getNomeAbreviado(),20));
             stmt.setInt(5, 0);
             stmt.setInt(6,0);
-            stmt.setString(7, contador.getLogradouro() );
+            stmt.setString(7, trataDados.trataGrandesString(contador.getLogradouro(),40) );
             stmt.setInt(8, trataDados.tratarNrEndereco(contador.getNumeroEndereco()));
             stmt.setString(9, contador.getBairro());
             stmt.setString(10, trataDados.recuperarCidade(contador.getIdmunicipio()));

@@ -9,6 +9,6 @@ package jsageImport.modelo.dominio;
  *
  * @author Jeff-Info
  */
-public class Responsavel {
+public class ResponsavelPFisica {
     
 }

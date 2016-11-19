@@ -37,7 +37,8 @@ public interface IPersistenciaFuncionarioSAGE {
     public abstract void gravarDadosFuncionais (int cdEmpresa, int cdFuncionario, DadosFuncionaisNG df, DadosFuncionario fun) throws JsageImportException;
     public abstract void gravarFerias (int cdFuncionario,int cdEmpresa, FeriasNG ferias) throws JsageImportException;
     public abstract void gravarControleESocial (int cdEmpresa, int cdFuncionario) throws JsageImportException;
-    public void gravarControleCamposESocial (int cdEmpresa, int cdFuncionario) throws JsageImportException;
+    public abstract void gravarControleCamposESocial (int cdEmpresa, int cdFuncionario) throws JsageImportException;
+    public abstract void gravarFunEspecifico (int cdFuncionario, int cdEmpresa) throws JsageImportException;
     
     
     public boolean testaConexaoSAGE (String server, String bd, String port, String user, String password) throws JsageImportException;

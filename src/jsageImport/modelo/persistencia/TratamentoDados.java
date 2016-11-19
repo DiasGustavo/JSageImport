@@ -141,7 +141,12 @@ public class TratamentoDados {
     } 
     
     public String convertIntToString (int tipo) throws JsageImportException{
-        String lTipo = Integer.toString(tipo);
+        String lTipo = null;
+        if (tipo !=0){
+            lTipo = Integer.toString(tipo);
+        }else{
+            lTipo = "0";
+        }
         
         return lTipo;
     }
@@ -933,12 +938,14 @@ public class TratamentoDados {
             String stnr = rg;
             //stnr = stnr.trim();
             stnr = stnr.replaceAll(" ","");
+            stnr = stnr.substring(3, stnr.length());
+            normalRG = stnr;
             if(stnr.indexOf("'")!= 0){
               stnr = stnr.replace("'", "");  
             }else if (stnr.indexOf("/")!=0){
               stnr = stnr.replace("/", "");
             }else{            
-                stnr = stnr.substring(4, stnr.length());
+                stnr = stnr.substring(3, stnr.length());
                 normalRG = stnr;
             }
         }
@@ -1342,7 +1349,7 @@ public class TratamentoDados {
                 nomes.add(name);
             }
             nomeSind = (String) nomes.get(0);
-            idSindicato = pesquisarIDSindicatoSAGE(trataGrandesString(nomeSind,70));
+            idSindicato = pesquisarIDSindicatoSAGE(nomeSind);
             
             } catch (SQLException exc) {
                 StringBuffer mensagem = new StringBuffer("Não foi possível pesquisar o sindicato.");

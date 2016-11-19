@@ -43,13 +43,14 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     private static final String SQL_RECUP_EMPRESA_FUN = "SELECT DISTINCT idowner FROM flh_registro";
     private static final String SQL_EMPRESA_COM_FUN = "SELECT * FROM (bpm_dadospessoajuridica AS pj INNER JOIN bpm_pessoa AS p ON p.idpessoa = pj.idpessoa" 
                                                             + " INNER JOIN bpm_pessoaendereco AS pe ON p.idpessoa = pe.idpessoa) " +
-                                                              "WHERE (P.idpessoa = ?);";
+                                                              " WHERE (P.idpessoa = ?);";
     private static final String SQL_EMPRESA = "SELECT * FROM (bpm_dadospessoajuridica AS pj INNER JOIN bpm_pessoa AS p ON p.idpessoa = pj.idpessoa" 
                                                             + " INNER JOIN bpm_pessoaendereco AS pe ON p.idpessoa = pe.idpessoa) " +
-                                                              "WHERE (pj.cnpj <> '');";
+                                                              " WHERE (pj.cnpj <> '');";
     private static final String SQL_EMPRESA_CNPJ = "SELECT * FROM (bpm_dadospessoajuridica AS pj INNER JOIN bpm_pessoa AS p ON p.idpessoa = pj.idpessoa" 
                                                             + " INNER JOIN bpm_pessoaendereco AS pe ON p.idpessoa = pe.idpessoa) " +
-                                                              " WHERE (pj.cnpjformatado = ?);";
+                                                              " WHERE (pj.cnpjformatado = ? AND pj.idpessoa = ?)"
+                                                            + " ORDER BY datacadastramento DESC;";
 
 
     private static final String SQL_EMPRESATRIBUTACAO = "SELECT * FROM (bpm_dadosempresaformatributacao AS eformatributacao INNER JOIN bpm_dadosempresaformatributacaocomplementofolha AS etribcompfolha "
@@ -411,7 +412,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
      * @return List
      * @throws JsageImportException 
      */
-    private List pesquisarCnpj(String cnpj) throws JsageImportException {
+    private List pesquisarCnpj(int idEmpresa, String cnpj) throws JsageImportException {
         if (cnpj == null || cnpj.isEmpty()) {
             return recuperarEmpresas();
         }
@@ -423,6 +424,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             con = GerenciadorConexao.getConnection(urlNG);
             stmt = con.prepareStatement(SQL_EMPRESA_CNPJ);
             stmt.setString(1, cnpj );
+            stmt.setInt(2, idEmpresa);
             rs = stmt.executeQuery();
             List listaEmpresas = new ArrayList();
             while (rs.next()) {
@@ -585,48 +587,55 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         
     }
     
-    public List recuperarContador (int idEmpresa)throws JsageImportException{
+    public List recuperarContadorPFisica (int idEmpresa)throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List listaContador = new ArrayList(); 
-        List listaContadorJuridico = new ArrayList();
+        
         try {             
             
-            int id = recuperarIdContador(idEmpresa);
-            boolean validaContador = trataDados.verificarPessoa(id);
-            
-            if (validaContador == true){//o contador é pessoa fisíca
-               con = GerenciadorConexao.getConnection(urlNG);
-               stmt = con.prepareStatement(SQL_RECUPERA_CONTADOR);
-               stmt.setInt(1, idEmpresa);
-               rs = stmt.executeQuery();
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_RECUPERA_CONTADOR);
+            stmt.setInt(1, idEmpresa);
+            rs = stmt.executeQuery();             
               
-               
-               while(rs.next()){
+            while(rs.next()){
                 ContadorPFisica contador = criarContador(rs);
                 listaContador.add(contador);
-                }
+            }
                
-               return listaContador;
+            return listaContador;
+                                
+        } catch (SQLException exc) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível realizar a Agência do Banco.");
+            mensagem.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }finally {
+            GerenciadorConexao.closeConexao(con, stmt, rs);
+        }
+    }
+    
+    public List recuperarContadorPJuridica (int idEmpresa) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;        
+        List listaContadorJuridico = new ArrayList();
+        
+        try {             
+            
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_RECUPERA_CONTADORJuridica);
+            stmt.setInt(1, idEmpresa);
+            rs = stmt.executeQuery();
                
-            }else {
-                con = GerenciadorConexao.getConnection(urlNG);
-               stmt = con.prepareStatement(SQL_RECUPERA_CONTADORJuridica);
-               stmt.setInt(1, idEmpresa);
-               rs = stmt.executeQuery();
-               
-               while(rs.next()){
+            while(rs.next()){
                 ContadorPJuridica contador = criarContadorPJuridica(rs);
                 listaContadorJuridico.add(contador);
-                }
-               
-               return listaContadorJuridico;
-               
             }
-            
-            
-                                
+               
+            return listaContadorJuridico;
+                               
         } catch (SQLException exc) {
             StringBuffer mensagem = new StringBuffer("Não foi possível realizar a Agência do Banco.");
             mensagem.append("\nMotivo: " + exc.getMessage());
@@ -653,7 +662,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             if (reply == JOptionPane.YES_OPTION)
             {
                 //Pesquisar no banco de dados do NG as informações cadastrais da empresa do cnpj
-                List listaEmpresa = pesquisarCnpj(cnpj);
+                List listaEmpresa = pesquisarCnpj(idEmpresa, cnpj);
                 //Pesquisa informações sobre o porte da empresa no banco do NG
                 //List listaPorteEmpresa = recuperarPorteEmpresa(idEmpresa);
                 //Pesquisa informaçoes sobre a tributação da empresa no banco NG
@@ -666,17 +675,10 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 List listaCargo = recuperarCargoFuncioario(idEmpresa);                
                 List listaCentroCusto = recuperarCentroCusto(idEmpresa);                
                 List listaSindicato = recuperarSindicato();
-                List listaContador = recuperarContador(idEmpresa);
-                List listaContadorJuridico = recuperarContador(idEmpresa);
+                List listaContador = recuperarContadorPFisica(idEmpresa);
+                List listaContadorJuridico = recuperarContadorPJuridica(idEmpresa);
                 
                  //Sequencia de gravação das informações no SAGE
-                PessoaJuridica pjGravar = null;
-                if (listaEmpresa.size() > 0){
-                    pjGravar =(PessoaJuridica) listaEmpresa.get(0);
-                    controlEmpSAGE.gravarEmpresa(pjGravar);
-                }
-                controlEmpSAGE.gravarEmpresaParametro(pjGravar);
-                
                 EmpresaTributacao empTrib = null;
                 if (listaTributacaoEmpresa.size()> 0){
                     empTrib = (EmpresaTributacao)listaTributacaoEmpresa.get(listaTributacaoEmpresa.size()-1);
@@ -689,6 +691,31 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 if (listaFolhaEmpresa.size()>0){
                     empFolha = (EmpresaFolha) listaFolhaEmpresa.get(0);
                 }
+                
+                PessoaJuridica pjGravar = null;
+                if (listaEmpresa.size() > 0){
+                    for (int i=0; i < listaEmpresa.size(); i++){
+                        pjGravar =(PessoaJuridica) listaEmpresa.get(i);
+                        controlEmpSAGE.gravarEmpresa(pjGravar); 
+                        controlEmpSAGE.gravarEmpresaParametro(pjGravar);
+                        controlEmpSAGE.gravarEstabelecimento(pjGravar, empTrib, empTribCNAE, empFolha);
+                        controlEmpSAGE.gravarEstabelecimentoParametro(pjGravar);
+                    }
+                    
+                }
+                
+                
+                CentroCusto centroCusto = null;
+                if(listaCentroCusto.size()>0){
+                    for (int i = 0; i < listaCentroCusto.size(); i++) {
+                        centroCusto = (CentroCusto) listaCentroCusto.get(i);
+                        controlEmpSAGE.gravarCentroCusto(i, centroCusto, idEmpresa);
+                    }
+                }else{
+                    controlEmpSAGE.gravarCentroCusto(1, centroCusto, idEmpresa);
+                }
+                
+                
                 
                 controlEmpSAGE.gravarBancoGeral(idEmpresa);
                 
@@ -708,17 +735,6 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                         controlEmpSAGE.gravarCargo(cargo, idEmpresa);
                     }
                 }
-                
-                CentroCusto centroCusto = null;
-                if(listaCentroCusto.size()>0){
-                    for (int i = 0; i < listaCentroCusto.size(); i++) {
-                        centroCusto = (CentroCusto) listaCentroCusto.get(i);
-                        controlEmpSAGE.gravarCentroCusto(i, centroCusto, idEmpresa);
-                    }
-                }else{
-                    controlEmpSAGE.gravarCentroCusto(1, centroCusto, idEmpresa);
-                }
-                
                 ContadorPFisica contador = null;
                 if(listaContador.size()>0){
                     for(int i=0; i < listaContador.size(); i++){
@@ -748,8 +764,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 
                 
                 
-                controlEmpSAGE.gravarEstabelecimento(pjGravar, empTrib, empTribCNAE, empFolha);
-                controlEmpSAGE.gravarEstabelecimentoParametro(pjGravar);
+                
                 controlEmpSAGE.gravarEstrutura(idEmpresa);                
                 controlEmpSAGE.gravarCRDPermissaoGrupoEstabelecimento(idEmpresa);
                 controlEmpSAGE.gravarCSCDRAPlano(idEmpresa);
@@ -1297,6 +1312,5 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         }
         return contador;
     }
-
    
 }
