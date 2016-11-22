@@ -1,0 +1,61 @@
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO --- Data:Thu Jul 21 08:22:54 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Thu Jul 21 08:22:54 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Thu Jul 21 08:22:54 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 12:10:59 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:36:02 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:36:12 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:36:12 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 13:36:13 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:36:21 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:36:21 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 13:36:21 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:50:33 GFT 2016
+Registro: Gravado o funcionario de código: 3511 nome: MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:50:38 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:50:38 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 13:50:38 GFT 2016
+Registro: Gravado o funcionario de código: 3514 nome: VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 13:50:39 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 13:50:39 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:50:57 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:50:57 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 13:50:58 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:51:11 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:51:12 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 13:51:12 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:51:26 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 13:51:26 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 13:51:26 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 18:58:51 GFT 2016
+Registro: Gravado o funcionario de código: 3511 nome: MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 18:58:57 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 18:58:57 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 18:58:57 GFT 2016
+Registro: Gravado o funcionario de código: 3514 nome: VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 18:59:01 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 18:59:01 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 19:23:26 GFT 2016
+Registro: Gravado o funcionario de código: 3511 nome: MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 19:25:20 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 19:28:00 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 19:30:33 GFT 2016
+Registro: Gravado o funcionario de código: 3514 nome: VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 19:31:48 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 19:34:35 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 20:08:56 GFT 2016
+Registro: Gravado o funcionario de código: 3511 nome: MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 20:09:00 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Mon Nov 21 20:09:00 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 20:09:00 GFT 2016
+Registro: Gravado o funcionario de código: 3514 nome: VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 20:09:07 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Mon Nov 21 20:09:08 GFT 2016
+Registro: Existentes no SAGE: 4830 --- 4734 ----- ELLINE DEBORA BRAZ ARAUJO ---  Data:Mon Nov 21 20:09:08 GFT 2016
+Registro: Gravado o funcionario de código: 4830 nome: ELLINE DEBORA BRAZ ARAUJO ---  Data:Mon Nov 21 20:09:11 GFT 2016
+Registro: Existentes no SAGE: 4830 --- 4734 ----- ELLINE DEBORA BRAZ ARAUJO ---  Data:Mon Nov 21 20:09:12 GFT 2016
+Registro: Existentes no SAGE: 4833 --- 4734 ----- MARIA ERICA DA SILVA ---  Data:Mon Nov 21 20:09:12 GFT 2016
+Registro: Gravado o funcionario de código: 4833 nome: MARIA ERICA DA SILVA ---  Data:Mon Nov 21 20:09:12 GFT 2016
+Registro: Existentes no SAGE: 4833 --- 4734 ----- MARIA ERICA DA SILVA ---  Data:Mon Nov 21 20:09:13 GFT 2016
+Registro: Existentes no SAGE: 4836 --- 4734 ----- JULIANA PONTES DE MELLO DUTRA ---  Data:Mon Nov 21 20:09:13 GFT 2016
+Registro: Gravado o funcionario de código: 4836 nome: JULIANA PONTES DE MELLO DUTRA ---  Data:Mon Nov 21 20:09:17 GFT 2016
+Registro: Existentes no SAGE: 4836 --- 4734 ----- JULIANA PONTES DE MELLO DUTRA ---  Data:Mon Nov 21 20:09:17 GFT 2016
+Registro: Existentes no SAGE: 3494 --- 4734 ----- AMANDA DA MOTA CRUZ ---  Data:Mon Nov 21 20:09:17 GFT 2016
+Registro: Gravado o funcionario de código: 3494 nome: AMANDA DA MOTA CRUZ ---  Data:Mon Nov 21 20:09:18 GFT 2016
+Registro: Existentes no SAGE: 3494 --- 4734 ----- AMANDA DA MOTA CRUZ ---  Data:Mon Nov 21 20:09:18 GFT 2016
+Registro: Existentes no SAGE: 4994 --- 4734 ----- INÊS DE OLIVEIRA AFONSO MAIA ---  Data:Mon Nov 21 20:09:18 GFT 2016
+Registro: Gravado o funcionario de código: 4994 nome: INÊS DE OLIVEIRA AFONSO MAIA ---  Data:Mon Nov 21 20:09:22 GFT 2016
+Registro: Existentes no SAGE: 3517 --- 4734 ----- ELIENE MARIA DA SILVA ---  Data:Mon Nov 21 20:09:22 GFT 2016
+Registro: Gravado o funcionario de código: 3517 nome: ELIENE MARIA DA SILVA ---  Data:Mon Nov 21 20:09:23 GFT 2016
+Registro: Existentes no SAGE: 3517 --- 4734 ----- ELIENE MARIA DA SILVA ---  Data:Mon Nov 21 20:09:23 GFT 2016

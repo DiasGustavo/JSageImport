@@ -139,8 +139,8 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
                                                    "VALUES (?,?,?,?,?)";
     
     private static final String SQL_SINDICATO = "INSERT INTO SindicatoGen (cd_sindicato,descricao,nome_trct,sigla,endereco,nr_endereco,bairro,cidade,estado,cep,cgc" +
-                                                                             ",status,mes_data_base,nr_semanas_mes,tipo_entidade,tipo_sindicato)"+
-                                                                              "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                                                             ",codigo_entidade,status,mes_data_base,nr_semanas_mes,tipo_entidade,tipo_sindicato)"+
+                                                                              "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String SQL_ESTRUTURA = "INSERT INTO Estrutura (cd_empresa,cd_filial,cd_nivel1,cd_nivel2,cd_nivel3,descricao,data_hora_alteracao)" +
                                                          " VALUES(?,?,?,?,?,?,?)";
      
@@ -948,12 +948,13 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.setString(8, trataDados.trataGrandesString(trataDados.recuperarCidade(sindicato.getIdmunicipio()),20));
             stmt.setString(9, trataDados.trataGrandesString(trataDados.recuperarEstado(sindicato.getIdmunicipio()),2));
             stmt.setInt(10, trataDados.recuperarCEP(sindicato.getCep()));
-            stmt.setString(11, "");
-            stmt.setString(12, "A");
-            stmt.setInt(13, sindicato.getMescontribuicao());
-            stmt.setInt(14, 5);
-            stmt.setString(15, "1");
-            stmt.setString(16, "L");
+            stmt.setString(11, sindicato.getCnpjFormatado());
+            stmt.setString(12, trataDados.trataGrandesString(sindicato.getCodigoentidade(),15));
+            stmt.setString(13, "A");
+            stmt.setInt(14, sindicato.getMescontribuicao());
+            stmt.setInt(15, 5);
+            stmt.setString(16, "1");
+            stmt.setString(17, "L");
             
             stmt.executeUpdate();
             

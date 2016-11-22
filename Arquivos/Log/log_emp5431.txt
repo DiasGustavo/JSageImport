@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 5432 --- 5431 ----- SOLANGE FERREIRA DE BARROS --- Data:Mon Nov 21 13:37:53 GFT 2016
+Registro: Gravado o funcionario de código: 5432 nome: SOLANGE FERREIRA DE BARROS ---  Data:Mon Nov 21 13:37:54 GFT 2016
+Registro: Existentes no SAGE: 5432 --- 5431 ----- SOLANGE FERREIRA DE BARROS ---  Data:Mon Nov 21 20:41:46 GFT 2016
+Registro: Gravado o funcionario de código: 5432 nome: SOLANGE FERREIRA DE BARROS ---  Data:Mon Nov 21 20:41:50 GFT 2016

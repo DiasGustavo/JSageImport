@@ -1,0 +1,5 @@
+Registro: Existentes no SAGE: 3433 --- 5906 ----- Manuel Goncalves Ribeiro Neto --- Data:Tue Jul 19 23:58:53 GFT 2016
+Registro: Gravado o funcionario de código: 3433 nome: Manuel Goncalves Ribeiro Neto ---  Data:Tue Jul 19 23:58:54 GFT 2016
+Registro: Existentes no SAGE: 3433 --- 5906 ----- Manuel Goncalves Ribeiro Neto ---  Data:Tue Jul 19 23:58:55 GFT 2016
+Registro: Existentes no SAGE: 3433 --- 5906 ----- Manuel Goncalves Ribeiro Neto ---  Data:Wed Jul 20 00:02:51 GFT 2016
+Registro: Existentes no SAGE: 3433 --- 5906 ----- Manuel Goncalves Ribeiro Neto ---  Data:Wed Jul 20 00:02:51 GFT 2016

@@ -38,7 +38,7 @@ public class TratamentoDados {
     private static final String SQL_CBO = "SELECT idcbo,codigocbo FROM dom_cbo where idcbo = ?";
     private static final String SQL_ID_SINDICATO = "SELECT cd_sindicato FROM SindicatoGen order by cd_sindicato desc";
     private static final String SQL_ID_SEQUENCIA = " SELECT sequencia FROM CRHFuncionarioControleCamposESocial  ORDER BY sequencia DESC";
-    private static final String SQL_NOME_SINDICATO = "SELECT nome_trct FROM SindicatoGen ";
+    private static final String SQL_NOME_SINDICATO = "SELECT descricao FROM SindicatoGen WHERE descricao = ?";
     private static final String SQL_NOME_SINDICATO_ID = "SELECT nomepessoa FROM bpm_pessoa AS pessoa INNER JOIN  bpm_dadossindicato AS sindicato ON pessoa.idpessoa = sindicato.idpessoa" +
                                                                            " WHERE sindicato.iddadossindicato = ?";
     private static final String SQL_ID_SINDICATO_SAGE = "SELECT cd_sindicato FROM SindicatoGen WHERE nome_trct = ?";
@@ -819,7 +819,7 @@ public class TratamentoDados {
     }
     
     public Timestamp DataFimSistema () throws JsageImportException{
-        String data = "2020-12-31 08:00:00";
+        String data = "2100-12-31 08:00:00";
         Timestamp tempo = Timestamp.valueOf(data);
         
         return tempo;
@@ -1240,10 +1240,11 @@ public class TratamentoDados {
         try {
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_NOME_SINDICATO);
+            stmt.setString(1, nomeSind);
             List ids = new ArrayList();
             rs = stmt.executeQuery();
             while(rs.next()){
-                nome= rs.getString("nome_trct");
+                nome= rs.getString("descricao");
                 ids.add(nome);
             }
             
@@ -1287,6 +1288,18 @@ public class TratamentoDados {
         
         return contribuicao;
     }
+    
+    public boolean compararData(Timestamp dataAnt, Timestamp dataProx)throws JsageImportException{
+        boolean tag;
+        //compara a dataprox com a anterior verificando se a prox é mais recente
+        // se sim tag recebe true
+        if (dataAnt.before(dataProx)){
+            tag = true;
+        }else{
+            tag = false;
+        }
+        return tag;
+    }
 
     public int pesquisarIDSindicatoSAGE (String nomeSindicato) throws JsageImportException{
         
@@ -1318,8 +1331,6 @@ public class TratamentoDados {
                 idSindicato = 1;
             }
             
-            
-            
             } catch (SQLException exc) {
                 StringBuffer mensagem = new StringBuffer("Não foi possível pesquisar o sindicato.");
                 mensagem.append("\nMotivo: " + exc.getMessage());
@@ -1349,7 +1360,7 @@ public class TratamentoDados {
                 nomes.add(name);
             }
             nomeSind = (String) nomes.get(0);
-            idSindicato = pesquisarIDSindicatoSAGE(nomeSind);
+            idSindicato = pesquisarIDSindicatoSAGE(trataGrandesString(nomeSind,70));
             
             } catch (SQLException exc) {
                 StringBuffer mensagem = new StringBuffer("Não foi possível pesquisar o sindicato.");

@@ -1,0 +1,6 @@
+Registro: Existentes no SAGE: 3417 --- 3413 ----- Valmir Felix do Nascimento --- Data:Tue Jul 19 14:58:31 GFT 2016
+Registro: Gravado o funcionario de código: 3417 nome: Valmir Felix do Nascimento ---  Data:Tue Jul 19 14:58:33 GFT 2016
+Registro: Existentes no SAGE: 3420 --- 3413 ----- Sharlene Alexandre de Santana Dutra ---  Data:Tue Jul 19 14:58:33 GFT 2016
+Registro: Gravado o funcionario de código: 3420 nome: Sharlene Alexandre de Santana Dutra ---  Data:Tue Jul 19 14:58:34 GFT 2016
+Registro: Existentes no SAGE: 3422 --- 3413 ----- Sonia de Souza Pinheiro de Santana ---  Data:Tue Jul 19 14:58:34 GFT 2016
+Registro: Gravado o funcionario de código: 3422 nome: Sonia de Souza Pinheiro de Santana ---  Data:Tue Jul 19 14:58:36 GFT 2016

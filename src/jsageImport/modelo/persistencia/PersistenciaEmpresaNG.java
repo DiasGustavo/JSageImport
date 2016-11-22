@@ -82,6 +82,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
     private static final String SQL_CENTRO_CUSTO = "SELECT * from bpm_centrocusto where idowner = ?";
     
     private static final String SQL_SINDICATO = "SELECT * FROM (bpm_dadossindicato as sindicato INNER JOIN bpm_pessoa as pessoa on sindicato.idpessoa = pessoa.idpessoa " +
+                                                "INNER JOIN NG.dbo.bpm_dadospessoajuridica as pessoaj on sindicato.idpessoa = pessoaj.idpessoa " +
                                                 "INNER JOIN bpm_pessoaendereco as pessoaEnd on sindicato.idpessoa = pessoaEnd.idpessoa)";
     
     private static final String SQL_RECUPERA_CONTADOR = " SELECT * FROM (bpm_pessoa as pessoa INNER JOIN bpm_dadospessoafisica as pessoaf on pessoa.idpessoa =pessoaf.idpessoa" +
@@ -192,8 +193,6 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         try {
             con = GerenciadorConexao.getConnection(urlNG);
             stmt = con.prepareStatement(SQL_SINDICATO);
-            
-            
             rs = stmt.executeQuery();
             List listaSindicato = new ArrayList();
             while (rs.next()) {
@@ -755,7 +754,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 if (listaSindicato.size()> 0){
                     for (int i = 0;i < listaSindicato.size(); i++) {
                         sind = (Sindicato) listaSindicato.get(i);
-                        if(trataDados.pesquisarSindicato(sind.getNomePessoa()) == false){
+                        if(trataDados.pesquisarSindicato(trataDados.trataGrandesString(sind.getNomePessoa(),150)) == false){
                             controlEmpSAGE.gravarSindicato(sind);
                         }
                      
@@ -1230,6 +1229,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             sind.setIdPessoa(rs.getInt("idpessoa"));
             sind.setIdtiposindicato(rs.getInt("idtiposindicato"));
             sind.setCodigoentidade(rs.getString("codigoentidade"));
+            sind.setCnpj(rs.getString("cnpj"));
+            sind.setCnpjFormatado(rs.getString("cnpjformatado"));
             sind.setMescontribuicao(rs.getInt("mescontribuicao"));
             sind.setMesdissidio(rs.getInt("mesdissidio"));
             sind.setInddescontarmesadmissao(rs.getBoolean("inddescontarmesadmissao"));
@@ -1246,9 +1247,9 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             sind.setBairro(rs.getString("bairro"));
             sind.setNumeroEndereco(rs.getString("numeroendereco"));
             sind.setLogradouro(rs.getString("logradouro"));
+            sind.setNomeAbreviado(rs.getString("nomeabreviado"));
             
-           
-                    
+            
         }catch (SQLException ex) {
             StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados do sindicato do Funcionário.");
             mensagem.append("\nMotivo: " + ex.getMessage());

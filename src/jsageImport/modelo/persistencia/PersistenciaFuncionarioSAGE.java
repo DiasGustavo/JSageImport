@@ -19,7 +19,6 @@ import jsageImport.modelo.dominio.DependenteSAGE;
 import jsageImport.modelo.dominio.EmpresaSAGE;
 import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.FuncionarioSAGE;
-import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 
 /**
@@ -240,6 +239,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt = con.prepareStatement(SQL_INCLUIR_SALARIO);
             stmt.setInt(1, cdEmpresa);//cd_empresa
             stmt.setInt(2, cdFuncionario);//cd_funcionario
+            System.out.println(df.getDataIncio());
             stmt.setTimestamp(3, df.getDataIncio());//dt_salario
             stmt.setString(4, trataDados.recuperaTipoSalario(df.getIdTipoSalario()));//tipo_salario
             stmt.setDouble(5, horasSemanaisDefault);//nr_horas_semanais
@@ -284,7 +284,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setInt(1, cdEmpresa);//cd_empresa
             stmt.setInt(2, cdFuncionario);//cd_funcionario
             stmt.setString(3, "F");//tp_colaborador
-            stmt.setString(4, df.getNomePessoa());// nome
+            stmt.setString(4, trataDados.trataGrandesString(df.getNomePessoa(),40));// nome
                         
             stmt.executeUpdate();
             
@@ -314,16 +314,16 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt = con.prepareStatement(SQL_INCLUIR_DOCUMENTOS);
             stmt.setInt(1, cdEmpresa);//cd_empresa
             stmt.setInt(2, cdFuncionario);//cd_funcionario
-            stmt.setString(3, pf.getNumeroCtps());//nr_carteira
-            stmt.setString(4, pf.getSerieCtps());//serie_carteira
+            stmt.setString(3, trataDados.trataGrandesString(pf.getNumeroCtps(),8));//nr_carteira
+            stmt.setString(4, trataDados.trataGrandesString(pf.getSerieCtps(),5));//serie_carteira
             stmt.setString(5, carteiraDefault);//dv_serie_carteira
-            stmt.setString(6, trataDados.recuperarUF(pf.getIdUfCtps()));//uf_carteira
-            stmt.setString(7, trataDados.recuperarPIS(cdFuncionario));//pis
-            stmt.setString(8, pf.getCpfFormatado());//cpf
-            stmt.setString(9, pf.getNumeroDocumentoIdentidade());//nr_identidade
-            stmt.setString(10, trataDados.tratarOrgaoRG(pf.getOrgaoExpedidorDocumentoIdentidade()));//orgao_identidade
-            stmt.setString(11, trataDados.tratarUFRG(pf.getOrgaoExpedidorDocumentoIdentidade()));//uf_identidade   
-            stmt.setInt(12, trataDados.converterSrintInt(pf.getNumeroCnh()));//nr_habilitacao 
+            stmt.setString(6, trataDados.trataGrandesString(trataDados.recuperarUF(pf.getIdUfCtps()),2));//uf_carteira
+            stmt.setString(7, trataDados.trataGrandesString(trataDados.recuperarPIS(cdFuncionario),14));//pis
+            stmt.setString(8, trataDados.trataGrandesString(pf.getCpfFormatado(),14));//cpf
+            stmt.setString(9, trataDados.trataGrandesString(pf.getNumeroDocumentoIdentidade(),20));//nr_identidade
+            stmt.setString(10, trataDados.trataGrandesString(trataDados.tratarOrgaoRG(pf.getOrgaoExpedidorDocumentoIdentidade()),12));//orgao_identidade
+            stmt.setString(11, trataDados.trataGrandesString(trataDados.tratarUFRG(pf.getOrgaoExpedidorDocumentoIdentidade()),2));//uf_identidade   
+            stmt.setInt(12, trataDados.converterSrintIntCom0(pf.getNumeroCnh()));//nr_habilitacao 
             //trataDados.convertIntToString(pf.getIdcategoriaHabilitacaoCnh()) tamanho da string problema
             stmt.setString(13, trataDados.recuperarCNH(pf.getIdcategoriaHabilitacaoCnh()));//categoria_habilitacao
             stmt.setTimestamp(14, pf.getVencimentoCnh());//vcto_habilitacao
@@ -338,22 +338,22 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setTimestamp(23, pf.getDataInscricao());//dt_emissao_pis
             stmt.setString(24, carteiraDefault);//novo_nr_titulo
             stmt.setString(25, carteiraDefault);//novo_nr_habilitacao
-            stmt.setString(26, pf.getNumeroDocumentoMilitar());//certificado_militar
-            stmt.setString(27, pf.getOrgaoExpedidorRegistroProfissional());//orgao_reg_prof
-            stmt.setString(28, pf.getNumeroRegistroProfissional());//nr_reg_prof
+            stmt.setString(26, trataDados.trataGrandesString(pf.getNumeroDocumentoMilitar(),20));//certificado_militar
+            stmt.setString(27, trataDados.trataGrandesString(pf.getOrgaoExpedidorRegistroProfissional(),10));//orgao_reg_prof
+            stmt.setString(28, trataDados.trataGrandesString(pf.getNumeroRegistroProfissional(),20));//nr_reg_prof
             stmt.setTimestamp(29, pf.getDataExpedicaoRegistroProfissional());//dt_emissao_reg_prof
-            stmt.setString(30, pf.getOrgaoEmissorCnh());//orgao_emissor_cnh
+            stmt.setString(30, trataDados.trataGrandesString(pf.getOrgaoEmissorCnh(),10));//orgao_emissor_cnh
             stmt.setTimestamp(31, pf.getDataValidadeRegistroProfissional());//dt_vcto_reg_prof
             stmt.setTimestamp(32, pf.getDataEmissaoCertidaoCivil());//dt_emissao_certidao
-            stmt.setString(33, pf.getTermoMatriculaCertidaoCivil());//matricula_certidao
-            stmt.setString(34, pf.getLivroCertidaoCivil());//livro_certidao
-            stmt.setString(35, pf.getFolhaCertidaoCivil());//folha_certidao
-            stmt.setString(36, pf.getCartorioCertidaoCivil());//cartorio_certidao
-            stmt.setString(37, trataDados.recuperarUF(pf.getIdUfCertidaoCivil()));//uf_certidao
+            stmt.setString(33, trataDados.trataGrandesString(pf.getTermoMatriculaCertidaoCivil(),32));//matricula_certidao
+            stmt.setString(34, trataDados.trataGrandesString(pf.getLivroCertidaoCivil(),8));//livro_certidao
+            stmt.setString(35, trataDados.trataGrandesString(pf.getFolhaCertidaoCivil(),4));//folha_certidao
+            stmt.setString(36, trataDados.trataGrandesString(pf.getCartorioCertidaoCivil(),115));//cartorio_certidao
+            stmt.setString(37, trataDados.trataGrandesString(trataDados.recuperarUF(pf.getIdUfCertidaoCivil()),2));//uf_certidao
             stmt.setInt(38, 0);//cd_municipio_certidao
             stmt.setTimestamp(39, pf.getDataPrimeiraHabilitacao());//dt_primeira_habilitacao
             //trataDados.recuperarUF(pf.getIdufcnh()) problema tamanho da string
-            stmt.setString(40,trataDados.recuperarUF(pf.getIdufcnh()));//uf_habilitacao
+            stmt.setString(40,trataDados.trataGrandesString(trataDados.recuperarUF(pf.getIdufcnh()),2));//uf_habilitacao
             stmt.setTimestamp(41, trataDados.horaAtual());
             stmt.setString(42, null);//id
             
@@ -403,7 +403,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setInt(14, 0);//ocorrencia
             //stmt.setInt(21, cdEmpresa);//cd_banco_fgts
             //trataDados.converterSrintInt(trataDados.recuperarBanco(fun.getIdDadosBanco()))
-            stmt.setInt(15, fun.getIdDadosBanco());//cd_banco_deposito
+            stmt.setInt(15, fun.getIdDadosBanco()+1);//cd_banco_deposito
             //trataDados.converterSrintInt(trataDados.recuperarAgencia(fun.getIdDadosAgencia()))
             stmt.setInt(16, trataDados.converterSrintInt(fun.getCodigoagencia()));//nr_agencia_deposito
             stmt.setString(17, fun.getNumdvagencia());//dv_agencia_deposito

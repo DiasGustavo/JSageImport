@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import jsageImport.controler.ControlerFuncionarioSAGE;
@@ -18,7 +19,6 @@ import jsageImport.modelo.dominio.DependenteNG;
 import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.PessoaFisica;
 import jsageImport.modelo.dominio.PessoaJuridica;
-import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioNG;
 
 /**
@@ -30,7 +30,7 @@ import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioNG;
 public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     
     private PropertiesJdbc jdbc = new PropertiesJdbc();
-    private TratamentoDados TrataDados = new TratamentoDados();
+    private TratamentoDados trataDados = new TratamentoDados();
     private LogSage logarq = new LogSage();
     
     /*String SQL para consultas no banco NG*/
@@ -55,7 +55,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                                                                             + " WHERE pes.idpessoa = ?"
                                                                             + " ORDER BY pes.nomepessoa ASC";
     
-    private static final String SQL_RECUP_FUNCIONARIOS = "SELECT idpessoaregistro  FROM flh_registro WHERE idtipoadmissao <> 0 AND idowner = ?"; 
+    private static final String SQL_RECUP_FUNCIONARIOS = "SELECT idpessoaregistro  FROM flh_registro WHERE (idtipoadmissao <> 0 AND datademissao is null) AND idowner = ?"; 
     private static final String SQL_RECUP_DEPENDENTES = "SELECT idpessoa FROM (bpm_pessoa AS p INNER JOIN bpm_pessoarelacionamento AS pr ON p.idpessoa = pr.idpessoaprincipal)"
                                                                 + " WHERE pr.idpessoasecundaria = ? AND idtiporelacionamentopessoa = 23";
     
@@ -82,7 +82,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                                                                         + " LEFT JOIN  flh_movimentocargo AS flcargo ON fl.idregistro = flcargo.idregistro ) "
                                                                         + " LEFT JOIN  flh_movimentosindicato AS flsind ON fl.idregistro = flsind.idregistro"
                                                                         + " WHERE fl.idtipoadmissao <> 0 AND fl.idpessoaregistro = ?"
-                                                                        + " ORDER BY flSal.idmovimentosalario desc";
+                                                                        + " ORDER BY flSal.idmovimentosalario asc";
     
     private static final String SQL_CONSULTA_FERIAS = "SELECT * FROM flh_registro AS fl "+ 
                                                                 " INNER JOIN flh_ferias AS flFerias ON fl.idregistro = flFerias.idregistro" +
@@ -565,9 +565,8 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
         if (nome.length()>0){          
         
             //verifica se o funcionario informado se encontra no banco sage
-            List listaEmpresaSAGE = controlSAGE.pesquisarFuncionarioNome(idEmpresa, nome);       
-            // se existir o a lista vai ter um tamanho maior do que zero, portanto não entra no if
-            // System.out.println("Existentes no SAGE: " +idPessoa + " --- " + idEmpresa + " ----- " + nome);
+            List listaEmpresaSAGE = controlSAGE.pesquisarFuncionarioNome(idEmpresa, trataDados.trataGrandesString(nome,40));       
+            // se existir o a lista vai ter um tamanho maior do que zero, portanto não entra no if            
             log = "Existentes no SAGE: " +idPessoa + " --- " + idEmpresa + " ----- " + nome;
             logarq.LogTxt(log, "PersisntenciaNG", "emp"+idEmpresa);               
             if (listaEmpresaSAGE.isEmpty()){
@@ -600,21 +599,71 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 //grava os dados especificos do funcionario
                 controlSAGE.gravarFunEspecifico(idPessoa, idEmpresa);
                 
+                
                 // havendo salario do funcionario é gravado 
-                if (listaSalarios.size()> 0){
+                /*if (listaSalarios.size()> 0){
                     for (int i = 0; i < listaSalarios.size(); i++){
                         DadosFuncionaisNG funFuncionais = (DadosFuncionaisNG) listaSalarios.get(i);
                         controlSAGE.gravarSalario(idPessoa, idEmpresa, funFuncionais);
                     }
                     
-                }
+                }*/
+                int iterador = 0;
+                do{
+                    if (listaSalarios.size()>iterador){
+                        DadosFuncionaisNG funSalarioAtual = (DadosFuncionaisNG) listaSalarios.get(iterador);
+                        if (iterador == 0){
+                            controlSAGE.gravarSalario(idPessoa, idEmpresa, funSalarioAtual);
+                        }else {
+                            if(listaSalarios.iterator().hasNext()){
+                            
+                                DadosFuncionaisNG funSalarioAnt = (DadosFuncionaisNG) listaSalarios.get(iterador-1);
+                        
+                                Timestamp dataAtual = funSalarioAtual.getDataIncio();
+                                Timestamp dataAnt = funSalarioAnt.getDataIncio();
+                                if(trataDados.compararData(dataAnt, dataAtual)){
+                                    controlSAGE.gravarSalario(idPessoa, idEmpresa, funSalarioAtual);
+                                }
+                            }
+                            
+                        }
+                                           
+                    }
+                    iterador++;
+                }while(iterador < listaSalarios.size());
+               
                 // gravar as ferias do funcionario
-                if (listaFerias.size()>0){
+                /*if (listaFerias.size()>0){
                     for (int i=0; i < listaFerias.size(); i++){
                         FeriasNG ferias = (FeriasNG) listaFerias.get(i);
                         controlSAGE.gravarFerias(idPessoa, idEmpresa, ferias);
                     }
-                }
+                }*/
+                
+                do{
+                    if (listaFerias.size()>iterador){
+                        FeriasNG funFeriasAtual = (FeriasNG) listaFerias.get(iterador);
+                        if (iterador == 0){
+                            controlSAGE.gravarSalario(idPessoa, idEmpresa, funFeriasAtual);
+                        }else {
+                            if(listaFerias.iterator().hasNext()){
+                            
+                                FeriasNG funFeriasAnt = (FeriasNG) listaFerias.get(iterador-1);
+                        
+                                Timestamp dataAtual = funFeriasAtual.getDataIncio();
+                                Timestamp dataAnt = funFeriasAnt.getDataIncio();
+                                if(trataDados.compararData(dataAnt, dataAtual)){
+                                    controlSAGE.gravarFerias(idPessoa, idEmpresa, funFeriasAtual);
+                                }
+                            }
+                            
+                        }
+                                           
+                    }
+                    iterador++;
+                }while(iterador < listaSalarios.size());
+                
+                
                 //gravar o controleEsocial
                 controlSAGE.gravarControleESocial(idPessoa, idEmpresa);
                 controlSAGE.gravarControleCamposESocial(idEmpresa, idPessoa);
@@ -641,7 +690,8 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
         funcionario = "código: " + idPessoa + " Nome:" + nome;
         
         return funcionario;
-    }    
+    }
+        
     
     @Override
     public int SizeImport() throws JsageImportException {

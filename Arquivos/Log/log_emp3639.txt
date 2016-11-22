@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 4397 --- 3639 ----- ÉRIDA MARIA MARQUES CAVALCANTI --- Data:Mon Nov 21 13:33:13 GFT 2016
+Registro: Gravado o funcionario de código: 4397 nome: ÉRIDA MARIA MARQUES CAVALCANTI ---  Data:Mon Nov 21 13:33:13 GFT 2016
+Registro: Existentes no SAGE: 6017 --- 3639 ----- EDSON FRANCISCO DA SILVA ---  Data:Mon Nov 21 13:33:14 GFT 2016
+Registro: Gravado o funcionario de código: 6017 nome: EDSON FRANCISCO DA SILVA ---  Data:Mon Nov 21 13:33:17 GFT 2016

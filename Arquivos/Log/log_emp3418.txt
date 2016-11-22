@@ -1,0 +1,49 @@
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA --- Data:Mon Nov 21 13:30:46 GFT 2016
+Registro: Gravado o funcionario de código: 3423 nome: ANA PAULA AVILA ROMA ---  Data:Mon Nov 21 13:30:50 GFT 2016
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Mon Nov 21 13:30:50 GFT 2016
+Registro: Gravado o funcionario de código: 3427 nome: ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Mon Nov 21 13:30:58 GFT 2016
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Mon Nov 21 13:30:58 GFT 2016
+Registro: Gravado o funcionario de código: 3433 nome: ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Mon Nov 21 13:30:59 GFT 2016
+Registro: Existentes no SAGE: 3447 --- 3418 ----- LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Mon Nov 21 13:30:59 GFT 2016
+Registro: Gravado o funcionario de código: 3447 nome: LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Mon Nov 21 13:31:04 GFT 2016
+Registro: Existentes no SAGE: 3471 --- 3418 ----- JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Mon Nov 21 13:31:04 GFT 2016
+Registro: Gravado o funcionario de código: 3471 nome: JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Mon Nov 21 13:31:05 GFT 2016
+Registro: Existentes no SAGE: 3476 --- 3418 ----- JOSEFA PEREIRA DA SILVA ---  Data:Mon Nov 21 13:31:05 GFT 2016
+Registro: Gravado o funcionario de código: 3476 nome: JOSEFA PEREIRA DA SILVA ---  Data:Mon Nov 21 13:31:09 GFT 2016
+Registro: Existentes no SAGE: 3479 --- 3418 ----- JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Mon Nov 21 13:31:09 GFT 2016
+Registro: Gravado o funcionario de código: 3479 nome: JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Mon Nov 21 13:31:10 GFT 2016
+Registro: Existentes no SAGE: 3482 --- 3418 ----- VERONICA MARIA DE MELO PESSOA ---  Data:Mon Nov 21 13:31:10 GFT 2016
+Registro: Gravado o funcionario de código: 3482 nome: VERONICA MARIA DE MELO PESSOA ---  Data:Mon Nov 21 13:31:14 GFT 2016
+Registro: Existentes no SAGE: 3486 --- 3418 ----- CAMILLA VERAS FALCAO ---  Data:Mon Nov 21 13:31:14 GFT 2016
+Registro: Gravado o funcionario de código: 3486 nome: CAMILLA VERAS FALCAO ---  Data:Mon Nov 21 13:31:15 GFT 2016
+Registro: Existentes no SAGE: 3489 --- 3418 ----- CYNTHIA AVILA MATTOS ---  Data:Mon Nov 21 13:31:15 GFT 2016
+Registro: Gravado o funcionario de código: 3489 nome: CYNTHIA AVILA MATTOS ---  Data:Mon Nov 21 13:31:16 GFT 2016
+Registro: Existentes no SAGE: 4404 --- 3418 ----- RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Mon Nov 21 13:31:16 GFT 2016
+Registro: Gravado o funcionario de código: 4404 nome: RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Mon Nov 21 13:31:17 GFT 2016
+Registro: Existentes no SAGE: 4436 --- 3418 ----- ANTONIO DOUGLAS DE LIMA ---  Data:Mon Nov 21 13:31:17 GFT 2016
+Registro: Gravado o funcionario de código: 4436 nome: ANTONIO DOUGLAS DE LIMA ---  Data:Mon Nov 21 13:31:18 GFT 2016
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Mon Nov 21 13:31:18 GFT 2016
+Registro: Gravado o funcionario de código: 3539 nome: KARINA MARTINS VAREJAO ---  Data:Mon Nov 21 13:31:19 GFT 2016
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Mon Nov 21 13:31:19 GFT 2016
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Mon Nov 21 13:31:19 GFT 2016
+Registro: Gravado o funcionario de código: 3536 nome: SOLANGE MARIA VALENCA MANGHI ---  Data:Mon Nov 21 13:31:20 GFT 2016
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Mon Nov 21 13:31:20 GFT 2016
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Mon Nov 21 13:31:20 GFT 2016
+Registro: Gravado o funcionario de código: 3532 nome: YERUSCHELEIN FERNANDES SALES ---  Data:Mon Nov 21 13:31:22 GFT 2016
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Mon Nov 21 13:31:22 GFT 2016
+Registro: Existentes no SAGE: 4955 --- 3418 ----- CAROLINA BEZERRA PATRIOTA ---  Data:Mon Nov 21 13:31:22 GFT 2016
+Registro: Gravado o funcionario de código: 4955 nome: CAROLINA BEZERRA PATRIOTA ---  Data:Mon Nov 21 13:31:22 GFT 2016
+Registro: Existentes no SAGE: 5435 --- 3418 ----- ANDRE LUIZ DA SILVA MENEZES ---  Data:Mon Nov 21 13:31:23 GFT 2016
+Registro: Gravado o funcionario de código: 5435 nome: ANDRE LUIZ DA SILVA MENEZES ---  Data:Mon Nov 21 13:31:23 GFT 2016
+Registro: Existentes no SAGE: 5534 --- 3418 ----- PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Mon Nov 21 13:31:23 GFT 2016
+Registro: Gravado o funcionario de código: 5534 nome: PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Mon Nov 21 13:31:24 GFT 2016
+Registro: Existentes no SAGE: 5537 --- 3418 ----- JOÃO KARIMAI ---  Data:Mon Nov 21 13:31:24 GFT 2016
+Registro: Gravado o funcionario de código: 5537 nome: JOÃO KARIMAI ---  Data:Mon Nov 21 13:31:28 GFT 2016
+Registro: Existentes no SAGE: 3461 --- 3418 ----- MARIO RINO MARTINS ---  Data:Mon Nov 21 13:31:28 GFT 2016
+Registro: Gravado o funcionario de código: 3461 nome: MARIO RINO MARTINS ---  Data:Mon Nov 21 13:31:29 GFT 2016
+Registro: Existentes no SAGE: 5708 --- 3418 ----- GISELDA DE CASTRO LEMOS FREITAS ---  Data:Mon Nov 21 13:31:29 GFT 2016
+Registro: Gravado o funcionario de código: 5708 nome: GISELDA DE CASTRO LEMOS FREITAS ---  Data:Mon Nov 21 13:31:30 GFT 2016
+Registro: Existentes no SAGE: 6112 --- 3418 ----- KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Mon Nov 21 13:31:30 GFT 2016
+Registro: Gravado o funcionario de código: 6112 nome: KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Mon Nov 21 13:31:30 GFT 2016
+Registro: Existentes no SAGE: 6140 --- 3418 ----- ERICA ELIS DE LUCENA ---  Data:Mon Nov 21 13:31:30 GFT 2016
+Registro: Gravado o funcionario de código: 6140 nome: ERICA ELIS DE LUCENA ---  Data:Mon Nov 21 13:31:31 GFT 2016

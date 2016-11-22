@@ -9,7 +9,7 @@ package jsageImport.modelo.dominio;
  *
  * @author Jeff-Info
  */
-public class Sindicato extends PessoaNG{
+public class Sindicato extends PessoaJuridica{
     
     int iddadossindicato;
     //int idpessoa;

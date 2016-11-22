@@ -1,0 +1,4 @@
+Registro: Existentes no SAGE: 5672 --- 5098 ----- SANDRA COSMA DO NASCIMENTO --- Data:Mon Nov 21 13:37:43 GFT 2016
+Registro: Gravado o funcionario de código: 5672 nome: SANDRA COSMA DO NASCIMENTO ---  Data:Mon Nov 21 13:37:44 GFT 2016
+Registro: Existentes no SAGE: 5757 --- 5098 ----- EDENILDA DOS SANTOS SOUZA ---  Data:Mon Nov 21 13:37:44 GFT 2016
+Registro: Gravado o funcionario de código: 5757 nome: EDENILDA DOS SANTOS SOUZA ---  Data:Mon Nov 21 13:37:44 GFT 2016

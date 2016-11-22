@@ -1,0 +1,6 @@
+Registro: Existentes no SAGE: 3675 --- 3674 ----- ANA CLAUDIA DE QUEIROZ --- Data:Mon Nov 21 13:33:58 GFT 2016
+Registro: Gravado o funcionario de código: 3675 nome: ANA CLAUDIA DE QUEIROZ ---  Data:Mon Nov 21 13:33:59 GFT 2016
+Registro: Existentes no SAGE: 3678 --- 3674 ----- MARIA DE FATIMA BEZERRA DE SOUSA ---  Data:Mon Nov 21 13:33:59 GFT 2016
+Registro: Gravado o funcionario de código: 3678 nome: MARIA DE FATIMA BEZERRA DE SOUSA ---  Data:Mon Nov 21 13:34:00 GFT 2016
+Registro: Existentes no SAGE: 3682 --- 3674 ----- LUCIANA MARIA SOARES DA SILVA ---  Data:Mon Nov 21 13:34:00 GFT 2016
+Registro: Gravado o funcionario de código: 3682 nome: LUCIANA MARIA SOARES DA SILVA ---  Data:Mon Nov 21 13:34:00 GFT 2016
