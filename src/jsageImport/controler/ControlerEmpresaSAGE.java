@@ -14,6 +14,7 @@ import jsageImport.modelo.dominio.ContadorPJuridica;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
+import jsageImport.modelo.dominio.ResponsavelPJuridica;
 import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaSAGE;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
@@ -33,10 +34,10 @@ public class ControlerEmpresaSAGE {
         
     }
     
-    public void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException {
+    public void gravarEstabelecimento (int idResponsavelCaged, int idResponsavelSefip,PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException {
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
-        PEmpresa.gravarEstabelecimento(pj, empTrib, empCnae, empFolha);
+        PEmpresa.gravarEstabelecimento(idResponsavelCaged, idResponsavelSefip, pj, empTrib, empCnae, empFolha);
     }  
     
     public void gravarEmpresaMatrizContabilizacao (int cd_empresa)throws JsageImportException{
@@ -155,10 +156,31 @@ public class ControlerEmpresaSAGE {
         PEmpresa.gravarContador(contador);
     }
     
-     public void gravarContadorPJuridica (ContadorPJuridica contador) throws JsageImportException{
+    public void gravarContadorPJuridica (ContadorPJuridica contador) throws JsageImportException{
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
         PEmpresa.gravarContadorPJuridica(contador);
-     }
+    }
+    
+    public boolean pesquisarResponsavel (String nome) throws JsageImportException{
+        boolean tag = false;
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
+        tag = PEmpresa.pesquisarResponsavel(nome);
+        
+        return tag;
+    }
+    
+    public void gravarResponsavelPJuridica (ResponsavelPJuridica responsavel) throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
+        PEmpresa.gravarResponsavelPJuridica(responsavel);
+    }
+    
+    public void gravarParametroSindicato (int idSindicato) throws JsageImportException {
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
+        PEmpresa.gravarParametroSindicato(idSindicato);
+    }
    
 }

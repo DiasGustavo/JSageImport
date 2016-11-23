@@ -938,7 +938,7 @@ public class TratamentoDados {
             String stnr = rg;
             //stnr = stnr.trim();
             stnr = stnr.replaceAll(" ","");
-            stnr = stnr.substring(3, stnr.length());
+            stnr = stnr.substring(3, stnr.length()-1);
             normalRG = stnr;
             if(stnr.indexOf("'")!= 0){
               stnr = stnr.replace("'", "");  

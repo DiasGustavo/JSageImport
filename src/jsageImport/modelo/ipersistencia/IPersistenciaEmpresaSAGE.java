@@ -14,6 +14,7 @@ import jsageImport.modelo.dominio.ContadorPJuridica;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
+import jsageImport.modelo.dominio.ResponsavelPJuridica;
 import jsageImport.modelo.dominio.Sindicato;
 
 /**
@@ -42,10 +43,13 @@ public interface IPersistenciaEmpresaSAGE {
     public void gravarSindicato (Sindicato sindicato) throws JsageImportException;
     public void gravarEstrutura (int cdEmpresa) throws JsageImportException;
     public void gravarContador (ContadorPFisica contador) throws JsageImportException;
-     public void gravarContadorPJuridica (ContadorPJuridica contador) throws JsageImportException;
+    public void gravarContadorPJuridica (ContadorPJuridica contador) throws JsageImportException;
+    public boolean pesquisarResponsavel (String nome) throws JsageImportException;
+    public void gravarResponsavelPJuridica (ResponsavelPJuridica responsavel) throws JsageImportException;
+    public void gravarParametroSindicato (int idSindicato) throws JsageImportException;
     
     
-    public abstract void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException;
+    public abstract void gravarEstabelecimento (int idResponsavelCaged, int idResponsavelSefip,PessoaJuridica pj, EmpresaTributacao empTrib, EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException;
     public abstract void gravarEmpresa (PessoaJuridica pj) throws JsageImportException;
    
     

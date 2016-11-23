@@ -9,8 +9,7 @@ package jsageImport.modelo.dominio;
  *
  * @author Jeff-Info
  */
-public class ResponsavelPFisica extends PessoaFisica{
-    
+public class ResponsavelPJuridica extends PessoaJuridica{
     int iddadosresponsavelfolhaempresa;
     int iddadosresponsavelfolha;
     int idpessoaempresa;
@@ -23,6 +22,24 @@ public class ResponsavelPFisica extends PessoaFisica{
     boolean indmanad;
     boolean inddcn;
     boolean indesocial;
+    String nomeresponsavel;
+    String autorizacaocaged;
+
+    public String getAutorizacaocaged() {
+        return autorizacaocaged;
+    }
+
+    public void setAutorizacaocaged(String autorizacaocaged) {
+        this.autorizacaocaged = autorizacaocaged;
+    }
+
+    public String getNomeresponsavel() {
+        return nomeresponsavel;
+    }
+
+    public void setNomeresponsavel(String nomeresponsavel) {
+        this.nomeresponsavel = nomeresponsavel;
+    }
 
     public int getIddadosresponsavelfolhaempresa() {
         return iddadosresponsavelfolhaempresa;
@@ -119,6 +136,6 @@ public class ResponsavelPFisica extends PessoaFisica{
     public void setIndesocial(boolean indesocial) {
         this.indesocial = indesocial;
     }
-      
-       
+    
+    
 }

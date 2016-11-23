@@ -317,12 +317,12 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setString(3, trataDados.trataGrandesString(pf.getNumeroCtps(),8));//nr_carteira
             stmt.setString(4, trataDados.trataGrandesString(pf.getSerieCtps(),5));//serie_carteira
             stmt.setString(5, carteiraDefault);//dv_serie_carteira
-            stmt.setString(6, trataDados.trataGrandesString(trataDados.recuperarUF(pf.getIdUfCtps()),2));//uf_carteira
+            stmt.setString(6, trataDados.recuperarUF(pf.getIdUfCtps()));//uf_carteira
             stmt.setString(7, trataDados.trataGrandesString(trataDados.recuperarPIS(cdFuncionario),14));//pis
             stmt.setString(8, trataDados.trataGrandesString(pf.getCpfFormatado(),14));//cpf
             stmt.setString(9, trataDados.trataGrandesString(pf.getNumeroDocumentoIdentidade(),20));//nr_identidade
             stmt.setString(10, trataDados.trataGrandesString(trataDados.tratarOrgaoRG(pf.getOrgaoExpedidorDocumentoIdentidade()),12));//orgao_identidade
-            stmt.setString(11, trataDados.trataGrandesString(trataDados.tratarUFRG(pf.getOrgaoExpedidorDocumentoIdentidade()),2));//uf_identidade   
+            stmt.setString(11, trataDados.tratarUFRG(pf.getOrgaoExpedidorDocumentoIdentidade()));//uf_identidade   
             stmt.setInt(12, trataDados.converterSrintIntCom0(pf.getNumeroCnh()));//nr_habilitacao 
             //trataDados.convertIntToString(pf.getIdcategoriaHabilitacaoCnh()) tamanho da string problema
             stmt.setString(13, trataDados.recuperarCNH(pf.getIdcategoriaHabilitacaoCnh()));//categoria_habilitacao

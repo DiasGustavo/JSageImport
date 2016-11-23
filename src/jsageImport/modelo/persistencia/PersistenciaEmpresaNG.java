@@ -22,6 +22,7 @@ import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
 import jsageImport.modelo.dominio.PorteEmpresa;
+import jsageImport.modelo.dominio.ResponsavelPJuridica;
 import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaNG;
 
@@ -96,6 +97,13 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                                                                         " INNER JOIN bpm_pessoaendereco as pessoaE on pessoa.idpessoa = pessoaE.idpessoa " +
                                                                         " INNER JOIN bpm_dadoscontador as contador on contador.idpessoa = pessoa.idpessoa) " +
                                                                         " WHERE contador.idowner = ?";
+      
+      private static final String SQL_RECUPERA_RESPONSAVEL = " SELECT * FROM (bpm_dadosresponsavelfolhaempresa as responFolha " +
+                                                                " INNER JOIN bpm_dadosresponsavelfolha as respon on respon.iddadosresponsavelfolha = responFolha.iddadosresponsavelfolha"+
+                                                                " INNER JOIN bpm_dadospessoajuridica as pjuridica on pjuridica.idpessoa = respon.idpessoa"+
+                                                                " INNER JOIN bpm_pessoaendereco as pessoaEnd on pessoaEnd.idpessoa = pjuridica.idpessoa)"+
+                                                                " WHERE responFolha.idpessoaempresa = ?"+
+                                                                " order by responFolha.indsefip asc";
                                                  
 
     /*url para conexao com o banco do ng*/    
@@ -186,8 +194,35 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             GerenciadorConexao.closeConexao(con, stmt, rs);
         }
     }
+    
+    public List recuperarResponsavel (int idEmpresa) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_RECUPERA_RESPONSAVEL);
+            stmt.setInt(1, idEmpresa);
+            rs = stmt.executeQuery();
+            List listaResponsavel = new ArrayList();
+            while (rs.next()) {
+                ResponsavelPJuridica resp = criarResponsavelPJuridica(rs);
+                listaResponsavel.add(resp);
+            }
+            return listaResponsavel;
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível recuperar o responsável.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        
+        
+    }
+    
     public List recuperarSindicato () throws JsageImportException{
-         Connection con = null;
+        Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
@@ -643,6 +678,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             GerenciadorConexao.closeConexao(con, stmt, rs);
         }
     }
+    
+    
     /**
      * Realiza a importação de uma empresa para o banco de dados do SAGE
      * @param idEmpresa
@@ -654,6 +691,10 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         ControlerFuncionarioSAGE controlFunSAGE = new ControlerFuncionarioSAGE();
         ControlerEmpresaSAGE controlEmpSAGE = new ControlerEmpresaSAGE();
         List listaEmpresaSAGE = controlFunSAGE.pesquisarCNPJ(cnpj);
+        int idResponsavelCaged = 1;
+        int idResponsavelSefip = 1;
+        
+        
         if (listaEmpresaSAGE.isEmpty()){
             //JOptionPane.showMessageDialog(null, "Empresa precisa ser primeiro cadastrada no SAGE\n para importar os seus Funcionários!");
             //throw new JsageImportException("Primeiro Cadastre a Empresa no SAGE\n para Depois importar os Funcionários.");
@@ -676,6 +717,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 List listaSindicato = recuperarSindicato();
                 List listaContador = recuperarContadorPFisica(idEmpresa);
                 List listaContadorJuridico = recuperarContadorPJuridica(idEmpresa);
+                List listaResponsavel = recuperarResponsavel(idEmpresa);
                 
                  //Sequencia de gravação das informações no SAGE
                 EmpresaTributacao empTrib = null;
@@ -691,13 +733,29 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                     empFolha = (EmpresaFolha) listaFolhaEmpresa.get(0);
                 }
                 
+                ResponsavelPJuridica responsavelPJ = null;
+                if(listaResponsavel.size()>0){
+                    for(int i = 0; i < listaResponsavel.size(); i++){
+                        responsavelPJ = (ResponsavelPJuridica) listaResponsavel.get(i);
+                        if (controlEmpSAGE.pesquisarResponsavel(trataDados.trataGrandesString(responsavelPJ.getNomeresponsavel(), 40))==false){
+                            controlEmpSAGE.gravarResponsavelPJuridica(responsavelPJ);
+                        }
+                        if (i == 0){
+                            idResponsavelCaged = responsavelPJ.getIdPessoa();
+                        }
+                        if (i == 1){
+                            idResponsavelSefip = responsavelPJ.getIdPessoa();
+                        }
+                    }
+                }
+                
                 PessoaJuridica pjGravar = null;
                 if (listaEmpresa.size() > 0){
                     for (int i=0; i < listaEmpresa.size(); i++){
                         pjGravar =(PessoaJuridica) listaEmpresa.get(i);
                         controlEmpSAGE.gravarEmpresa(pjGravar); 
                         controlEmpSAGE.gravarEmpresaParametro(pjGravar);
-                        controlEmpSAGE.gravarEstabelecimento(pjGravar, empTrib, empTribCNAE, empFolha);
+                        controlEmpSAGE.gravarEstabelecimento(idResponsavelCaged, idResponsavelSefip, pjGravar, empTrib, empTribCNAE, empFolha);
                         controlEmpSAGE.gravarEstabelecimentoParametro(pjGravar);
                     }
                     
@@ -756,6 +814,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                         sind = (Sindicato) listaSindicato.get(i);
                         if(trataDados.pesquisarSindicato(trataDados.trataGrandesString(sind.getNomePessoa(),150)) == false){
                             controlEmpSAGE.gravarSindicato(sind);
+                            controlEmpSAGE.gravarParametroSindicato(trataDados.gerarIDSindicato());
                         }
                      
                     }
@@ -1312,6 +1371,46 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             throw new JsageImportException(mensagem.toString());
         }
         return contador;
+    }
+    
+    private ResponsavelPJuridica criarResponsavelPJuridica (ResultSet rs) throws JsageImportException{
+        ResponsavelPJuridica responsavelJurudica = new ResponsavelPJuridica();
+        
+        try{
+           responsavelJurudica.setIdPessoa(rs.getInt("idpessoa"));
+           responsavelJurudica.setNomeFantasia(rs.getString("nomefantasia"));
+           responsavelJurudica.setCnpjFormatado(rs.getString("cnpjformatado"));
+           responsavelJurudica.setInscricaoEstadual(rs.getString("inscricaoestadual"));
+           responsavelJurudica.setInscricaoMunicipal(rs.getString("inscricaoestadual"));
+           responsavelJurudica.setObjetoSocial(rs.getString("objetosocial"));
+           responsavelJurudica.setNumeroRegistoJunta(rs.getString("numeroregistrojunta"));
+           responsavelJurudica.setDataRegistroJunta(rs.getTimestamp("dataregistrojunta"));
+           responsavelJurudica.setDataInicioAtividade(rs.getTimestamp("datainicioatividade"));
+           responsavelJurudica.setCapitalSocialInicial(rs.getDouble("capitalsocialinicial"));
+           responsavelJurudica.setDataFundacao(rs.getTimestamp("datafundacao"));
+           responsavelJurudica.setNumeroProprietarios(rs.getInt("numeroproprietarios"));
+           responsavelJurudica.setNirc(rs.getString("nirc"));
+           responsavelJurudica.setIdNaturezaJuridica(rs.getInt("idnaturezajuridica"));
+           responsavelJurudica.setNomeAbreviado(rs.getString("nomeabreviado"));
+           responsavelJurudica.setIdQualificacaoEmpresa(rs.getInt("idqualificacaoempresa"));
+           responsavelJurudica.setIdTipoEntidade(rs.getInt("idtipoentidade"));
+           responsavelJurudica.setLogradouro(rs.getString("logradouro"));
+           responsavelJurudica.setNumeroEndereco(rs.getString("numeroendereco"));
+           responsavelJurudica.setBairro(rs.getString("bairro"));
+           responsavelJurudica.setIdmunicipio(rs.getInt("idmunicipio"));
+           responsavelJurudica.setCep(rs.getString("cep"));
+           responsavelJurudica.setIdpessoaempresa(rs.getInt("idpessoaempresa"));
+           responsavelJurudica.setNomeresponsavel(rs.getString("nomeresponsavel"));
+           
+           
+           
+        }catch (SQLException ex) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados do responsavel Juridico.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return responsavelJurudica;
+        
     }
    
 }

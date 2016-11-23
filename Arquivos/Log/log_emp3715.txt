@@ -4,3 +4,9 @@ Registro: Existentes no SAGE: 3723 --- 3715 ----- ANTONIO LOURENCO DA SILVA --- 
 Registro: Gravado o funcionario de código: 3723 nome: ANTONIO LOURENCO DA SILVA ---  Data:Mon Nov 21 13:35:11 GFT 2016
 Registro: Existentes no SAGE: 3727 --- 3715 ----- JOSE EDSON CARCEIRO DURVAL ---  Data:Mon Nov 21 13:35:11 GFT 2016
 Registro: Gravado o funcionario de código: 3727 nome: JOSE EDSON CARCEIRO DURVAL ---  Data:Mon Nov 21 13:35:12 GFT 2016
+Registro: Existentes no SAGE: 3716 --- 3715 ----- MARCOS FERNANDO MONTEIRO DA SILVA ---  Data:Tue Nov 22 19:13:22 GFT 2016
+Registro: Gravado o funcionario de código: 3716 nome: MARCOS FERNANDO MONTEIRO DA SILVA ---  Data:Tue Nov 22 19:13:23 GFT 2016
+Registro: Existentes no SAGE: 3723 --- 3715 ----- ANTONIO LOURENCO DA SILVA ---  Data:Tue Nov 22 19:13:23 GFT 2016
+Registro: Gravado o funcionario de código: 3723 nome: ANTONIO LOURENCO DA SILVA ---  Data:Tue Nov 22 19:13:23 GFT 2016
+Registro: Existentes no SAGE: 3727 --- 3715 ----- JOSE EDSON CARCEIRO DURVAL ---  Data:Tue Nov 22 19:13:24 GFT 2016
+Registro: Gravado o funcionario de código: 3727 nome: JOSE EDSON CARCEIRO DURVAL ---  Data:Tue Nov 22 19:13:24 GFT 2016

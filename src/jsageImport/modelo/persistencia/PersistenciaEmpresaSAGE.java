@@ -7,7 +7,10 @@ package jsageImport.modelo.persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.CargoFun;
 import jsageImport.modelo.dominio.CentroCusto;
@@ -17,6 +20,7 @@ import jsageImport.modelo.dominio.ContadorPJuridica;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.PessoaJuridica;
+import jsageImport.modelo.dominio.ResponsavelPJuridica;
 import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaSAGE;
 
@@ -147,7 +151,15 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
     private static final String SQL_CONTADOR = "INSERT INTO ResponsavelG (cd_responsavel,nome,cgc,contato,ddd_fone,telefone,endereco,nr_endereco,bairro,cidade,estado,cep " +
                                                                             ",identificacao,cpfcontato,email,denominacao,rg,crc,status,uf_crc,cd_municipio,dt_nasc_responsavel" +
                                                                             ",cd_classificacao) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_RESPONSAVEL = "INSERT INTO ResponsavelG (cd_responsavel,nome,cgc,contato,ddd_fone,telefone,endereco,nr_endereco,bairro,cidade,estado,cep " +
+                                                                            ",identificacao,cpfcontato,email,denominacao,rg,crc,status,uf_crc,cd_municipio,dt_nasc_responsavel" +
+                                                                            ",cd_classificacao) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_SELECT_RESPONSAVEL = "SELECT * FROM ResponsavelG WHERE nome = ?";
     
+    private static final String SQL_PARAMETRO_SINDICATO = "INSERT INTO ParSindicatoG (cd_sindicato,cd_param_sindicato,descricao)"+
+                                                          "VALUES (?,?,?)";
+    
+       
     
     @Override
     public void gravarEmpresa (PessoaJuridica pj) throws JsageImportException{
@@ -240,7 +252,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
     }
     
     @Override
-    public void gravarEstabelecimento (PessoaJuridica pj, EmpresaTributacao empTrib,EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException{
+    public void gravarEstabelecimento (int idResponsavelCaged, int idResponsavelSefip, PessoaJuridica pj, EmpresaTributacao empTrib,EmpresaTributacao empCnae, EmpresaFolha empFolha) throws JsageImportException{
         if (pj == null) {
             String mensagem = "Não foi informada a Empresa para importar";
             throw new JsageImportException(mensagem);
@@ -278,9 +290,9 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.setString(18, trataDados.trataGrandesString(pj.getNomePessoa(),40));//nome_titular
             stmt.setString(19, "ADMINISTRADOR");//denom_titular
             stmt.setString(20, trataDados.trataGrandesString(trataDados.recupararCPFTitular(pj.getIdPessoa()),14));//CPF TITULAR
-            stmt.setShort(21, (short) 1);//CD_RESPONSAVEL_ESTABELECIMENTO
-            stmt.setShort(22, (short) 1);//CD_RESPONSAVEL_CAGED
-            stmt.setShort(23, (short) 1);//CD_RESPONSAVEL_SEFIP
+            stmt.setShort(21, (short)idResponsavelCaged);//CD_RESPONSAVEL_ESTABELECIMENTO
+            stmt.setShort(22, (short) idResponsavelCaged);//CD_RESPONSAVEL_CAGED
+            stmt.setShort(23, (short) idResponsavelSefip);//CD_RESPONSAVEL_SEFIP
             stmt.setString(24, "N");//SALARIO EDUCACAO
             stmt.setString(25, "PÁGINA");//denominacao_pagina_csc
             stmt.setString(26, "N");//contribuinte icms
@@ -958,6 +970,8 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             
             stmt.executeUpdate();
             
+            
+            
            }catch (SQLException exc) {
             StringBuffer msg = new StringBuffer("Não foi possível incluir o sindicato do Funcionário.");
             msg.append("\nMotivo: " + exc.getMessage());
@@ -966,6 +980,28 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             GerenciadorConexao.closeConexao(con, stmt);
         }
     }
+     
+     public void gravarParametroSindicato (int idSindicato) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;               
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_PARAMETRO_SINDICATO);
+            stmt.setInt(1, idSindicato);
+            stmt.setInt(2, 1);
+            stmt.setString(3,"GERAL");
+            
+            stmt.executeUpdate();
+            
+           }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o parâmetro do sindicato do Funcionário.");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+     }
      
     @Override
     public void gravarEstrutura (int cdEmpresa) throws JsageImportException{
@@ -1053,8 +1089,8 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.setInt(6,0);
             stmt.setString(7, trataDados.trataGrandesString(contador.getLogradouro(),40) );
             stmt.setInt(8, trataDados.tratarNrEndereco(contador.getNumeroEndereco()));
-            stmt.setString(9, contador.getBairro());
-            stmt.setString(10, trataDados.recuperarCidade(contador.getIdmunicipio()));
+            stmt.setString(9, trataDados.trataGrandesString(contador.getBairro(),20));
+            stmt.setString(10, trataDados.trataGrandesString(trataDados.recuperarCidade(contador.getIdmunicipio()),20));
             stmt.setString(11, trataDados.recuperarUFMunicipio(contador.getIdmunicipio()));
             stmt.setInt(12, trataDados.recuperarCEP(contador.getCep()));
             stmt.setInt (13, 1); //indica que um cnpj
@@ -1072,11 +1108,86 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.executeUpdate();
                      
            }catch (SQLException exc) {
-            StringBuffer msg = new StringBuffer("Não foi possível incluir contador na Empresa: " + contador.getIdPessoa());
+            StringBuffer msg = new StringBuffer("Não foi possível incluir contador pessoa Juridica na Empresa: " + contador.getIdPessoa());
             msg.append("\nMotivo: " + exc.getMessage());
             throw new JsageImportException(msg.toString());            
         } finally {
             GerenciadorConexao.closeConexao(con, stmt);
         }
     }
+     
+    @Override
+    public void gravarResponsavelPJuridica (ResponsavelPJuridica responsavel) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;               
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_RESPONSAVEL);
+            stmt.setInt(1, responsavel.getIdPessoa());
+            stmt.setString(2, trataDados.trataGrandesString(responsavel.getNomeresponsavel(),40));
+            stmt.setString(3, trataDados.trataGrandesString(responsavel.getCnpjFormatado(),18));
+            stmt.setString(4, trataDados.trataGrandesString(responsavel.getNomeAbreviado(),20));
+            stmt.setInt(5, 0);
+            stmt.setInt(6,0);
+            stmt.setString(7, trataDados.trataGrandesString(responsavel.getLogradouro(),40) );
+            stmt.setInt(8, trataDados.tratarNrEndereco(responsavel.getNumeroEndereco()));
+            stmt.setString(9, trataDados.trataGrandesString(responsavel.getBairro(),20));
+            stmt.setString(10, trataDados.trataGrandesString(trataDados.recuperarCidade(responsavel.getIdmunicipio()),20));
+            stmt.setString(11, trataDados.trataGrandesString(trataDados.recuperarUFMunicipio(responsavel.getIdmunicipio()),2));
+            stmt.setInt(12, trataDados.recuperarCEP(responsavel.getCep()));
+            stmt.setInt (13, 1); //indica que um cnpj
+            stmt.setString(14, trataDados.trataGrandesString(responsavel.getCnpj(),14));
+            stmt.setString(15,"");
+            stmt.setString(16, "CONTADOR");
+            stmt.setString(17, "");
+            stmt.setString(18, "");
+            stmt.setString(19, "A");
+            stmt.setString(20, "");
+            stmt.setInt(21, 0);
+            stmt.setTimestamp(22, responsavel.getDataFundacao());
+            stmt.setInt(23, 900);
+            
+            stmt.executeUpdate();
+                     
+           }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o responsavel pessoa juridica de ID:" + responsavel.getIdPessoa() + "na Empresa" );
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+         
+     }
+     
+    @Override
+    public boolean pesquisarResponsavel (String nome) throws JsageImportException{
+        boolean tag = false;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_SELECT_RESPONSAVEL);
+            stmt.setString(1, nome);
+            List nomes = new ArrayList();
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                nome= rs.getString("nome");
+                nomes.add(nome);
+            }
+            
+            if (nomes.size() > 0){
+                tag = true;
+            }
+            
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível pesquisar o responsavel.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        return tag;
+     }
 }
