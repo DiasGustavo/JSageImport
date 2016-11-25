@@ -11,7 +11,7 @@ import jsageImport.modelo.persistencia.TratamentoDados;
  *
  * @author Gustavo
  */
-public class StringCom0 {
+public class TesteStringCom0 {
     
     public static void main (String args []){
         TratamentoDados trataDados = new TratamentoDados();
