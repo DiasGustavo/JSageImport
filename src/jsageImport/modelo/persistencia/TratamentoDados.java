@@ -111,15 +111,12 @@ public class TratamentoDados {
         String aux;
         if (string != null){
             aux = string.replace(" ", "");
-            aux = aux.trim();
-            System.out.println(string.substring(0, 1) +" - " +string.substring(1));
-            //if (string.substring(0, 1).equals("0")){
-                
-                //valor = Integer.parseInt(string.substring(1));
-                //valor = Integer.valueOf(string);
-            //}else {
+                        
+            while (aux.substring(0, 1).equals("0")){
+                aux = aux.replace("0", "");                
+            }
                 valor = Integer.parseInt(aux);
-            //}
+            
         } else {
             valor = 0;            
         }        
@@ -936,16 +933,15 @@ public class TratamentoDados {
         String normalRG = "";
         if (rg != null){
             String stnr = rg;
-            //stnr = stnr.trim();
             stnr = stnr.replaceAll(" ","");
-            stnr = stnr.substring(3, stnr.length()-1);
+            stnr = stnr.substring(stnr.length()-2, stnr.length());
             normalRG = stnr;
-            if(stnr.indexOf("'")!= 0){
-              stnr = stnr.replace("'", "");  
+            int p = stnr.indexOf("'");
+            if(stnr.indexOf("'")>0){
+                stnr = stnr.replaceAll("'", "");
+                normalRG = stnr;
             }else if (stnr.indexOf("/")!=0){
-              stnr = stnr.replace("/", "");
-            }else{            
-                stnr = stnr.substring(3, stnr.length());
+                stnr = stnr.replace("/", "");
                 normalRG = stnr;
             }
         }

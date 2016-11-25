@@ -1,4 +1,2 @@
-Registro: Existentes no SAGE: 3620 --- 3619 ----- IMARRY FATIMA MARGARIDA DA SILVA --- Data:Mon Nov 21 12:37:54 GFT 2016
-Registro: Existentes no SAGE: 3620 --- 3619 ----- IMARRY FATIMA MARGARIDA DA SILVA ---  Data:Mon Nov 21 13:26:52 GFT 2016
-Registro: Gravado o funcionario de código: 3620 nome: IMARRY FATIMA MARGARIDA DA SILVA ---  Data:Mon Nov 21 13:27:00 GFT 2016
-Registro: Existentes no SAGE: 3620 --- 3619 ----- IMARRY FATIMA MARGARIDA DA SILVA ---  Data:Mon Nov 21 20:21:31 GFT 2016
+Registro: Existentes no SAGE: 3620 --- 3619 ----- IMARRY FATIMA MARGARIDA DA SILVA --- Data:Thu Nov 24 17:31:32 GFT 2016
+Registro: Gravado o funcionario de código: 3620 nome: IMARRY FATIMA MARGARIDA DA SILVA ---  Data:Thu Nov 24 17:31:33 GFT 2016

@@ -33,6 +33,15 @@ public class ControlerFuncionarioSAGE {
         return listaEmp;
     }
     
+    public List pesquisarIDCNPJ(int id, String cnpj) throws JsageImportException{
+        List listaEmp;
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
+        listaEmp = PEmpresa.pesquisaIDCNPJ(id, cnpj);
+        
+        return listaEmp;
+    }
+    
     public List pesquisarFuncionario (int idFuncionario, int cdEmpresa, String cpf) throws JsageImportException{
         List listaEmp;
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();

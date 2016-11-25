@@ -1,2 +1,2 @@
-Registro: Existentes no SAGE: 4237 --- 3633 ----- MARCELO RIBEIRO SILVA --- Data:Mon Nov 21 13:33:02 GFT 2016
-Registro: Gravado o funcionario de código: 4237 nome: MARCELO RIBEIRO SILVA ---  Data:Mon Nov 21 13:33:03 GFT 2016
+Registro: Existentes no SAGE: 4237 --- 3633 ----- MARCELO RIBEIRO SILVA --- Data:Thu Nov 24 17:31:52 GFT 2016
+Registro: Gravado o funcionario de código: 4237 nome: MARCELO RIBEIRO SILVA ---  Data:Thu Nov 24 17:31:53 GFT 2016

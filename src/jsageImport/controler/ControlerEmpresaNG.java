@@ -33,6 +33,12 @@ public class ControlerEmpresaNG {
         PFuncionario.ImportaEmpresas(idEmpresa,cnpj);
     }
     
+    public void ImportaTodasEmpresas(int idEmpresa, String cnpj) throws JsageImportException {
+        IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
+        IPersistenciaEmpresaNG PFuncionario = gerenteP.getPersistenciaEmpresa();
+        PFuncionario.ImportaTodasEmpresas(idEmpresa,cnpj);
+    }
+    
     public List recuperarAgenciaNG () throws JsageImportException{
         List listaAge;
         IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
@@ -40,6 +46,22 @@ public class ControlerEmpresaNG {
         listaAge = PFuncionario.recuperarAgenciaNG();
         
         return listaAge;
+    }
+    
+    public List pesquisarCnpj(int idEmpresa, String cnpj) throws JsageImportException {
+        List empresas;
+        IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
+        IPersistenciaEmpresaNG PEmpresa = gerenteP.getPersistenciaEmpresa();
+        empresas = PEmpresa.pesquisarCnpj(idEmpresa, cnpj);
+        return empresas;
+    }
+    
+    public List pesquisarEmpresaPorID(int idEmpresa) throws JsageImportException{
+        List empresas;
+        IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
+        IPersistenciaEmpresaNG PEmpresa = gerenteP.getPersistenciaEmpresa();
+        empresas = PEmpresa.pesquisarEmpresaPorID(idEmpresa);
+        return empresas;
     }
     
     

@@ -1,0 +1,52 @@
+Registro: Existentes no SAGE: 5699 --- 5689 ----- Antonio Carlos dos Santos Filho --- Data:Fri Jul 15 16:00:03 GFT 2016
+Registro: Gravado o funcionario de código: 5699 nome: Antonio Carlos dos Santos Filho ---  Data:Fri Jul 15 16:00:04 GFT 2016
+Registro: Existentes no SAGE: 5708 --- 5689 ----- Francisco Alves Filho  ---  Data:Fri Jul 15 16:00:04 GFT 2016
+Registro: Gravado o funcionario de código: 5708 nome: Francisco Alves Filho  ---  Data:Fri Jul 15 16:00:05 GFT 2016
+Registro: Existentes no SAGE: 5690 --- 5689 ----- Raimundo Junho Gonçalo do Nascimento ---  Data:Fri Jul 15 16:00:05 GFT 2016
+Registro: Gravado o funcionario de código: 5690 nome: Raimundo Junho Gonçalo do Nascimento ---  Data:Fri Jul 15 16:00:06 GFT 2016
+Registro: Existentes no SAGE: 5693 --- 5689 ----- Ramiro Gonçalo do Nascimento ---  Data:Fri Jul 15 16:00:06 GFT 2016
+Registro: Gravado o funcionario de código: 5693 nome: Ramiro Gonçalo do Nascimento ---  Data:Fri Jul 15 16:00:06 GFT 2016
+Registro: Existentes no SAGE: 5715 --- 5689 ----- Reinaldo Gomes de Brito ---  Data:Fri Jul 15 16:00:07 GFT 2016
+Registro: Gravado o funcionario de código: 5715 nome: Reinaldo Gomes de Brito ---  Data:Fri Jul 15 16:00:07 GFT 2016
+Registro: Existentes no SAGE: 5712 --- 5689 ----- Ricardo Nunes Rodrigues ---  Data:Fri Jul 15 16:00:08 GFT 2016
+Registro: Gravado o funcionario de código: 5712 nome: Ricardo Nunes Rodrigues ---  Data:Fri Jul 15 16:00:08 GFT 2016
+Registro: Existentes no SAGE: 5760 --- 5689 ----- Francisco Pereira da Silva  ---  Data:Fri Jul 15 16:00:08 GFT 2016
+Registro: Gravado o funcionario de código: 5760 nome: Francisco Pereira da Silva  ---  Data:Fri Jul 15 16:00:09 GFT 2016
+Registro: Existentes no SAGE: 5782 --- 5689 ----- Pedro Paulo de Oliveira Neto ---  Data:Fri Jul 15 16:00:09 GFT 2016
+Registro: Gravado o funcionario de código: 5782 nome: Pedro Paulo de Oliveira Neto ---  Data:Fri Jul 15 16:00:10 GFT 2016
+Registro: Existentes no SAGE: 5821 --- 5689 ----- Walis Alexandre Emidio ---  Data:Fri Jul 15 16:00:10 GFT 2016
+Registro: Gravado o funcionario de código: 5821 nome: Walis Alexandre Emidio ---  Data:Fri Jul 15 16:00:11 GFT 2016
+Registro: Existentes no SAGE: 5818 --- 5689 ----- Antonio Pereira da Silva ---  Data:Fri Jul 15 16:00:11 GFT 2016
+Registro: Gravado o funcionario de código: 5818 nome: Antonio Pereira da Silva ---  Data:Fri Jul 15 16:00:12 GFT 2016
+Registro: Existentes no SAGE: 5839 --- 5689 ----- Jose Morais de Lima Filho ---  Data:Fri Jul 15 16:00:12 GFT 2016
+Registro: Gravado o funcionario de código: 5839 nome: Jose Morais de Lima Filho ---  Data:Fri Jul 15 16:00:12 GFT 2016
+Registro: Existentes no SAGE: 5868 --- 5689 ----- Iran dos Reis Silva  ---  Data:Fri Jul 15 16:00:13 GFT 2016
+Registro: Gravado o funcionario de código: 5868 nome: Iran dos Reis Silva  ---  Data:Fri Jul 15 16:00:13 GFT 2016
+Registro: Existentes no SAGE: 5951 --- 5689 ----- Geovanio Lourenço Alves  ---  Data:Fri Jul 15 16:00:13 GFT 2016
+Registro: Gravado o funcionario de código: 5951 nome: Geovanio Lourenço Alves  ---  Data:Fri Jul 15 16:00:14 GFT 2016
+Registro: Existentes no SAGE: 6069 --- 5689 ----- Lucivaldo Macena da silva ---  Data:Fri Jul 15 16:00:14 GFT 2016
+Registro: Gravado o funcionario de código: 6069 nome: Lucivaldo Macena da silva ---  Data:Fri Jul 15 16:00:15 GFT 2016
+Registro: Existentes no SAGE: 6099 --- 5689 ----- Ilson Batista Borges Junior ---  Data:Fri Jul 15 16:00:15 GFT 2016
+Registro: Gravado o funcionario de código: 6099 nome: Ilson Batista Borges Junior ---  Data:Fri Jul 15 16:00:15 GFT 2016
+Registro: Existentes no SAGE: 6160 --- 5689 ----- Juvanilson Pereira da silva ---  Data:Fri Jul 15 16:00:16 GFT 2016
+Registro: Gravado o funcionario de código: 6160 nome: Juvanilson Pereira da silva ---  Data:Fri Jul 15 16:00:16 GFT 2016
+Registro: Existentes no SAGE: 6193 --- 5689 ----- Alana Teixeira Dantas ---  Data:Fri Jul 15 16:00:16 GFT 2016
+Registro: Gravado o funcionario de código: 6193 nome: Alana Teixeira Dantas ---  Data:Fri Jul 15 16:00:17 GFT 2016
+Registro: Existentes no SAGE: 6567 --- 5689 ----- Nelson Jose da Silva ---  Data:Fri Jul 15 16:00:17 GFT 2016
+Registro: Gravado o funcionario de código: 6567 nome: Nelson Jose da Silva ---  Data:Fri Jul 15 16:00:18 GFT 2016
+Registro: Existentes no SAGE: 6564 --- 5689 ----- Andre Luiz Pereira ---  Data:Fri Jul 15 16:00:18 GFT 2016
+Registro: Gravado o funcionario de código: 6564 nome: Andre Luiz Pereira ---  Data:Fri Jul 15 16:00:19 GFT 2016
+Registro: Existentes no SAGE: 6579 --- 5689 ----- Welligton Messias dos Santos ---  Data:Fri Jul 15 16:00:19 GFT 2016
+Registro: Gravado o funcionario de código: 6579 nome: Welligton Messias dos Santos ---  Data:Fri Jul 15 16:00:19 GFT 2016
+Registro: Existentes no SAGE: 5768 --- 5689 ----- Osni Ferreira da Silva  ---  Data:Fri Jul 15 16:00:20 GFT 2016
+Registro: Gravado o funcionario de código: 5768 nome: Osni Ferreira da Silva  ---  Data:Fri Jul 15 16:00:20 GFT 2016
+Registro: Existentes no SAGE: 6663 --- 5689 ----- Manuel Ernandes Mendes Barbosa ---  Data:Fri Jul 15 16:00:20 GFT 2016
+Registro: Gravado o funcionario de código: 6663 nome: Manuel Ernandes Mendes Barbosa ---  Data:Fri Jul 15 16:00:21 GFT 2016
+Registro: Existentes no SAGE: 6657 --- 5689 ----- Chales Costa Batista ---  Data:Fri Jul 15 16:00:21 GFT 2016
+Registro: Gravado o funcionario de código: 6657 nome: Chales Costa Batista ---  Data:Fri Jul 15 16:00:22 GFT 2016
+Registro: Existentes no SAGE: 6760 --- 5689 ----- Raimundo Ronaldo Alves ---  Data:Fri Jul 15 16:00:22 GFT 2016
+Registro: Gravado o funcionario de código: 6760 nome: Raimundo Ronaldo Alves ---  Data:Fri Jul 15 16:00:23 GFT 2016
+Registro: Existentes no SAGE: 6757 --- 5689 ----- Jose Morais de lima ---  Data:Fri Jul 15 16:00:23 GFT 2016
+Registro: Gravado o funcionario de código: 6757 nome: Jose Morais de lima ---  Data:Fri Jul 15 16:00:24 GFT 2016
+Registro: Existentes no SAGE: 6783 --- 5689 ----- Samuel Conceicao dos Santos ---  Data:Fri Jul 15 16:00:24 GFT 2016
+Registro: Gravado o funcionario de código: 6783 nome: Samuel Conceicao dos Santos ---  Data:Fri Jul 15 16:00:24 GFT 2016

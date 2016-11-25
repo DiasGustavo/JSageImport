@@ -1,40 +1,24 @@
-Registro: Existentes no SAGE: 3546 --- 3545 ----- CARLOS FRANCISCO FERREIRA --- Data:Mon Nov 21 08:31:36 GFT 2016
-Registro: Existentes no SAGE: 3546 --- 3545 ----- CARLOS FRANCISCO FERREIRA ---  Data:Mon Nov 21 08:32:17 GFT 2016
-Registro: Existentes no SAGE: 3564 --- 3545 ----- ADEMILTON ROBERTO DOS SANTOS ---  Data:Mon Nov 21 08:32:17 GFT 2016
-Registro: Existentes no SAGE: 3546 --- 3545 ----- CARLOS FRANCISCO FERREIRA ---  Data:Mon Nov 21 12:00:56 GFT 2016
-Registro: Existentes no SAGE: 3546 --- 3545 ----- CARLOS FRANCISCO FERREIRA ---  Data:Mon Nov 21 12:03:01 GFT 2016
-Registro: Existentes no SAGE: 3564 --- 3545 ----- ADEMILTON ROBERTO DOS SANTOS ---  Data:Mon Nov 21 12:03:01 GFT 2016
-Registro: Existentes no SAGE: 3546 --- 3545 ----- CARLOS FRANCISCO FERREIRA ---  Data:Mon Nov 21 12:10:12 GFT 2016
-Registro: Existentes no SAGE: 3564 --- 3545 ----- ADEMILTON ROBERTO DOS SANTOS ---  Data:Mon Nov 21 12:10:13 GFT 2016
-Registro: Existentes no SAGE: 3568 --- 3545 ----- EDVALDO PETRUCIO DOS SANTOS ---  Data:Mon Nov 21 12:10:13 GFT 2016
-Registro: Gravado o funcionario de código: 3568 nome: EDVALDO PETRUCIO DOS SANTOS ---  Data:Mon Nov 21 12:10:20 GFT 2016
-Registro: Existentes no SAGE: 3574 --- 3545 ----- RICARDO BRONDSON VICENTE QUEIROZ DE FRANCA ---  Data:Mon Nov 21 12:10:20 GFT 2016
-Registro: Gravado o funcionario de código: 3574 nome: RICARDO BRONDSON VICENTE QUEIROZ DE FRANCA ---  Data:Mon Nov 21 12:10:27 GFT 2016
-Registro: Existentes no SAGE: 3577 --- 3545 ----- LUCIANO CINTRA REGIS ---  Data:Mon Nov 21 12:10:27 GFT 2016
-Registro: Gravado o funcionario de código: 3577 nome: LUCIANO CINTRA REGIS ---  Data:Mon Nov 21 12:10:28 GFT 2016
-Registro: Existentes no SAGE: 5622 --- 3545 ----- HERALDO GONÇALVES RAMOS ---  Data:Mon Nov 21 12:10:28 GFT 2016
-Registro: Gravado o funcionario de código: 5622 nome: HERALDO GONÇALVES RAMOS ---  Data:Mon Nov 21 12:10:29 GFT 2016
-Registro: Existentes no SAGE: 3546 --- 3545 ----- CARLOS FRANCISCO FERREIRA ---  Data:Mon Nov 21 13:31:53 GFT 2016
-Registro: Gravado o funcionario de código: 3546 nome: CARLOS FRANCISCO FERREIRA ---  Data:Mon Nov 21 13:31:54 GFT 2016
-Registro: Existentes no SAGE: 3564 --- 3545 ----- ADEMILTON ROBERTO DOS SANTOS ---  Data:Mon Nov 21 13:31:54 GFT 2016
-Registro: Gravado o funcionario de código: 3564 nome: ADEMILTON ROBERTO DOS SANTOS ---  Data:Mon Nov 21 13:31:55 GFT 2016
-Registro: Existentes no SAGE: 3568 --- 3545 ----- EDVALDO PETRUCIO DOS SANTOS ---  Data:Mon Nov 21 13:31:55 GFT 2016
-Registro: Gravado o funcionario de código: 3568 nome: EDVALDO PETRUCIO DOS SANTOS ---  Data:Mon Nov 21 13:31:56 GFT 2016
-Registro: Existentes no SAGE: 3574 --- 3545 ----- RICARDO BRONDSON VICENTE QUEIROZ DE FRANCA ---  Data:Mon Nov 21 13:31:56 GFT 2016
-Registro: Gravado o funcionario de código: 3574 nome: RICARDO BRONDSON VICENTE QUEIROZ DE FRANCA ---  Data:Mon Nov 21 13:31:57 GFT 2016
-Registro: Existentes no SAGE: 3577 --- 3545 ----- LUCIANO CINTRA REGIS ---  Data:Mon Nov 21 13:31:57 GFT 2016
-Registro: Gravado o funcionario de código: 3577 nome: LUCIANO CINTRA REGIS ---  Data:Mon Nov 21 13:31:58 GFT 2016
-Registro: Existentes no SAGE: 5622 --- 3545 ----- HERALDO GONÇALVES RAMOS ---  Data:Mon Nov 21 13:31:58 GFT 2016
-Registro: Gravado o funcionario de código: 5622 nome: HERALDO GONÇALVES RAMOS ---  Data:Mon Nov 21 13:31:59 GFT 2016
-Registro: Existentes no SAGE: 3546 --- 3545 ----- CARLOS FRANCISCO FERREIRA ---  Data:Tue Nov 22 20:09:05 GFT 2016
-Registro: Gravado o funcionario de código: 3546 nome: CARLOS FRANCISCO FERREIRA ---  Data:Tue Nov 22 20:09:06 GFT 2016
-Registro: Existentes no SAGE: 3564 --- 3545 ----- ADEMILTON ROBERTO DOS SANTOS ---  Data:Tue Nov 22 20:09:07 GFT 2016
-Registro: Gravado o funcionario de código: 3564 nome: ADEMILTON ROBERTO DOS SANTOS ---  Data:Tue Nov 22 20:09:07 GFT 2016
-Registro: Existentes no SAGE: 3568 --- 3545 ----- EDVALDO PETRUCIO DOS SANTOS ---  Data:Tue Nov 22 20:09:07 GFT 2016
-Registro: Gravado o funcionario de código: 3568 nome: EDVALDO PETRUCIO DOS SANTOS ---  Data:Tue Nov 22 20:09:08 GFT 2016
-Registro: Existentes no SAGE: 3574 --- 3545 ----- RICARDO BRONDSON VICENTE QUEIROZ DE FRANCA ---  Data:Tue Nov 22 20:09:08 GFT 2016
-Registro: Gravado o funcionario de código: 3574 nome: RICARDO BRONDSON VICENTE QUEIROZ DE FRANCA ---  Data:Tue Nov 22 20:09:09 GFT 2016
-Registro: Existentes no SAGE: 3577 --- 3545 ----- LUCIANO CINTRA REGIS ---  Data:Tue Nov 22 20:09:09 GFT 2016
-Registro: Gravado o funcionario de código: 3577 nome: LUCIANO CINTRA REGIS ---  Data:Tue Nov 22 20:09:09 GFT 2016
-Registro: Existentes no SAGE: 5622 --- 3545 ----- HERALDO GONÇALVES RAMOS ---  Data:Tue Nov 22 20:09:09 GFT 2016
-Registro: Gravado o funcionario de código: 5622 nome: HERALDO GONÇALVES RAMOS ---  Data:Tue Nov 22 20:09:10 GFT 2016
+Registro: Existentes no SAGE: 3546 --- 3545 ----- CARLOS FRANCISCO FERREIRA --- Data:Fri Jul 15 16:09:41 GFT 2016
+Registro: Gravado o funcionario de código: 3546 nome: CARLOS FRANCISCO FERREIRA ---  Data:Fri Jul 15 16:09:42 GFT 2016
+Registro: Existentes no SAGE: 3564 --- 3545 ----- ADEMILTON ROBERTO DOS SANTOS ---  Data:Fri Jul 15 16:09:42 GFT 2016
+Registro: Gravado o funcionario de código: 3564 nome: ADEMILTON ROBERTO DOS SANTOS ---  Data:Fri Jul 15 16:09:43 GFT 2016
+Registro: Existentes no SAGE: 3568 --- 3545 ----- EDVALDO PETRUCIO DOS SANTOS ---  Data:Fri Jul 15 16:09:44 GFT 2016
+Registro: Gravado o funcionario de código: 3568 nome: EDVALDO PETRUCIO DOS SANTOS ---  Data:Fri Jul 15 16:09:45 GFT 2016
+Registro: Existentes no SAGE: 3574 --- 3545 ----- RICARDO BRONDSON VICENTE QUEIROZ DE FRANCA ---  Data:Fri Jul 15 16:09:45 GFT 2016
+Registro: Gravado o funcionario de código: 3574 nome: RICARDO BRONDSON VICENTE QUEIROZ DE FRANCA ---  Data:Fri Jul 15 16:09:45 GFT 2016
+Registro: Existentes no SAGE: 3577 --- 3545 ----- LUCIANO CINTRA REGIS ---  Data:Fri Jul 15 16:09:46 GFT 2016
+Registro: Gravado o funcionario de código: 3577 nome: LUCIANO CINTRA REGIS ---  Data:Fri Jul 15 16:09:47 GFT 2016
+Registro: Existentes no SAGE: 5622 --- 3545 ----- HERALDO GONÇALVES RAMOS ---  Data:Fri Jul 15 16:09:47 GFT 2016
+Registro: Gravado o funcionario de código: 5622 nome: HERALDO GONÇALVES RAMOS ---  Data:Fri Jul 15 16:09:48 GFT 2016
+Registro: Existentes no SAGE: 3546 --- 3545 ----- CARLOS FRANCISCO FERREIRA ---  Data:Thu Nov 24 17:28:39 GFT 2016
+Registro: Gravado o funcionario de código: 3546 nome: CARLOS FRANCISCO FERREIRA ---  Data:Thu Nov 24 17:28:40 GFT 2016
+Registro: Existentes no SAGE: 3564 --- 3545 ----- ADEMILTON ROBERTO DOS SANTOS ---  Data:Thu Nov 24 17:28:41 GFT 2016
+Registro: Gravado o funcionario de código: 3564 nome: ADEMILTON ROBERTO DOS SANTOS ---  Data:Thu Nov 24 17:28:42 GFT 2016
+Registro: Existentes no SAGE: 3568 --- 3545 ----- EDVALDO PETRUCIO DOS SANTOS ---  Data:Thu Nov 24 17:28:42 GFT 2016
+Registro: Gravado o funcionario de código: 3568 nome: EDVALDO PETRUCIO DOS SANTOS ---  Data:Thu Nov 24 17:28:44 GFT 2016
+Registro: Existentes no SAGE: 3574 --- 3545 ----- RICARDO BRONDSON VICENTE QUEIROZ DE FRANCA ---  Data:Thu Nov 24 17:28:44 GFT 2016
+Registro: Gravado o funcionario de código: 3574 nome: RICARDO BRONDSON VICENTE QUEIROZ DE FRANCA ---  Data:Thu Nov 24 17:28:45 GFT 2016
+Registro: Existentes no SAGE: 3577 --- 3545 ----- LUCIANO CINTRA REGIS ---  Data:Thu Nov 24 17:28:45 GFT 2016
+Registro: Gravado o funcionario de código: 3577 nome: LUCIANO CINTRA REGIS ---  Data:Thu Nov 24 17:28:47 GFT 2016
+Registro: Existentes no SAGE: 5622 --- 3545 ----- HERALDO GONÇALVES RAMOS ---  Data:Thu Nov 24 17:28:47 GFT 2016
+Registro: Gravado o funcionario de código: 5622 nome: HERALDO GONÇALVES RAMOS ---  Data:Thu Nov 24 17:28:48 GFT 2016

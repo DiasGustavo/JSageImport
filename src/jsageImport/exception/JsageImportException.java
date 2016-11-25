@@ -13,12 +13,18 @@ import javax.swing.JOptionPane;
  */
 public class JsageImportException extends Exception {
 
-     public JsageImportException (){
+    public JsageImportException (){
          super("Causa de erro desconhecido!");
      }
      
-     public JsageImportException (String message){
+    public JsageImportException (String message){
          super(message);
          JOptionPane.showMessageDialog(null,message, "Alerta", JOptionPane.ERROR_MESSAGE);
-     }
+    }
+    
+    public JsageImportException (String message, String tipo){
+         super(message);
+         JOptionPane.showMessageDialog(null,message, tipo, JOptionPane.INFORMATION_MESSAGE);
+    }
+    
 }

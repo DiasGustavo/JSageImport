@@ -1,4 +1,6 @@
-Registro: Existentes no SAGE: 3588 --- 3587 ----- PATRICIA CORREIA QUEIROZ --- Data:Mon Nov 21 13:32:21 GFT 2016
-Registro: Gravado o funcionario de código: 3588 nome: PATRICIA CORREIA QUEIROZ ---  Data:Mon Nov 21 13:32:21 GFT 2016
-Registro: Existentes no SAGE: 3592 --- 3587 ----- ELENILSA CASTRO VIDAL DE NEGREIROS ---  Data:Mon Nov 21 13:32:22 GFT 2016
-Registro: Gravado o funcionario de código: 3592 nome: ELENILSA CASTRO VIDAL DE NEGREIROS ---  Data:Mon Nov 21 13:32:22 GFT 2016
+Registro: Existentes no SAGE: 3588 --- 3587 ----- PATRICIA CORREIA QUEIROZ --- Data:Thu Nov 24 17:30:38 GFT 2016
+Registro: Gravado o funcionario de código: 3588 nome: PATRICIA CORREIA QUEIROZ ---  Data:Thu Nov 24 17:30:39 GFT 2016
+Registro: Existentes no SAGE: 3592 --- 3587 ----- ELENILSA CASTRO VIDAL DE NEGREIROS ---  Data:Thu Nov 24 17:30:39 GFT 2016
+Registro: Gravado o funcionario de código: 3592 nome: ELENILSA CASTRO VIDAL DE NEGREIROS ---  Data:Thu Nov 24 17:30:41 GFT 2016
+Registro: Existentes no SAGE: 3588 --- 3587 ----- PATRICIA CORREIA QUEIROZ ---  Data:Thu Nov 24 17:30:49 GFT 2016
+Registro: Existentes no SAGE: 3592 --- 3587 ----- ELENILSA CASTRO VIDAL DE NEGREIROS ---  Data:Thu Nov 24 17:30:49 GFT 2016

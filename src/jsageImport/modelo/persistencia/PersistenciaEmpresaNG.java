@@ -52,7 +52,10 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                                                             + " INNER JOIN bpm_pessoaendereco AS pe ON p.idpessoa = pe.idpessoa) " +
                                                               " WHERE (pj.cnpjformatado = ? AND pj.idpessoa = ?)"
                                                             + " ORDER BY datacadastramento DESC;";
-
+    private static final String SQL_EMPRESA_ID = "SELECT * FROM (bpm_dadospessoajuridica AS pj INNER JOIN bpm_pessoa AS p ON p.idpessoa = pj.idpessoa" 
+                                                            + " INNER JOIN bpm_pessoaendereco AS pe ON p.idpessoa = pe.idpessoa) " +
+                                                              " WHERE (pj.idpessoa = ?)"
+                                                            + " ORDER BY datacadastramento DESC;";
 
     private static final String SQL_EMPRESATRIBUTACAO = "SELECT * FROM (bpm_dadosempresaformatributacao AS eformatributacao INNER JOIN bpm_dadosempresaformatributacaocomplementofolha AS etribcompfolha "
                                                             + "ON eformatributacao.iddadosempresaformatributacao = etribcompfolha.iddadosempresaformatributacao )" 
@@ -446,7 +449,8 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
      * @return List
      * @throws JsageImportException 
      */
-    private List pesquisarCnpj(int idEmpresa, String cnpj) throws JsageImportException {
+    @Override
+    public List pesquisarCnpj(int idEmpresa, String cnpj) throws JsageImportException {
         if (cnpj == null || cnpj.isEmpty()) {
             return recuperarEmpresas();
         }
@@ -459,6 +463,32 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
             stmt = con.prepareStatement(SQL_EMPRESA_CNPJ);
             stmt.setString(1, cnpj );
             stmt.setInt(2, idEmpresa);
+            rs = stmt.executeQuery();
+            List listaEmpresas = new ArrayList();
+            while (rs.next()) {
+                PessoaJuridica pj = criarEmpresaNG(rs);
+                listaEmpresas.add(pj);
+            }
+            return listaEmpresas;
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta do CNPJ.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+    }
+    
+    @Override
+    public List pesquisarEmpresaPorID(int idEmpresa) throws JsageImportException {
+                
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNG);
+            stmt = con.prepareStatement(SQL_EMPRESA_ID);
+            stmt.setInt(1, idEmpresa);
             rs = stmt.executeQuery();
             List listaEmpresas = new ArrayList();
             while (rs.next()) {
@@ -677,8 +707,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         }finally {
             GerenciadorConexao.closeConexao(con, stmt, rs);
         }
-    }
-    
+    }    
     
     /**
      * Realiza a importação de uma empresa para o banco de dados do SAGE
@@ -692,8 +721,7 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
         ControlerEmpresaSAGE controlEmpSAGE = new ControlerEmpresaSAGE();
         List listaEmpresaSAGE = controlFunSAGE.pesquisarCNPJ(cnpj);
         int idResponsavelCaged = 1;
-        int idResponsavelSefip = 1;
-        
+        int idResponsavelSefip = 1;        
         
         if (listaEmpresaSAGE.isEmpty()){
             //JOptionPane.showMessageDialog(null, "Empresa precisa ser primeiro cadastrada no SAGE\n para importar os seus Funcionários!");
@@ -750,13 +778,169 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 }
                 
                 PessoaJuridica pjGravar = null;
+                List listaEmpSAGE = null; 
                 if (listaEmpresa.size() > 0){
                     for (int i=0; i < listaEmpresa.size(); i++){
-                        pjGravar =(PessoaJuridica) listaEmpresa.get(i);
-                        controlEmpSAGE.gravarEmpresa(pjGravar); 
-                        controlEmpSAGE.gravarEmpresaParametro(pjGravar);
-                        controlEmpSAGE.gravarEstabelecimento(idResponsavelCaged, idResponsavelSefip, pjGravar, empTrib, empTribCNAE, empFolha);
-                        controlEmpSAGE.gravarEstabelecimentoParametro(pjGravar);
+                        listaEmpSAGE = controlFunSAGE.pesquisarCNPJ(cnpj); 
+                        if (listaEmpSAGE.isEmpty()){
+                            pjGravar =(PessoaJuridica) listaEmpresa.get(i);
+                            controlEmpSAGE.gravarEmpresa(pjGravar); 
+                            controlEmpSAGE.gravarEmpresaParametro(pjGravar);
+                            controlEmpSAGE.gravarEstabelecimento(idResponsavelCaged, idResponsavelSefip, pjGravar, empTrib, empTribCNAE, empFolha);
+                            controlEmpSAGE.gravarEstabelecimentoParametro(pjGravar);
+                        }
+                    }
+                    
+                }                
+                
+                CentroCusto centroCusto = null;
+                if(listaCentroCusto.size()>0){
+                    for (int i = 0; i < listaCentroCusto.size(); i++) {
+                        centroCusto = (CentroCusto) listaCentroCusto.get(i);
+                        controlEmpSAGE.gravarCentroCusto(i, centroCusto, idEmpresa);
+                    }
+                }else{
+                    controlEmpSAGE.gravarCentroCusto(1, centroCusto, idEmpresa);
+                }
+                
+                controlEmpSAGE.gravarBancoGeral(idEmpresa);
+                
+                ContaBancaria conta = null;                
+                if(listaBanco.size() > 0){
+                    
+                    for (int i = 0; i < listaBanco.size(); i++) {
+                        conta = (ContaBancaria) listaBanco.get(i); 
+                        controlEmpSAGE.gravarBanco(i, conta, idEmpresa);
+                    }
+                }
+                
+                CargoFun cargo = null;
+                if (listaCargo.size()>0){
+                    for (int i = 0; i < listaCargo.size(); i++) {
+                        cargo = (CargoFun) listaCargo.get(i);
+                        controlEmpSAGE.gravarCargo(cargo, idEmpresa);
+                    }
+                }
+                ContadorPFisica contador = null;
+                if(listaContador.size()>0){
+                    for(int i=0; i < listaContador.size(); i++){
+                        contador = (ContadorPFisica) listaContador.get(i);
+                        controlEmpSAGE.gravarContador(contador);
+                    }
+                }
+                
+                ContadorPJuridica contadorJuridica = null;
+                if(listaContadorJuridico.size()>0){
+                    for(int i=0; i < listaContadorJuridico.size(); i++){
+                        contadorJuridica = (ContadorPJuridica) listaContadorJuridico.get(i);
+                        controlEmpSAGE.gravarContadorPJuridica(contadorJuridica);
+                    }
+                }
+                
+                Sindicato sind = null;
+                if (listaSindicato.size()> 0){
+                    for (int i = 0;i < listaSindicato.size(); i++) {
+                        sind = (Sindicato) listaSindicato.get(i);
+                        if(trataDados.pesquisarSindicato(trataDados.trataGrandesString(sind.getNomePessoa(),150)) == false){
+                            controlEmpSAGE.gravarSindicato(sind);
+                            controlEmpSAGE.gravarParametroSindicato(trataDados.gerarIDSindicato());
+                        }
+                     
+                    }
+                }
+                
+                controlEmpSAGE.gravarEstrutura(idEmpresa);                
+                controlEmpSAGE.gravarCRDPermissaoGrupoEstabelecimento(idEmpresa);
+                controlEmpSAGE.gravarCSCDRAPlano(idEmpresa);
+                controlEmpSAGE.gravarCSCDFCEPlano(idEmpresa);
+                //controlSAGE.gravarCSCDFCEquivalenteCaixa(idEmpresa);
+                controlEmpSAGE.gravarTomador(idEmpresa);
+                //controlSAGE.gravarTituloDRE(idEmpresa);
+                controlEmpSAGE.gravarTipoDRE(idEmpresa);
+                controlEmpSAGE.gravarCRDSCPRODEC(idEmpresa);
+                controlEmpSAGE.gravarCapaLote(idEmpresa);
+                controlEmpSAGE.gravarEmpresaMatrizContabilizacao(idEmpresa);
+                controlEmpSAGE.gravarCSCDMPLPLANO(idEmpresa);
+                
+                JOptionPane.showMessageDialog(null, "Empresa Gravada com Sucesso!");
+            }else if (reply == JOptionPane.NO_OPTION){
+                throw new JsageImportException("Primeiro importe a empresa para depois importar os Funcionários.");
+            }
+                       
+        }
+    }
+    
+    @Override
+    public void ImportaTodasEmpresas(int idEmpresa, String cnpj) throws JsageImportException {
+        ControlerFuncionarioSAGE controlFunSAGE = new ControlerFuncionarioSAGE();
+        ControlerEmpresaSAGE controlEmpSAGE = new ControlerEmpresaSAGE();
+        List listaEmpresaSAGE = controlFunSAGE.pesquisarIDCNPJ(idEmpresa,cnpj);//verifica se a empresa existe no sage
+        int idResponsavelCaged = 1;
+        int idResponsavelSefip = 1;
+        
+        
+        if (listaEmpresaSAGE.isEmpty()){
+            
+                //Pesquisar no banco de dados do NG as informações cadastrais da empresa do cnpj
+                List listaEmpresa = pesquisarCnpj(idEmpresa, cnpj);
+                //Pesquisa informações sobre o porte da empresa no banco do NG
+                //List listaPorteEmpresa = recuperarPorteEmpresa(idEmpresa);
+                //Pesquisa informaçoes sobre a tributação da empresa no banco NG
+                List listaTributacaoEmpresa = capturarInfoEmpresaTributacao(idEmpresa);
+                //Pesquisa informações sobre o cnae da empresa no banco NG
+                List listaCnaeEmpresa = recuperarCnaeEmpresa(idEmpresa);
+                //Pesquisa configuracoes da folha da empresa no banco NG
+                List listaFolhaEmpresa = capturarInfoEmpresasFolha(idEmpresa);                
+                List listaBanco = recuperarAgenciaNG();                
+                List listaCargo = recuperarCargoFuncioario(idEmpresa);                
+                List listaCentroCusto = recuperarCentroCusto(idEmpresa);                
+                List listaSindicato = recuperarSindicato();
+                List listaContador = recuperarContadorPFisica(idEmpresa);
+                List listaContadorJuridico = recuperarContadorPJuridica(idEmpresa);
+                List listaResponsavel = recuperarResponsavel(idEmpresa);
+                
+                 //Sequencia de gravação das informações no SAGE
+                EmpresaTributacao empTrib = null;
+                if (listaTributacaoEmpresa.size()> 0){
+                    empTrib = (EmpresaTributacao)listaTributacaoEmpresa.get(listaTributacaoEmpresa.size()-1);
+                }
+                EmpresaTributacao empTribCNAE = null;
+                if (listaCnaeEmpresa.size() > 0){
+                    empTribCNAE = (EmpresaTributacao)listaCnaeEmpresa.get(0);
+                }
+                EmpresaFolha empFolha = null;
+                if (listaFolhaEmpresa.size()>0){
+                    empFolha = (EmpresaFolha) listaFolhaEmpresa.get(0);
+                }
+                
+                ResponsavelPJuridica responsavelPJ = null;
+                if(listaResponsavel.size()>0){
+                    for(int i = 0; i < listaResponsavel.size(); i++){
+                        responsavelPJ = (ResponsavelPJuridica) listaResponsavel.get(i);
+                        if (controlEmpSAGE.pesquisarResponsavel(trataDados.trataGrandesString(responsavelPJ.getNomeresponsavel(), 40))==false){
+                            controlEmpSAGE.gravarResponsavelPJuridica(responsavelPJ);
+                        }
+                        if (i == 0){
+                            idResponsavelCaged = responsavelPJ.getIdPessoa();
+                        }
+                        if (i == 1){
+                            idResponsavelSefip = responsavelPJ.getIdPessoa();
+                        }
+                    }
+                }
+                
+                PessoaJuridica pjGravar = null;
+                List listaEmpSAGE = null; 
+                if (listaEmpresa.size() > 0){
+                    for (int i=0; i < listaEmpresa.size(); i++){
+                        listaEmpSAGE = controlFunSAGE.pesquisarCNPJ(cnpj); 
+                        if (listaEmpSAGE.isEmpty()){
+                            pjGravar =(PessoaJuridica) listaEmpresa.get(i);
+                            controlEmpSAGE.gravarEmpresa(pjGravar); 
+                            controlEmpSAGE.gravarEmpresaParametro(pjGravar);
+                            controlEmpSAGE.gravarEstabelecimento(idResponsavelCaged, idResponsavelSefip, pjGravar, empTrib, empTribCNAE, empFolha);
+                            controlEmpSAGE.gravarEstabelecimentoParametro(pjGravar);
+                        }
                     }
                     
                 }
@@ -835,13 +1019,6 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 controlEmpSAGE.gravarCapaLote(idEmpresa);
                 controlEmpSAGE.gravarEmpresaMatrizContabilizacao(idEmpresa);
                 controlEmpSAGE.gravarCSCDMPLPLANO(idEmpresa);
-                
-                
-                JOptionPane.showMessageDialog(null, "Empresa Gravada com Sucesso!");
-            }else if (reply == JOptionPane.NO_OPTION){
-                throw new JsageImportException("Primeiro importe a empresa para depois importar os Funcionários.");
-            }
-                       
         }
     }
     /**

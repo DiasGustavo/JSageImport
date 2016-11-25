@@ -1,11 +1,3 @@
-Registro: Existentes no SAGE: 4031 --- 4880 ----- DIONE MARIA DA SILVA --- Data:Mon Nov 21 13:37:29 GFT 2016
-Registro: Gravado o funcionario de código: 4031 nome: DIONE MARIA DA SILVA ---  Data:Mon Nov 21 13:37:29 GFT 2016
-Registro: Existentes no SAGE: 4031 --- 4880 ----- DIONE MARIA DA SILVA ---  Data:Mon Nov 21 13:37:29 GFT 2016
-Registro: Existentes no SAGE: 4031 --- 4880 ----- DIONE MARIA DA SILVA ---  Data:Mon Nov 21 19:00:18 GFT 2016
-Registro: Gravado o funcionario de código: 4031 nome: DIONE MARIA DA SILVA ---  Data:Mon Nov 21 19:00:22 GFT 2016
-Registro: Existentes no SAGE: 4031 --- 4880 ----- DIONE MARIA DA SILVA ---  Data:Mon Nov 21 19:00:22 GFT 2016
-Registro: Existentes no SAGE: 4031 --- 4880 ----- DIONE MARIA DA SILVA ---  Data:Mon Nov 21 19:08:38 GFT 2016
-Registro: Existentes no SAGE: 4031 --- 4880 ----- DIONE MARIA DA SILVA ---  Data:Mon Nov 21 19:09:34 GFT 2016
-Registro: Existentes no SAGE: 4031 --- 4880 ----- DIONE MARIA DA SILVA ---  Data:Mon Nov 21 20:52:39 GFT 2016
-Registro: Gravado o funcionario de código: 4031 nome: DIONE MARIA DA SILVA ---  Data:Mon Nov 21 20:52:43 GFT 2016
-Registro: Existentes no SAGE: 4031 --- 4880 ----- DIONE MARIA DA SILVA ---  Data:Mon Nov 21 20:52:43 GFT 2016
+Registro: Existentes no SAGE: 4031 --- 4880 ----- DIONE MARIA DA SILVA --- Data:Thu Nov 24 17:34:37 GFT 2016
+Registro: Gravado o funcionario de código: 4031 nome: DIONE MARIA DA SILVA ---  Data:Thu Nov 24 17:34:38 GFT 2016
+Registro: Existentes no SAGE: 4031 --- 4880 ----- DIONE MARIA DA SILVA ---  Data:Thu Nov 24 17:34:39 GFT 2016

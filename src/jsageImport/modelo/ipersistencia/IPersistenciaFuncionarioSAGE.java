@@ -23,6 +23,7 @@ import jsageImport.modelo.dominio.Sindicato;
 public interface IPersistenciaFuncionarioSAGE {
     
     public abstract List pesquisaCNPJ(String cnpj) throws JsageImportException;
+    public abstract List pesquisaIDCNPJ(int id, String cnpj) throws JsageImportException;
     public abstract List pesquisaIdDependente (int cdFuncionario, int idDependente) throws JsageImportException;
     public abstract List pesquisaFuncionario(int idPessoa, int cdEmpresa, String cpf) throws JsageImportException;
     public abstract List pesquisaFuncionarioNome( int cdEmpresa, String cpf) throws JsageImportException;

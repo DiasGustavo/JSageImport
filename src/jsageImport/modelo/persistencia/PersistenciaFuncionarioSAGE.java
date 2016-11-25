@@ -32,7 +32,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
     
     private static final String SQL_PESQUISARTODOS = "SELECT * FROM CRDEmpresa";
     private static final String SQL_PESQUISAREMPRESACNPJ = "SELECT * FROM CRDEmpresa WHERE cnpj_cpf = ?";
-    
+    private static final String SQL_PESQUISAREMPRESAIDCNPJ = "SELECT * FROM CRDEmpresa WHERE cd_empresa = ? AND cnpj_cpf = ?";
     /* Strings SQL para funcionários*/
     private static final String SQL_INCLUIR_FUNCIONARIO ="INSERT INTO Funcionario (cd_empresa,cd_funcionario,nome,endereco,nr_endereco,compl_endereco,bairro,cidade,estado,cep,pai,mae,sexo" +
                                                                                    ",estado_civil,nacionalidade,ano_chegada,grau_instrucao,dt_nascimento,ddd_fone,telefone,apelido,chave_acesso" +
@@ -319,7 +319,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setString(5, carteiraDefault);//dv_serie_carteira
             stmt.setString(6, trataDados.recuperarUF(pf.getIdUfCtps()));//uf_carteira
             stmt.setString(7, trataDados.trataGrandesString(trataDados.recuperarPIS(cdFuncionario),14));//pis
-            stmt.setString(8, trataDados.trataGrandesString(pf.getCpfFormatado(),14));//cpf
+            stmt.setString(8, pf.getCpfFormatado());//cpf
             stmt.setString(9, trataDados.trataGrandesString(pf.getNumeroDocumentoIdentidade(),20));//nr_identidade
             stmt.setString(10, trataDados.trataGrandesString(trataDados.tratarOrgaoRG(pf.getOrgaoExpedidorDocumentoIdentidade()),12));//orgao_identidade
             stmt.setString(11, trataDados.tratarUFRG(pf.getOrgaoExpedidorDocumentoIdentidade()));//uf_identidade   
@@ -349,11 +349,11 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setString(34, trataDados.trataGrandesString(pf.getLivroCertidaoCivil(),8));//livro_certidao
             stmt.setString(35, trataDados.trataGrandesString(pf.getFolhaCertidaoCivil(),4));//folha_certidao
             stmt.setString(36, trataDados.trataGrandesString(pf.getCartorioCertidaoCivil(),115));//cartorio_certidao
-            stmt.setString(37, trataDados.trataGrandesString(trataDados.recuperarUF(pf.getIdUfCertidaoCivil()),2));//uf_certidao
+            stmt.setString(37, trataDados.recuperarUF(pf.getIdUfCertidaoCivil()));//uf_certidao
             stmt.setInt(38, 0);//cd_municipio_certidao
             stmt.setTimestamp(39, pf.getDataPrimeiraHabilitacao());//dt_primeira_habilitacao
             //trataDados.recuperarUF(pf.getIdufcnh()) problema tamanho da string
-            stmt.setString(40,trataDados.trataGrandesString(trataDados.recuperarUF(pf.getIdufcnh()),2));//uf_habilitacao
+            stmt.setString(40,trataDados.recuperarUF(pf.getIdufcnh()));//uf_habilitacao
             stmt.setTimestamp(41, trataDados.horaAtual());
             stmt.setString(42, null);//id
             
@@ -717,6 +717,36 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
                 GerenciadorConexao.closeConexao(con, stmt, rs);
             }
     }
+    
+    @Override
+    public List pesquisaIDCNPJ(int id, String cnpj) throws JsageImportException {
+        if (cnpj == null || cnpj.isEmpty()) {
+            return recuperarEmpresas();
+        }
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_PESQUISAREMPRESAIDCNPJ);
+            stmt.setInt(1,id);
+            stmt.setString(2, cnpj );
+            rs = stmt.executeQuery();
+            List listaFuncionarios = new ArrayList();
+            while (rs.next()) {
+                EmpresaSAGE pj = criarEmpresaSAGE(rs);
+                listaFuncionarios.add(pj);
+            }
+            return listaFuncionarios;
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta da empresa de CNPJ: " + cnpj);
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+    }
+    
     
     @Override
     public List pesquisaFuncionario(int idPessoa, int cdEmpresa, String cpf) throws JsageImportException {

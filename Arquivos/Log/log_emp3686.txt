@@ -1,13 +1,35 @@
-Registro: Existentes no SAGE: 3687 --- 3686 ----- MARINEIDE EUGENIO DE LIMA --- Data:Mon Nov 21 13:34:09 GFT 2016
-Registro: Gravado o funcionario de código: 3687 nome: MARINEIDE EUGENIO DE LIMA ---  Data:Mon Nov 21 13:34:10 GFT 2016
-Registro: Existentes no SAGE: 3690 --- 3686 ----- LUCIENE MARIA SILVA ---  Data:Mon Nov 21 13:34:10 GFT 2016
-Registro: Gravado o funcionario de código: 3690 nome: LUCIENE MARIA SILVA ---  Data:Mon Nov 21 13:34:11 GFT 2016
-Registro: Existentes no SAGE: 3693 --- 3686 ----- ALDENICE CARVALHO DE SOUZA SILVA ---  Data:Mon Nov 21 13:34:11 GFT 2016
-Registro: Gravado o funcionario de código: 3693 nome: ALDENICE CARVALHO DE SOUZA SILVA ---  Data:Mon Nov 21 13:34:12 GFT 2016
-Registro: Existentes no SAGE: 3697 --- 3686 ----- ANA ROGERIA ALBUQUERQUE SILVA ---  Data:Mon Nov 21 13:34:12 GFT 2016
-Registro: Gravado o funcionario de código: 3697 nome: ANA ROGERIA ALBUQUERQUE SILVA ---  Data:Mon Nov 21 13:34:13 GFT 2016
-Registro: Existentes no SAGE: 3702 --- 3686 ----- EDIMILSON LUIZ PEREIRA ---  Data:Mon Nov 21 13:34:13 GFT 2016
-Registro: Gravado o funcionario de código: 3702 nome: EDIMILSON LUIZ PEREIRA ---  Data:Mon Nov 21 13:34:13 GFT 2016
-Registro: Existentes no SAGE: 3707 --- 3686 ----- POLLYANNA ANDREZZA ACIOLI LIMA ---  Data:Mon Nov 21 13:34:14 GFT 2016
-Registro: Gravado o funcionario de código: 3707 nome: POLLYANNA ANDREZZA ACIOLI LIMA ---  Data:Mon Nov 21 13:34:14 GFT 2016
-Registro: Existentes no SAGE: 3710 --- 3686 ----- MARLI GONÇAÇVES BARRETO ---  Data:Mon Nov 21 13:34:14 GFT 2016
+Registro: Existentes no SAGE: 3687 --- 3686 ----- MARINEIDE EUGENIO DE LIMA --- Data:Thu Nov 24 17:01:47 GFT 2016
+Registro: Existentes no SAGE: 3687 --- 3686 ----- MARINEIDE EUGENIO DE LIMA ---  Data:Thu Nov 24 17:03:41 GFT 2016
+Registro: Existentes no SAGE: 3690 --- 3686 ----- LUCIENE MARIA SILVA ---  Data:Thu Nov 24 17:03:42 GFT 2016
+Registro: Existentes no SAGE: 3687 --- 3686 ----- MARINEIDE EUGENIO DE LIMA ---  Data:Thu Nov 24 17:04:27 GFT 2016
+Registro: Existentes no SAGE: 3690 --- 3686 ----- LUCIENE MARIA SILVA ---  Data:Thu Nov 24 17:04:27 GFT 2016
+Registro: Existentes no SAGE: 3693 --- 3686 ----- ALDENICE CARVALHO DE SOUZA SILVA ---  Data:Thu Nov 24 17:04:27 GFT 2016
+Registro: Gravado o funcionario de código: 3693 nome: ALDENICE CARVALHO DE SOUZA SILVA ---  Data:Thu Nov 24 17:04:29 GFT 2016
+Registro: Existentes no SAGE: 3697 --- 3686 ----- ANA ROGERIA ALBUQUERQUE SILVA ---  Data:Thu Nov 24 17:04:30 GFT 2016
+Registro: Gravado o funcionario de código: 3697 nome: ANA ROGERIA ALBUQUERQUE SILVA ---  Data:Thu Nov 24 17:04:31 GFT 2016
+Registro: Existentes no SAGE: 3702 --- 3686 ----- EDIMILSON LUIZ PEREIRA ---  Data:Thu Nov 24 17:04:31 GFT 2016
+Registro: Gravado o funcionario de código: 3702 nome: EDIMILSON LUIZ PEREIRA ---  Data:Thu Nov 24 17:04:33 GFT 2016
+Registro: Existentes no SAGE: 3707 --- 3686 ----- POLLYANNA ANDREZZA ACIOLI LIMA ---  Data:Thu Nov 24 17:04:33 GFT 2016
+Registro: Gravado o funcionario de código: 3707 nome: POLLYANNA ANDREZZA ACIOLI LIMA ---  Data:Thu Nov 24 17:04:34 GFT 2016
+Registro: Existentes no SAGE: 3710 --- 3686 ----- MARLI GONÇAÇVES BARRETO ---  Data:Thu Nov 24 17:04:34 GFT 2016
+Registro: Existentes no SAGE: 3687 --- 3686 ----- MARINEIDE EUGENIO DE LIMA ---  Data:Thu Nov 24 17:18:30 GFT 2016
+Registro: Existentes no SAGE: 3687 --- 3686 ----- MARINEIDE EUGENIO DE LIMA ---  Data:Thu Nov 24 17:19:36 GFT 2016
+Registro: Existentes no SAGE: 3690 --- 3686 ----- LUCIENE MARIA SILVA ---  Data:Thu Nov 24 17:19:36 GFT 2016
+Registro: Gravado o funcionario de código: 3690 nome: LUCIENE MARIA SILVA ---  Data:Thu Nov 24 17:19:38 GFT 2016
+Registro: Existentes no SAGE: 3693 --- 3686 ----- ALDENICE CARVALHO DE SOUZA SILVA ---  Data:Thu Nov 24 17:19:38 GFT 2016
+Registro: Gravado o funcionario de código: 3693 nome: ALDENICE CARVALHO DE SOUZA SILVA ---  Data:Thu Nov 24 17:19:39 GFT 2016
+Registro: Existentes no SAGE: 3697 --- 3686 ----- ANA ROGERIA ALBUQUERQUE SILVA ---  Data:Thu Nov 24 17:19:40 GFT 2016
+Registro: Gravado o funcionario de código: 3697 nome: ANA ROGERIA ALBUQUERQUE SILVA ---  Data:Thu Nov 24 17:19:41 GFT 2016
+Registro: Existentes no SAGE: 3702 --- 3686 ----- EDIMILSON LUIZ PEREIRA ---  Data:Thu Nov 24 17:19:41 GFT 2016
+Registro: Gravado o funcionario de código: 3702 nome: EDIMILSON LUIZ PEREIRA ---  Data:Thu Nov 24 17:19:43 GFT 2016
+Registro: Existentes no SAGE: 3707 --- 3686 ----- POLLYANNA ANDREZZA ACIOLI LIMA ---  Data:Thu Nov 24 17:19:43 GFT 2016
+Registro: Gravado o funcionario de código: 3707 nome: POLLYANNA ANDREZZA ACIOLI LIMA ---  Data:Thu Nov 24 17:19:44 GFT 2016
+Registro: Existentes no SAGE: 3710 --- 3686 ----- MARLI GONÇAÇVES BARRETO ---  Data:Thu Nov 24 17:19:44 GFT 2016
+Registro: Gravado o funcionario de código: 3710 nome: MARLI GONÇAÇVES BARRETO ---  Data:Thu Nov 24 17:19:46 GFT 2016
+Registro: Existentes no SAGE: 3687 --- 3686 ----- MARINEIDE EUGENIO DE LIMA ---  Data:Thu Nov 24 17:32:57 GFT 2016
+Registro: Existentes no SAGE: 3690 --- 3686 ----- LUCIENE MARIA SILVA ---  Data:Thu Nov 24 17:32:57 GFT 2016
+Registro: Existentes no SAGE: 3693 --- 3686 ----- ALDENICE CARVALHO DE SOUZA SILVA ---  Data:Thu Nov 24 17:32:57 GFT 2016
+Registro: Existentes no SAGE: 3697 --- 3686 ----- ANA ROGERIA ALBUQUERQUE SILVA ---  Data:Thu Nov 24 17:32:57 GFT 2016
+Registro: Existentes no SAGE: 3702 --- 3686 ----- EDIMILSON LUIZ PEREIRA ---  Data:Thu Nov 24 17:32:57 GFT 2016
+Registro: Existentes no SAGE: 3707 --- 3686 ----- POLLYANNA ANDREZZA ACIOLI LIMA ---  Data:Thu Nov 24 17:32:57 GFT 2016
+Registro: Existentes no SAGE: 3710 --- 3686 ----- MARLI GONÇAÇVES BARRETO ---  Data:Thu Nov 24 17:32:57 GFT 2016

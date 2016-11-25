@@ -43,7 +43,7 @@ public class FrImportacaoFuncionarioProgresso extends javax.swing.JInternalFrame
     
     public FrImportacaoFuncionarioProgresso() {
         initComponents();
-        pb.setVisible(true);
+        pb.setVisible(false);
         
     }
     
@@ -118,7 +118,7 @@ public class FrImportacaoFuncionarioProgresso extends javax.swing.JInternalFrame
             if(reply == JOptionPane.YES_OPTION){               
                 new Thread(){
                     public void run(){
-                        try{
+                       /* try{
                                             
                             int porcent = 100/funcionarios.size();//retorna a porcentagem de um registro
                             int progresso = 0;
@@ -144,7 +144,28 @@ public class FrImportacaoFuncionarioProgresso extends javax.swing.JInternalFrame
                             Logger.getLogger(FrImportacaoFuncionarioProgresso.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (InterruptedException ex){
                             
+                        }*/
+                        try{
+                                            
+                           TelaCarregando telaCarregando = new TelaCarregando();
+                           telaCarregando.setVisible(true);
+                            for(int i= 0; i < funcionarios.size(); i++){
+                                sleep(100);
+                               
+                                PessoaFisica pfGravar =(PessoaFisica) funcionarios.get(i);
+                                control.ImportarFuncionarios(pfGravar.getIdPessoa(), emp.getCd_empresa(),  pfGravar.getNomePessoa());
+                                jlStatus.setText("Registro: " + pfGravar.getIdPessoa()+ " Gravado.");
+                                
+                            }
+                            jlStatus.setText("Status: Concluído!");                       
+                            telaCarregando.dispose();
+                            JOptionPane.showMessageDialog(null, "Funcionarios Gravados com Sucesso!"); 
+                        } catch (JsageImportException ex) {
+                            Logger.getLogger(FrImportacaoFuncionarioProgresso.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (InterruptedException ex){
+                            
                         }
+                        
                     }
                 }.start();
                                               

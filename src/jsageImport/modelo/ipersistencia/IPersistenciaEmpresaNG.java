@@ -16,5 +16,8 @@ public interface IPersistenciaEmpresaNG {
     public abstract List recuperarEmpresas() throws JsageImportException;
     public abstract List capturarInfoEmpresasComFun () throws JsageImportException;
     public abstract void ImportaEmpresas (int idEmpresa, String cnpj) throws JsageImportException;
+    public abstract void ImportaTodasEmpresas(int idEmpresa, String cnpj) throws JsageImportException;
     public abstract List recuperarAgenciaNG () throws JsageImportException;
+    public abstract List pesquisarCnpj(int idEmpresa, String cnpj) throws JsageImportException;
+    public abstract List pesquisarEmpresaPorID(int idEmpresa) throws JsageImportException;
 }
