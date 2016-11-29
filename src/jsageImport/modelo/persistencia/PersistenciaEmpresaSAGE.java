@@ -49,8 +49,8 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
                                                                         +"integracao_csc,simples_crh,faturamento_simples_crh,microempresa_crh,epp_crh,importa_lote_diferenca,utiliza_controle_clifor,"
                                                                         +"opcao_seguro_desemprego,descontar_13_negativo,op_calculo_numero_dias,EntSemFinsLucrativos,recolhimento_contr_sindical_centralizada,"
                                                                         +"calc30_opcao_salario,calc30_opcao_salario_fevereiro,calc30_opcao_dias,opcao_historico_contabil,optante_liminar_aviso_previo,micro_emp_indiv_crh,"
-                                                                        +"empresa_cidada,utiliza_controle_parcelas_auditoria,emitir_aviso_ferias,opcao_data_aviso_previo,forma_digitacao_caixa_banco_auditoria,grau_padrao_relatorio,data_hora_alteracao)"
-                                                                        +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                                                        +"empresa_cidada,utiliza_controle_parcelas_auditoria,emitir_aviso_ferias,opcao_data_aviso_previo,forma_digitacao_caixa_banco_auditoria,data_hora_alteracao)"
+                                                                        +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     private static final String SQL_CADASTRO_ESTABELECIMENTO = "INSERT INTO CRDEstabelecimento   (cd_empresa,cd_estabelecimento,razao,fantasia,endereco,numero,bairro,cidade,cep,uf,ddd_telefone\n" +
 "								  ,telefone,natureza_juridica,categoria,cnpj_cpf,cnae,local_registro,nome_titular,denom_titular,cpf_titular\n" +
@@ -236,8 +236,8 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
             stmt.setString(60, "N");//emitir_aviso_ferias
             stmt.setString(61, "l");//opcao_data_aviso_previo
             stmt.setInt(62,0);//forma_digitacao_caixa_banco_auditoria
-            stmt.setInt(63, 2);//grau_padrao_relatorio
-            stmt.setTimestamp(64, trataDados.horaAtual());//data_hora_alteracao
+            //stmt.setInt(63, 2);//grau_padrao_relatorio
+            stmt.setTimestamp(63, trataDados.horaAtual());//data_hora_alteracao
             
             stmt.executeUpdate();
             

@@ -823,9 +823,11 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 }
                 ContadorPFisica contador = null;
                 if(listaContador.size()>0){
-                    for(int i=0; i < listaContador.size(); i++){
+                    for(int i=0; i < listaContador.size(); i++){                        
                         contador = (ContadorPFisica) listaContador.get(i);
-                        controlEmpSAGE.gravarContador(contador);
+                        if (controlEmpSAGE.pesquisarResponsavel(trataDados.trataGrandesString(contador.getNomePessoa(),40))==false){
+                            controlEmpSAGE.gravarContador(contador);   
+                        }                        
                     }
                 }
                 
@@ -833,7 +835,10 @@ public class PersistenciaEmpresaNG implements IPersistenciaEmpresaNG {
                 if(listaContadorJuridico.size()>0){
                     for(int i=0; i < listaContadorJuridico.size(); i++){
                         contadorJuridica = (ContadorPJuridica) listaContadorJuridico.get(i);
-                        controlEmpSAGE.gravarContadorPJuridica(contadorJuridica);
+                        if (controlEmpSAGE.pesquisarResponsavel(trataDados.trataGrandesString(contadorJuridica.getNomePessoa(),40))==false){
+                            controlEmpSAGE.gravarContadorPJuridica(contadorJuridica);   
+                        } 
+                        
                     }
                 }
                 
