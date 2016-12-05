@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import jsageImport.controler.ControlerEmpresaNG;
+import jsageImport.controler.ControlerEmpresaNGFiscal;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.PessoaJuridica;
 
@@ -36,9 +37,9 @@ public class FrImportacaoPrincipalFiscal extends javax.swing.JInternalFrame {
     }
     
     public void exibirEmpresas () throws JsageImportException{
-        ControlerEmpresaNG control = new ControlerEmpresaNG();
+        ControlerEmpresaNGFiscal control = new ControlerEmpresaNGFiscal();
         // O metodo pesquisarTodos retorna um list
-        this.empresas = control.pesquisarEmpresas();
+        this.empresas = control.capturarInfoEmpresas();
         
         DefaultTableModel model = (DefaultTableModel)tFuncionarios.getModel();
         this.removerLinhasDaTabela(model);
@@ -148,7 +149,7 @@ public class FrImportacaoPrincipalFiscal extends javax.swing.JInternalFrame {
         lStatus = new javax.swing.JLabel();
 
         setClosable(true);
-        setTitle("Consulta Empresas no Banco NG");
+        setTitle("Consulta Empresas no Banco NG FISCAL");
 
         tFuncionarios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tFuncionarios.setModel(new javax.swing.table.DefaultTableModel(

@@ -2,6 +2,15 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
+    <Container class="javax.swing.JMenu" name="jMenu1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenu1"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+    </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenu">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jsubMenuArquivo">
@@ -22,9 +31,32 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuImportacao">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Importa&#xe7;&#xe3;o"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itemMenuImportacaoFolha">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Importa&#xe7;&#xe3;o Folha"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemMenuImportacaoFolhaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemMenuImportacaoFiscal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Importa&#xe7;&#xe3;o Fiscal"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemMenuImportacaoFiscalActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="jsubMenuFerramenta">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ferramenta"/>
+            <Property name="text" type="java.lang.String" value="Configura&#xe7;&#xe3;o"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemMenuConexao">
@@ -33,14 +65,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemMenuConexaoActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemMenuImportacao">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Importa&#xe7;&#xe3;o"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemMenuImportacaoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

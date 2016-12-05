@@ -33,16 +33,21 @@ public class Jprincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
         jDesktopPane = new javax.swing.JDesktopPane();
         jMenu = new javax.swing.JMenuBar();
         jsubMenuArquivo = new javax.swing.JMenu();
         itemMenuSair = new javax.swing.JMenuItem();
+        jMenuImportacao = new javax.swing.JMenu();
+        itemMenuImportacaoFolha = new javax.swing.JMenuItem();
+        itemMenuImportacaoFiscal = new javax.swing.JMenuItem();
         jsubMenuFerramenta = new javax.swing.JMenu();
         itemMenuConexao = new javax.swing.JMenuItem();
-        itemMenuImportacao = new javax.swing.JMenuItem();
         jMenuAjuda = new javax.swing.JMenu();
         jSubMenuAjuda = new javax.swing.JMenuItem();
         jSubMenuSobre = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sage Import");
@@ -72,7 +77,27 @@ public class Jprincipal extends javax.swing.JFrame {
 
         jMenu.add(jsubMenuArquivo);
 
-        jsubMenuFerramenta.setText("Ferramenta");
+        jMenuImportacao.setText("Importação");
+
+        itemMenuImportacaoFolha.setText("Importação Folha");
+        itemMenuImportacaoFolha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMenuImportacaoFolhaActionPerformed(evt);
+            }
+        });
+        jMenuImportacao.add(itemMenuImportacaoFolha);
+
+        itemMenuImportacaoFiscal.setText("Importação Fiscal");
+        itemMenuImportacaoFiscal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMenuImportacaoFiscalActionPerformed(evt);
+            }
+        });
+        jMenuImportacao.add(itemMenuImportacaoFiscal);
+
+        jMenu.add(jMenuImportacao);
+
+        jsubMenuFerramenta.setText("Configuração");
 
         itemMenuConexao.setText("Configurar Servidores");
         itemMenuConexao.addActionListener(new java.awt.event.ActionListener() {
@@ -81,14 +106,6 @@ public class Jprincipal extends javax.swing.JFrame {
             }
         });
         jsubMenuFerramenta.add(itemMenuConexao);
-
-        itemMenuImportacao.setText("Importação");
-        itemMenuImportacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemMenuImportacaoActionPerformed(evt);
-            }
-        });
-        jsubMenuFerramenta.add(itemMenuImportacao);
 
         jMenu.add(jsubMenuFerramenta);
 
@@ -140,14 +157,14 @@ public class Jprincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_itemMenuSairActionPerformed
 
-    private void itemMenuImportacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuImportacaoActionPerformed
+    private void itemMenuImportacaoFolhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuImportacaoFolhaActionPerformed
         FrImportacaoPrincipalFolha imp = new FrImportacaoPrincipalFolha();
         jDesktopPane.add(imp);
         
         imp.setVisible(true);
         imp.setPosicao();        
         
-    }//GEN-LAST:event_itemMenuImportacaoActionPerformed
+    }//GEN-LAST:event_itemMenuImportacaoFolhaActionPerformed
 
     private void jSubMenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSubMenuSobreActionPerformed
          Sobre sobre = new Sobre();
@@ -157,6 +174,13 @@ public class Jprincipal extends javax.swing.JFrame {
         Ajuda ajuda = new Ajuda();
         ajuda.abrirManual();
     }//GEN-LAST:event_jSubMenuAjudaActionPerformed
+
+    private void itemMenuImportacaoFiscalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuImportacaoFiscalActionPerformed
+        FrImportacaoPrincipalFiscal imp = new FrImportacaoPrincipalFiscal();
+        jDesktopPane.add(imp);
+        imp.setVisible(true);
+        imp.setPosicao();
+    }//GEN-LAST:event_itemMenuImportacaoFiscalActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -195,11 +219,14 @@ public class Jprincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem itemMenuConexao;
-    private javax.swing.JMenuItem itemMenuImportacao;
+    private javax.swing.JMenuItem itemMenuImportacaoFiscal;
+    private javax.swing.JMenuItem itemMenuImportacaoFolha;
     private javax.swing.JMenuItem itemMenuSair;
     private javax.swing.JDesktopPane jDesktopPane;
     private javax.swing.JMenuBar jMenu;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenuAjuda;
+    private javax.swing.JMenu jMenuImportacao;
     private javax.swing.JMenuItem jSubMenuAjuda;
     private javax.swing.JMenuItem jSubMenuSobre;
     private javax.swing.JMenu jsubMenuArquivo;

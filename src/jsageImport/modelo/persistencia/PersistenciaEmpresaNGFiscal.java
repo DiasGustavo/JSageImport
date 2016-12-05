@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.EmpresaFiscalNG;
+import jsageImport.modelo.dominio.PessoaJuridica;
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaNGFiscal;
 
 /**
@@ -115,7 +116,7 @@ public class PersistenciaEmpresaNGFiscal implements IPersistenciaEmpresaNGFiscal
                     stmt.setInt(1,idpessoa);
                     rs = stmt.executeQuery();
                     while (rs.next()) {
-                        EmpresaFiscalNG pj = criarEmpresaFiscalNG(rs);
+                        PessoaJuridica pj = criarEmpresaNG(rs);
                         listaEmpresas.add(pj);
                     }
                 } 
@@ -298,5 +299,70 @@ public class PersistenciaEmpresaNGFiscal implements IPersistenciaEmpresaNGFiscal
             throw new JsageImportException(mensagem.toString());
         }
         
+    }
+    
+    private PessoaJuridica criarEmpresaNG(ResultSet rs) throws JsageImportException{
+        PessoaJuridica pj = new PessoaJuridica();
+        try{
+            /* Dados de uma pessoa comum*/
+            pj.setIdPessoa(rs.getInt("idpessoa"));
+            pj.setCodigoPessoa(rs.getString("codigopessoa"));
+            pj.setNomePessoa(rs.getString("nomepessoa"));
+            pj.setIndFabrica(rs.getBoolean("indfabrica"));
+            pj.setObservacao(rs.getString("observacao"));
+            pj.setInddadosConvertidos(rs.getBoolean("inddadosconvertidos"));
+            pj.setIndDesativada(rs.getBoolean("inddesativada"));
+            pj.setDataCadastramento(rs.getTimestamp("datacadastramento"));
+            pj.setFotoPessoa(rs.getString("fotopessoa"));
+            pj.setBiometria(rs.getBytes("biometria"));
+            pj.setNumeroCei(rs.getString("numerocei"));
+            pj.setCodigoExternoEmpresa(rs.getString("codigoexternoempresa"));
+            pj.setCodigoExternoFilial(rs.getString("codigoexternofilial"));
+            pj.setDocumentoEstrangeiro(rs.getString("documentoestrangeiro"));
+            pj.setCno(rs.getString("cno"));
+            pj.setCaepf(rs.getString("caepf"));
+            pj.setIdtipocaepf(rs.getInt("idtipocaepf"));
+            /*Dados endereço*/
+            pj.setLogradouro(rs.getString("logradouro"));
+            pj.setNumeroEndereco(rs.getString("numeroendereco"));
+            pj.setComplemento(rs.getString("complemento"));
+            pj.setBairro(rs.getString("bairro"));
+            pj.setIdmunicipio(rs.getInt("idmunicipio"));
+            pj.setCep(rs.getString("cep"));
+            pj.setIdmunicipio(rs.getInt("idmunicipio"));
+            
+            /*Dados da pessoa juridica*/
+            pj.setNomeFantasia(rs.getString("nomefantasia"));
+            pj.setCnpj(rs.getString("cnpj"));
+            pj.setInscricaoEstadual(rs.getString("inscricaoestadual"));
+            pj.setInscricaoMunicipal(rs.getString("inscricaomunicipal"));
+            pj.setObjetoSocial(rs.getString("objetosocial"));
+            pj.setNumeroRegistoJunta(rs.getString("numeroregistrojunta"));
+            pj.setNomeJunta(rs.getString("nomejunta"));
+            pj.setDataInicioAtividade(rs.getTimestamp("datainicioatividade"));
+            pj.setDataTerminoSociedade(rs.getTimestamp("dataterminosociedade"));
+            pj.setCapitalSocialInicial(rs.getDouble("capitalsocialInicial"));
+            pj.setDataFundacao(rs.getTimestamp("datafundacao"));
+            pj.setDataFimAtividade(rs.getTimestamp("datafimatividade"));
+            pj.setNumeroProprietarios(rs.getInt("numeroproprietarios"));
+            pj.setNirc(rs.getString("nirc"));
+            pj.setIdNaturezaJuridica(rs.getInt("idnaturezajuridica"));
+            pj.setNomeAbreviado(rs.getString("nomeabreviado"));
+            pj.setIdQualificacaoEmpresa(rs.getInt("idqualificacaoempresa"));
+            pj.setCodigoUfRama(rs.getString("codigosuframa"));
+            pj.setIdTipoOrgaoPublico(rs.getInt("idtipoorgaopublico"));
+            pj.setIdTipoEntidade(rs.getInt("idtipoentidade"));
+            pj.setDataInicioInscricaoEstadual(rs.getTimestamp("datainicioinscricaoestadual"));
+            pj.setCnpjFormatado(rs.getString("cnpjformatado"));
+            pj.setIdIdentificadorInscricaoEstadualNfe(rs.getInt("idindicadorinscricaoestadualnfe"));
+            pj.setIndEmpresaExterna(rs.getBoolean("indempresaexterna"));
+            
+            
+        } catch (SQLException ex) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados da Pessoa Jurídica.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return pj;
     }
 }

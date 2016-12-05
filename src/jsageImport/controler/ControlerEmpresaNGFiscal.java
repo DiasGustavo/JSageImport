@@ -5,10 +5,23 @@
  */
 package jsageImport.controler;
 
+import java.util.List;
+import jsageImport.exception.JsageImportException;
+import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaNGFiscal;
+import jsageImport.persistencia.GerenciadorPersistenciaNG;
+import jsageImport.persistencia.IGerenciadorPersistenciaNG;
+
 /**
  *
  * @author Gustavo
  */
 public class ControlerEmpresaNGFiscal {
-    
+   public List capturarInfoEmpresas () throws JsageImportException{
+        List listaEmp;
+        IGerenciadorPersistenciaNG gerenteP = new GerenciadorPersistenciaNG();
+        IPersistenciaEmpresaNGFiscal PEmpresas = gerenteP.getPersistenciaEmpresaNGFiscal();
+        listaEmp = PEmpresas.capturarInfoEmpresas();
+        
+        return listaEmp;
+    }
 }
