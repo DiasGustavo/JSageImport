@@ -19,7 +19,7 @@ import jsageImport.modelo.dominio.PessoaJuridica;
  * Última modificação: 24/10/2016
  * Modificador por: Gustavo Dias
  */
-public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
+public class FrImportacaoPrincipalFiscal extends javax.swing.JInternalFrame {
 
     private List empresas;
     private String nomeEmpresa;
@@ -28,7 +28,7 @@ public class FrImportacaoPrincipal extends javax.swing.JInternalFrame {
     /**
      * Creates new form PesquisarFrame
      */
-    public FrImportacaoPrincipal() {
+    public FrImportacaoPrincipalFiscal() {
         initComponents();
         this.jbImportar.setEnabled(false);
         this.jImportarEmpresas.setEnabled(false);

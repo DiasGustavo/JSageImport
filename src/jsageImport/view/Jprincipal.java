@@ -141,7 +141,7 @@ public class Jprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemMenuSairActionPerformed
 
     private void itemMenuImportacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuImportacaoActionPerformed
-        FrImportacaoPrincipal imp = new FrImportacaoPrincipal();
+        FrImportacaoPrincipalFolha imp = new FrImportacaoPrincipalFolha();
         jDesktopPane.add(imp);
         
         imp.setVisible(true);
