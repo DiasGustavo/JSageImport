@@ -4,8 +4,10 @@
 package jsageImport.persistencia;
 
 import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaSAGE;
+import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaSAGEFiscal;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 import jsageImport.modelo.persistencia.PersistenciaEmpresaSAGE;
+import jsageImport.modelo.persistencia.PersistenciaEmpresaSAGEFiscal;
 import jsageImport.modelo.persistencia.PersistenciaFuncionarioSAGE;
 
 /**
@@ -23,6 +25,11 @@ import jsageImport.modelo.persistencia.PersistenciaFuncionarioSAGE;
     @Override
     public IPersistenciaEmpresaSAGE getPersistenciaEmpresa() {
         return new PersistenciaEmpresaSAGE();
+    }
+    
+    @Override
+    public IPersistenciaEmpresaSAGEFiscal getPersistenciaEmpresaSAGEFiscal(){
+        return new PersistenciaEmpresaSAGEFiscal();
     }
     
 }

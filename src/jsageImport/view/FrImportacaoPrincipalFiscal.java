@@ -32,7 +32,6 @@ public class FrImportacaoPrincipalFiscal extends javax.swing.JInternalFrame {
     public FrImportacaoPrincipalFiscal() {
         initComponents();
         this.jbImportar.setEnabled(false);
-        this.jImportarEmpresas.setEnabled(false);
         
     }
     
@@ -59,7 +58,7 @@ public class FrImportacaoPrincipalFiscal extends javax.swing.JInternalFrame {
         int total = empresas.size();
         jlQRegistros.setText("Quantidade de Registros: "+ total);
         this.jbImportar.setEnabled(true);
-        this.jImportarEmpresas.setEnabled(true);
+        
     }
     
     public void removerLinhasDaTabela (DefaultTableModel model){
@@ -111,12 +110,12 @@ public class FrImportacaoPrincipalFiscal extends javax.swing.JInternalFrame {
         }
         JOptionPane.showMessageDialog(null, mensagem, titulo, tipo);
     }
-    public void importarDados () throws JsageImportException{
-        ControlerEmpresaNG control = new ControlerEmpresaNG();        
+    public void importarDados (int idEmpresa, String cnpj) throws JsageImportException{
+        ControlerEmpresaNGFiscal control = new ControlerEmpresaNGFiscal();        
         int empresa = this.idEmpresa;
         String cnpjEmpresa = this.cnpj;
         lStatus.setText("Status: Gravando Empresa");
-        control.ImportarEmpresa(empresa,cnpjEmpresa);
+        control.importarEmpresas(idEmpresa, cnpj);
         lStatus.setText("Status:");
     }
     
@@ -145,8 +144,8 @@ public class FrImportacaoPrincipalFiscal extends javax.swing.JInternalFrame {
         jbPesquisar = new javax.swing.JButton();
         jlQRegistros = new javax.swing.JLabel();
         jbImportar = new javax.swing.JButton();
-        jImportarEmpresas = new javax.swing.JButton();
         lStatus = new javax.swing.JLabel();
+        jbImportarEmpresas = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Consulta Empresas no Banco NG FISCAL");
@@ -180,22 +179,17 @@ public class FrImportacaoPrincipalFiscal extends javax.swing.JInternalFrame {
 
         jlQRegistros.setText("Quantidade de Registros:");
 
-        jbImportar.setText("Listar Funcionários");
+        jbImportar.setText("Importar Dados");
         jbImportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbImportarActionPerformed(evt);
             }
         });
 
-        jImportarEmpresas.setText("Importar Empresas");
-        jImportarEmpresas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jImportarEmpresasActionPerformed(evt);
-            }
-        });
-
         lStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lStatus.setText("Status:");
+
+        jbImportarEmpresas.setText("Importar Empresas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,10 +202,10 @@ public class FrImportacaoPrincipalFiscal extends javax.swing.JInternalFrame {
                     .addComponent(jlQRegistros)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbPesquisar)
-                        .addGap(29, 29, 29)
-                        .addComponent(jImportarEmpresas)
-                        .addGap(36, 36, 36)
-                        .addComponent(jbImportar))
+                        .addGap(18, 18, 18)
+                        .addComponent(jbImportar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbImportarEmpresas))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -222,11 +216,11 @@ public class FrImportacaoPrincipalFiscal extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jlQRegistros)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbPesquisar)
                     .addComponent(jbImportar)
-                    .addComponent(jImportarEmpresas))
+                    .addComponent(jbImportarEmpresas))
                 .addGap(18, 18, 18)
                 .addComponent(lStatus)
                 .addGap(16, 16, 16))
@@ -247,47 +241,22 @@ public class FrImportacaoPrincipalFiscal extends javax.swing.JInternalFrame {
 
     private void jbImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbImportarActionPerformed
         PessoaJuridica pj = null;
-        FrImportacaoFuncionarioProgresso pjFun = new FrImportacaoFuncionarioProgresso();
+        
         try {
-            pj = this.getEmpresa();
-            //faz parte da janela de funcionários da empresa selecionada
-            pjFun.setIdPj(pj.getIdPessoa());
-            pjFun.setNomeEmpresa(this.nomeEmpresa);
-            pjFun.setCnpj(this.cnpj);
-            importarDados();            
-            pjFun.exibirFuncionarios();
-            this.getParent().add(pjFun);
-            pjFun.setVisible(true);
+            pj = this.getEmpresa();               
+            importarDados(pj.getIdPessoa(),pj.getCnpj());          
+            
             
         }catch (JsageImportException ex){
             //this.exibirMensagem(ex.getMessage(), "Mensagem de Erro", true);
         } 
     }//GEN-LAST:event_jbImportarActionPerformed
 
-    private void jImportarEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jImportarEmpresasActionPerformed
-        PessoaJuridica pj = null;
-        try {
-            TelaCarregando telaCarregando = new TelaCarregando();
-            List listaEmpresasSelecionadas = getEmpresasSelecionadas();
-            lStatus.setText("Status: Gravando Empresas Selecionadas");
-            telaCarregando.setVisible(true);
-            for (int i = 0; i < listaEmpresasSelecionadas.size(); i++){
-                pj = (PessoaJuridica)listaEmpresasSelecionadas.get(i);
-                importarTodasEmpresas(pj.getIdPessoa(), pj.getCnpjFormatado());            
-            }
-            telaCarregando.setVisible(false);
-            lStatus.setText("Status:");
-            JOptionPane.showMessageDialog(null, "Empresas Selecionadas gravadas com sucesso!"); 
-        } catch (JsageImportException ex){
-            JOptionPane.showMessageDialog(null, "Erro ao gravar as empresas selecionadas!"); 
-        }
-    }//GEN-LAST:event_jImportarEmpresasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jImportarEmpresas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbImportar;
+    private javax.swing.JButton jbImportarEmpresas;
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JLabel jlQRegistros;
     private javax.swing.JLabel lStatus;

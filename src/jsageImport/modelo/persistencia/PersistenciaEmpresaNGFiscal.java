@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import jsageImport.controler.ControlerEmpresaSAGEFiscal;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.EmpresaFiscalNG;
 import jsageImport.modelo.dominio.PessoaJuridica;
@@ -123,8 +124,6 @@ public class PersistenciaEmpresaNGFiscal implements IPersistenciaEmpresaNGFiscal
             }else{
                 throw new JsageImportException("Não foi encontrado Empreasas!");
             }
-                        
-            
             return listaEmpresas;
         } catch (SQLException exc) {
             StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta das informações das Empresas.");
@@ -136,7 +135,8 @@ public class PersistenciaEmpresaNGFiscal implements IPersistenciaEmpresaNGFiscal
     }
     
     @Override
-    public void importarEmpresaFiscalNG()throws JsageImportException{
+    public void importarEmpresaFiscalNG(int idEmpresa, String cnpj)throws JsageImportException{
+        ControlerEmpresaSAGEFiscal controlSAGE = new ControlerEmpresaSAGEFiscal();
         
     }
 

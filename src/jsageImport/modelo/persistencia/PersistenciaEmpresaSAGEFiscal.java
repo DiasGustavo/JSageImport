@@ -10,12 +10,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.EmpresaFiscalNG;
+import jsageImport.modelo.ipersistencia.IPersistenciaEmpresaSAGEFiscal;
 
 /**
  *
  * @author Gustavo
  */
-public class PersistenciaEmpresaSAGEFiscal {
+public class PersistenciaEmpresaSAGEFiscal implements IPersistenciaEmpresaSAGEFiscal{
     PropertiesJdbc jdbc = new PropertiesJdbc();
     TratamentoDados trataDados = new TratamentoDados();
     
@@ -31,6 +32,7 @@ public class PersistenciaEmpresaSAGEFiscal {
                                                                               ",EntSemFinsLucrativos = ?,calc30_opcao_salario = ?,calc30_opcao_dias = ?,imprimir_dados_destaque = ?,recibo_ferias_rateio = ?" +
                                                                               ",recibo_ferias_adiantamento = ?,recibo_ferias_abono = ? WHERE cd_empresa = ?";
     
+    @Override
     public void atualizarEmpresa (EmpresaFiscalNG empNG) throws JsageImportException{
         if (empNG == null) {
             String mensagem = "Não foi informada a Empresa para importar";

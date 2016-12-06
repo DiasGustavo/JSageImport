@@ -13,7 +13,7 @@ import jsageImport.exception.JsageImportException;
  * @author Gustavo
  */
 public interface IPersistenciaEmpresaNGFiscal {
-    public abstract void importarEmpresaFiscalNG()throws JsageImportException;
+    public abstract void importarEmpresaFiscalNG(int idEmpresa, String cnpj)throws JsageImportException;
     public abstract List pesquisarEmpresa (int idEmpresa) throws JsageImportException;
     public abstract List capturarInfoEmpresas() throws JsageImportException;
 }

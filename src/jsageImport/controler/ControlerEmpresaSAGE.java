@@ -27,7 +27,7 @@ import jsageImport.persistencia.IGerenciadorPersistenciaSAGE;
  */
 public class ControlerEmpresaSAGE {
     
-        public void gravarEmpresa (PessoaJuridica pj) throws JsageImportException{
+    public void gravarEmpresa (PessoaJuridica pj) throws JsageImportException{
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaEmpresaSAGE PEmpresa = gerenteP.getPersistenciaEmpresa();
         PEmpresa.gravarEmpresa(pj);     

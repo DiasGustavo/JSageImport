@@ -117,6 +117,7 @@ public class FrImportacaoFuncionarioProgresso extends javax.swing.JInternalFrame
             
             if(reply == JOptionPane.YES_OPTION){               
                 new Thread(){
+                    @Override
                     public void run(){
                        /* try{
                                             
