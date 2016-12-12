@@ -90,6 +90,8 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
                                                                     " VALUES(?,?,?,?)";
     private static final String SQL_INCLUIR_FUNESPECIFICO = "INSERT INTO FunEspecificos (cd_empresa,cd_funcionario) VALUES (?,?)";
     
+    
+    
    
      
     /*Strings de url*/
@@ -498,13 +500,13 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             stmt.setInt(3, dep.getIdPessoa());//cd_dependente
             stmt.setTimestamp(4, trataDados.horaAtual());//dt_inclusao
             stmt.setString(5, dep.getNomePessoa());//nome
-            stmt.setInt(6, trataDados.recuperarParentesco(dep.getIdRelacaoDependenciaPlanoSaude()));//tipo_parentesco
+            stmt.setInt(6, trataDados.recuperarParentescoPrincipal(trataDados.recuperarParentescoIrrf(dep.getIdtipodependenciairrf()), dep.isIndDependenteSalarioFamilia(), dep.getIndSexo()));//tipo_parentesco
             stmt.setString(7, null);//descricao_parentesco
             stmt.setTimestamp(8, dep.getDataNascimento());//dt_nascimento - falta data
             stmt.setString(9, "N");//suspende_sf
             stmt.setString(10, null);//observacao
             stmt.setString(11, dep.getCpfFormatado());//cpf_dependente - o cadastro do dependente nao enocntrado cpf
-            stmt.setInt(12, trataDados.recuperarEsocial(trataDados.recuperarParentesco(dep.getIdRelacaoDependenciaPlanoSaude())));//esocial_tipo_parentesco
+            stmt.setInt(12, trataDados.recuperarParentescoIrrf(dep.getIdtipodependenciairrf()));//esocial_tipo_parentesco
             stmt.setString(13, "N");//esocial_pensionista
             stmt.setTimestamp(14, trataDados.horaAtual());
                        

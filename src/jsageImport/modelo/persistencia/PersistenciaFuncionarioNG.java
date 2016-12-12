@@ -17,6 +17,7 @@ import jsageImport.modelo.dominio.DadosFuncionaisNG;
 import jsageImport.modelo.dominio.DadosFuncionario;
 import jsageImport.modelo.dominio.DependenteNG;
 import jsageImport.modelo.dominio.FeriasNG;
+import jsageImport.modelo.dominio.MovimentacaoNG;
 import jsageImport.modelo.dominio.PessoaFisica;
 import jsageImport.modelo.dominio.PessoaJuridica;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioNG;
@@ -59,8 +60,12 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     private static final String SQL_RECUP_DEPENDENTES = "SELECT idpessoa FROM (bpm_pessoa AS p INNER JOIN bpm_pessoarelacionamento AS pr ON p.idpessoa = pr.idpessoaprincipal)"
                                                                 + " WHERE pr.idpessoasecundaria = ? AND idtiporelacionamentopessoa = 23";
     
-    private static final String SQL_PESQUISAR_DEPENDENTES = "SELECT * FROM " + "bpm_pessoa as pes" +" INNER JOIN bpm_dadospessoafisica as pesf ON pes.idpessoa = pesf.idpessoa INNER JOIN bpm_dadosdependente as dep ON pes.idpessoa = dep.idpessoa" 
-                                                                             + " WHERE pes.idpessoa = ?";
+    private static final String SQL_PESQUISAR_DEPENDENTES = "SELECT * FROM (ng.dbo.bpm_pessoa as pes " +
+                                                                            " LEFT JOIN ng.dbo.bpm_dadospessoafisica as pesf ON pes.idpessoa = pesf.idpessoa " +
+                                                                            " LEFT JOIN ng.dbo.bpm_dadosdependente as dep ON pes.idpessoa = dep.idpessoa " +
+                                                                            " LEFT JOIN ng.dbo.bpm_dadosdependentedmed as depdmed  on dep.idpessoa = depdmed.idpessoa " +
+                                                                            " LEFT JOIN ng.dbo.bpm_dadosdependenteirrf as depirrf on dep.iddadosdependente = depirrf.iddadosdependente)" +
+                                                            "WHERE pes.idpessoa = ?";
     
     private static final String SQL_RECUP_PAI_ID = "SELECT idpessoa FROM (bpm_pessoa AS p INNER JOIN bpm_pessoarelacionamento AS pr ON p.idpessoa = pr.idpessoaprincipal)"
                                                                 + " WHERE pr.idpessoasecundaria = ? AND idtiporelacionamentopessoa = 2";
@@ -88,11 +93,14 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                                                                 " INNER JOIN flh_ferias AS flFerias ON fl.idregistro = flFerias.idregistro" +
                                                                 " WHERE idpessoaregistro = ?" +
                                                                 " order by flFerias.datainicioferias asc";
-                                                                
-                                                              
     
-
- 
+    private static final String SQL_MOVIMENTACAO = "SELECT * FROM (flh_registro as registro INNER JOIN flh_folhapay as folhapay on registro.idregistro = folhapay.idregistro " +
+                                                                   " INNER JOIN flh_folhapayverba as payverba on folhapay.idpay = payverba.idpay) " +
+                                                                   " WHERE registro.idregistro = ? and folhapay.competenciaano = ? and folhapay.competenciames = ?";
+    private static final String SQL_IDREGISTRO = "SELECT DISTINCT idregistro FROM flh_registro where idpessoaregistro = ?";
+    
+    private static final String SQL_MESES_COMPETENCIA_ANO = "SELECT DISTINCT competenciames FROM flh_folhapay " +
+                                                                  "  WHERE idregistro = ? AND competenciaano = ?";
     
     /*url para conexao com o banco do ng*/    
     //jdbc:sqlserver://servidor:porta;databaseName=banco;user=usuario;password=senha;"
@@ -556,6 +564,86 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
         return flag;
     } 
     
+    public int recuperarIdRegistroFolha (int idPessoa) throws JsageImportException{
+        int idregistro = 0;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNGFOLHA);
+            stmt = con.prepareStatement(SQL_IDREGISTRO);
+            stmt.setInt(1, idPessoa );
+            
+            rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                idregistro = rs.getInt("idpessoaregistro");                
+            }
+            
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível recuperar a idRegistro da " + idPessoa+ " .");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+        return idregistro;
+    }
+    
+    public List recuperarMesesMovimentacaoFolha (int idRegistro, int competenciaAno)throws JsageImportException {
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNGFOLHA);
+            stmt = con.prepareStatement(SQL_MESES_COMPETENCIA_ANO);
+            stmt.setInt(1, idRegistro );
+            stmt.setInt(2, competenciaAno);
+            
+            rs = stmt.executeQuery();
+            List listaMeses = new ArrayList();
+            while (rs.next()) {
+                int mes = rs.getInt("competenciames");
+                listaMeses.add(mes);
+            }
+            return listaMeses;
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta oos meses de movimentacao.");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+    }
+    
+    public List recuperarMovimentacaoFuncionario (int idPessoa, int competenciaAno, int competenciaMes) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNGFOLHA);
+            int idRegistro = recuperarIdRegistroFolha(idPessoa); // recupera a id da pessoa no banco folha
+            stmt = con.prepareStatement(SQL_MOVIMENTACAO);
+            stmt.setInt(1, idRegistro );
+            stmt.setInt(2, competenciaAno);
+            stmt.setInt(3, competenciaMes);
+            
+            rs = stmt.executeQuery();
+            List listaMovimentacao = new ArrayList();
+            while (rs.next()) {
+                MovimentacaoNG dados = criarMovimentacaoNG(rs);
+                listaMovimentacao.add(dados);
+            }
+            return listaMovimentacao;
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta da movimentacao do funcionario "+idPessoa+" .");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+    }
+    
     @Override
     public String importaFuncionarios (int idEmpresa, int idPessoa, String nome) throws JsageImportException{
         String funcionario = "";
@@ -682,6 +770,8 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 }
                 //gravar os dados funcionais do funcionário
                 controlSAGE.gravarDadosFuncionais(idEmpresa, idPessoa, funDadosFuncionais, pjGravar);               
+                
+                
                 log =  "Gravado o funcionario de código: "+idPessoa + " nome: " + nome;
                 //System.out.print(log);                
                 logarq.LogTxt(log, "PersisntenciaNG", "emp"+idEmpresa);               
@@ -926,6 +1016,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             dep.setFotoPessoa(rs.getString("fotopessoa"));
             dep.setBiometria(rs.getBytes("biometria"));
             dep.setNumeroCei(rs.getString("numerocei"));
+            dep.setIndSexo(rs.getString("indsexo"));
             dep.setCodigoExternoEmpresa(rs.getString("codigoexternoempresa"));
             dep.setCodigoExternoFilial(rs.getString("codigoexternofilial"));
             dep.setDocumentoEstrangeiro(rs.getString("documentoestrangeiro"));
@@ -946,6 +1037,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             dep.setIdowner(rs.getInt("idowner"));
             dep.setIndDependentePlanoSaude(rs.getBoolean("inddependenteplanosaude"));
             dep.setIdRelacaoDependenciaPlanoSaude(rs.getInt("idrelacaodependenciaplanosaude"));
+            dep.setIdtipodependenciairrf(rs.getInt("idtipodependenciairrf"));
             
         }catch (SQLException ex) {
             StringBuffer mensagem = new StringBuffer("Não foi possível obter os dados da Pessoa Fisica." + dep.getIdPessoa());
@@ -1200,6 +1292,70 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             throw new JsageImportException(mensagem.toString());
         }
         return ferias;        
+    }
+
+    private MovimentacaoNG criarMovimentacaoNG(ResultSet rs) throws JsageImportException {
+        MovimentacaoNG mov = new MovimentacaoNG();
+        try{
+            mov.setIdregistro(rs.getInt("idregistro"));
+            mov.setIdpessoaregistro(rs.getInt("idpessoaregistro"));
+            mov.setDataadmissao(rs.getTimestamp("dataadmissao"));
+            mov.setDataopcaofgts(rs.getTimestamp("dataopcaofgts"));
+            mov.setIdtipoadmissao(rs.getInt("idtipoadmissao"));
+            mov.setIdtipocontratacao(rs.getInt("idtipocontratacao"));
+            mov.setNumeromatricula(rs.getString("numeromatricula"));
+            mov.setNumerodiascontratoexperiencia(rs.getInt("numerodiascontratoexperiencia"));
+            mov.setNumerodiasprorrogacaocontratoexperiencia(rs.getInt("numerodiasprorrogacaocontratoexperiencia"));
+            mov.setIdtipoadmissaocaged(rs.getInt("idtipoadmissaocaged"));
+            mov.setNumerocontafgts(rs.getString("numerocontafgts"));
+            mov.setNumerodvcontafgts(rs.getInt("numerodvcontafgts"));
+            mov.setNumeroregistro(rs.getString("numeroregistro"));
+            mov.setIdreajustetipo(rs.getInt("idreajustetipo"));
+            mov.setValorreajuste(rs.getDouble("valorreajuste"));
+            mov.setIdcategoriasefip(rs.getInt("idcategoriasefip"));
+            mov.setDataultimoexamemedico(rs.getTimestamp("dataultimoexamemedico"));
+            mov.setNumeromesesintervaloexamemedico(rs.getInt("numeromesesintervaloexamemedico"));
+            mov.setIdvinculoempregaticio(rs.getInt("idvinculoempregaticio"));
+            mov.setDataconcessaobeneficio(rs.getTimestamp("dataconcessaobeneficio"));
+            mov.setPercentualadiantamento(rs.getDouble("percentualadiantamento"));
+            mov.setIdowner(rs.getInt("idowner"));
+            mov.setDatainicioperiodoaquisitivoferiaspendente(rs.getTimestamp("datainicioperiodoaquisitivoferiaspendente"));
+            mov.setDatafimperiodoaquisitivoferiaspendente(rs.getTimestamp("datafimperiodoaquisitivoferiaspendente"));
+            mov.setDatavigenciaalteracaosalarial(rs.getTimestamp("datavigenciaalteracaosalarial"));
+            mov.setDataultimacontribuicaosindical(rs.getTimestamp("dataultimacontribuicaosindical"));
+            mov.setIddadospessoa(rs.getInt("iddadospessoa"));
+            mov.setDescricaocomplementosalario(rs.getString("descricacaocomplemntosalario"));
+            mov.setIdtipodiatrabalhado(rs.getInt("idtipodiatrabalhado"));
+            mov.setIdpay(rs.getInt("idpay"));
+            mov.setCompetenciames(rs.getInt("competenciames"));
+            mov.setCompetenciaano(rs.getInt("competenciaano"));
+            mov.setIdtipofolha(rs.getInt("idtipofolha"));
+            mov.setDatainiciofolha(rs.getTimestamp("datainiciofolha"));
+            mov.setDatafimfolha(rs.getTimestamp("datafimfolha"));
+            mov.setDatainicioapuracaofatogerador(rs.getTimestamp("datainicioapuracaofatogerador"));
+            mov.setDatafimapuracaofatogerador(rs.getTimestamp("datafimapuracaofatogerador"));
+            mov.setDatainicioapuracaodsr(rs.getTimestamp("datainicioapuracaodsr"));
+            mov.setDatafimapuracaodsr(rs.getTimestamp("datafimapuracaodsr"));
+            mov.setDatairrf(rs.getTimestamp("datairrf"));
+            mov.setNumerodiastrabalhados(rs.getInt("numerodiastrabalhados"));
+            mov.setInddissidio(rs.getBoolean("inddissidio"));
+            mov.setIdferias(rs.getInt("idferias"));
+            mov.setIdverba(rs.getInt("idverba"));
+            mov.setValorreferenciainformada(rs.getDouble("valorreferenciainformada"));
+            mov.setQtdereferenciainformada(rs.getDouble("qtdereferenciainformada"));
+            mov.setQtdereferenciacalculada(rs.getDouble("qtdereferenciacalculada"));
+            mov.setValorinformado(rs.getDouble("valorinformado"));
+            mov.setValorcalculado(rs.getDouble("valorcalculado"));
+            mov.setIndprovdesc(rs.getInt("indprovdesc"));
+            
+            
+        }catch (SQLException ex) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível criar o objeto MovimentaçãoNG.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return mov;
+        
     }
     
    

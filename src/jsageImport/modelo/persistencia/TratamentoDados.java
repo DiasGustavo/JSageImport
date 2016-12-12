@@ -164,16 +164,35 @@ public class TratamentoDados {
         }
         return idTratada;
     }
-    public int recuperarParentesco (int pat) throws JsageImportException{
+    public int recuperarParentescoIrrf (int pat) throws JsageImportException{
         int parent = 0;
-        if ( pat == 1){
-            parent = 1;
-        }
-        if (pat == 2){
-            parent = 2;
-        }else{
-            parent = 7;
-        }
+        switch (pat){
+            case 1:
+                parent = 1;
+                break;
+            case 2:
+                parent = 3;
+                break;
+            case 3:
+                parent = 4;
+                break;
+            case 4:
+                parent = 6;
+                break;
+            case 5:
+                parent = 7;
+                break;
+            case 6:
+                parent = 9;
+                break;
+            case 7:
+                parent = 10;
+                break;
+            case 8:
+                parent = 11;
+                break;
+                
+        }        
         return parent;
     }
     
@@ -1394,6 +1413,26 @@ public class TratamentoDados {
             }
         
         return idPessoa;
+    }
+
+    public int recuperarParentescoPrincipal( int codigoesocial, boolean independente, String sexo) throws JsageImportException{
+        int parent = 0;
+            if ((sexo.equals("F")) && (independente == true)){
+                if (codigoesocial == 3 || codigoesocial == 2){
+                    parent = 5; 
+                }
+                
+            }else {
+                parent = 7;
+            }
+            if ((sexo.equals("M")) && (independente == true)){
+                if (codigoesocial == 3 || codigoesocial == 2){
+                    parent = 2;
+                }
+            }else {
+                parent = 7;
+            }
+        return parent;
     }
     
 }

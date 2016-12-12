@@ -5,6 +5,8 @@
  */
 package jsageImport.modelo.dominio;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author Gustavo
@@ -19,6 +21,53 @@ public class DependenteNG extends PessoaFisica {
     int idowner;
     boolean indDependentePlanoSaude;
     int idRelacaoDependenciaPlanoSaude;
+    int iddadosdependente;
+    int idtipodependenciairrf;
+    int idtiposituacaosalario;
+    Timestamp datafim;
+    boolean indsuspenso;
+
+    public int getIddadosdependente() {
+        return iddadosdependente;
+    }
+
+    public void setIddadosdependente(int iddadosdependente) {
+        this.iddadosdependente = iddadosdependente;
+    }
+
+    public int getIdtipodependenciairrf() {
+        return idtipodependenciairrf;
+    }
+
+    public void setIdtipodependenciairrf(int idtipodependenciairrf) {
+        this.idtipodependenciairrf = idtipodependenciairrf;
+    }
+
+    public int getIdtiposituacaosalario() {
+        return idtiposituacaosalario;
+    }
+
+    public void setIdtiposituacaosalario(int idtiposituacaosalario) {
+        this.idtiposituacaosalario = idtiposituacaosalario;
+    }
+
+    public Timestamp getDatafim() {
+        return datafim;
+    }
+
+    public void setDatafim(Timestamp datafim) {
+        this.datafim = datafim;
+    }
+
+    public boolean isIndsuspenso() {
+        return indsuspenso;
+    }
+
+    public void setIndsuspenso(boolean indsuspenso) {
+        this.indsuspenso = indsuspenso;
+    }
+           
+    
 
     public boolean isIndDependenteIrrf() {
         return indDependenteIrrf;
