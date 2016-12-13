@@ -659,6 +659,8 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             logarq.LogTxt(log, "PersisntenciaNG", "emp"+idEmpresa);               
             if (listaEmpresaSAGE.isEmpty()){
                 
+                int idRegistro = recuperarIdRegistroFolha(idPessoa);
+                List listaMeses = recuperarMesesMovimentacaoFolha(idRegistro, 2016);
                 //captura as informações do funcionário que a id foi informado
                 List listaDadosFun = pesquisaIdFuncionario(idPessoa);
                 List listaDadosFuncionais = recuperarDadosFuncionais (idPessoa);                

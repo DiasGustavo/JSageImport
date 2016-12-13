@@ -11,6 +11,7 @@ import jsageImport.modelo.dominio.DependenteNG;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.FeriasNG;
+import jsageImport.modelo.dominio.MovimentacaoNG;
 import jsageImport.modelo.dominio.PessoaJuridica;
 import jsageImport.modelo.dominio.Sindicato;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
@@ -148,6 +149,30 @@ public class ControlerFuncionarioSAGE {
         IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
         PEmpresa.gravarFunEspecifico(cdFuncionario, cdEmpresa);
     }
+    
+    public void gravarProcImposto (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
+        PEmpresa.gravarProcImposto(movimentacao, cdEmpresa, cdFuncionario);
+    }
+    
+    public void gravarMovEvento (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException {
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
+        PEmpresa.gravarMovEvento(movimentacao, cdEmpresa, cdFuncionario);
+    }
+    public void gravarProcBase (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario, DadosFuncionaisNG dadosFuncionais) throws JsageImportException {
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
+        PEmpresa.gravarProcBase(movimentacao, cdEmpresa, cdFuncionario, dadosFuncionais);
+    }
+    
+    
+    public void gravarProcEvento (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException {
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
+        PEmpresa.gravarProcEvento(movimentacao, cdEmpresa, cdFuncionario);
+    }
        
     public boolean testarConexao (String server, String bd, String port, String user, String password) throws JsageImportException{
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
@@ -160,11 +185,4 @@ public class ControlerFuncionarioSAGE {
     }
     
 
-    
-    
-    
-    
-    
-    
-    
 }

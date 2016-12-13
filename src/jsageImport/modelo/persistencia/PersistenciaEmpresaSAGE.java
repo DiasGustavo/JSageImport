@@ -5,6 +5,7 @@
  */
 package jsageImport.modelo.persistencia;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,8 +18,10 @@ import jsageImport.modelo.dominio.CentroCusto;
 import jsageImport.modelo.dominio.ContaBancaria;
 import jsageImport.modelo.dominio.ContadorPFisica;
 import jsageImport.modelo.dominio.ContadorPJuridica;
+import jsageImport.modelo.dominio.DadosFuncionaisNG;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
+import jsageImport.modelo.dominio.MovimentacaoNG;
 import jsageImport.modelo.dominio.PessoaJuridica;
 import jsageImport.modelo.dominio.ResponsavelPJuridica;
 import jsageImport.modelo.dominio.Sindicato;
@@ -159,20 +162,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
     private static final String SQL_PARAMETRO_SINDICATO = "INSERT INTO ParSindicatoG (cd_sindicato,cd_param_sindicato,descricao)"+
                                                           "VALUES (?,?,?)";
     
-    private static final String SQL_MOV_EVENTO = " INSERT INTO MovEvento (cd_empresa,mes,ano,cd_funcionario,cd_evento,referencia)" +
-                                                 "VALUES (?,?,?,?,?,?)";
-    
-    private static final String SQL_PROC_BASE = " INSERT INTO ProcBase (cd_empresa,cd_funcionario,mes,tipo,ano,vl_base_rais,vl_base_fgts,vl_base_inss,vl_excesso_inss,vl_base_irrf,vl_ded_dep_irrf," + 
-                                                " vl_outras_ded_irrf,dt_pagamento,alterado,vl_base_irrf_dist_lucros,vl_base_rb,vl_base_he,vl_base_faltas,ded_ir_mp202_2004,vl_base_pis,vl_base_irrf_tributacao_exclusiva" +
-                                                "vl_ded_dep_irrf_dist_lucros)"+
-                                                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    
-    private static final String SQL_PROC_EVENTO = " INSERT INTO ProcEvento (cd_empresa,cd_funcionario,mes,tipo,cd_evento,ano,referencia,referencia_editada,valor" +
-                                                  "VALUES (?,?,?,?,?,?,?,?,?)";
-    
-    private static final String SQL_PROC_IMPOSTO = " INSERT INTO ProcImposto (cd_empresa,tipo,mes,ano,cd_funcionario,vl_inss_fpas,vl_inss_sat,vl_inss_terceiros" +
-                                            "vl_inss_sal_educ,vl_fgts,vl_pis,vl_sesi)"+
-                                            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+   
     
     @Override
     public void gravarEmpresa (PessoaJuridica pj) throws JsageImportException{
@@ -1129,27 +1119,7 @@ public class PersistenciaEmpresaSAGE implements IPersistenciaEmpresaSAGE{
         }
     }
      
-     public void gravar MovEvento (MovimentacaoNG movimentacao, Int cdEmpresa. Int cdFuncionario) throws JsageImportException {
-        Connection con = null;
-        PreparedStatement stmt = null;  
-        
-        try{
-            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
-            stmt = con.prepareStatement(SQL_MOV_EVENTO);
-            stmt.setShort(1, (short) movimentacao.getIdPessoa());
-            stmt.setShort(2,  );
-            stmt.setShort(3, );
-            stmt.setString(4, trataDados.trataGrandesString(contador.getApelido(),20));
-            stmt.setInt(5, 0);
-            stmt.setInt(6,0);
-        }catch (SQLException exc) {
-            StringBuffer msg = new StringBuffer("Não foi possível incluir o MovEvento na Empresa: ");
-            msg.append("\nMotivo: " + exc.getMessage());
-            throw new JsageImportException(msg.toString());            
-        } finally {
-            GerenciadorConexao.closeConexao(con, stmt);
-        }
-     }
+    
      
     @Override
     public void gravarResponsavelPJuridica (ResponsavelPJuridica responsavel) throws JsageImportException{

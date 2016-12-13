@@ -13,6 +13,7 @@ import jsageImport.modelo.dominio.DependenteNG;
 import jsageImport.modelo.dominio.EmpresaFolha;
 import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.FeriasNG;
+import jsageImport.modelo.dominio.MovimentacaoNG;
 import jsageImport.modelo.dominio.PessoaJuridica;
 import jsageImport.modelo.dominio.Sindicato;
 
@@ -40,7 +41,10 @@ public interface IPersistenciaFuncionarioSAGE {
     public abstract void gravarControleESocial (int cdEmpresa, int cdFuncionario) throws JsageImportException;
     public abstract void gravarControleCamposESocial (int cdEmpresa, int cdFuncionario) throws JsageImportException;
     public abstract void gravarFunEspecifico (int cdFuncionario, int cdEmpresa) throws JsageImportException;
-    
+    public void gravarMovEvento (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException;
+    public void gravarProcBase (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario, DadosFuncionaisNG dadosFuncionais) throws JsageImportException;
+    public void gravarProcEvento (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException;
+    public void gravarProcImposto (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException;
     
     public boolean testaConexaoSAGE (String server, String bd, String port, String user, String password) throws JsageImportException;
 }

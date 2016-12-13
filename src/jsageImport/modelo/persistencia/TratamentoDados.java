@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.List;
 import jsageImport.controler.ControlerFuncionarioNG;
 import jsageImport.exception.JsageImportException;
+import jsageImport.modelo.dominio.MovimentacaoNG;
 import jsageImport.modelo.dominio.PessoaFisica;
 
 /**
@@ -194,6 +195,131 @@ public class TratamentoDados {
                 
         }        
         return parent;
+    }
+    
+    public int recuperarLancamentoFolha (int idVerba) throws JsageImportException{
+        int lancamento = 0;
+        switch (idVerba){
+            case -2:
+                lancamento = 1;
+                break;
+            case -72:
+                lancamento = 74;
+                break;
+            case -49:
+                lancamento = 75;
+                break;
+            case 21:
+                lancamento = 973;
+                break;
+            case -97:
+                lancamento = 20;
+                break;
+            case -104:
+                lancamento = 80;
+                break;
+            case -120:
+                lancamento = 62;
+                break;
+            case -10:
+                lancamento = 128;
+                break;
+            case -11:
+                lancamento = 130;
+                break;
+            case -38:
+                lancamento = 137;
+                break;
+            case -109:
+                lancamento = 198;
+                break;    
+            case -17:
+                lancamento = 973;
+                break;
+            case -18:
+                lancamento = 112;
+                break;
+            case -20:
+                lancamento = 110;
+                break;
+            case -51:
+                lancamento = 27;
+                break;
+            case -107:
+                lancamento = 197;
+                break;
+            case -9:
+                lancamento = 121;
+                break;
+            case -98:
+                lancamento = 973;
+                break;    
+                
+        }        
+        return lancamento;
+    
+    }
+    
+    public double trataReferencia (MovimentacaoNG movimentacao) throws JsageImportException{
+        double refTratada = 0;
+        
+        switch (movimentacao.getIdverba()){
+            case -2:
+                refTratada = movimentacao.getQtdereferenciacalculada();
+                break;
+            case -72:
+                refTratada = movimentacao.getQtdereferenciainformada();
+                break;
+            case -49:
+                refTratada =  movimentacao.getQtdereferenciainformada();
+                break;
+            case 21:
+                refTratada =  movimentacao.getQtdereferenciainformada();
+                break;
+            case -97:
+                refTratada = 1;
+                break;
+            case -104:
+                refTratada =  movimentacao.getQtdereferenciacalculada();
+                break;
+             case -120:
+                refTratada =  movimentacao.getQtdereferenciainformada();
+                break;
+            case -10:
+                refTratada =  movimentacao.getQtdereferenciainformada();
+                break;
+            case -11:
+                refTratada = movimentacao.getQtdereferenciacalculada();
+                break;
+            case -38:
+                refTratada= movimentacao.getQtdereferenciacalculada();
+                break;
+            case -109:
+                refTratada=  movimentacao.getQtdereferenciacalculada();
+                break;    
+            case -17:
+                refTratada =  movimentacao.getQtdereferenciainformada();
+                break;
+            case -18:
+                refTratada =  movimentacao.getQtdereferenciacalculada();
+                break;
+            case -20:
+                refTratada =  movimentacao.getQtdereferenciainformada();
+                break;
+            case -51:
+                refTratada = movimentacao.getQtdereferenciainformada();
+                break;
+            case -107:
+                refTratada = movimentacao.getQtdereferenciacalculada();
+                break;
+            case -9:
+                refTratada =  movimentacao.getQtdereferenciacalculada();
+                break;
+            case -98:
+                refTratada =  movimentacao.getQtdereferenciainformada();
+                break;    
+        }
+        return refTratada;
     }
     
     public int recuperarEsocial (int esocial) throws JsageImportException{

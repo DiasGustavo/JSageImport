@@ -19,6 +19,7 @@ import jsageImport.modelo.dominio.DependenteSAGE;
 import jsageImport.modelo.dominio.EmpresaSAGE;
 import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.FuncionarioSAGE;
+import jsageImport.modelo.dominio.MovimentacaoNG;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 
 /**
@@ -89,6 +90,21 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
     private static final String SQL_CONTROLE_CAMPOS_ESOCIAL = "INSERT INTO CRHFuncionarioControleCamposESocial (cd_empresa,cd_funcionario,leiaute,nome_tabela)" +
                                                                     " VALUES(?,?,?,?)";
     private static final String SQL_INCLUIR_FUNESPECIFICO = "INSERT INTO FunEspecificos (cd_empresa,cd_funcionario) VALUES (?,?)";
+    
+     private static final String SQL_MOV_EVENTO = " INSERT INTO MovEvento (cd_empresa,mes,ano,cd_funcionario,cd_evento,referencia)" +
+                                                 "VALUES (?,?,?,?,?,?)";
+    
+    private static final String SQL_PROC_BASE = " INSERT INTO ProcBase (cd_empresa,cd_funcionario,mes,tipo,ano,vl_base_rais,vl_base_fgts,vl_base_inss,vl_excesso_inss,vl_base_irrf,vl_ded_dep_irrf," + 
+                                                " vl_outras_ded_irrf,dt_pagamento,alterado,vl_base_irrf_dist_lucros,vl_base_rb,vl_base_he,vl_base_faltas,ded_ir_mp202_2004,vl_base_pis,vl_base_irrf_tributacao_exclusiva" +
+                                                "vl_ded_dep_irrf_dist_lucros)"+
+                                                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
+    private static final String SQL_PROC_EVENTO = " INSERT INTO ProcEvento (cd_empresa,cd_funcionario,mes,tipo,cd_evento,ano,referencia,referencia_editada,valor" +
+                                                  "VALUES (?,?,?,?,?,?,?,?,?)";
+    
+    private static final String SQL_PROC_IMPOSTO = " INSERT INTO ProcImposto (cd_empresa,tipo,mes,ano,cd_funcionario,vl_inss_fpas,vl_inss_sat,vl_inss_terceiros" +
+                                            "vl_inss_sal_educ,vl_fgts,vl_pis,vl_sesi)"+
+                                            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     
     
     
@@ -662,6 +678,135 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             GerenciadorConexao.closeConexao(con, stmt);
         }
     }
+    
+     public void gravarMovEvento (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException {
+        Connection con = null;
+        PreparedStatement stmt = null;  
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_MOV_EVENTO);
+            stmt.setInt(1, cdEmpresa);
+            stmt.setInt(2, movimentacao.getCompetenciames());
+            stmt.setInt(3, movimentacao.getCompetenciaano());
+            stmt.setInt(4, cdFuncionario);
+            stmt.setInt(5, trataDados.recuperarLancamentoFolha(movimentacao.getIdverba()));
+            stmt.setDouble(6,0);
+            
+             stmt.executeUpdate();
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o MovEvento na Empresa: ");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+     }
+     
+     public void gravarProcBase (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario, DadosFuncionaisNG dadosFuncionais) throws JsageImportException {
+        Connection con = null;
+        PreparedStatement stmt = null;  
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_PROC_BASE);
+            stmt.setInt(1, cdEmpresa);
+            stmt.setInt(2,  cdFuncionario);
+            stmt.setInt(3, movimentacao.getCompetenciames());
+            stmt.setInt(4, 2);
+            stmt.setInt(5, movimentacao.getCompetenciaano());
+            stmt.setDouble(6, dadosFuncionais.getSalario());
+            stmt.setDouble(7, dadosFuncionais.getSalario());
+            stmt.setDouble(8, dadosFuncionais.getSalario() );
+            stmt.setDouble(9, 0);
+            stmt.setDouble(10, dadosFuncionais.getSalario());
+            stmt.setDouble(11, 189.59 );
+            stmt.setDouble(12,0);
+            stmt.setTimestamp(13, movimentacao.getDatainiciofolha() );
+            stmt.setString(14, "0");
+            stmt.setDouble(15, 0 );
+            stmt.setDouble(16, dadosFuncionais.getSalario());
+            stmt.setDouble(17, dadosFuncionais.getSalario());
+            stmt.setDouble(18,dadosFuncionais.getSalario());
+            stmt.setDouble(19, 0 );
+            stmt.setDouble(20, dadosFuncionais.getSalario());
+            stmt.setDouble(21, 0);
+            stmt.setDouble(22,0);
+            
+             stmt.executeUpdate();
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o ProcBase na Empresa: ");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+     }
+     
+     public void gravarProcEvento (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;  
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_PROC_EVENTO);
+            stmt.setInt(1, cdEmpresa);
+            stmt.setInt(2,  cdFuncionario);
+            stmt.setInt(3, movimentacao.getCompetenciames());
+            stmt.setInt(4, 2);
+            stmt.setInt(5, movimentacao.getCompetenciaano());
+            stmt.setDouble(6, trataDados.recuperarLancamentoFolha(movimentacao.getIdverba()));
+            stmt.setInt(7, movimentacao.getCompetenciaano());
+            stmt.setDouble (8, trataDados.trataReferencia(movimentacao));
+            stmt.setString(9, "" + trataDados.trataReferencia(movimentacao));
+            stmt.setDouble(10, movimentacao.getValorcalculado());
+            
+             stmt.executeUpdate();
+      
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o ProcEvento da Empresa: ");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+     
+     }
+     
+     public void gravarProcImposto (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException{
+         Connection con = null;
+        PreparedStatement stmt = null;  
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_PROC_IMPOSTO);
+            stmt.setInt(1, cdEmpresa);
+            stmt.setInt(2,  2);
+            stmt.setInt(3, movimentacao.getCompetenciames());
+            stmt.setInt(4, movimentacao.getCompetenciaano());
+            stmt.setInt(5, cdFuncionario);
+            stmt.setDouble(6, 0);
+            stmt.setDouble(7, 0);
+            stmt.setDouble (8, 0);
+            stmt.setDouble(9, 0);
+            stmt.setDouble(10, 72);
+            stmt.setDouble(11, 0);
+            stmt.setDouble(12, 13.5);
+     
+            stmt.executeUpdate();
+      
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o ProcImposto da Empresa: ");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+     }
     
     
     public List pesquisarTodos() throws JsageImportException {
