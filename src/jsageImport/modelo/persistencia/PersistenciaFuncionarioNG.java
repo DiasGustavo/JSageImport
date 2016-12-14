@@ -577,7 +577,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             rs = stmt.executeQuery();
             
             while (rs.next()) {
-                idregistro = rs.getInt("idpessoaregistro");                
+                idregistro = rs.getInt("idregistro");                
             }
             
             } catch (SQLException exc) {
@@ -616,13 +616,12 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             }
     }
     
-    public List recuperarMovimentacaoFuncionario (int idPessoa, int competenciaAno, int competenciaMes) throws JsageImportException{
+    public List recuperarMovimentacaoFuncionario (int idRegistro, int competenciaAno, int competenciaMes) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             con = GerenciadorConexao.getConnection(urlNGFOLHA);
-            int idRegistro = recuperarIdRegistroFolha(idPessoa); // recupera a id da pessoa no banco folha
             stmt = con.prepareStatement(SQL_MOVIMENTACAO);
             stmt.setInt(1, idRegistro );
             stmt.setInt(2, competenciaAno);
@@ -636,7 +635,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             }
             return listaMovimentacao;
             } catch (SQLException exc) {
-                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta da movimentacao do funcionario "+idPessoa+" .");
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta da movimentacao do funcionario "+idRegistro+" .");
                 mensagem.append("\nMotivo: " + exc.getMessage());
                 throw new JsageImportException(mensagem.toString());
             } finally {
@@ -690,14 +689,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 controlSAGE.gravarFunEspecifico(idPessoa, idEmpresa);
                 
                 
-                // havendo salario do funcionario é gravado 
-                /*if (listaSalarios.size()> 0){
-                    for (int i = 0; i < listaSalarios.size(); i++){
-                        DadosFuncionaisNG funFuncionais = (DadosFuncionaisNG) listaSalarios.get(i);
-                        controlSAGE.gravarSalario(idPessoa, idEmpresa, funFuncionais);
-                    }
-                    
-                }*/
+               
                 int iterador = 0;
                 do{
                     if (listaSalarios.size()>iterador){
@@ -771,7 +763,23 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                     }                       
                 }
                 //gravar os dados funcionais do funcionário
-                controlSAGE.gravarDadosFuncionais(idEmpresa, idPessoa, funDadosFuncionais, pjGravar);               
+                controlSAGE.gravarDadosFuncionais(idEmpresa, idPessoa, funDadosFuncionais, pjGravar); 
+                
+                //gravar a movimentação do funcionário
+                if (listaMeses.size() > 0){
+                    for (int i = 0; i < listaMeses.size(); i++) {
+                        List listaMovimentacao = recuperarMovimentacaoFuncionario(idRegistro, 2016, (int) listaMeses.get(i));
+                        
+                        for (int j = 0; j < listaMovimentacao.size(); j++) {
+                            
+                            controlSAGE.gravarMovEvento((MovimentacaoNG)listaMovimentacao.get(j), idEmpresa, idPessoa);
+                            controlSAGE.gravarProcBase((MovimentacaoNG)listaMovimentacao.get(j), idEmpresa, idPessoa, funDadosFuncionais);
+                            controlSAGE.gravarProcEvento((MovimentacaoNG)listaMovimentacao.get(j), idEmpresa, idPessoa);
+                            controlSAGE.gravarProcImposto((MovimentacaoNG)listaMovimentacao.get(j), idEmpresa, idPessoa);
+                        }
+                    }
+                    
+                }
                 
                 
                 log =  "Gravado o funcionario de código: "+idPessoa + " nome: " + nome;
@@ -1326,7 +1334,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             mov.setDatavigenciaalteracaosalarial(rs.getTimestamp("datavigenciaalteracaosalarial"));
             mov.setDataultimacontribuicaosindical(rs.getTimestamp("dataultimacontribuicaosindical"));
             mov.setIddadospessoa(rs.getInt("iddadospessoa"));
-            mov.setDescricaocomplementosalario(rs.getString("descricacaocomplemntosalario"));
+            mov.setDescricaocomplementosalario(rs.getString("descricaocomplementosalario"));
             mov.setIdtipodiatrabalhado(rs.getInt("idtipodiatrabalhado"));
             mov.setIdpay(rs.getInt("idpay"));
             mov.setCompetenciames(rs.getInt("competenciames"));

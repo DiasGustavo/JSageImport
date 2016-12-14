@@ -4,3 +4,4 @@ Registro: Existentes no SAGE: 3592 --- 3587 ----- ELENILSA CASTRO VIDAL DE NEGRE
 Registro: Gravado o funcionario de código: 3592 nome: ELENILSA CASTRO VIDAL DE NEGREIROS ---  Data:Thu Nov 24 17:30:41 GFT 2016
 Registro: Existentes no SAGE: 3588 --- 3587 ----- PATRICIA CORREIA QUEIROZ ---  Data:Thu Nov 24 17:30:49 GFT 2016
 Registro: Existentes no SAGE: 3592 --- 3587 ----- ELENILSA CASTRO VIDAL DE NEGREIROS ---  Data:Thu Nov 24 17:30:49 GFT 2016
+Registro: Existentes no SAGE: 3588 --- 3587 ----- PATRICIA CORREIA QUEIROZ ---  Data:Tue Dec 13 18:49:02 GFT 2016

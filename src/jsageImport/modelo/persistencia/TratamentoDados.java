@@ -321,6 +321,24 @@ public class TratamentoDados {
         }
         return refTratada;
     }
+     public double trataValorProcEvento (MovimentacaoNG movimentacao) throws JsageImportException{
+         double valorTratado = 0;
+         
+         switch (movimentacao.getIdverba()){
+            case -72:
+                valorTratado = movimentacao.getValorcalculado();
+                break;
+            case -17:
+                valorTratado= movimentacao.getValorinformado();
+                break;
+            case -120:
+                valorTratado =  movimentacao.getValorinformado();
+                break;
+            default: 
+                valorTratado = movimentacao.getValorcalculado();
+         }
+         return valorTratado;
+     }
     
     public int recuperarEsocial (int esocial) throws JsageImportException{
         int eso = 0;

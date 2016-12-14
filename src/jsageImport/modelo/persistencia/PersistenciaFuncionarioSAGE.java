@@ -91,20 +91,24 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
                                                                     " VALUES(?,?,?,?)";
     private static final String SQL_INCLUIR_FUNESPECIFICO = "INSERT INTO FunEspecificos (cd_empresa,cd_funcionario) VALUES (?,?)";
     
-     private static final String SQL_MOV_EVENTO = " INSERT INTO MovEvento (cd_empresa,mes,ano,cd_funcionario,cd_evento,referencia)" +
+     private static final String SQL_MOV_EVENTO =  "IF NOT EXISTS(SELECT * FROM MovEvento WHERE cd_empresa = ? and cd_funcionario = ? and cd_evento = ? and ano = ? and mes = ?)\n" +
+                                                   "  INSERT INTO MovEvento (cd_empresa,mes,ano,cd_funcionario,cd_evento,referencia)" +
                                                  "VALUES (?,?,?,?,?,?)";
     
-    private static final String SQL_PROC_BASE = " INSERT INTO ProcBase (cd_empresa,cd_funcionario,mes,tipo,ano,vl_base_rais,vl_base_fgts,vl_base_inss,vl_excesso_inss,vl_base_irrf,vl_ded_dep_irrf," + 
-                                                " vl_outras_ded_irrf,dt_pagamento,alterado,vl_base_irrf_dist_lucros,vl_base_rb,vl_base_he,vl_base_faltas,ded_ir_mp202_2004,vl_base_pis,vl_base_irrf_tributacao_exclusiva" +
-                                                "vl_ded_dep_irrf_dist_lucros)"+
+    private static final String SQL_PROC_BASE = " IF NOT EXISTS(SELECT * FROM ProcBase WHERE cd_empresa = ? and cd_funcionario = ? and tipo = ? and ano = ? and mes = ?)"
+                                                + "INSERT INTO ProcBase (cd_empresa,cd_funcionario,mes,tipo,ano,vl_base_rais,vl_base_fgts,vl_base_inss,vl_excesso_inss,vl_base_irrf,vl_ded_dep_irrf," + 
+                                                " vl_outras_ded_irrf,dt_pagamento,alterado,vl_base_irrf_dist_lucros,vl_base_rb,vl_base_he,vl_base_faltas,ded_ir_mp202_2004,vl_base_pis,vl_base_irrf_tributacao_exclusiva,  " +
+                                                " vl_ded_dep_irrf_dist_lucros)"+
                                                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
-    private static final String SQL_PROC_EVENTO = " INSERT INTO ProcEvento (cd_empresa,cd_funcionario,mes,tipo,cd_evento,ano,referencia,referencia_editada,valor" +
+    private static final String SQL_PROC_EVENTO = " IF NOT EXISTS(SELECT * FROM ProcEvento WHERE cd_empresa = ? and cd_funcionario = ? and tipo = ? and cd_evento = ? and ano = ? and mes = ?)" + ""
+            + "                                    INSERT INTO ProcEvento (cd_empresa,cd_funcionario,mes,tipo,cd_evento,ano,referencia,referencia_editada,valor)" +
                                                   "VALUES (?,?,?,?,?,?,?,?,?)";
     
-    private static final String SQL_PROC_IMPOSTO = " INSERT INTO ProcImposto (cd_empresa,tipo,mes,ano,cd_funcionario,vl_inss_fpas,vl_inss_sat,vl_inss_terceiros" +
-                                            "vl_inss_sal_educ,vl_fgts,vl_pis,vl_sesi)"+
-                                            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_PROC_IMPOSTO = " IF NOT EXISTS(SELECT * FROM ProcImposto WHERE cd_empresa = ? and cd_funcionario = ? and tipo = ? and ano = ? and mes = ?)" + 
+                                                    "INSERT INTO ProcImposto (cd_empresa,tipo,mes,ano,cd_funcionario,vl_inss_fpas,vl_inss_sat,vl_inss_terceiros, " +
+                                                    "vl_inss_sal_educ,vl_fgts,vl_pis,vl_sesi)"+
+                                                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     
     
     
@@ -687,11 +691,16 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_MOV_EVENTO);
             stmt.setInt(1, cdEmpresa);
-            stmt.setInt(2, movimentacao.getCompetenciames());
-            stmt.setInt(3, movimentacao.getCompetenciaano());
-            stmt.setInt(4, cdFuncionario);
-            stmt.setInt(5, trataDados.recuperarLancamentoFolha(movimentacao.getIdverba()));
-            stmt.setDouble(6,0);
+            stmt.setInt (2, cdFuncionario);
+            stmt.setInt(3, trataDados.recuperarLancamentoFolha(movimentacao.getIdverba()));
+            stmt.setInt(4, movimentacao.getCompetenciaano());
+            stmt.setInt(5, movimentacao.getCompetenciames());
+            stmt.setInt(6, cdEmpresa);
+            stmt.setInt(7, movimentacao.getCompetenciames());
+            stmt.setInt(8, movimentacao.getCompetenciaano());
+            stmt.setInt(9, cdFuncionario);
+            stmt.setInt(10, trataDados.recuperarLancamentoFolha(movimentacao.getIdverba()));
+            stmt.setDouble(11,0);
             
              stmt.executeUpdate();
             
@@ -712,27 +721,32 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_PROC_BASE);
             stmt.setInt(1, cdEmpresa);
-            stmt.setInt(2,  cdFuncionario);
-            stmt.setInt(3, movimentacao.getCompetenciames());
-            stmt.setInt(4, 2);
-            stmt.setInt(5, movimentacao.getCompetenciaano());
-            stmt.setDouble(6, dadosFuncionais.getSalario());
-            stmt.setDouble(7, dadosFuncionais.getSalario());
-            stmt.setDouble(8, dadosFuncionais.getSalario() );
-            stmt.setDouble(9, 0);
-            stmt.setDouble(10, dadosFuncionais.getSalario());
-            stmt.setDouble(11, 189.59 );
-            stmt.setDouble(12,0);
-            stmt.setTimestamp(13, movimentacao.getDatainiciofolha() );
-            stmt.setString(14, "0");
-            stmt.setDouble(15, 0 );
-            stmt.setDouble(16, dadosFuncionais.getSalario());
-            stmt.setDouble(17, dadosFuncionais.getSalario());
-            stmt.setDouble(18,dadosFuncionais.getSalario());
-            stmt.setDouble(19, 0 );
-            stmt.setDouble(20, dadosFuncionais.getSalario());
-            stmt.setDouble(21, 0);
-            stmt.setDouble(22,0);
+            stmt.setInt (2, cdFuncionario);
+            stmt.setInt(3, 2);
+            stmt.setInt(4, movimentacao.getCompetenciaano());
+            stmt.setInt(5, movimentacao.getCompetenciames());
+            stmt.setInt(6, cdEmpresa);
+            stmt.setInt(7,  cdFuncionario);
+            stmt.setInt(8, movimentacao.getCompetenciames());
+            stmt.setInt(9, 2);
+            stmt.setInt(10, movimentacao.getCompetenciaano());
+            stmt.setDouble(11, dadosFuncionais.getSalario());
+            stmt.setDouble(12, dadosFuncionais.getSalario());
+            stmt.setDouble(13, dadosFuncionais.getSalario() );
+            stmt.setDouble(14, 0);
+            stmt.setDouble(15, dadosFuncionais.getSalario());
+            stmt.setDouble(16, 189.59 );
+            stmt.setDouble(17,0);
+            stmt.setTimestamp(18, movimentacao.getDatainiciofolha() );
+            stmt.setString(19, "0");
+            stmt.setDouble(20, 0 );
+            stmt.setDouble(21, dadosFuncionais.getSalario());
+            stmt.setDouble(22, dadosFuncionais.getSalario());
+            stmt.setDouble(23,dadosFuncionais.getSalario());
+            stmt.setDouble(24, 0 );
+            stmt.setDouble(25, dadosFuncionais.getSalario());
+            stmt.setDouble(26, 0);
+            stmt.setDouble(27,0);
             
              stmt.executeUpdate();
             
@@ -753,17 +767,22 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_PROC_EVENTO);
             stmt.setInt(1, cdEmpresa);
-            stmt.setInt(2,  cdFuncionario);
-            stmt.setInt(3, movimentacao.getCompetenciames());
-            stmt.setInt(4, 2);
+            stmt.setInt (2, cdFuncionario);
+            stmt.setInt(3, 2);
+            stmt.setDouble(4, trataDados.recuperarLancamentoFolha(movimentacao.getIdverba()));
             stmt.setInt(5, movimentacao.getCompetenciaano());
-            stmt.setDouble(6, trataDados.recuperarLancamentoFolha(movimentacao.getIdverba()));
-            stmt.setInt(7, movimentacao.getCompetenciaano());
-            stmt.setDouble (8, trataDados.trataReferencia(movimentacao));
-            stmt.setString(9, "" + trataDados.trataReferencia(movimentacao));
-            stmt.setDouble(10, movimentacao.getValorcalculado());
+            stmt.setInt(6, movimentacao.getCompetenciames());
+            stmt.setInt(7, cdEmpresa);
+            stmt.setInt(8,  cdFuncionario);
+            stmt.setInt(9, movimentacao.getCompetenciames());
+            stmt.setInt(10, 2);
+            stmt.setDouble(11, trataDados.recuperarLancamentoFolha(movimentacao.getIdverba()));
+            stmt.setInt(12, movimentacao.getCompetenciaano());
+            stmt.setDouble (13, trataDados.trataReferencia(movimentacao));
+            stmt.setString(14, "" + trataDados.trataReferencia(movimentacao));
+            stmt.setDouble(15, trataDados.trataValorProcEvento(movimentacao));
             
-             stmt.executeUpdate();
+            stmt.executeUpdate();
       
             
         }catch (SQLException exc) {
@@ -784,17 +803,22 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
             stmt = con.prepareStatement(SQL_PROC_IMPOSTO);
             stmt.setInt(1, cdEmpresa);
-            stmt.setInt(2,  2);
-            stmt.setInt(3, movimentacao.getCompetenciames());
+            stmt.setInt (2, cdFuncionario);
+            stmt.setInt(3, 2);
             stmt.setInt(4, movimentacao.getCompetenciaano());
-            stmt.setInt(5, cdFuncionario);
-            stmt.setDouble(6, 0);
-            stmt.setDouble(7, 0);
-            stmt.setDouble (8, 0);
-            stmt.setDouble(9, 0);
-            stmt.setDouble(10, 72);
+            stmt.setInt(5, movimentacao.getCompetenciames());
+            stmt.setInt(6, cdEmpresa);
+            stmt.setInt(7,  2);
+            stmt.setInt(8, movimentacao.getCompetenciames());
+            stmt.setInt(9, movimentacao.getCompetenciaano());
+            stmt.setInt(10, cdFuncionario);
             stmt.setDouble(11, 0);
-            stmt.setDouble(12, 13.5);
+            stmt.setDouble(12, 0);
+            stmt.setDouble (13, 0);
+            stmt.setDouble(14, 0);
+            stmt.setDouble(15, 72);
+            stmt.setDouble(16, 0);
+            stmt.setDouble(17, 13.5);
      
             stmt.executeUpdate();
       

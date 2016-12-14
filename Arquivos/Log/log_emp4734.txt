@@ -21,3 +21,26 @@ Registro: Gravado o funcionario de código: 4994 nome: INÊS DE OLIVEIRA AFONSO 
 Registro: Existentes no SAGE: 3517 --- 4734 ----- ELIENE MARIA DA SILVA ---  Data:Thu Nov 24 17:34:10 GFT 2016
 Registro: Gravado o funcionario de código: 3517 nome: ELIENE MARIA DA SILVA ---  Data:Thu Nov 24 17:34:12 GFT 2016
 Registro: Existentes no SAGE: 3517 --- 4734 ----- ELIENE MARIA DA SILVA ---  Data:Thu Nov 24 17:34:12 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Wed Dec 14 09:34:22 GFT 2016
+Registro: Gravado o funcionario de código: 3511 nome: MARIA LUCIANA ESPINDULA SERODIO ---  Data:Wed Dec 14 09:34:23 GFT 2016
+Registro: Existentes no SAGE: 3511 --- 4734 ----- MARIA LUCIANA ESPINDULA SERODIO ---  Data:Wed Dec 14 09:34:23 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Wed Dec 14 09:34:23 GFT 2016
+Registro: Gravado o funcionario de código: 3514 nome: VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Wed Dec 14 09:34:24 GFT 2016
+Registro: Existentes no SAGE: 3514 --- 4734 ----- VICTOR EMMANUEL GUILHERME DE ALBUQUERQUE ALMEIDA ---  Data:Wed Dec 14 09:34:24 GFT 2016
+Registro: Existentes no SAGE: 4830 --- 4734 ----- ELLINE DEBORA BRAZ ARAUJO ---  Data:Wed Dec 14 09:34:24 GFT 2016
+Registro: Gravado o funcionario de código: 4830 nome: ELLINE DEBORA BRAZ ARAUJO ---  Data:Wed Dec 14 09:34:24 GFT 2016
+Registro: Existentes no SAGE: 4830 --- 4734 ----- ELLINE DEBORA BRAZ ARAUJO ---  Data:Wed Dec 14 09:34:24 GFT 2016
+Registro: Existentes no SAGE: 4833 --- 4734 ----- MARIA ERICA DA SILVA ---  Data:Wed Dec 14 09:34:25 GFT 2016
+Registro: Gravado o funcionario de código: 4833 nome: MARIA ERICA DA SILVA ---  Data:Wed Dec 14 09:34:25 GFT 2016
+Registro: Existentes no SAGE: 4833 --- 4734 ----- MARIA ERICA DA SILVA ---  Data:Wed Dec 14 09:34:25 GFT 2016
+Registro: Existentes no SAGE: 4836 --- 4734 ----- JULIANA PONTES DE MELLO DUTRA ---  Data:Wed Dec 14 09:34:25 GFT 2016
+Registro: Gravado o funcionario de código: 4836 nome: JULIANA PONTES DE MELLO DUTRA ---  Data:Wed Dec 14 09:34:26 GFT 2016
+Registro: Existentes no SAGE: 4836 --- 4734 ----- JULIANA PONTES DE MELLO DUTRA ---  Data:Wed Dec 14 09:34:26 GFT 2016
+Registro: Existentes no SAGE: 3494 --- 4734 ----- AMANDA DA MOTA CRUZ ---  Data:Wed Dec 14 09:34:26 GFT 2016
+Registro: Gravado o funcionario de código: 3494 nome: AMANDA DA MOTA CRUZ ---  Data:Wed Dec 14 09:34:27 GFT 2016
+Registro: Existentes no SAGE: 3494 --- 4734 ----- AMANDA DA MOTA CRUZ ---  Data:Wed Dec 14 09:34:27 GFT 2016
+Registro: Existentes no SAGE: 4994 --- 4734 ----- INÊS DE OLIVEIRA AFONSO MAIA ---  Data:Wed Dec 14 09:34:27 GFT 2016
+Registro: Gravado o funcionario de código: 4994 nome: INÊS DE OLIVEIRA AFONSO MAIA ---  Data:Wed Dec 14 09:34:27 GFT 2016
+Registro: Existentes no SAGE: 3517 --- 4734 ----- ELIENE MARIA DA SILVA ---  Data:Wed Dec 14 09:34:27 GFT 2016
+Registro: Gravado o funcionario de código: 3517 nome: ELIENE MARIA DA SILVA ---  Data:Wed Dec 14 09:34:28 GFT 2016
+Registro: Existentes no SAGE: 3517 --- 4734 ----- ELIENE MARIA DA SILVA ---  Data:Wed Dec 14 09:34:28 GFT 2016

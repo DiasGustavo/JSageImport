@@ -1,2 +1,3 @@
 Registro: Existentes no SAGE: 3607 --- 3602 ----- FABRICIA ANDREA DE BARROS DA SILVA --- Data:Thu Nov 24 17:31:13 GFT 2016
 Registro: Gravado o funcionario de código: 3607 nome: FABRICIA ANDREA DE BARROS DA SILVA ---  Data:Thu Nov 24 17:31:14 GFT 2016
+Registro: Existentes no SAGE: 3607 --- 3602 ----- FABRICIA ANDREA DE BARROS DA SILVA ---  Data:Tue Dec 13 18:54:58 GFT 2016
