@@ -8,12 +8,9 @@ import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.DadosFuncionaisNG;
 import jsageImport.modelo.dominio.DadosFuncionario;
 import jsageImport.modelo.dominio.DependenteNG;
-import jsageImport.modelo.dominio.EmpresaFolha;
-import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.MovimentacaoNG;
-import jsageImport.modelo.dominio.PessoaJuridica;
-import jsageImport.modelo.dominio.Sindicato;
+import jsageImport.modelo.dominio.PlanoSaudeNG;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 import jsageImport.persistencia.GerenciadorPersistenciaSAGE;
 import jsageImport.persistencia.IGerenciadorPersistenciaSAGE;
@@ -173,7 +170,35 @@ public class ControlerFuncionarioSAGE {
         IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
         PEmpresa.gravarProcEvento(movimentacao, cdEmpresa, cdFuncionario);
     }
-       
+    
+    public void gravarPlanoSaude (PlanoSaudeNG plano) throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
+        PEmpresa.gravarPlanoSaude(plano);
+    }
+    
+    public void gravarPlanoSaudeGeral (PlanoSaudeNG plano, int cdEmpresa) throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
+        PEmpresa.gravarPlanoSaudeGeral(plano, cdEmpresa);
+    }
+    
+    public void gravarPlanoSaudeFuncionario (MovimentacaoNG movimento, int cdEmpresa, int cdFuncionario) throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
+        PEmpresa.gravarPlanoSaudeFuncionario(movimento, cdEmpresa, cdFuncionario);
+    }
+    
+    public void gravarPlanoSaudeMovFuncionario (MovimentacaoNG movimento, int cdEmpresa, int cdFuncionario) throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
+        PEmpresa.gravarPlanoSaudeMovFuncionario(movimento, cdEmpresa, cdFuncionario);
+    }
+    public void gravarPlanoSaudeProcFuncionario (MovimentacaoNG movimento, int cdEmpresa, int cdFuncionario) throws JsageImportException{
+        IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
+        IPersistenciaFuncionarioSAGE PEmpresa = gerenteP.getPersistenciaFuncionario();
+        PEmpresa.gravarPlanoSaudeProcFuncionario(movimento, cdEmpresa, cdFuncionario);
+    }   
     public boolean testarConexao (String server, String bd, String port, String user, String password) throws JsageImportException{
         IGerenciadorPersistenciaSAGE gerenteP = new GerenciadorPersistenciaSAGE();
         IPersistenciaFuncionarioSAGE PFuncionario = gerenteP.getPersistenciaFuncionario();

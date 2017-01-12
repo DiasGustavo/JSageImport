@@ -20,6 +20,7 @@ import jsageImport.modelo.dominio.EmpresaSAGE;
 import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.FuncionarioSAGE;
 import jsageImport.modelo.dominio.MovimentacaoNG;
+import jsageImport.modelo.dominio.PlanoSaudeNG;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioSAGE;
 
 /**
@@ -84,8 +85,9 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
     
     private static final String SQL_PESQUISAR_DEP_ID = "SELECT * FROM FunDependente WHERE cd_dependente = ?";
     
-    private static final String SQL_CONTROLE_ESOCIAL = "INSERT INTO CRHFuncionarioControleESocial (cd_empresa,cd_funcionario,leiaute,nome_tabela,status)" +            
-                                                               " VALUES (?,?,?,?,?)";
+    private static final String SQL_CONTROLE_ESOCIAL = "IF NOT EXISTS(SELECT * FROM CRHFuncionarioControleESocial WHERE cd_empresa = ? and cd_funcionario = ? and leiaute = ? and nome_tabela = ?)"+
+                                                                        " INSERT INTO CRHFuncionarioControleESocial (cd_empresa,cd_funcionario,leiaute,nome_tabela,status)" +            
+                                                                        " VALUES (?,?,?,?,?)";
     
     private static final String SQL_CONTROLE_CAMPOS_ESOCIAL = "INSERT INTO CRHFuncionarioControleCamposESocial (cd_empresa,cd_funcionario,leiaute,nome_tabela)" +
                                                                     " VALUES(?,?,?,?)";
@@ -109,10 +111,25 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
                                                     "INSERT INTO ProcImposto (cd_empresa,tipo,mes,ano,cd_funcionario,vl_inss_fpas,vl_inss_sat,vl_inss_terceiros, " +
                                                     "vl_inss_sal_educ,vl_fgts,vl_pis,vl_sesi)"+
                                                     "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_PLANO_SAUDE = "IF NOT EXISTS (SELECT * FROM CRHOperadoraPlanoSaudeG WHERE cd_operadora= ? ) " + 
+                                                    " INSERT INTO CRHOperadoraPlanoSaudeG (cd_operadora,razao,fantasia,cnpj,cd_registro_ans,status) " +
+                                                        " VALUES (?,?,?,?,?,?)";
     
-    
-    
-   
+    private static final String SQL_PLANO_SAUDE_GERAL = "IF NOT EXISTS (SELECT * FROM CRHPlanoSaude WHERE enterprise_id = ? and cd_plano = ? and cd_operadora = ?)" +
+                                                                " INSERT INTO CRHPlanoSaude (enterprise_id,cd_plano,cd_operadora,descricao,cd_evento_plano) " +
+                                                                " VALUES (?,?,?,?,?)";
+    private static final String SQL_PLANO_SAUDE_FUNCIONARIO = "IF NOT EXISTS (SELECT * FROM CRHPlanoSaudeFun WHERE enterprise_id = ? and cd_plano = ? and cd_funcionario = ?)" +
+                                                                " INSERT INTO CRHPlanoSaudeFun (enterprise_id,cd_plano,cd_funcionario,vl_desc,status) " +
+                                                                " VALUES (?,?,?,?,?)" +                                                 
+                                                                "ELSE "+
+                                                                " UPDATE CRHPlanoSaudeFun  SET vl_desc = ?" +
+                                                                " WHERE enterprise_id = ? and cd_funcionario = ?";                                        
+    private static final String SQL_PLANO_SAUDE_MOV_FUN = "IF NOT EXISTS (SELECT * FROM CRHPlanoSaudeMovFun WHERE enterprise_id = ? and cd_plano = ? and cd_funcionario = ? and ano = ? and mes = ?)" + 
+                                                                " INSERT INTO CRHPlanoSaudeMovFun (enterprise_id,cd_plano,cd_funcionario,ano,mes,vl_desc_plano,vl_desc_plano_coparticipacao,status) " +
+                                                                " VALUES (?,?,?,?,?,?,?,?)";
+    private static final String SQL_PLANO_SAUDE_PROC_FUN = "IF NOT EXISTS (SELECT * FROM CRHPlanoSaudeProcFun WHERE enterprise_id = ? and cd_plano = ? and cd_funcionario = ? and ano = ? and mes = ?)" + 
+                                                                " INSERT INTO CRHPlanoSaudeProcFun (enterprise_id,cd_plano,cd_funcionario,ano,mes,vl_desc_plano,vl_desc_plano_coparticipacao)" +
+                                                                " VALUES (?,?,?,?,?,?,?)";
      
     /*Strings de url*/
     private final String urlNG = "jdbc:sqlserver://"+jdbc.lerServidor("NG")+":"+jdbc.lerPorta("NG")+";databaseName=ng;user="+jdbc.lerUsuario("NG")+";password="+jdbc.lerSenha("NG")+";"; 
@@ -634,7 +651,11 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
                 stmt.setInt(2, cdFuncionario);//cd_funcionario
                 stmt.setString(3, "S-2200");
                 stmt.setString(4, tabelas[i]);
-                stmt.setString(5, "A");            
+                stmt.setInt(5, cdEmpresa);//cd_empresa
+                stmt.setInt(6, cdFuncionario);//cd_funcionario
+                stmt.setString(7, "S-2200");
+                stmt.setString(8, tabelas[i]);
+                stmt.setString(9, "A");            
             
             stmt.executeUpdate();
             }
@@ -683,6 +704,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
         }
     }
     
+    @Override
      public void gravarMovEvento (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException {
         Connection con = null;
         PreparedStatement stmt = null;  
@@ -713,6 +735,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
         }
      }
      
+    @Override
      public void gravarProcBase (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario, DadosFuncionaisNG dadosFuncionais) throws JsageImportException {
         Connection con = null;
         PreparedStatement stmt = null;  
@@ -759,6 +782,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
         }
      }
      
+    @Override
      public void gravarProcEvento (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException{
         Connection con = null;
         PreparedStatement stmt = null;  
@@ -795,6 +819,7 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
      
      }
      
+    @Override
      public void gravarProcImposto (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException{
          Connection con = null;
         PreparedStatement stmt = null;  
@@ -831,7 +856,159 @@ public class PersistenciaFuncionarioSAGE implements IPersistenciaFuncionarioSAGE
             GerenciadorConexao.closeConexao(con, stmt);
         }
      }
+     
+    @Override
+    public void gravarPlanoSaude (PlanoSaudeNG plano) throws JsageImportException{
+         Connection con = null;
+        PreparedStatement stmt = null;  
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_PLANO_SAUDE);
+            stmt.setInt(1, trataDados.converterSrintInt(plano.getCodigooperadoraplanosaude()));
+            stmt.setInt(2, trataDados.converterSrintInt(plano.getCodigooperadoraplanosaude()));
+            stmt.setString (3, plano.getNomecompletooperadoraplanosaude());
+            stmt.setString(4, plano.getNomereduzidooperadoraplanosaude() );
+            stmt.setString(5, trataDados.formatarCampo("##.###.###/####-##", plano.getCnpj()));
+            stmt.setString(6, plano.getRegistroans());
+            stmt.setString(7, "A");
+                
+            stmt.executeUpdate();
+      
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o Plano de Saude ");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+     }
     
+    @Override
+    public void gravarPlanoSaudeGeral (PlanoSaudeNG plano, int cdEmpresa) throws JsageImportException{
+         Connection con = null;
+        PreparedStatement stmt = null;  
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_PLANO_SAUDE_GERAL);
+            stmt.setInt(1, cdEmpresa);
+            stmt.setInt (2, 1);
+            stmt.setInt(3, trataDados.converterSrintInt(plano.getCodigooperadoraplanosaude()));
+            stmt.setInt(4, cdEmpresa);
+            stmt.setInt (5, 1);
+            stmt.setInt(6, trataDados.converterSrintInt(plano.getCodigooperadoraplanosaude()));
+            stmt.setString(7, "Geral");
+            stmt.setInt(8, 201);
+            stmt.executeUpdate();
+      
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o Plano de Saude ");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+     }
+    @Override
+    public void gravarPlanoSaudeFuncionario (MovimentacaoNG movimento, int cdEmpresa, int cdFuncionario) throws JsageImportException{
+         Connection con = null;
+        PreparedStatement stmt = null;  
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_PLANO_SAUDE_FUNCIONARIO);
+            stmt.setInt(1, cdEmpresa);
+            stmt.setInt (2, 1);
+            stmt.setInt(3, cdFuncionario);
+            stmt.setInt(4, cdEmpresa);
+            stmt.setInt (5, 1);
+            stmt.setInt(6, cdFuncionario);
+            stmt.setDouble(7, trataDados.trataValorProcEvento(movimento));
+            stmt.setString(8, "A");
+            stmt.setDouble(9, trataDados.trataValorProcEvento(movimento));
+            stmt.setInt(10, cdEmpresa);
+            stmt.setInt(11, cdFuncionario);
+            stmt.executeUpdate();
+      
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o Plano de Saude ");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+    }
+    
+    
+    @Override
+    public void gravarPlanoSaudeMovFuncionario (MovimentacaoNG movimento, int cdEmpresa, int cdFuncionario) throws JsageImportException{
+         Connection con = null;
+        PreparedStatement stmt = null;  
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_PLANO_SAUDE_MOV_FUN);
+            stmt.setInt(1, cdEmpresa);
+            stmt.setInt (2, 1);
+            stmt.setInt(3, cdFuncionario);
+            stmt.setInt(4, movimento.getCompetenciaano());
+            stmt.setInt (5, movimento.getCompetenciames());
+            stmt.setInt(6, cdEmpresa);
+            stmt.setInt(7, 1);
+            stmt.setInt(8, cdFuncionario);
+            stmt.setInt(9, movimento.getCompetenciaano());
+            stmt.setInt(10, movimento.getCompetenciames());
+            stmt.setDouble(11, trataDados.trataValorProcEvento(movimento));
+            stmt.setInt(12, 0);
+            stmt.setInt(13, 2);
+            stmt.executeUpdate();
+      
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o Plano de Saude movimento do Funcionario. ");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+    }
+    
+    @Override
+    public void gravarPlanoSaudeProcFuncionario (MovimentacaoNG movimento, int cdEmpresa, int cdFuncionario) throws JsageImportException{
+         Connection con = null;
+        PreparedStatement stmt = null;  
+        
+        try{
+            con = GerenciadorConexao.getConnection(jdbc.lerPropriedades("SAGE"));
+            stmt = con.prepareStatement(SQL_PLANO_SAUDE_PROC_FUN);
+            stmt.setInt(1, cdEmpresa);
+            stmt.setInt (2, 1);
+            stmt.setInt(3, cdFuncionario);
+            stmt.setInt(4, movimento.getCompetenciaano());
+            stmt.setInt (5, movimento.getCompetenciames());
+            stmt.setInt(6, cdEmpresa);
+            stmt.setInt(7, 1);
+            stmt.setInt(8, cdFuncionario);
+            stmt.setInt(9, movimento.getCompetenciaano());
+            stmt.setInt(10, movimento.getCompetenciames());
+            stmt.setDouble(11, trataDados.trataValorProcEvento(movimento));
+            stmt.setInt(12, 0);
+           
+            stmt.executeUpdate();
+      
+            
+        }catch (SQLException exc) {
+            StringBuffer msg = new StringBuffer("Não foi possível incluir o Plano de Saude movimento do Funcionario. ");
+            msg.append("\nMotivo: " + exc.getMessage());
+            throw new JsageImportException(msg.toString());            
+        } finally {
+            GerenciadorConexao.closeConexao(con, stmt);
+        }
+    }
     
     public List pesquisarTodos() throws JsageImportException {
         Connection con = null;

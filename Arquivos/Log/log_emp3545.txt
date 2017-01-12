@@ -22,3 +22,4 @@ Registro: Existentes no SAGE: 3577 --- 3545 ----- LUCIANO CINTRA REGIS ---  Data
 Registro: Gravado o funcionario de código: 3577 nome: LUCIANO CINTRA REGIS ---  Data:Thu Nov 24 17:28:47 GFT 2016
 Registro: Existentes no SAGE: 5622 --- 3545 ----- HERALDO GONÇALVES RAMOS ---  Data:Thu Nov 24 17:28:47 GFT 2016
 Registro: Gravado o funcionario de código: 5622 nome: HERALDO GONÇALVES RAMOS ---  Data:Thu Nov 24 17:28:48 GFT 2016
+Registro: Existentes no SAGE: 3546 --- 3545 ----- CARLOS FRANCISCO FERREIRA ---  Data:Wed Jan 11 16:50:04 GMT-03:00 2017

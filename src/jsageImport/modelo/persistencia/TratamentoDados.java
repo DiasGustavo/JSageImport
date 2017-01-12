@@ -10,9 +10,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import javax.swing.text.MaskFormatter;
 import jsageImport.controler.ControlerFuncionarioNG;
 import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.MovimentacaoNG;
@@ -196,7 +198,12 @@ public class TratamentoDados {
         }        
         return parent;
     }
-    
+    /**
+     * transfere as ids da verba do ng para a do sage
+     * @param idVerba
+     * @return int
+     * @throws JsageImportException 
+     */
     public int recuperarLancamentoFolha (int idVerba) throws JsageImportException{
         int lancamento = 0;
         switch (idVerba){
@@ -253,7 +260,53 @@ public class TratamentoDados {
                 break;
             case -98:
                 lancamento = 973;
-                break;    
+                break; 
+            //hora extra
+            case -54:
+                lancamento = 13;
+                break;
+            case -52: 
+                lancamento = 9;
+                break;
+            case -100:
+                lancamento = 18;
+                break;
+            //insalubridade
+            case -150: 
+                lancamento = 5;
+                break;
+            case -60:
+                lancamento = 39;
+                break;
+            case -56:
+                lancamento = 966;
+                break;
+            //quinquenio
+            case -75:
+                lancamento = 74;
+                break;
+            //desconto inss
+            case -179:
+                lancamento = 990;
+                break;
+            case -177:
+                lancamento = 954;
+                break;
+            //desconto irrf
+            case -199:
+                lancamento = 49;
+                break;
+            case -108:
+                lancamento = 182;
+                break;
+            //desconto sindicato
+            case -46:
+                lancamento = 35;
+                break;
+            //saude
+            case -211:
+                lancamento = 201;
+                break;
                 
         }        
         return lancamento;
@@ -317,7 +370,9 @@ public class TratamentoDados {
                 break;
             case -98:
                 refTratada =  movimentacao.getQtdereferenciainformada();
-                break;    
+                break; 
+            case -56:
+                refTratada = movimentacao.getQtdereferenciainformada();
         }
         return refTratada;
     }
@@ -333,6 +388,12 @@ public class TratamentoDados {
                 break;
             case -120:
                 valorTratado =  movimentacao.getValorinformado();
+                break;
+            case -56:
+                valorTratado = movimentacao.getValorinformado();
+                break;
+            case -211:
+                valorTratado = movimentacao.getValorinformado();
                 break;
             default: 
                 valorTratado = movimentacao.getValorcalculado();
@@ -1579,4 +1640,16 @@ public class TratamentoDados {
         return parent;
     }
     
+    public String formatarCampo(String pattern, Object value) {
+        MaskFormatter mask;
+        try {
+            mask = new MaskFormatter(pattern);
+            mask.setValueContainsLiteralCharacters(false);
+            return mask.valueToString(value);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

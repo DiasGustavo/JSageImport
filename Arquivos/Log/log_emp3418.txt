@@ -122,3 +122,471 @@ Registro: Existentes no SAGE: 3461 --- 3418 ----- MARIO RINO MARTINS ---  Data:T
 Registro: Existentes no SAGE: 5708 --- 3418 ----- GISELDA DE CASTRO LEMOS FREITAS ---  Data:Thu Nov 24 17:28:09 GFT 2016
 Registro: Existentes no SAGE: 6112 --- 3418 ----- KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Thu Nov 24 17:28:09 GFT 2016
 Registro: Existentes no SAGE: 6140 --- 3418 ----- ERICA ELIS DE LUCENA ---  Data:Thu Nov 24 17:28:09 GFT 2016
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Sat Jan 07 10:45:17 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3423 nome: ANA PAULA AVILA ROMA ---  Data:Sat Jan 07 10:45:27 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 10:45:27 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3427 nome: ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 10:45:35 GMT-03:00 2017
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 10:45:35 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3433 nome: ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 10:45:42 GMT-03:00 2017
+Registro: Existentes no SAGE: 3447 --- 3418 ----- LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Sat Jan 07 10:45:42 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3447 nome: LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Sat Jan 07 10:45:51 GMT-03:00 2017
+Registro: Existentes no SAGE: 3471 --- 3418 ----- JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Sat Jan 07 10:45:51 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3471 nome: JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Sat Jan 07 10:45:58 GMT-03:00 2017
+Registro: Existentes no SAGE: 3476 --- 3418 ----- JOSEFA PEREIRA DA SILVA ---  Data:Sat Jan 07 10:45:58 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3476 nome: JOSEFA PEREIRA DA SILVA ---  Data:Sat Jan 07 10:46:07 GMT-03:00 2017
+Registro: Existentes no SAGE: 3479 --- 3418 ----- JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Sat Jan 07 10:46:07 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3479 nome: JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Sat Jan 07 10:46:17 GMT-03:00 2017
+Registro: Existentes no SAGE: 3482 --- 3418 ----- VERONICA MARIA DE MELO PESSOA ---  Data:Sat Jan 07 10:46:17 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3482 nome: VERONICA MARIA DE MELO PESSOA ---  Data:Sat Jan 07 10:46:27 GMT-03:00 2017
+Registro: Existentes no SAGE: 3486 --- 3418 ----- CAMILLA VERAS FALCAO ---  Data:Sat Jan 07 10:46:28 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3486 nome: CAMILLA VERAS FALCAO ---  Data:Sat Jan 07 10:46:33 GMT-03:00 2017
+Registro: Existentes no SAGE: 3489 --- 3418 ----- CYNTHIA AVILA MATTOS ---  Data:Sat Jan 07 10:46:33 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3489 nome: CYNTHIA AVILA MATTOS ---  Data:Sat Jan 07 10:46:37 GMT-03:00 2017
+Registro: Existentes no SAGE: 4404 --- 3418 ----- RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Sat Jan 07 10:46:37 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4404 nome: RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Sat Jan 07 10:46:44 GMT-03:00 2017
+Registro: Existentes no SAGE: 4436 --- 3418 ----- ANTONIO DOUGLAS DE LIMA ---  Data:Sat Jan 07 10:46:44 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4436 nome: ANTONIO DOUGLAS DE LIMA ---  Data:Sat Jan 07 10:46:49 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 10:46:49 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3539 nome: KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 10:46:57 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 10:46:57 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 10:46:57 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3536 nome: SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 10:47:07 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 10:47:07 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 10:47:07 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3532 nome: YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 10:47:13 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 10:47:13 GMT-03:00 2017
+Registro: Existentes no SAGE: 4955 --- 3418 ----- CAROLINA BEZERRA PATRIOTA ---  Data:Sat Jan 07 10:47:13 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4955 nome: CAROLINA BEZERRA PATRIOTA ---  Data:Sat Jan 07 10:47:18 GMT-03:00 2017
+Registro: Existentes no SAGE: 5435 --- 3418 ----- ANDRE LUIZ DA SILVA MENEZES ---  Data:Sat Jan 07 10:47:18 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5435 nome: ANDRE LUIZ DA SILVA MENEZES ---  Data:Sat Jan 07 10:47:24 GMT-03:00 2017
+Registro: Existentes no SAGE: 5534 --- 3418 ----- PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Sat Jan 07 10:47:25 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5534 nome: PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Sat Jan 07 10:47:29 GMT-03:00 2017
+Registro: Existentes no SAGE: 5537 --- 3418 ----- JOÃO KARIMAI ---  Data:Sat Jan 07 10:47:29 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5537 nome: JOÃO KARIMAI ---  Data:Sat Jan 07 10:47:33 GMT-03:00 2017
+Registro: Existentes no SAGE: 3461 --- 3418 ----- MARIO RINO MARTINS ---  Data:Sat Jan 07 10:47:33 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3461 nome: MARIO RINO MARTINS ---  Data:Sat Jan 07 10:47:38 GMT-03:00 2017
+Registro: Existentes no SAGE: 5708 --- 3418 ----- GISELDA DE CASTRO LEMOS FREITAS ---  Data:Sat Jan 07 10:47:38 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5708 nome: GISELDA DE CASTRO LEMOS FREITAS ---  Data:Sat Jan 07 10:47:45 GMT-03:00 2017
+Registro: Existentes no SAGE: 6112 --- 3418 ----- KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Sat Jan 07 10:47:45 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6112 nome: KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Sat Jan 07 10:47:46 GMT-03:00 2017
+Registro: Existentes no SAGE: 6140 --- 3418 ----- ERICA ELIS DE LUCENA ---  Data:Sat Jan 07 10:47:46 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6140 nome: ERICA ELIS DE LUCENA ---  Data:Sat Jan 07 10:47:47 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Sat Jan 07 11:14:27 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3423 nome: ANA PAULA AVILA ROMA ---  Data:Sat Jan 07 11:14:36 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 11:14:36 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3427 nome: ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 11:14:44 GMT-03:00 2017
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 11:14:45 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3433 nome: ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 11:14:52 GMT-03:00 2017
+Registro: Existentes no SAGE: 3447 --- 3418 ----- LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Sat Jan 07 11:14:52 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3447 nome: LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Sat Jan 07 11:15:00 GMT-03:00 2017
+Registro: Existentes no SAGE: 3471 --- 3418 ----- JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Sat Jan 07 11:15:00 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3471 nome: JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Sat Jan 07 11:15:07 GMT-03:00 2017
+Registro: Existentes no SAGE: 3476 --- 3418 ----- JOSEFA PEREIRA DA SILVA ---  Data:Sat Jan 07 11:15:08 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3476 nome: JOSEFA PEREIRA DA SILVA ---  Data:Sat Jan 07 11:15:16 GMT-03:00 2017
+Registro: Existentes no SAGE: 3479 --- 3418 ----- JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Sat Jan 07 11:15:16 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3479 nome: JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Sat Jan 07 11:15:26 GMT-03:00 2017
+Registro: Existentes no SAGE: 3482 --- 3418 ----- VERONICA MARIA DE MELO PESSOA ---  Data:Sat Jan 07 11:15:26 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3482 nome: VERONICA MARIA DE MELO PESSOA ---  Data:Sat Jan 07 11:15:36 GMT-03:00 2017
+Registro: Existentes no SAGE: 3486 --- 3418 ----- CAMILLA VERAS FALCAO ---  Data:Sat Jan 07 11:15:36 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3486 nome: CAMILLA VERAS FALCAO ---  Data:Sat Jan 07 11:15:41 GMT-03:00 2017
+Registro: Existentes no SAGE: 3489 --- 3418 ----- CYNTHIA AVILA MATTOS ---  Data:Sat Jan 07 11:15:41 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3489 nome: CYNTHIA AVILA MATTOS ---  Data:Sat Jan 07 11:15:45 GMT-03:00 2017
+Registro: Existentes no SAGE: 4404 --- 3418 ----- RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Sat Jan 07 11:15:45 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4404 nome: RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Sat Jan 07 11:15:52 GMT-03:00 2017
+Registro: Existentes no SAGE: 4436 --- 3418 ----- ANTONIO DOUGLAS DE LIMA ---  Data:Sat Jan 07 11:15:52 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4436 nome: ANTONIO DOUGLAS DE LIMA ---  Data:Sat Jan 07 11:15:57 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 11:15:57 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3539 nome: KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 11:16:06 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 11:16:07 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 11:16:07 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3536 nome: SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 11:16:16 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 11:16:16 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 11:16:16 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3532 nome: YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 11:16:21 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 11:16:22 GMT-03:00 2017
+Registro: Existentes no SAGE: 4955 --- 3418 ----- CAROLINA BEZERRA PATRIOTA ---  Data:Sat Jan 07 11:16:22 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4955 nome: CAROLINA BEZERRA PATRIOTA ---  Data:Sat Jan 07 11:16:26 GMT-03:00 2017
+Registro: Existentes no SAGE: 5435 --- 3418 ----- ANDRE LUIZ DA SILVA MENEZES ---  Data:Sat Jan 07 11:16:26 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5435 nome: ANDRE LUIZ DA SILVA MENEZES ---  Data:Sat Jan 07 11:16:33 GMT-03:00 2017
+Registro: Existentes no SAGE: 5534 --- 3418 ----- PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Sat Jan 07 11:16:33 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5534 nome: PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Sat Jan 07 11:16:38 GMT-03:00 2017
+Registro: Existentes no SAGE: 5537 --- 3418 ----- JOÃO KARIMAI ---  Data:Sat Jan 07 11:16:38 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5537 nome: JOÃO KARIMAI ---  Data:Sat Jan 07 11:16:42 GMT-03:00 2017
+Registro: Existentes no SAGE: 3461 --- 3418 ----- MARIO RINO MARTINS ---  Data:Sat Jan 07 11:16:42 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3461 nome: MARIO RINO MARTINS ---  Data:Sat Jan 07 11:16:47 GMT-03:00 2017
+Registro: Existentes no SAGE: 5708 --- 3418 ----- GISELDA DE CASTRO LEMOS FREITAS ---  Data:Sat Jan 07 11:16:47 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5708 nome: GISELDA DE CASTRO LEMOS FREITAS ---  Data:Sat Jan 07 11:16:53 GMT-03:00 2017
+Registro: Existentes no SAGE: 6112 --- 3418 ----- KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Sat Jan 07 11:16:54 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6112 nome: KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Sat Jan 07 11:16:55 GMT-03:00 2017
+Registro: Existentes no SAGE: 6140 --- 3418 ----- ERICA ELIS DE LUCENA ---  Data:Sat Jan 07 11:16:55 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6140 nome: ERICA ELIS DE LUCENA ---  Data:Sat Jan 07 11:16:56 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Sat Jan 07 11:40:43 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3423 nome: ANA PAULA AVILA ROMA ---  Data:Sat Jan 07 11:40:53 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 11:40:53 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3427 nome: ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 11:41:02 GMT-03:00 2017
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 11:41:02 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3433 nome: ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 11:41:09 GMT-03:00 2017
+Registro: Existentes no SAGE: 3447 --- 3418 ----- LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Sat Jan 07 11:41:09 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3447 nome: LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Sat Jan 07 11:41:17 GMT-03:00 2017
+Registro: Existentes no SAGE: 3471 --- 3418 ----- JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Sat Jan 07 11:41:17 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3471 nome: JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Sat Jan 07 11:41:25 GMT-03:00 2017
+Registro: Existentes no SAGE: 3476 --- 3418 ----- JOSEFA PEREIRA DA SILVA ---  Data:Sat Jan 07 11:41:25 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3476 nome: JOSEFA PEREIRA DA SILVA ---  Data:Sat Jan 07 11:41:33 GMT-03:00 2017
+Registro: Existentes no SAGE: 3479 --- 3418 ----- JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Sat Jan 07 11:41:33 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3479 nome: JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Sat Jan 07 11:41:42 GMT-03:00 2017
+Registro: Existentes no SAGE: 3482 --- 3418 ----- VERONICA MARIA DE MELO PESSOA ---  Data:Sat Jan 07 11:41:42 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3482 nome: VERONICA MARIA DE MELO PESSOA ---  Data:Sat Jan 07 11:41:53 GMT-03:00 2017
+Registro: Existentes no SAGE: 3486 --- 3418 ----- CAMILLA VERAS FALCAO ---  Data:Sat Jan 07 11:41:53 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3486 nome: CAMILLA VERAS FALCAO ---  Data:Sat Jan 07 11:41:58 GMT-03:00 2017
+Registro: Existentes no SAGE: 3489 --- 3418 ----- CYNTHIA AVILA MATTOS ---  Data:Sat Jan 07 11:41:58 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3489 nome: CYNTHIA AVILA MATTOS ---  Data:Sat Jan 07 11:42:02 GMT-03:00 2017
+Registro: Existentes no SAGE: 4404 --- 3418 ----- RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Sat Jan 07 11:42:02 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4404 nome: RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Sat Jan 07 11:42:09 GMT-03:00 2017
+Registro: Existentes no SAGE: 4436 --- 3418 ----- ANTONIO DOUGLAS DE LIMA ---  Data:Sat Jan 07 11:42:09 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4436 nome: ANTONIO DOUGLAS DE LIMA ---  Data:Sat Jan 07 11:42:14 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 11:42:14 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3539 nome: KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 11:42:22 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 11:42:23 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 11:42:23 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3536 nome: SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 11:42:32 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 11:42:32 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 11:42:32 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3532 nome: YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 11:42:38 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 11:42:38 GMT-03:00 2017
+Registro: Existentes no SAGE: 4955 --- 3418 ----- CAROLINA BEZERRA PATRIOTA ---  Data:Sat Jan 07 11:42:38 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4955 nome: CAROLINA BEZERRA PATRIOTA ---  Data:Sat Jan 07 11:42:43 GMT-03:00 2017
+Registro: Existentes no SAGE: 5435 --- 3418 ----- ANDRE LUIZ DA SILVA MENEZES ---  Data:Sat Jan 07 11:42:43 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5435 nome: ANDRE LUIZ DA SILVA MENEZES ---  Data:Sat Jan 07 11:42:50 GMT-03:00 2017
+Registro: Existentes no SAGE: 5534 --- 3418 ----- PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Sat Jan 07 11:42:50 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5534 nome: PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Sat Jan 07 11:42:54 GMT-03:00 2017
+Registro: Existentes no SAGE: 5537 --- 3418 ----- JOÃO KARIMAI ---  Data:Sat Jan 07 11:42:54 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5537 nome: JOÃO KARIMAI ---  Data:Sat Jan 07 11:42:58 GMT-03:00 2017
+Registro: Existentes no SAGE: 3461 --- 3418 ----- MARIO RINO MARTINS ---  Data:Sat Jan 07 11:42:58 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3461 nome: MARIO RINO MARTINS ---  Data:Sat Jan 07 11:43:04 GMT-03:00 2017
+Registro: Existentes no SAGE: 5708 --- 3418 ----- GISELDA DE CASTRO LEMOS FREITAS ---  Data:Sat Jan 07 11:43:04 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5708 nome: GISELDA DE CASTRO LEMOS FREITAS ---  Data:Sat Jan 07 11:43:11 GMT-03:00 2017
+Registro: Existentes no SAGE: 6112 --- 3418 ----- KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Sat Jan 07 11:43:11 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6112 nome: KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Sat Jan 07 11:43:12 GMT-03:00 2017
+Registro: Existentes no SAGE: 6140 --- 3418 ----- ERICA ELIS DE LUCENA ---  Data:Sat Jan 07 11:43:12 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6140 nome: ERICA ELIS DE LUCENA ---  Data:Sat Jan 07 11:43:13 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Sat Jan 07 12:01:07 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3423 nome: ANA PAULA AVILA ROMA ---  Data:Sat Jan 07 12:01:17 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 12:01:17 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3427 nome: ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 12:01:25 GMT-03:00 2017
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 12:01:25 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3433 nome: ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Sat Jan 07 12:01:33 GMT-03:00 2017
+Registro: Existentes no SAGE: 3447 --- 3418 ----- LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Sat Jan 07 12:01:33 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3447 nome: LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Sat Jan 07 12:01:41 GMT-03:00 2017
+Registro: Existentes no SAGE: 3471 --- 3418 ----- JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Sat Jan 07 12:01:41 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3471 nome: JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Sat Jan 07 12:01:49 GMT-03:00 2017
+Registro: Existentes no SAGE: 3476 --- 3418 ----- JOSEFA PEREIRA DA SILVA ---  Data:Sat Jan 07 12:01:49 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3476 nome: JOSEFA PEREIRA DA SILVA ---  Data:Sat Jan 07 12:01:57 GMT-03:00 2017
+Registro: Existentes no SAGE: 3479 --- 3418 ----- JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Sat Jan 07 12:01:57 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3479 nome: JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Sat Jan 07 12:02:08 GMT-03:00 2017
+Registro: Existentes no SAGE: 3482 --- 3418 ----- VERONICA MARIA DE MELO PESSOA ---  Data:Sat Jan 07 12:02:08 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3482 nome: VERONICA MARIA DE MELO PESSOA ---  Data:Sat Jan 07 12:02:19 GMT-03:00 2017
+Registro: Existentes no SAGE: 3486 --- 3418 ----- CAMILLA VERAS FALCAO ---  Data:Sat Jan 07 12:02:19 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3486 nome: CAMILLA VERAS FALCAO ---  Data:Sat Jan 07 12:02:24 GMT-03:00 2017
+Registro: Existentes no SAGE: 3489 --- 3418 ----- CYNTHIA AVILA MATTOS ---  Data:Sat Jan 07 12:02:24 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3489 nome: CYNTHIA AVILA MATTOS ---  Data:Sat Jan 07 12:02:28 GMT-03:00 2017
+Registro: Existentes no SAGE: 4404 --- 3418 ----- RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Sat Jan 07 12:02:28 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4404 nome: RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Sat Jan 07 12:02:35 GMT-03:00 2017
+Registro: Existentes no SAGE: 4436 --- 3418 ----- ANTONIO DOUGLAS DE LIMA ---  Data:Sat Jan 07 12:02:35 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4436 nome: ANTONIO DOUGLAS DE LIMA ---  Data:Sat Jan 07 12:02:40 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 12:02:40 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3539 nome: KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 12:02:49 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Sat Jan 07 12:02:49 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 12:02:49 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3536 nome: SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 12:02:58 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Sat Jan 07 12:02:58 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 12:02:59 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3532 nome: YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 12:03:05 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Sat Jan 07 12:03:05 GMT-03:00 2017
+Registro: Existentes no SAGE: 4955 --- 3418 ----- CAROLINA BEZERRA PATRIOTA ---  Data:Sat Jan 07 12:03:05 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4955 nome: CAROLINA BEZERRA PATRIOTA ---  Data:Sat Jan 07 12:03:10 GMT-03:00 2017
+Registro: Existentes no SAGE: 5435 --- 3418 ----- ANDRE LUIZ DA SILVA MENEZES ---  Data:Sat Jan 07 12:03:11 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5435 nome: ANDRE LUIZ DA SILVA MENEZES ---  Data:Sat Jan 07 12:03:18 GMT-03:00 2017
+Registro: Existentes no SAGE: 5534 --- 3418 ----- PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Sat Jan 07 12:03:18 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5534 nome: PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Sat Jan 07 12:03:23 GMT-03:00 2017
+Registro: Existentes no SAGE: 5537 --- 3418 ----- JOÃO KARIMAI ---  Data:Sat Jan 07 12:03:23 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5537 nome: JOÃO KARIMAI ---  Data:Sat Jan 07 12:03:27 GMT-03:00 2017
+Registro: Existentes no SAGE: 3461 --- 3418 ----- MARIO RINO MARTINS ---  Data:Sat Jan 07 12:03:27 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3461 nome: MARIO RINO MARTINS ---  Data:Sat Jan 07 12:03:32 GMT-03:00 2017
+Registro: Existentes no SAGE: 5708 --- 3418 ----- GISELDA DE CASTRO LEMOS FREITAS ---  Data:Sat Jan 07 12:03:32 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5708 nome: GISELDA DE CASTRO LEMOS FREITAS ---  Data:Sat Jan 07 12:03:39 GMT-03:00 2017
+Registro: Existentes no SAGE: 6112 --- 3418 ----- KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Sat Jan 07 12:03:39 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6112 nome: KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Sat Jan 07 12:03:40 GMT-03:00 2017
+Registro: Existentes no SAGE: 6140 --- 3418 ----- ERICA ELIS DE LUCENA ---  Data:Sat Jan 07 12:03:40 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6140 nome: ERICA ELIS DE LUCENA ---  Data:Sat Jan 07 12:03:41 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 16:58:16 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3423 nome: ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 16:58:30 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 16:58:30 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3427 nome: ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 16:58:44 GMT-03:00 2017
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 16:58:44 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3433 nome: ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 16:58:56 GMT-03:00 2017
+Registro: Existentes no SAGE: 3447 --- 3418 ----- LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 16:58:56 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3447 nome: LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 16:59:09 GMT-03:00 2017
+Registro: Existentes no SAGE: 3471 --- 3418 ----- JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 16:59:09 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3471 nome: JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 16:59:23 GMT-03:00 2017
+Registro: Existentes no SAGE: 3476 --- 3418 ----- JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 16:59:23 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3476 nome: JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 16:59:36 GMT-03:00 2017
+Registro: Existentes no SAGE: 3479 --- 3418 ----- JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 16:59:36 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3479 nome: JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 16:59:53 GMT-03:00 2017
+Registro: Existentes no SAGE: 3482 --- 3418 ----- VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 16:59:53 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3482 nome: VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 17:00:11 GMT-03:00 2017
+Registro: Existentes no SAGE: 3486 --- 3418 ----- CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 17:00:11 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3486 nome: CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 17:00:20 GMT-03:00 2017
+Registro: Existentes no SAGE: 3489 --- 3418 ----- CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 17:00:20 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3489 nome: CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 17:00:30 GMT-03:00 2017
+Registro: Existentes no SAGE: 4404 --- 3418 ----- RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Wed Jan 11 17:00:30 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4404 nome: RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Wed Jan 11 17:00:45 GMT-03:00 2017
+Registro: Existentes no SAGE: 4436 --- 3418 ----- ANTONIO DOUGLAS DE LIMA ---  Data:Wed Jan 11 17:00:45 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4436 nome: ANTONIO DOUGLAS DE LIMA ---  Data:Wed Jan 11 17:00:55 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 17:00:55 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3539 nome: KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 17:01:10 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 17:01:10 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 17:01:11 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3536 nome: SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 17:01:26 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 17:01:26 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 17:01:26 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3532 nome: YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 17:01:35 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 17:01:35 GMT-03:00 2017
+Registro: Existentes no SAGE: 4955 --- 3418 ----- CAROLINA BEZERRA PATRIOTA ---  Data:Wed Jan 11 17:01:36 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4955 nome: CAROLINA BEZERRA PATRIOTA ---  Data:Wed Jan 11 17:01:43 GMT-03:00 2017
+Registro: Existentes no SAGE: 5435 --- 3418 ----- ANDRE LUIZ DA SILVA MENEZES ---  Data:Wed Jan 11 17:01:43 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5435 nome: ANDRE LUIZ DA SILVA MENEZES ---  Data:Wed Jan 11 17:01:55 GMT-03:00 2017
+Registro: Existentes no SAGE: 5534 --- 3418 ----- PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Wed Jan 11 17:01:56 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5534 nome: PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Wed Jan 11 17:02:04 GMT-03:00 2017
+Registro: Existentes no SAGE: 5537 --- 3418 ----- JOÃO KARIMAI ---  Data:Wed Jan 11 17:02:04 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5537 nome: JOÃO KARIMAI ---  Data:Wed Jan 11 17:02:10 GMT-03:00 2017
+Registro: Existentes no SAGE: 3461 --- 3418 ----- MARIO RINO MARTINS ---  Data:Wed Jan 11 17:02:10 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3461 nome: MARIO RINO MARTINS ---  Data:Wed Jan 11 17:02:18 GMT-03:00 2017
+Registro: Existentes no SAGE: 5708 --- 3418 ----- GISELDA DE CASTRO LEMOS FREITAS ---  Data:Wed Jan 11 17:02:18 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5708 nome: GISELDA DE CASTRO LEMOS FREITAS ---  Data:Wed Jan 11 17:02:30 GMT-03:00 2017
+Registro: Existentes no SAGE: 6112 --- 3418 ----- KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Wed Jan 11 17:02:30 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6112 nome: KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Wed Jan 11 17:02:32 GMT-03:00 2017
+Registro: Existentes no SAGE: 6140 --- 3418 ----- ERICA ELIS DE LUCENA ---  Data:Wed Jan 11 17:02:32 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6140 nome: ERICA ELIS DE LUCENA ---  Data:Wed Jan 11 17:02:33 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 17:18:39 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 17:23:58 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:23:58 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3427 nome: ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:24:13 GMT-03:00 2017
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:24:13 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3433 nome: ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:24:26 GMT-03:00 2017
+Registro: Existentes no SAGE: 3447 --- 3418 ----- LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 17:24:26 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3447 nome: LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 17:24:40 GMT-03:00 2017
+Registro: Existentes no SAGE: 3471 --- 3418 ----- JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 17:24:40 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3471 nome: JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 17:24:54 GMT-03:00 2017
+Registro: Existentes no SAGE: 3476 --- 3418 ----- JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 17:24:54 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3476 nome: JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 17:25:09 GMT-03:00 2017
+Registro: Existentes no SAGE: 3479 --- 3418 ----- JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 17:25:09 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3479 nome: JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 17:25:27 GMT-03:00 2017
+Registro: Existentes no SAGE: 3482 --- 3418 ----- VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 17:25:27 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3482 nome: VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 17:25:45 GMT-03:00 2017
+Registro: Existentes no SAGE: 3486 --- 3418 ----- CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 17:25:45 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3486 nome: CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 17:25:54 GMT-03:00 2017
+Registro: Existentes no SAGE: 3489 --- 3418 ----- CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 17:25:55 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3489 nome: CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 17:26:01 GMT-03:00 2017
+Registro: Existentes no SAGE: 4404 --- 3418 ----- RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Wed Jan 11 17:26:01 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4404 nome: RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Wed Jan 11 17:26:14 GMT-03:00 2017
+Registro: Existentes no SAGE: 4436 --- 3418 ----- ANTONIO DOUGLAS DE LIMA ---  Data:Wed Jan 11 17:26:14 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4436 nome: ANTONIO DOUGLAS DE LIMA ---  Data:Wed Jan 11 17:26:22 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 17:26:22 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3539 nome: KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 17:26:38 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 17:26:38 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 17:26:38 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3536 nome: SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 17:26:54 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 17:26:55 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 17:26:55 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3532 nome: YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 17:27:05 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 17:27:05 GMT-03:00 2017
+Registro: Existentes no SAGE: 4955 --- 3418 ----- CAROLINA BEZERRA PATRIOTA ---  Data:Wed Jan 11 17:27:05 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4955 nome: CAROLINA BEZERRA PATRIOTA ---  Data:Wed Jan 11 17:27:13 GMT-03:00 2017
+Registro: Existentes no SAGE: 5435 --- 3418 ----- ANDRE LUIZ DA SILVA MENEZES ---  Data:Wed Jan 11 17:27:14 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5435 nome: ANDRE LUIZ DA SILVA MENEZES ---  Data:Wed Jan 11 17:27:25 GMT-03:00 2017
+Registro: Existentes no SAGE: 5534 --- 3418 ----- PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Wed Jan 11 17:27:26 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5534 nome: PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Wed Jan 11 17:27:34 GMT-03:00 2017
+Registro: Existentes no SAGE: 5537 --- 3418 ----- JOÃO KARIMAI ---  Data:Wed Jan 11 17:27:34 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5537 nome: JOÃO KARIMAI ---  Data:Wed Jan 11 17:27:41 GMT-03:00 2017
+Registro: Existentes no SAGE: 3461 --- 3418 ----- MARIO RINO MARTINS ---  Data:Wed Jan 11 17:27:41 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3461 nome: MARIO RINO MARTINS ---  Data:Wed Jan 11 17:27:49 GMT-03:00 2017
+Registro: Existentes no SAGE: 5708 --- 3418 ----- GISELDA DE CASTRO LEMOS FREITAS ---  Data:Wed Jan 11 17:27:49 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5708 nome: GISELDA DE CASTRO LEMOS FREITAS ---  Data:Wed Jan 11 17:28:01 GMT-03:00 2017
+Registro: Existentes no SAGE: 6112 --- 3418 ----- KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Wed Jan 11 17:28:02 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6112 nome: KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Wed Jan 11 17:28:04 GMT-03:00 2017
+Registro: Existentes no SAGE: 6140 --- 3418 ----- ERICA ELIS DE LUCENA ---  Data:Wed Jan 11 17:28:04 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6140 nome: ERICA ELIS DE LUCENA ---  Data:Wed Jan 11 17:28:05 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 17:33:01 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 17:42:45 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3423 nome: ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 17:42:56 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:42:56 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3427 nome: ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:43:07 GMT-03:00 2017
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:43:07 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3433 nome: ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:43:17 GMT-03:00 2017
+Registro: Existentes no SAGE: 3447 --- 3418 ----- LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 17:43:17 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3447 nome: LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 17:43:26 GMT-03:00 2017
+Registro: Existentes no SAGE: 3471 --- 3418 ----- JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 17:43:26 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3471 nome: JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 17:43:36 GMT-03:00 2017
+Registro: Existentes no SAGE: 3476 --- 3418 ----- JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 17:43:37 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3476 nome: JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 17:43:47 GMT-03:00 2017
+Registro: Existentes no SAGE: 3479 --- 3418 ----- JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 17:43:47 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3479 nome: JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 17:44:00 GMT-03:00 2017
+Registro: Existentes no SAGE: 3482 --- 3418 ----- VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 17:44:00 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3482 nome: VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 17:44:16 GMT-03:00 2017
+Registro: Existentes no SAGE: 3486 --- 3418 ----- CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 17:44:16 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3486 nome: CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 17:44:22 GMT-03:00 2017
+Registro: Existentes no SAGE: 3489 --- 3418 ----- CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 17:44:22 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3489 nome: CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 17:44:26 GMT-03:00 2017
+Registro: Existentes no SAGE: 4404 --- 3418 ----- RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Wed Jan 11 17:44:26 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 17:45:50 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 17:49:23 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3423 nome: ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 17:49:35 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:49:35 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3427 nome: ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:49:46 GMT-03:00 2017
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:49:46 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3433 nome: ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 17:49:55 GMT-03:00 2017
+Registro: Existentes no SAGE: 3447 --- 3418 ----- LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 17:49:56 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3447 nome: LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 17:50:06 GMT-03:00 2017
+Registro: Existentes no SAGE: 3471 --- 3418 ----- JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 17:50:06 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3471 nome: JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 17:50:15 GMT-03:00 2017
+Registro: Existentes no SAGE: 3476 --- 3418 ----- JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 17:50:16 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3476 nome: JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 17:50:27 GMT-03:00 2017
+Registro: Existentes no SAGE: 3479 --- 3418 ----- JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 17:50:27 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3479 nome: JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 17:50:39 GMT-03:00 2017
+Registro: Existentes no SAGE: 3482 --- 3418 ----- VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 17:50:39 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3482 nome: VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 17:50:53 GMT-03:00 2017
+Registro: Existentes no SAGE: 3486 --- 3418 ----- CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 17:50:53 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3486 nome: CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 17:51:00 GMT-03:00 2017
+Registro: Existentes no SAGE: 3489 --- 3418 ----- CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 17:51:00 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3489 nome: CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 17:51:05 GMT-03:00 2017
+Registro: Existentes no SAGE: 4404 --- 3418 ----- RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Wed Jan 11 17:51:06 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4404 nome: RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Wed Jan 11 17:51:14 GMT-03:00 2017
+Registro: Existentes no SAGE: 4436 --- 3418 ----- ANTONIO DOUGLAS DE LIMA ---  Data:Wed Jan 11 17:51:14 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4436 nome: ANTONIO DOUGLAS DE LIMA ---  Data:Wed Jan 11 17:51:21 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 17:51:21 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3539 nome: KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 17:51:32 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 17:51:32 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 17:51:32 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3536 nome: SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 17:51:46 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 17:51:46 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 17:51:46 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3532 nome: YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 17:51:52 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 17:51:52 GMT-03:00 2017
+Registro: Existentes no SAGE: 4955 --- 3418 ----- CAROLINA BEZERRA PATRIOTA ---  Data:Wed Jan 11 17:51:52 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4955 nome: CAROLINA BEZERRA PATRIOTA ---  Data:Wed Jan 11 17:51:58 GMT-03:00 2017
+Registro: Existentes no SAGE: 5435 --- 3418 ----- ANDRE LUIZ DA SILVA MENEZES ---  Data:Wed Jan 11 17:51:59 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5435 nome: ANDRE LUIZ DA SILVA MENEZES ---  Data:Wed Jan 11 17:52:07 GMT-03:00 2017
+Registro: Existentes no SAGE: 5534 --- 3418 ----- PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Wed Jan 11 17:52:08 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5534 nome: PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Wed Jan 11 17:52:13 GMT-03:00 2017
+Registro: Existentes no SAGE: 5537 --- 3418 ----- JOÃO KARIMAI ---  Data:Wed Jan 11 17:52:13 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5537 nome: JOÃO KARIMAI ---  Data:Wed Jan 11 17:52:17 GMT-03:00 2017
+Registro: Existentes no SAGE: 3461 --- 3418 ----- MARIO RINO MARTINS ---  Data:Wed Jan 11 17:52:17 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3461 nome: MARIO RINO MARTINS ---  Data:Wed Jan 11 17:52:24 GMT-03:00 2017
+Registro: Existentes no SAGE: 5708 --- 3418 ----- GISELDA DE CASTRO LEMOS FREITAS ---  Data:Wed Jan 11 17:52:24 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5708 nome: GISELDA DE CASTRO LEMOS FREITAS ---  Data:Wed Jan 11 17:52:32 GMT-03:00 2017
+Registro: Existentes no SAGE: 6112 --- 3418 ----- KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Wed Jan 11 17:52:32 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6112 nome: KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Wed Jan 11 17:52:34 GMT-03:00 2017
+Registro: Existentes no SAGE: 6140 --- 3418 ----- ERICA ELIS DE LUCENA ---  Data:Wed Jan 11 17:52:34 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6140 nome: ERICA ELIS DE LUCENA ---  Data:Wed Jan 11 17:52:35 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 18:10:52 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 18:17:40 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 18:20:09 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 18:20:10 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 18:21:15 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 18:21:15 GMT-03:00 2017
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 18:21:16 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 18:22:17 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 18:22:17 GMT-03:00 2017
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 18:22:17 GMT-03:00 2017
+Registro: Existentes no SAGE: 3447 --- 3418 ----- LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 18:22:18 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3447 nome: LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 18:22:27 GMT-03:00 2017
+Registro: Existentes no SAGE: 3471 --- 3418 ----- JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 18:22:27 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3471 nome: JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 18:22:37 GMT-03:00 2017
+Registro: Existentes no SAGE: 3476 --- 3418 ----- JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 18:22:37 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3476 nome: JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 18:22:48 GMT-03:00 2017
+Registro: Existentes no SAGE: 3479 --- 3418 ----- JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 18:22:48 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3479 nome: JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 18:23:00 GMT-03:00 2017
+Registro: Existentes no SAGE: 3482 --- 3418 ----- VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 18:23:00 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3482 nome: VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 18:23:14 GMT-03:00 2017
+Registro: Existentes no SAGE: 3486 --- 3418 ----- CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 18:23:14 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3486 nome: CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 18:23:20 GMT-03:00 2017
+Registro: Existentes no SAGE: 3489 --- 3418 ----- CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 18:23:21 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3489 nome: CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 18:23:25 GMT-03:00 2017
+Registro: Existentes no SAGE: 4404 --- 3418 ----- RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Wed Jan 11 18:23:25 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4404 nome: RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Wed Jan 11 18:23:33 GMT-03:00 2017
+Registro: Existentes no SAGE: 4436 --- 3418 ----- ANTONIO DOUGLAS DE LIMA ---  Data:Wed Jan 11 18:23:34 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4436 nome: ANTONIO DOUGLAS DE LIMA ---  Data:Wed Jan 11 18:23:39 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 18:23:39 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3539 nome: KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 18:23:49 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 18:23:50 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 18:23:50 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3536 nome: SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 18:24:00 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 18:24:00 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 18:24:01 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3532 nome: YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 18:24:08 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 18:24:08 GMT-03:00 2017
+Registro: Existentes no SAGE: 4955 --- 3418 ----- CAROLINA BEZERRA PATRIOTA ---  Data:Wed Jan 11 18:24:08 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4955 nome: CAROLINA BEZERRA PATRIOTA ---  Data:Wed Jan 11 18:24:13 GMT-03:00 2017
+Registro: Existentes no SAGE: 5435 --- 3418 ----- ANDRE LUIZ DA SILVA MENEZES ---  Data:Wed Jan 11 18:24:13 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5435 nome: ANDRE LUIZ DA SILVA MENEZES ---  Data:Wed Jan 11 18:24:21 GMT-03:00 2017
+Registro: Existentes no SAGE: 5534 --- 3418 ----- PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Wed Jan 11 18:24:21 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5534 nome: PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Wed Jan 11 18:24:26 GMT-03:00 2017
+Registro: Existentes no SAGE: 5537 --- 3418 ----- JOÃO KARIMAI ---  Data:Wed Jan 11 18:24:26 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5537 nome: JOÃO KARIMAI ---  Data:Wed Jan 11 18:24:31 GMT-03:00 2017
+Registro: Existentes no SAGE: 3461 --- 3418 ----- MARIO RINO MARTINS ---  Data:Wed Jan 11 18:24:31 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3461 nome: MARIO RINO MARTINS ---  Data:Wed Jan 11 18:24:38 GMT-03:00 2017
+Registro: Existentes no SAGE: 5708 --- 3418 ----- GISELDA DE CASTRO LEMOS FREITAS ---  Data:Wed Jan 11 18:24:38 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5708 nome: GISELDA DE CASTRO LEMOS FREITAS ---  Data:Wed Jan 11 18:24:47 GMT-03:00 2017
+Registro: Existentes no SAGE: 6112 --- 3418 ----- KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Wed Jan 11 18:24:47 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6112 nome: KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Wed Jan 11 18:24:49 GMT-03:00 2017
+Registro: Existentes no SAGE: 6140 --- 3418 ----- ERICA ELIS DE LUCENA ---  Data:Wed Jan 11 18:24:49 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6140 nome: ERICA ELIS DE LUCENA ---  Data:Wed Jan 11 18:24:50 GMT-03:00 2017
+Registro: Existentes no SAGE: 3423 --- 3418 ----- ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 18:37:32 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3423 nome: ANA PAULA AVILA ROMA ---  Data:Wed Jan 11 18:37:43 GMT-03:00 2017
+Registro: Existentes no SAGE: 3427 --- 3418 ----- ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 18:37:43 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3427 nome: ANA LUCIA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 18:37:53 GMT-03:00 2017
+Registro: Existentes no SAGE: 3433 --- 3418 ----- ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 18:37:53 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3433 nome: ANDREA SANDRA ARAUJO DE ALBUQUERQUE ---  Data:Wed Jan 11 18:38:02 GMT-03:00 2017
+Registro: Existentes no SAGE: 3447 --- 3418 ----- LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 18:38:02 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3447 nome: LUZIANIA GUILHERMINA ANDRADE DA SILVA ---  Data:Wed Jan 11 18:38:10 GMT-03:00 2017
+Registro: Existentes no SAGE: 3471 --- 3418 ----- JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 18:38:10 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3471 nome: JAQUELINE CONCEICAO DE LIMA MELO ---  Data:Wed Jan 11 18:38:19 GMT-03:00 2017
+Registro: Existentes no SAGE: 3476 --- 3418 ----- JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 18:38:19 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3476 nome: JOSEFA PEREIRA DA SILVA ---  Data:Wed Jan 11 18:38:29 GMT-03:00 2017
+Registro: Existentes no SAGE: 3479 --- 3418 ----- JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 18:38:29 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3479 nome: JARISSON DIOGENES GUILHERME DA ROCHA MARTINS ---  Data:Wed Jan 11 18:38:40 GMT-03:00 2017
+Registro: Existentes no SAGE: 3482 --- 3418 ----- VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 18:38:40 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3482 nome: VERONICA MARIA DE MELO PESSOA ---  Data:Wed Jan 11 18:38:52 GMT-03:00 2017
+Registro: Existentes no SAGE: 3486 --- 3418 ----- CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 18:38:52 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3486 nome: CAMILLA VERAS FALCAO ---  Data:Wed Jan 11 18:38:58 GMT-03:00 2017
+Registro: Existentes no SAGE: 3489 --- 3418 ----- CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 18:38:58 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3489 nome: CYNTHIA AVILA MATTOS ---  Data:Wed Jan 11 18:39:03 GMT-03:00 2017
+Registro: Existentes no SAGE: 4404 --- 3418 ----- RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Wed Jan 11 18:39:03 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4404 nome: RENATA GUIMARAES DE ANDRADE PEREIRA ---  Data:Wed Jan 11 18:39:11 GMT-03:00 2017
+Registro: Existentes no SAGE: 4436 --- 3418 ----- ANTONIO DOUGLAS DE LIMA ---  Data:Wed Jan 11 18:39:11 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4436 nome: ANTONIO DOUGLAS DE LIMA ---  Data:Wed Jan 11 18:39:16 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 18:39:17 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3539 nome: KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 18:39:26 GMT-03:00 2017
+Registro: Existentes no SAGE: 3539 --- 3418 ----- KARINA MARTINS VAREJAO ---  Data:Wed Jan 11 18:39:27 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 18:39:27 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3536 nome: SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 18:39:37 GMT-03:00 2017
+Registro: Existentes no SAGE: 3536 --- 3418 ----- SOLANGE MARIA VALENCA MANGHI ---  Data:Wed Jan 11 18:39:37 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 18:39:37 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3532 nome: YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 18:39:43 GMT-03:00 2017
+Registro: Existentes no SAGE: 3532 --- 3418 ----- YERUSCHELEIN FERNANDES SALES ---  Data:Wed Jan 11 18:39:44 GMT-03:00 2017
+Registro: Existentes no SAGE: 4955 --- 3418 ----- CAROLINA BEZERRA PATRIOTA ---  Data:Wed Jan 11 18:39:44 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 4955 nome: CAROLINA BEZERRA PATRIOTA ---  Data:Wed Jan 11 18:39:49 GMT-03:00 2017
+Registro: Existentes no SAGE: 5435 --- 3418 ----- ANDRE LUIZ DA SILVA MENEZES ---  Data:Wed Jan 11 18:39:49 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5435 nome: ANDRE LUIZ DA SILVA MENEZES ---  Data:Wed Jan 11 18:39:57 GMT-03:00 2017
+Registro: Existentes no SAGE: 5534 --- 3418 ----- PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Wed Jan 11 18:39:57 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5534 nome: PATRICIA MARIA MIRELLE DE MACEDO E SILVA ---  Data:Wed Jan 11 18:40:02 GMT-03:00 2017
+Registro: Existentes no SAGE: 5537 --- 3418 ----- JOÃO KARIMAI ---  Data:Wed Jan 11 18:40:02 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5537 nome: JOÃO KARIMAI ---  Data:Wed Jan 11 18:40:06 GMT-03:00 2017
+Registro: Existentes no SAGE: 3461 --- 3418 ----- MARIO RINO MARTINS ---  Data:Wed Jan 11 18:40:06 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3461 nome: MARIO RINO MARTINS ---  Data:Wed Jan 11 18:40:12 GMT-03:00 2017
+Registro: Existentes no SAGE: 5708 --- 3418 ----- GISELDA DE CASTRO LEMOS FREITAS ---  Data:Wed Jan 11 18:40:12 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 5708 nome: GISELDA DE CASTRO LEMOS FREITAS ---  Data:Wed Jan 11 18:40:19 GMT-03:00 2017
+Registro: Existentes no SAGE: 6112 --- 3418 ----- KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Wed Jan 11 18:40:19 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6112 nome: KAROLINNE MARIA DE ALMEIDA MELO ---  Data:Wed Jan 11 18:40:20 GMT-03:00 2017
+Registro: Existentes no SAGE: 6140 --- 3418 ----- ERICA ELIS DE LUCENA ---  Data:Wed Jan 11 18:40:20 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 6140 nome: ERICA ELIS DE LUCENA ---  Data:Wed Jan 11 18:40:21 GMT-03:00 2017

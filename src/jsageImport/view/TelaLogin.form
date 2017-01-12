@@ -150,7 +150,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Beta 1.2"/>
+        <Property name="text" type="java.lang.String" value="Vers&#xe3;o 1.4"/>
       </Properties>
     </Component>
   </SubComponents>

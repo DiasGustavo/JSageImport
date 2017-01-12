@@ -30,3 +30,19 @@ Registro: Existentes no SAGE: 3666 --- 3643 ----- FABIANE MARIA RIBEIRO CAMPELO 
 Registro: Gravado o funcionario de código: 3666 nome: FABIANE MARIA RIBEIRO CAMPELO ---  Data:Tue Dec 13 18:58:25 GFT 2016
 Registro: Existentes no SAGE: 3669 --- 3643 ----- ADRIANA LEAO DE SOUZA ---  Data:Tue Dec 13 18:58:25 GFT 2016
 Registro: Gravado o funcionario de código: 3669 nome: ADRIANA LEAO DE SOUZA ---  Data:Tue Dec 13 18:58:26 GFT 2016
+Registro: Existentes no SAGE: 3644 --- 3643 ----- WENDSON SALVADOR FERREIA DAMASCENA ---  Data:Wed Jan 11 16:54:03 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3644 nome: WENDSON SALVADOR FERREIA DAMASCENA ---  Data:Wed Jan 11 16:54:05 GMT-03:00 2017
+Registro: Existentes no SAGE: 3648 --- 3643 ----- RUBEM LEITE CAVALVANTI ---  Data:Wed Jan 11 16:54:05 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3648 nome: RUBEM LEITE CAVALVANTI ---  Data:Wed Jan 11 16:54:06 GMT-03:00 2017
+Registro: Existentes no SAGE: 3653 --- 3643 ----- MICHELLINE SABOIA DA SILVA ---  Data:Wed Jan 11 16:54:06 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3653 nome: MICHELLINE SABOIA DA SILVA ---  Data:Wed Jan 11 16:54:07 GMT-03:00 2017
+Registro: Existentes no SAGE: 3656 --- 3643 ----- RICARDO CONSTANTINO DA SILVA ---  Data:Wed Jan 11 16:54:07 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3656 nome: RICARDO CONSTANTINO DA SILVA ---  Data:Wed Jan 11 16:54:08 GMT-03:00 2017
+Registro: Existentes no SAGE: 3660 --- 3643 ----- DANIELA PRADO FERREIRA ---  Data:Wed Jan 11 16:54:08 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3660 nome: DANIELA PRADO FERREIRA ---  Data:Wed Jan 11 16:54:09 GMT-03:00 2017
+Registro: Existentes no SAGE: 3663 --- 3643 ----- CLEIDE MARQUES MELO ---  Data:Wed Jan 11 16:54:09 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3663 nome: CLEIDE MARQUES MELO ---  Data:Wed Jan 11 16:54:10 GMT-03:00 2017
+Registro: Existentes no SAGE: 3666 --- 3643 ----- FABIANE MARIA RIBEIRO CAMPELO ---  Data:Wed Jan 11 16:54:10 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3666 nome: FABIANE MARIA RIBEIRO CAMPELO ---  Data:Wed Jan 11 16:54:11 GMT-03:00 2017
+Registro: Existentes no SAGE: 3669 --- 3643 ----- ADRIANA LEAO DE SOUZA ---  Data:Wed Jan 11 16:54:11 GMT-03:00 2017
+Registro: Gravado o funcionario de código: 3669 nome: ADRIANA LEAO DE SOUZA ---  Data:Wed Jan 11 16:54:12 GMT-03:00 2017

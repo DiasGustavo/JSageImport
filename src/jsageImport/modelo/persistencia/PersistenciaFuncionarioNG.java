@@ -20,6 +20,7 @@ import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.MovimentacaoNG;
 import jsageImport.modelo.dominio.PessoaFisica;
 import jsageImport.modelo.dominio.PessoaJuridica;
+import jsageImport.modelo.dominio.PlanoSaudeNG;
 import jsageImport.modelo.ipersistencia.IPersistenciaFuncionarioNG;
 
 /**
@@ -101,6 +102,7 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
     
     private static final String SQL_MESES_COMPETENCIA_ANO = "SELECT DISTINCT competenciames FROM flh_folhapay " +
                                                                   "  WHERE idregistro = ? AND competenciaano = ?";
+    private static final String SQL_OPERADORA_PLANO_SAUDE = "SELECT * FROM flh_operadoraplanosaude";
     
     /*url para conexao com o banco do ng*/    
     //jdbc:sqlserver://servidor:porta;databaseName=banco;user=usuario;password=senha;"
@@ -643,6 +645,30 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
             }
     }
     
+    public List recuperarTodosPlanoSaude () throws JsageImportException{
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = GerenciadorConexao.getConnection(urlNGFOLHA);
+            stmt = con.prepareStatement(SQL_OPERADORA_PLANO_SAUDE);
+                        
+            rs = stmt.executeQuery();
+            List listaPlanoSaude = new ArrayList();
+            while (rs.next()) {
+                PlanoSaudeNG dados = criarPlanoSaudeNG(rs);
+                listaPlanoSaude.add(dados);
+            }
+            return listaPlanoSaude;
+            } catch (SQLException exc) {
+                StringBuffer mensagem = new StringBuffer("Não foi possível realizar a consulta dos Planos de Saude .");
+                mensagem.append("\nMotivo: " + exc.getMessage());
+                throw new JsageImportException(mensagem.toString());
+            } finally {
+                GerenciadorConexao.closeConexao(con, stmt, rs);
+            }
+    }
+    
     @Override
     public String importaFuncionarios (int idEmpresa, int idPessoa, String nome) throws JsageImportException{
         String funcionario = "";
@@ -669,7 +695,8 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 List listaSalarios = pesquisarSalario(idPessoa);
                 //captura as informações das ferias do funcionario
                 List listaFerias = recuperarFeriasFuncionario(idPessoa);
-
+                // captura as informações dos planos de saude
+                List listaPlanosSaude = recuperarTodosPlanoSaude();
                 //captura as informações de pessoa física do funcionário
                 //captura dos dados funcionais do funcinário
                 DadosFuncionario pjGravar =(DadosFuncionario) listaDadosFun.get(0);              
@@ -688,8 +715,6 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 //grava os dados especificos do funcionario
                 controlSAGE.gravarFunEspecifico(idPessoa, idEmpresa);
                 
-                
-               
                 int iterador = 0;
                 do{
                     if (listaSalarios.size()>iterador){
@@ -764,7 +789,13 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                 }
                 //gravar os dados funcionais do funcionário
                 controlSAGE.gravarDadosFuncionais(idEmpresa, idPessoa, funDadosFuncionais, pjGravar); 
-                
+                 //gravar os planos de saude
+                if (listaPlanosSaude.size() > 0){
+                    for (int i = 0; i < listaPlanosSaude.size();i++ ){
+                        controlSAGE.gravarPlanoSaude((PlanoSaudeNG)listaPlanosSaude.get(i));
+                        controlSAGE.gravarPlanoSaudeGeral((PlanoSaudeNG)listaPlanosSaude.get(i), idEmpresa);
+                    }
+                }
                 //gravar a movimentação do funcionário
                 if (listaMeses.size() > 0){
                     for (int i = 0; i < listaMeses.size(); i++) {
@@ -776,6 +807,13 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
                             controlSAGE.gravarProcBase((MovimentacaoNG)listaMovimentacao.get(j), idEmpresa, idPessoa, funDadosFuncionais);
                             controlSAGE.gravarProcEvento((MovimentacaoNG)listaMovimentacao.get(j), idEmpresa, idPessoa);
                             controlSAGE.gravarProcImposto((MovimentacaoNG)listaMovimentacao.get(j), idEmpresa, idPessoa);
+                            //gravar as informações dos planos de saude
+                            MovimentacaoNG planoSaude = (MovimentacaoNG)listaMovimentacao.get(j);
+                            if (planoSaude.getIdverba() == -211) {
+                                controlSAGE.gravarPlanoSaudeFuncionario((MovimentacaoNG) listaMovimentacao.get(j), idEmpresa, idPessoa);
+                                controlSAGE.gravarPlanoSaudeMovFuncionario((MovimentacaoNG) listaMovimentacao.get(j), idEmpresa, idPessoa);
+                                controlSAGE.gravarPlanoSaudeProcFuncionario((MovimentacaoNG) listaMovimentacao.get(j), idEmpresa, idPessoa);
+                            }
                         }
                     }
                     
@@ -1368,6 +1406,21 @@ public class PersistenciaFuncionarioNG implements IPersistenciaFuncionarioNG {
         
     }
     
-   
+   private PlanoSaudeNG criarPlanoSaudeNG(ResultSet rs) throws JsageImportException {
+        PlanoSaudeNG planoSaude = new PlanoSaudeNG();
+        try{
+            planoSaude.setCodigooperadoraplanosaude(rs.getString("codigooperadoraplanosaude"));
+            planoSaude.setNomecompletooperadoraplanosaude(rs.getString("nomecompletooperadoraplanosaude"));
+            planoSaude.setNomereduzidooperadoraplanosaude(rs.getString("nomereduzidooperadoraplanosaude"));
+            planoSaude.setRegistroans(rs.getString("registroans"));
+            planoSaude.setCnpj(rs.getString("cnpj"));
+        }catch (SQLException ex) {
+            StringBuffer mensagem = new StringBuffer("Não foi possível criar o objeto PlanoSaudeNG.");
+            mensagem.append("\nMotivo: " + ex.getMessage());
+            throw new JsageImportException(mensagem.toString());
+        }
+        return planoSaude;
+        
+    }
         
 }

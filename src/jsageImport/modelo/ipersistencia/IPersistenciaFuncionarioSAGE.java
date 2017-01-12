@@ -10,12 +10,9 @@ import jsageImport.exception.JsageImportException;
 import jsageImport.modelo.dominio.DadosFuncionaisNG;
 import jsageImport.modelo.dominio.DadosFuncionario;
 import jsageImport.modelo.dominio.DependenteNG;
-import jsageImport.modelo.dominio.EmpresaFolha;
-import jsageImport.modelo.dominio.EmpresaTributacao;
 import jsageImport.modelo.dominio.FeriasNG;
 import jsageImport.modelo.dominio.MovimentacaoNG;
-import jsageImport.modelo.dominio.PessoaJuridica;
-import jsageImport.modelo.dominio.Sindicato;
+import jsageImport.modelo.dominio.PlanoSaudeNG;
 
 /**
  *
@@ -45,6 +42,10 @@ public interface IPersistenciaFuncionarioSAGE {
     public void gravarProcBase (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario, DadosFuncionaisNG dadosFuncionais) throws JsageImportException;
     public void gravarProcEvento (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException;
     public void gravarProcImposto (MovimentacaoNG movimentacao, int cdEmpresa, int cdFuncionario) throws JsageImportException;
-    
+    public abstract void gravarPlanoSaude (PlanoSaudeNG plano) throws JsageImportException;
+    public abstract void gravarPlanoSaudeGeral (PlanoSaudeNG plano, int cdEmpresa) throws JsageImportException;
+    public abstract void gravarPlanoSaudeFuncionario (MovimentacaoNG movimento, int cdEmpresa, int cdFuncionario) throws JsageImportException;
+    public abstract void gravarPlanoSaudeMovFuncionario (MovimentacaoNG movimento, int cdEmpresa, int cdFuncionario) throws JsageImportException;
+    public abstract void gravarPlanoSaudeProcFuncionario (MovimentacaoNG movimento, int cdEmpresa, int cdFuncionario) throws JsageImportException;
     public boolean testaConexaoSAGE (String server, String bd, String port, String user, String password) throws JsageImportException;
 }
